@@ -1,11 +1,22 @@
-import pandas as pd
-import scipy
-import monke
-import numpy as np
-import matplotlib.pyplot as plt
-import venv
+""" Hier wird der code von beiden Aufgaben ausgeführt, 
+Code für den photoeffekt ist in photozelle.py
+code für die Balmer Serie ist in balmer.py"""
 
-excel_file = pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx")
-data = pd.read_excel(excel_file, "365_1")
+import os, sys
+import subprocess
 
+os.chdir(os.path.dirname(__file__))
+if len(sys.argv) == 1:
+    print("--------------PHOTOZELLE-------------------------")
+    subprocess.run(["python3", "photozelle.py"])
+    print("Fertig")
 
+    print("--------------BALMER-SERIE-----------------------")
+    subprocess.run(["python3", "balmer.py"])
+    print("Fertig")
+    exit(0)
+
+if "photozelle" in sys.argv or "photo" in sys.argv: 
+    subprocess.run(["python3", "photozelle.py"])
+elif "balmer" in sys.argv: 
+    subprocess.run(["python3", "balmer.py"])
