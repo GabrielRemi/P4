@@ -1,5 +1,5 @@
 import pandas as pd
-from scipy import stats, optimize
+from scipy import odr
 from monke import functions, constants
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,6 +13,31 @@ plt.rcParams["figure.figsize"] = [6.5, 5.5]
 def freq(wavelength: float):
     return constants.c / wavelength * 1e9
 
+# test test
+
+
+def residue(f, y, yerr):
+    """Berechnet das gewichtete Residuum eines Datenfits f"""
+    return np.sum((f - y)**2 / 1)
+
+
+def rvalue(f, x, y):
+    """Berechnet das Bestimmtheitsmaß der Fit-Funktion f"""
+    x = np.array(x)
+    y = np.array(y)
+    mean = y.mean()
+    return np.sum((f(x) - mean)**2) / np.sum((y - mean)**2)
+
+
+def chisquare(f: callable, x: np.ndarray, y: np.ndarray, yerr: np.ndarray) -> float:
+
+    x = np.array(x)
+    y = np.array(y)
+    yerr = np.array(y)
+
+    chi_square = np.sum((y - f(x))**2 / yerr**2)
+    return chi_square / (len(x) - 2)
+
 
 # maximaler Bereich der in den plots gezeigt wird
 u_max = {
@@ -25,11 +50,11 @@ u_max = {
 
 # maximale Bereich, der zur linearen Regression genutzt wird
 u_max_linear = {
-    "365": 2000,
-    "405": 1250,
-    "436": 1100,
-    "546": 350,
-    "578": 300,
+    "365": 1000,
+    "405": 750,
+    "436": 600,
+    "546": 200,
+    "578": 200,
 }
 
 U0_data: dict[list] = {}
@@ -40,6 +65,8 @@ h = []
 def linear(x, m, b):
     return m * x + b
 
+
+result_file = open("results", "w")
 
 """Bestimme für alle Kennlinien die Grenzspannung und füge diese in das dict[list] 
 U0 zur entsprechenden Wellenlänge hinzu"""
@@ -64,19 +91,37 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         ind = data[2] < u_max_linear[sheet[:3]]
 
         # Berechne die Ausgleichsgerade und speicher die grenzspannung in U0 ab
-        result = stats.linregress(data[2][ind], data[0][ind])
-        popt, pcov = optimize.curve_fit(
-            linear, data[2][ind], data[0][ind])
+        odr_data = odr.RealData(data[2][ind], data[0][ind], sy=data[1][ind])
+        model = odr.Model(lambda B, x: linear(x, B[0], B[1]))
+        fit = odr.ODR(odr_data, model, beta0=[1, 1])
+        output = fit.run()
 
-        intercept, intercept_err = popt[1], pcov[1, 1]**0.5
-        slope, slope_err = popt[0], pcov[0, 0]**0.5
-        u0: float = - popt[1] / popt[0]
+        # Ergebnisse
+        intercept, intercept_err = output.beta[1], output.sd_beta[1]
+        slope, slope_err = output.beta[0], output.sd_beta[0]
+
+        # Güte des Fits
+        chi_square = chisquare(lambda x: linear(
+            x, slope, intercept), data[2][ind], data[0][ind], data[1][ind])
+        rval = rvalue(lambda x: linear(x, slope, intercept),
+                      data[2][ind], data[0][ind])
+        result_file.write(f"""
+-----{sheet}----------
+residual variance: {output.res_var}
+chi square: {chi_square}
+r_value: {rval}\n""")
+
+        # Berechne die Grenzspannung
+        u0: float = - intercept / slope
         u0_err: float = np.sqrt((intercept_err/slope) **
                                 2 + (intercept*slope_err/slope**2)**2)
-        if U0_data.get(wavelength):
-            U0_data[wavelength].append((u0, u0_err))
-        else:
-            U0_data[wavelength] = [(u0, u0_err)]
+
+        # beachte nur die ersten beiden kennlinien pro wellenlänge
+        if sheet[-2:] == "_1" or sheet[-2:] == "_2":
+            if U0_data.get(wavelength):
+                U0_data[wavelength].append((u0, u0_err))
+            else:
+                U0_data[wavelength] = [(u0, u0_err)]
 
         # Erstelle kennlinien plots
         fig, ax = plt.subplots()
@@ -97,6 +142,9 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         ax.legend()
         plt.savefig(f"../figs/photozelle_kennline_{sheet}.png")
 
+"""Berechne zuerst die Mittelwerte der berechneten Grenzspannungen und 
+fitte diese Wert in abhängigkeit mit der Frequenz. Bestimme daraus das Wirkungsquantum und 
+die Austrittsarbeit der Anode"""
 U0 = []
 for i in U0_data:
     data = [[u[0] for u in U0_data[i]], [u[1] for u in U0_data[i]]]
@@ -106,22 +154,44 @@ for i in U0_data:
 
 U0: pd.DataFrame = pd.DataFrame(U0)
 for i in range(1, 3):
-    U0[i] = U0[i].map(lambda x: x / 1000) # Umrechnung in V
-popt, pcov = optimize.curve_fit(linear, U0[0], U0[1], sigma=U0[2])
-slope = (popt[0], pcov[0, 0]**0.5)
-intercept = (popt[1], pcov[1, 1]**0.5)
+    U0[i] = U0[i].map(lambda x: x / 1000)  # Umrechnung in V
+
+# Berechne Geraden-Fit
+odr_data = odr.RealData(U0[0]*1e-14, U0[1], sy=U0[2])
+model = odr.Model(lambda B, x: linear(x, B[0], B[1]))
+fit = odr.ODR(odr_data, model, beta0=[1, 1])
+output = fit.run()
+
+# Speicher fit güte
+goodness = f"""
+-------Photoeffekt-------
+residual variance = {output.res_var}
+"""
+
+result_file.write(goodness)
+
+slope = (output.beta[0]*1e-14, output.sd_beta[0]*1e-14)
+intercept = (output.beta[1], output.sd_beta[1])
 
 planck_constant = (slope[0] * constants.q, slope[1] * constants.q)
-work_function = (-intercept[0]*constants.q, intercept[1]*constants.q)
+work_function = (-intercept[0], intercept[1])
 
 plt.subplots()
 plt.errorbar(U0[0], U0[1], yerr=U0[2], marker="o", ms=5, linestyle="")
-plt.plot(U0[0], U0[0]*slope[0] + intercept[0], 
+plt.plot(U0[0], U0[0]*slope[0] + intercept[0],
          label=f"h = {functions.error_round(planck_constant[0], planck_constant[1], 'scientific')[0]} Js")
 plt.legend()
 plt.ylabel("$U_0$ [V]")
 plt.xlabel(r"$\nu$ [Hz]")
 plt.savefig("../figs/photozelle_wirkungsquantum.png", dpi=200)
 
-print(f"h = {functions.error_round(planck_constant[0], planck_constant[1], 'scientific')[0]} Js")
-print(f"W = {functions.error_round(work_function[0], work_function[1], 'scientific')[0]} J")
+res_const = f"""
+h = {functions.error_round(planck_constant[0], planck_constant[1], 'scientific')[0]} Js
+Referenzwert: h = {constants.h} Js
+
+W = {functions.error_round(work_function[0], work_function[1], 'scientific')[0]} eV
+"""
+print(res_const)
+result_file.write(res_const)
+
+result_file.close()
