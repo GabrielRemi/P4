@@ -28,17 +28,6 @@ def rvalue(f, x, y):
     mean = y.mean()
     return np.sum((f(x) - mean)**2) / np.sum((y - mean)**2)
 
-
-def chisquare(f: callable, x: np.ndarray, y: np.ndarray, yerr: np.ndarray) -> float:
-
-    x = np.array(x)
-    y = np.array(y)
-    yerr = np.array(y)
-
-    chi_square = np.sum((y - f(x))**2 / yerr**2)
-    return chi_square / (len(x) - 2)
-
-
 # maximaler Bereich der in den plots gezeigt wird
 u_max = {
     "365": 3000,
@@ -62,7 +51,9 @@ h = []
 
 
 # Geraden-Fit
-def linear(x, m, b):
+def linear(*b, x):
+    m = b[0]
+    b = b[1]
     return m * x + b
 
 
@@ -92,7 +83,7 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
 
         # Berechne die Ausgleichsgerade und speicher die grenzspannung in U0 ab
         odr_data = odr.RealData(data[2][ind], data[0][ind], sy=data[1][ind])
-        model = odr.Model(lambda B, x: linear(x, B[0], B[1]))
+        model = odr.Model(lambda B, x: linear(*B, x=x))
         fit = odr.ODR(odr_data, model, beta0=[1, 1])
         output = fit.run()
 
@@ -101,9 +92,8 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         slope, slope_err = output.beta[0], output.sd_beta[0]
 
         # Güte des Fits
-        chi_square = chisquare(lambda x: linear(
-            x, slope, intercept), data[2][ind], data[0][ind], data[1][ind])
-        rval = rvalue(lambda x: linear(x, slope, intercept),
+        chi_square = functions.chisquare(linear, data[2][ind], data[0][ind], data[1][ind], slope, intercept)
+        rval = rvalue(lambda x: linear(slope, intercept, x=x),
                       data[2][ind], data[0][ind])
         result_file.write(f"""
 -----{sheet}----------
@@ -158,7 +148,7 @@ for i in range(1, 3):
 
 # Berechne Geraden-Fit
 odr_data = odr.RealData(U0[0]*1e-14, U0[1], sy=U0[2])
-model = odr.Model(lambda B, x: linear(x, B[0], B[1]))
+model = odr.Model(lambda B, x: linear(*B, x=x))
 fit = odr.ODR(odr_data, model, beta0=[1, 1])
 output = fit.run()
 
