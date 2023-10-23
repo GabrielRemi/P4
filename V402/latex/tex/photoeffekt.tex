@@ -1,4 +1,4 @@
-\subsection{Photoeffekt}
+\subsection{Bestimmung des Planckschen Wirkungsquantums}
 \subsubsection{Versuchsaufbau}
 Um mithilfe des Photoeffekts das plancksche Wirkungsquantum h zu bestimmen wird der
 in \cref{fig:photozelle_optikbank} skizzierte Aufbau auf einer Optikbank befestigt.
@@ -45,6 +45,27 @@ die Spannungsteilergleichung
 \end{figure}
 
 \subsubsection{Messung}
+Im Folgenden wird mit U die am Spannungsteiler abgegriffene Spannung bezeichnet und der Photostrom 
+mit I. Der Messverstärker wandelt Ströme von \SI{1}{\nano\ampere} in \SI{1}{\volt} um, 
+weshalb zwar mit dem Multimeter eine Spannung gemessen wird, diese trotzdem mit einem I bezeichnet
+wird. Der Strom entsteht, wenn energiereiche Photonen auf die Kathode treffen und 
+Elektronen befreien, die von der Anode wieder abgefangen werden.\\ 
+Beide Elektroden besitzen verschiedene Austrittsarbeiten, weshalb sich die Fermi-Niveaus
+dieser unterscheiden. Bei leitender Verbindung gleichen sich die Niveaus aus, wodurch 
+ein elektrisches Feld zwischen den Elektroden aufgebaut wird[\textbf{QUELLE?}]. Die Energiebilanz der eintreffenden 
+Elektronen ist 
+\begin{equation}
+	E_\mathrm{kin} = h\nu - (W_A - W_K) - W_K = h\nu - W_A\nonumber
+\end{equation}
+wobei der Subskript K für die Kathode, A für die Anode und $\nu$ für die Lichtfrequenz steht.
+Mit dem Netzteil wird eine Gegenspannung eingestellt und so lange erhöht, bis 
+der Anodenstrom verschwindet. In diesem Falle verschwindet die kinetische Energie der Elektronen 
+und es ergibt sich bei der Grenzspannung $U_0$ die Gleichung 
+\begin{equation}
+	eU_0 = h\nu - W_A
+	\label{eq:gegenfeldmethode}
+\end{equation}
+
 
 \begin{figure}[htb]
 	\centering
@@ -58,3 +79,18 @@ die Spannungsteilergleichung
     \end{subfigure}
 	\caption{Kontaktpotential zwischen zwei Elektroden}
 \end{figure}
+
+Bei dem energiereichstem Licht der Wellenlänge \SI{365}{\nano\meter} wird eine Grenzspannung von unter 
+\SI{2.0}{\volt} benötigt, weshalb mit den vorhandenen Widerständen von \SI{100}{\ohm} und \SI{333}{\ohm}
+nach \cref{eq:spannungsteiler} eine maximale Spannung von 
+\[U_\mathrm{max} = \SI{2.77}{\volt}\]
+eingestellt wird.\\
+Aufgrund dessen, dass ein minimaler Anodenstrom $I_0$ auch vorhanden ist, wo Elektronen aus der 
+Anode in die Kathode eintreffen, wird die Messung verfälscht. Um die Grenzspannung bestimmen zu können, 
+wird für jede Wellenlänge einen Kennlinie im gesamtem Gegenspannungsbereich gemessen, angefangen 
+bei \SI{0}{\volt}. Da zusätzliche Intensitätsfluktuationen auftreten können, wird jede Kennlinie 
+zweimal gemessen.\\\par
+Für die Wellenlänge \SI{365}{\nano\meter} wird die Messung bei einer erhöhten Intensität 
+erneut gemessen, um deren Einfluss untersuchen zu können.
+
+\subsubsection{Auswertung}

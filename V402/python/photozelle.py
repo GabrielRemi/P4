@@ -1,6 +1,7 @@
 import pandas as pd
 from scipy import odr
 from monke import functions, constants
+from monke.latex import *
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -28,6 +29,7 @@ def rvalue(f, x, y):
     mean = y.mean()
     return np.sum((f(x) - mean)**2) / np.sum((y - mean)**2)
 
+
 # maximaler Bereich der in den plots gezeigt wird
 u_max = {
     "365": 3000,
@@ -51,13 +53,17 @@ h = []
 
 
 # Geraden-Fit
-def linear(*b, x):
+def linear(b, x):
     m = b[0]
     b = b[1]
     return m * x + b
 
 
 result_file = open("results", "w")
+
+# Dict mit Latextabellen
+tex_tables = {}
+
 
 """Bestimme für alle Kennlinien die Grenzspannung und füge diese in das dict[list] 
 U0 zur entsprechenden Wellenlänge hinzu"""
@@ -73,17 +79,35 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         # Werte außerhalb des quadratischen Bereichs filtern
         data = pd.DataFrame(data_raw)
 
+        # Erstelle eine Latex Tabelle
+        table_data = [list(data[2]), (list(data[0]), list(data[1]))]
+
         # Berechne die Wurzel von I sowie den dazugehörigen Fehler und ziehe den Anodenstrom ab
         data[0] = data[0].apply(lambda x: np.sqrt(x - data[0].min()))
-        data = data.head(-1)
+        ind = data[0] > 0
+        data = pd.DataFrame([data[0][ind], data[1][ind], data[2][ind]])
+        data = data.transpose()
         data[1] = data[1] / data[0]
+
+        # Setze Tabelle fort
+        table_data.append((list(data[0]), list(data[1])))
+        textable = Textable(caption=f"$({sheet[-1]})\,\SI{{{wavelength}}}{{nm}}$", seperator=",")
+        textable.add_header(
+            r"$U / \unit{\milli\volt}$",
+            r"$I / \unit{\pico\ampere}$",
+            r"$\sqrt{I-I_0} / \unit{\pico\ampere\tothe{1/2}}$")
+        textable.add_values(*table_data)
+        if tex_tables.get(wavelength):
+            tex_tables[wavelength].append(textable)
+        else:
+            tex_tables[wavelength] = [textable]
 
         # Filtert alle Werte raus, wo die kennlinie einen linearen Anstieg hat
         ind = data[2] < u_max_linear[sheet[:3]]
 
         # Berechne die Ausgleichsgerade und speicher die grenzspannung in U0 ab
         odr_data = odr.RealData(data[2][ind], data[0][ind], sy=data[1][ind])
-        model = odr.Model(lambda B, x: linear(*B, x=x))
+        model = odr.Model(linear)
         fit = odr.ODR(odr_data, model, beta0=[1, 1])
         output = fit.run()
 
@@ -92,8 +116,9 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         slope, slope_err = output.beta[0], output.sd_beta[0]
 
         # Güte des Fits
-        chi_square = functions.chisquare(linear, data[2][ind], data[0][ind], data[1][ind], slope, intercept)
-        rval = rvalue(lambda x: linear(slope, intercept, x=x),
+        chi_square = functions.chisquare(
+            linear, data[2][ind], data[0][ind], data[1][ind], output.beta)
+        rval = rvalue(lambda x: linear([slope, intercept], x),
                       data[2][ind], data[0][ind])
         result_file.write(f"""
 -----{sheet}----------
@@ -148,7 +173,7 @@ for i in range(1, 3):
 
 # Berechne Geraden-Fit
 odr_data = odr.RealData(U0[0]*1e-14, U0[1], sy=U0[2])
-model = odr.Model(lambda B, x: linear(*B, x=x))
+model = odr.Model(linear)
 fit = odr.ODR(odr_data, model, beta0=[1, 1])
 output = fit.run()
 
@@ -171,8 +196,8 @@ plt.errorbar(U0[0], U0[1], yerr=U0[2], marker="o", ms=5, linestyle="")
 plt.plot(U0[0], U0[0]*slope[0] + intercept[0],
          label=f"h = {functions.error_round(planck_constant[0], planck_constant[1], 'scientific')[0]} Js")
 plt.legend()
-plt.ylabel("$U_0$ [V]")
-plt.xlabel(r"$\nu$ [Hz]")
+plt.ylabel("$U_0$ / V")
+plt.xlabel(r"$\nu$ / Hz")
 plt.savefig("../figs/photozelle_wirkungsquantum.png", dpi=200)
 
 res_const = f"""
@@ -185,3 +210,18 @@ print(res_const)
 result_file.write(res_const)
 
 result_file.close()
+
+# Erstelle Latex Tabellen
+for wavelength in tex_tables:
+    texfile = Texfile(f"{wavelength}", "../latex/tabellen/")
+    table0 = tex_tables[wavelength][0]
+    table1 = tex_tables[wavelength][1]
+    texfile.add(table0.make_figure(table1))
+    texfile.make()
+
+# Tabellen für hohe Intensität
+texfile = Texfile(f"365_high", "../latex/tabellen/")
+table0 = tex_tables["365"][2]
+table1 = tex_tables["365"][3]
+texfile.add(table0.make_figure(table1))
+texfile.make()
