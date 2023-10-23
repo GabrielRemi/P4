@@ -3,6 +3,15 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.odr import ODR, Model, Data, RealData
 
+def chisquare(f: callable, x: np.ndarray, y: np.ndarray, yerr: np.ndarray, dof) -> float:
+
+    x = np.array(x)
+    y = np.array(y)
+    yerr = np.array(y)
+
+    chi_square = np.sum((y - f(x))**2 / yerr**2)
+    return chi_square / (len(x) - dof)
+
 # Bestimmung der Gitterkonstanten
 
 # Wellenlängen der Quecksilberdampflampe in nm
@@ -162,6 +171,8 @@ x_data_rot = data_rot[:,0] + 0.080
 y_data_rot = data_rot[:,1]
 x_data_rot_err = 0.001
 y_data_rot_err = 0.1
+ind = np.array([i > -.02 and i < .043 for i in x_data_rot])
+
 # türkis
 data_türkis = np.loadtxt('../Daten/Turkis.txt', skiprows = 1)
 x_data_türkis = data_türkis[:,0] - 0.075
@@ -180,14 +191,19 @@ def f(a, x):
     return a[0] * np.exp(-((x - a[1])**2)/(a[2]**2)) + a[3] * np.exp(-((x - a[4])**2)/(a[5]**2)) + a[6]
 
 exp = Model(f)
-mydata = RealData(x_data_lila, y_data_lila, sx = x_data_lila_err, sy = y_data_lila_err)
-myodr = ODR(mydata, exp, beta0 = [10,0.0,0.01,1,-0.04,0.02,6,0.1])
+mydata = RealData(x_data_rot[ind], y_data_rot[ind], sx = x_data_rot_err, sy = y_data_rot_err)
+myodr = ODR(mydata, exp, beta0 = [80,0.0,0.01,10,0.03,0.02,6])
 myoutput = myodr.run()
 myoutput.pprint()
 
+chi_square = chisquare(lambda x: f(myoutput.beta, x), x_data_rot, y_data_rot,
+                        np.array([y_data_rot_err]*len(x_data_rot)), 7)
+print(f"chi squared: {chi_square}")
 
 plt.subplots()
 plt.errorbar(x_data_rot, y_data_rot, xerr = x_data_rot_err, yerr = y_data_rot_err, linestyle = 'none', label = 'Datenpunkte')
+x = np.linspace(-.06, .075, 1000)
+plt.plot(x, f(myoutput.beta,x))
 plt.xlim([-0.06,0.075])
 
 plt.subplots()
@@ -196,6 +212,5 @@ plt.xlim([-0.035,0.04])
 
 plt.subplots()
 plt.errorbar(x_data_lila, y_data_lila, xerr = x_data_lila_err, yerr = y_data_lila_err, linestyle = 'none', label = 'Datenpunkte')
-plt.plot(x_data_lila, f(myoutput.beta,x_data_lila))
 plt.xlim([-0.45,0.15])
 plt.show()
