@@ -45,24 +45,25 @@ die Spannungsteilergleichung
 \end{figure}
 
 \subsubsection{Messung}
-Im Folgenden wird mit U die am Spannungsteiler abgegriffene Spannung bezeichnet und der Photostrom 
-mit I. Der Messverstärker wandelt Ströme von \SI{1}{\nano\ampere} in \SI{1}{\volt} um, 
+Im Folgenden wird mit U die am Spannungsteiler abgegriffene Spannung bezeichnet und der Photostrom
+mit I. Der Messverstärker wandelt Ströme von \SI{1}{\nano\ampere} in \SI{1}{\volt} um,
 weshalb zwar mit dem Multimeter eine Spannung gemessen wird, diese trotzdem mit einem I bezeichnet
-wird. Der Strom entsteht, wenn energiereiche Photonen auf die Kathode treffen und 
-Elektronen befreien, die von der Anode wieder abgefangen werden.\\ 
+wird. Der Strom entsteht, wenn energiereiche Photonen auf die Kathode treffen und
+Elektronen befreien, die von der Anode wieder abgefangen werden.\\
 Beide Elektroden besitzen verschiedene Austrittsarbeiten, weshalb sich die Fermi-Niveaus
-dieser unterscheiden. Bei leitender Verbindung gleichen sich die Niveaus aus, wodurch 
-ein elektrisches Feld zwischen den Elektroden aufgebaut wird[\textbf{QUELLE?}]. Die Energiebilanz der eintreffenden 
-Elektronen ist 
+dieser unterscheiden. Bei leitender Verbindung gleichen sich die Niveaus aus, wodurch
+ein elektrisches Feld zwischen den Elektroden aufgebaut wird[\textbf{QUELLE?}]. Die Energiebilanz der eintreffenden
+Elektronen ist
 \begin{equation}
-	E_\mathrm{kin} = h\nu - (W_A - W_K) - W_K = h\nu - W_A\nonumber
+	E_\mathrm{kin} = \mathrm h\nu - (\mathrm W_{\mathrm A} - \mathrm W_{\mathrm K}) 
+	- \mathrm W_{\mathrm K} = \mathrm h\nu - \mathrm W_{\mathrm A}\nonumber
 \end{equation}
 wobei der Subskript K für die Kathode, A für die Anode und $\nu$ für die Lichtfrequenz steht.
-Mit dem Netzteil wird eine Gegenspannung eingestellt und so lange erhöht, bis 
-der Anodenstrom verschwindet. In diesem Falle verschwindet die kinetische Energie der Elektronen 
-und es ergibt sich bei der Grenzspannung $U_0$ die Gleichung 
+Mit dem Netzteil wird eine Gegenspannung eingestellt und so lange erhöht, bis
+der Anodenstrom verschwindet. In diesem Falle verschwindet die kinetische Energie der Elektronen
+und es ergibt sich bei der Grenzspannung $U_0$ die Gleichung
 \begin{equation}
-	eU_0 = h\nu - W_A
+	\mathrm eU_0 = \mathrm h\nu - \mathrm W_{\mathrm A}
 	\label{eq:gegenfeldmethode}
 \end{equation}
 
@@ -70,58 +71,145 @@ und es ergibt sich bei der Grenzspannung $U_0$ die Gleichung
 \begin{figure}[htb]
 	\centering
 	\begin{subfigure}[c]{0.46\linewidth}
-        \includegraphics[width=\linewidth]{../figs/fermi1.png}
+		\includegraphics[width=\linewidth]{../figs/fermi1.png}
 		\subcaption{nicht verbunden}
-    \end{subfigure}
+	\end{subfigure}
 	\begin{subfigure}[c]{0.46\linewidth}
-        \includegraphics[width=\linewidth]{../figs/fermi2.png}
+		\includegraphics[width=\linewidth]{../figs/fermi2.png}
 		\subcaption{leitend verbunden}
-    \end{subfigure}
+	\end{subfigure}
 	\caption{Kontaktpotential zwischen zwei Elektroden}
 \end{figure}
 
-Bei dem energiereichstem Licht der Wellenlänge \SI{365}{\nano\meter} wird eine Grenzspannung von unter 
+Bei dem energiereichstem Licht der Wellenlänge \SI{365}{\nano\meter} wird eine Grenzspannung von unter
 \SI{2.0}{\volt} benötigt, weshalb mit den vorhandenen Widerständen von \SI{100}{\ohm} und \SI{333}{\ohm}
-nach \cref{eq:spannungsteiler} eine maximale Spannung von 
-\[U_\mathrm{max} = \SI{2.77}{\volt}\]
+nach \cref{eq:spannungsteiler} eine maximale Spannung von
+\[\mathrm U_\mathrm{max} = \SI{2.77}{\volt}\]
 eingestellt wird.\\
-Aufgrund dessen, dass ein minimaler Anodenstrom $I_0$ auch vorhanden ist, wo Elektronen aus der 
-Anode in die Kathode eintreffen, wird die Messung verfälscht. Um die Grenzspannung bestimmen zu können, 
-wird für jede Wellenlänge einen Kennlinie im gesamtem Gegenspannungsbereich gemessen, angefangen 
-bei \SI{0}{\volt}. Da zusätzliche Intensitätsfluktuationen auftreten können, wird jede Kennlinie 
+Aufgrund dessen, dass ein minimaler Anodenstrom $I_0$ auch vorhanden ist, wo Elektronen aus der
+Anode in die Kathode eintreffen, wird die Messung verfälscht. Um die Grenzspannung bestimmen zu können,
+wird für jede Wellenlänge einen Kennlinie im gesamtem Gegenspannungsbereich gemessen, angefangen
+bei \SI{0}{\volt}. Da zusätzliche Intensitätsfluktuationen auftreten können, wird jede Kennlinie
 zweimal gemessen.\\\par
-Für die Wellenlänge \SI{365}{\nano\meter} wird die Messung bei einer erhöhten Intensität 
+Für die Wellenlänge \SI{365}{\nano\meter} wird die Messung bei einer erhöhten Intensität
 erneut gemessen, um deren Einfluss untersuchen zu können.
 
 \subsubsection{Auswertung}
 
 \input{tabellen/tabelle_365.tex}
-\doublefigure{365_1}{365_2}{365}
+\doublefigure{365_1}{365_2}{365}{}
 
-Aus den Kennlinien der Photozelle lässt sich die Grenzspannung bestimmen. In \cref{kennlinie_365nm} sind die 
-Messreihen bei einem Filter bei \SI{365}{\nano\meter} dargestellt (die restlichen Messdaten sind im Anhang 
-\ref{sec:anhang_photozelle} zu finden). Die Spannungsmessung besitzt lediglich einen Ablesefehler der letzten 
+Aus den Kennlinien der Photozelle lässt sich die Grenzspannung bestimmen. In \cref{kennlinie_365nm} sind die
+Messreihen bei einem Filter bei \SI{365}{\nano\meter} dargestellt (die restlichen Messdaten sind im Anhang
+\ref{sec:anhang_photozelle} zu finden). Die Spannungsmessung besitzt lediglich einen Ablesefehler der letzten
 angezeigten Ziffer, weshalb der Fehler jedes Messwertes bei $\Delta U = \SI{1}{\milli\volt}$ liegt.
 Die Strommessung war teilweise starken Fluktuationen ausgesetzt, weshalb der Fehler $\Delta I$
-individuell an diese Schwankung angepasst wird. Für die meisten Messwerte bestimmt somit der Fehler 
+individuell an diese Schwankung angepasst wird. Für die meisten Messwerte bestimmt somit der Fehler
 des Photostroms die größte Unsicherheit, da der zur Messgröße relative Fehler deutlich größer ausfällt.\\
 Im Anlaufgebiet der Photozelle wächst der Strom quadratisch mit der Gegenspannung an[\textbf{QUELLE}],
-weshalb für die Wurzel dessen ein linearer Zusammenhang der Form 
+weshalb für die Wurzel dessen ein linearer Zusammenhang der Form
 \begin{equation}
 	\sqrt{I - I_0} = m\cdot U + b \nonumber
 \end{equation}
 erwartet wird, wobei $I_0$ bei maximaler eingesteller Gegenspannung abgelesen wird.
 Nach Gaußscher Fehlerfortpflanzung[\textbf{QUELLE}] gilt für den dazugehörigen Fehler
 \begin{equation}
-	\Delta\sqrt{I - I_0} = \sqrt{\qty(\frac{\Delta I}{\sqrt{I-I_0}})^2 + \qty(\frac{\Delta I_0}{\sqrt{I-I_0}})^2} \nonumber
+	\Delta\sqrt{I - I_0} = \sqrt{\qty(\frac{\Delta I}{2\sqrt{I-I_0}})^2 + \qty(\frac{\Delta I_0}{2\sqrt{I-I_0}})^2} \nonumber
 \end{equation}
 
-Für die erste Wellenlänge sind die Kennlinien in \cref{fig:kennlinie_365} mit einer Ausgleichsgeraden 
+Für die erste Wellenlänge sind die Kennlinien in \cref{fig:kennlinie_365} mit einer Ausgleichsgeraden
 dargestellt, wobei zur Bestimmung der Geraden nur Werte in dem linearen Bereich in Betracht gezogen wurden
-(Weitere Kennlinien befinden sich im Anhang \ref{sec:anhang_photozelle} 
-\crefrange{fig:kennlinie_405}{fig:kennlinie_578}). Aus der Nullstelle der Geraden wird die Grenzspannung 
-bestimmt mit 
+(Weitere Kennlinien befinden sich im Anhang \ref{sec:anhang_photozelle}
+\crefrange{fig:kennlinie_405}{fig:kennlinie_578}). Aus der Nullstelle der Geraden wird die Grenzspannung
+bestimmt mit
 \begin{equation}
 	U_0 = - \frac{b}{m},\qquad \Delta U_0 = \sqrt{\qty(\frac{\Delta b}{m})^2 + \qty(\frac{b\Delta m}{m^2})^2}
+	\nonumber
 	\label{eq:bestimmung_grenzspannung}
 \end{equation}
+
+\input{tabellen/tabelle_grenzspannungen.tex}
+
+Die Ausgleichsgeraden wurden mit dem Modul \verb|odr| des Python Pakets SciPy[\textbf{QUELLE}]
+ausgewertet. Die Ergebnisse sind in \cref{fig:messwerte_grenzspannungen} festgehalten
+und beinhalten für jede Wellenlänge die Güte beider Ausgleichsgeraden und die daraus berechneten
+Grenzspannungen sowie den Mittelwert beider Spannungen. \\
+
+Die Güte der Anpassungsgeraden
+wird üblicherweise mit der reduzierten Chi-Quadrat-Verteilung überprüft, also mit
+$\chi^2 / \mathrm{dof}$, wobei dof für die Freiheitsgrade steht. Ein Wert von 1 ist ideal,
+ein Wert deutlich kleiner als 1 deutet auf Überanpassung oder auf zu groß geschätzte
+Unsicherheiten hin, wobei hier Überanpassung kein mögliches Problem darstellt.
+In \cref{fig:messwerte_grenzspannungen} ist zu beobachten, dass die Werte bei \SI{365}{\nano\meter}
+sowie die erste Anpassung bei \qtyrange{436}{578}{\nano\meter} einen Wert von ca. \num{0.3}
+aufzeigen. Der Rest liegt im Bereich von \num{0.1} mit Ausnahme der zweiten Messung beim
+\SI{405}{\nano\meter} Filter, wo $\chi^2/\mathrm{dof} = \num{14.71}$ ist. Bis
+auf diese Ausnahme wurden die Unsicherheiten größer als nötig eingeschätzt. Da jedoch
+visuell alle Messpunkte auf der Ausgleichsgeraden liegen und die Fehler so klein ausfielen, dass
+bei den meisten Messpunkten diese nicht in den Abbildungen sichtbar sind, werden die
+Ausgleichsgeraden als zufriedenstellend bewertet. \\
+
+Visuell ist die Ausnahme
+bei \SI{405}{\nano\meter} nicht von den Anderen zu unterscheiden, weshalb die Abweichung
+damit zu erklären ist, dass die Fehler deutlich zu klein gewählt wurden.
+Dies lässt sich auch mit einem Blick auf \cref{kennlinie_405nm} bestätigen.
+Der Fehler des Mittelwerts beider Grenzspannungen pro Wellenlänge beinhaltet
+nicht nur den Mittelwert der einzelnen Fehler, sondern ebenfalls die statistische Unsicherheit
+der Spannungen, weshalb die Unsicherheit teilweise größer ausfällt.\\
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.75\linewidth]{../figs/photozelle_wirkungsquantum.png}
+	\caption{Bestimmung des Planckschen Wirkungsquantums}
+	\label{fig:bestimmung_planck}
+\end{figure}
+
+Die Grenzspannungen lassen sich jetzt gegen die Lichtfrequenz auftragen, die mit
+der Relation $\nu = \mathrm c / \lambda$ berechnet wird. Aus \cref{eq:gegenfeldmethode} lässt sich
+ablesen, dass aus der Steigung $m$ das planksche Wirkungsquantum bestimmt werden kann mit
+\begin{equation}
+	\mathrm h = \mathrm e \cdot m,\qquad \Delta\mathrm h = \mathrm e \cdot \Delta m \nonumber
+\end{equation}
+Und die Austritssarbeit der Anode aus dem Achsenabschnitt $b$ mit
+\begin{equation}
+	W_A = -\mathrm e \cdot b, \qquad -\mathrm e \cdot \Delta b \nonumber
+\end{equation}
+. Die Anpassungsgerade hat eine Güte $\chi^2/\mathrm{dof} = \num{20.05}$ und ist damit deutlich größer als
+\num{1}. Dies ist zu kleinen Fehlern geschuldet, da visuell bewertet die Messpunke nicht auf einer 
+einheitlichen Linie liegen, insbesondere die Spannungen der kleinsten zwei Frequenzen eine im Vergleich 
+hohe Abweichung zur Anpassungsgeraden aufweisen, was zu erwarten war, da die Intensität 
+dieser Messung gering war mit starken Fluktuationen, weshalb diese Messungen 
+am anfälligsten für Fehler waren, was sich hier wiederspiegelt.\\
+Die bestimmten Parameter sind 
+\[m = \SI{4.00(17)e-15}{\volt\second},\qquad b = -\SI{1.75\pm .11}{\electronvolt}\]
+Und die sich daraus ergebenen Konstanten 
+\[\mathrm h = \SI{6.4(3)e-34}{\joule\second}, \qquad \mathrm W_{\mathrm A} = \SI{1.75\pm .11}{\electronvolt}\]
+Der Literaturwert des plankschen Wirkungsquantums $\mathrm h = \SI{6.62607015}{\joule\second}$[\textbf{QUELLE}]
+liegt im $1\sigma$-Bereich der Messung, welche einen unter 5\%-igen Fehler auffweist. 
+Dieses Ergebnis ist damit im Rahmen dieses Versuchs zufriedenstellend.
+Zur Anodenaustrittsarbeit konnte kein Literaturwert zum Vergleich herbeigezogen werden.\\\par
+
+\doublefigure{365_3}{365_4}{365}{bei hoher Intensität}
+\input{tabellen/tabelle_365_high.tex}
+
+Als letztes wird der Intensitätseinfluss auf die Kennlinie bei \SI{365}{\nano\meter}
+untersucht. Die Linien bei erhöhter Lichtintensität sind in \cref{fig:kennlinie_365bei hoher Intensität}
+abgebildet. Da bei höherer Lichteinstrahlung mehr Photonen 
+auf die Kathode treffen muss der Photostrom ansteigen, da 
+aber die Energie der einzelnen Teilchen gleich bleibt, darf sich 
+die Grenzspannung nicht verändern.\\
+Dieses Verhalten ist auch hier zu beobachten. Bei Vergleich von \cref{kennlinie_365nm} mit 
+\cref{fig:kennlinie_365bei hoher Intensität} wird ersichtlich, dass
+bei geringerer Intensität ein maximaler Strom von etwa \SI{730}{\pico\ampere} gemessen
+wurde, wo hingehen bei erhöhter Lichteinstrahlung \SI{1100}{\pico\ampere} (siehe 
+\cref{kennlinie_365nm_hohe_intensität})
+gemessen wurde.\\
+
+Die Ausgleichsgeraden haben eine Güte von $\chi^2_1/\mathrm{dof} = \num{0.14}$ und 
+$\chi^2_2/\mathrm{dof} = \num{0.36}$ und sind damit vergleichbar gut wie für die restlichen
+Kennlinien (siehe \cref{fig:messwerte_grenzspannungen}). Beide besitzen eine gemittelte 
+Grenzspannung von \SI{1540\pm43}{\milli\volt}, was verglichen mit \SI{1556\pm 15}{\milli\volt}
+aus \cref{fig:messwerte_grenzspannungen} im $1\sigma$-Fehlerbereich liegt. \\
+Damit kann die Schlussfolgerung getroffen werden, dass die Grenzspannung
+bei fester Wellenlänge des einstrahlenden Lichts nicht von der Intensität abhängig ist.
+

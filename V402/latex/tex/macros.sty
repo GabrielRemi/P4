@@ -1,5 +1,5 @@
 % Aufgabe Photozelle, zeigt zwei kennlinien nebeneinander
-\newcommand\doublefigure[3]{
+\newcommand\doublefigure[4]{
     \begin{figure}[htb]
         \centering
         \begin{subfigure}{.45\linewidth}
@@ -13,7 +13,7 @@
             \includegraphics[width=\linewidth]{../figs/photozelle_kennline_#2.png}
             \subcaption{zweite Messung}
         \end{subfigure}
-        \caption{Bestimmung der Grenzspannung \SI{#3}{\nano\meter}}
-        \label{fig:kennlinie_#3}
+        \caption{Bestimmung der Grenzspannung \SI{#3}{\nano\meter} #4}
+        \label{fig:kennlinie_#3#4}
     \end{figure}
 }

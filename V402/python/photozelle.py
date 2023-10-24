@@ -42,7 +42,7 @@ u_max = {
 # maximale Bereich, der zur linearen Regression genutzt wird
 u_max_linear = {
     "365": 1000,
-    "405": 750,
+    "405": 700,
     "436": 600,
     "546": 200,
     "578": 200,
@@ -63,6 +63,15 @@ result_file = open("results", "w")
 
 # Dict mit Latextabellenwerten
 tex_tables = {}
+
+# Dict mit Werten für Latextabelle von geraden-fit-auswertung
+textable1 = {
+    "365": [],
+    "405": [],
+    "436": [],
+    "546": [],
+    "578": [],
+}
 
 
 """Bestimme für alle Kennlinien die Grenzspannung und füge diese in das dict[list] 
@@ -92,7 +101,7 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
 
         # Setze Tabelle fort
         # table_data.append((list(data[0]), list(data[1])))
-        textable = Textable(caption=f"$({sheet[-1]})\,\SI{{{wavelength}}}{{nm}}$", seperator=",",
+        textable = Textable(caption=f"$({sheet[-1]})\,\SI{{{wavelength}}}{{nm}}$",
                             caption_above=True)
         textable.add_header(
             r"$U / \unit{\milli\volt}$",
@@ -120,21 +129,24 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         # Güte des Fits
         chi_square = functions.chisquare(
             linear, data[2][ind], data[0][ind], data[1][ind], output.beta)
-        rval = rvalue(lambda x: linear([slope, intercept], x),
-                      data[2][ind], data[0][ind])
-        result_file.write(f"""
------{sheet}----------
-residual variance: {output.res_var}
-chi square: {chi_square}
-r_value: {rval}\n""")
 
         # Berechne die Grenzspannung
         u0: float = - intercept / slope
         u0_err: float = np.sqrt((intercept_err/slope) **
                                 2 + (intercept*slope_err/slope**2)**2)
 
+        result_file.write(f"""
+-----{sheet}----------
+m = {error_round(slope, slope_err,"parenthesis")}
+b = {error_round(intercept, intercept_err, "parenthesis")}
+U0 = {error_round(u0, u0_err, "parenthesis")}
+residual variance: {output.res_var}
+chi square: {chi_square}\n""")
+
         # beachte nur die ersten beiden kennlinien pro wellenlänge
+        texdata = [chi_square, (u0, u0_err)]
         if sheet[-2:] == "_1" or sheet[-2:] == "_2":
+            textable1[wavelength].append(texdata)
             if U0_data.get(wavelength):
                 U0_data[wavelength].append((u0, u0_err))
             else:
@@ -159,6 +171,8 @@ r_value: {rval}\n""")
         ax.legend()
         plt.savefig(f"../figs/photozelle_kennline_{sheet}.png")
 
+        # Latextabellen
+
 """Berechne zuerst die Mittelwerte der berechneten Grenzspannungen und 
 fitte diese Wert in abhängigkeit mit der Frequenz. Bestimme daraus das Wirkungsquantum und 
 die Austrittsarbeit der Anode"""
@@ -168,6 +182,9 @@ for i in U0_data:
     u = np.array(data[0]).mean()
     u_err = np.array(data[1]).mean() + np.array(data[0]).std()
     U0.append([freq(float(i)), u, u_err])
+
+for (i, elem) in enumerate(textable1):
+    textable1[elem].append((U0[i][1], U0[i][2]))
 
 U0: pd.DataFrame = pd.DataFrame(U0)
 for i in range(1, 3):
@@ -179,16 +196,20 @@ model = odr.Model(linear)
 fit = odr.ODR(odr_data, model, beta0=[1, 1])
 output = fit.run()
 
-# Speicher fit güte
-goodness = f"""
--------Photoeffekt-------
-residual variance = {output.res_var}
-"""
-
-result_file.write(goodness)
 
 slope = (output.beta[0]*1e-14, output.sd_beta[0]*1e-14)
 intercept = (output.beta[1], output.sd_beta[1])
+
+# Speicher fit güte
+goodness = f"""
+-------Photoeffekt-------
+m = {error_round(*slope, "scientific")[0]}
+b = {error_round(*intercept, "parenthesis")}
+residual variance = {output.res_var}
+chi_square = {functions.chisquare(linear, U0[0], U0[1], U0[2], [slope[0], intercept[0]])}
+"""
+
+result_file.write(goodness)
 
 planck_constant = (slope[0] * constants.q, slope[1] * constants.q)
 work_function = (-intercept[0], intercept[1])
@@ -217,9 +238,10 @@ temp_table = None
 
 def kennlinie_table(texdata, name: str, caption: str, temp_table=None, no_output=False) -> Textable | None:
     texfile = Texfile(f"tabelle_{name}", "../latex/tabellen/")
-    textable = Textable(caption=caption, seperator=",",
-                        caption_above=True, 
-                        label=caption.lower().replace(" ", "_").replace(r"{","").replace(r"}","")
+    textable = Textable(caption=caption,
+                        caption_above=True,
+                        label=caption.lower().replace(" ", "_").replace(
+                            r"{", "").replace(r"}", "")
                         .replace("\\si", ""))
     textable.alignment = "cc||cc"
     textable.add_line_before_header(
@@ -271,3 +293,34 @@ for wavelength in tex_tables:
         kennlinie_table(
             texdata, name=f"{wavelength}", caption=caption, temp_table=temp_table)
         temp_table = None
+
+# Tabelle für Ausgleichsgeraden
+# Erstelle zuerst eine liste mit allen Werten
+texdata = [[], [], [], ([], []), ([], []), ([], [])]
+for wavelength in textable1:
+    data = textable1[wavelength]
+    texdata[0].append(int(wavelength))
+    texdata[1].append("{:.2f}".format(data[0][0]).replace(".", ","))
+    texdata[2].append("{:.2f}".format(data[1][0]).replace(".", ","))
+    texdata[3][0].append(data[0][1][0])
+    texdata[3][1].append(data[0][1][1])
+    texdata[4][0].append(data[1][1][0])
+    texdata[4][1].append(data[1][1][1])
+    texdata[5][0].append(data[2][0])
+    texdata[5][1].append(data[2][1])
+
+file = Texfile("tabelle_grenzspannungen", "../latex/tabellen/")
+table = Textable("Bestimmung der Grenzspannungen", "fig:messwerte_grenzspannungen",
+                 caption_above=True)
+table.add_header(
+    r"$\lambda / \unit{\nano\meter}$",
+    r"$\chi_1^2/\mathrm{dof}$",
+    r"$\chi_2^2/\mathrm{dof}$",
+    r"$U_{1,0}/\unit{\milli\volt}$",
+    r"$U_{2,0}/\unit{\milli\volt}$",
+    r"$U_0/\unit{\milli\volt}$"
+)
+table.add_values(*texdata)
+file.add(table.make_figure())
+file.make()
+
