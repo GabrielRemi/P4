@@ -94,3 +94,34 @@ Für die Wellenlänge \SI{365}{\nano\meter} wird die Messung bei einer erhöhten
 erneut gemessen, um deren Einfluss untersuchen zu können.
 
 \subsubsection{Auswertung}
+
+\input{tabellen/tabelle_365.tex}
+\doublefigure{365_1}{365_2}{365}
+
+Aus den Kennlinien der Photozelle lässt sich die Grenzspannung bestimmen. In \cref{kennlinie_365nm} sind die 
+Messreihen bei einem Filter bei \SI{365}{\nano\meter} dargestellt (die restlichen Messdaten sind im Anhang 
+\ref{sec:anhang_photozelle} zu finden). Die Spannungsmessung besitzt lediglich einen Ablesefehler der letzten 
+angezeigten Ziffer, weshalb der Fehler jedes Messwertes bei $\Delta U = \SI{1}{\milli\volt}$ liegt.
+Die Strommessung war teilweise starken Fluktuationen ausgesetzt, weshalb der Fehler $\Delta I$
+individuell an diese Schwankung angepasst wird. Für die meisten Messwerte bestimmt somit der Fehler 
+des Photostroms die größte Unsicherheit, da der zur Messgröße relative Fehler deutlich größer ausfällt.\\
+Im Anlaufgebiet der Photozelle wächst der Strom quadratisch mit der Gegenspannung an[\textbf{QUELLE}],
+weshalb für die Wurzel dessen ein linearer Zusammenhang der Form 
+\begin{equation}
+	\sqrt{I - I_0} = m\cdot U + b \nonumber
+\end{equation}
+erwartet wird, wobei $I_0$ bei maximaler eingesteller Gegenspannung abgelesen wird.
+Nach Gaußscher Fehlerfortpflanzung[\textbf{QUELLE}] gilt für den dazugehörigen Fehler
+\begin{equation}
+	\Delta\sqrt{I - I_0} = \sqrt{\qty(\frac{\Delta I}{\sqrt{I-I_0}})^2 + \qty(\frac{\Delta I_0}{\sqrt{I-I_0}})^2} \nonumber
+\end{equation}
+
+Für die erste Wellenlänge sind die Kennlinien in \cref{fig:kennlinie_365} mit einer Ausgleichsgeraden 
+dargestellt, wobei zur Bestimmung der Geraden nur Werte in dem linearen Bereich in Betracht gezogen wurden
+(Weitere Kennlinien befinden sich im Anhang \ref{sec:anhang_photozelle} 
+\crefrange{fig:kennlinie_405}{fig:kennlinie_578}). Aus der Nullstelle der Geraden wird die Grenzspannung 
+bestimmt mit 
+\begin{equation}
+	U_0 = - \frac{b}{m},\qquad \Delta U_0 = \sqrt{\qty(\frac{\Delta b}{m})^2 + \qty(\frac{b\Delta m}{m^2})^2}
+	\label{eq:bestimmung_grenzspannung}
+\end{equation}

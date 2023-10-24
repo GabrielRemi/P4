@@ -1,0 +1,19 @@
+% Aufgabe Photozelle, zeigt zwei kennlinien nebeneinander
+\newcommand\doublefigure[3]{
+    \begin{figure}[htb]
+        \centering
+        \begin{subfigure}{.45\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{../figs/photozelle_kennline_#1.png}
+            \subcaption{erste Messung}
+        \end{subfigure}
+        \hspace*{.5cm}
+        \begin{subfigure}{.45\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{../figs/photozelle_kennline_#2.png}
+            \subcaption{zweite Messung}
+        \end{subfigure}
+        \caption{Bestimmung der Grenzspannung \SI{#3}{\nano\meter}}
+        \label{fig:kennlinie_#3}
+    \end{figure}
+}

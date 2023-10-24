@@ -61,7 +61,7 @@ def linear(b, x):
 
 result_file = open("results", "w")
 
-# Dict mit Latextabellen
+# Dict mit Latextabellenwerten
 tex_tables = {}
 
 
@@ -80,7 +80,8 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         data = pd.DataFrame(data_raw)
 
         # Erstelle eine Latex Tabelle
-        table_data = [list(data[2]), (list(data[0]), list(data[1]))]
+        table_data = [[int(num) for num in data[2]],
+                      (list(data[0]), list(data[1]))]
 
         # Berechne die Wurzel von I sowie den dazugehörigen Fehler und ziehe den Anodenstrom ab
         data[0] = data[0].apply(lambda x: np.sqrt(x - data[0].min()))
@@ -90,17 +91,18 @@ with pd.ExcelFile("../Daten/photozelle_kennlinie.xlsx") as file:
         data[1] = data[1] / data[0]
 
         # Setze Tabelle fort
-        table_data.append((list(data[0]), list(data[1])))
-        textable = Textable(caption=f"$({sheet[-1]})\,\SI{{{wavelength}}}{{nm}}$", seperator=",")
+        # table_data.append((list(data[0]), list(data[1])))
+        textable = Textable(caption=f"$({sheet[-1]})\,\SI{{{wavelength}}}{{nm}}$", seperator=",",
+                            caption_above=True)
         textable.add_header(
             r"$U / \unit{\milli\volt}$",
             r"$I / \unit{\pico\ampere}$",
             r"$\sqrt{I-I_0} / \unit{\pico\ampere\tothe{1/2}}$")
         textable.add_values(*table_data)
         if tex_tables.get(wavelength):
-            tex_tables[wavelength].append(textable)
+            tex_tables[wavelength].append(table_data)
         else:
-            tex_tables[wavelength] = [textable]
+            tex_tables[wavelength] = [table_data]
 
         # Filtert alle Werte raus, wo die kennlinie einen linearen Anstieg hat
         ind = data[2] < u_max_linear[sheet[:3]]
@@ -152,8 +154,8 @@ r_value: {rval}\n""")
         ax.set_xlim(xlim)
         ax.set_ylim((-0.5, ax.get_ylim()[1]))
 
-        ax.set_xlabel(r"$-U$ [mV]")
-        ax.set_ylabel(r"$\sqrt{I-I_0}$ [pA$^{1/2}$]")
+        ax.set_xlabel(r"$U$ / mV")
+        ax.set_ylabel(r"$\sqrt{I-I_0}$ / pA$^{1/2}$")
         ax.legend()
         plt.savefig(f"../figs/photozelle_kennline_{sheet}.png")
 
@@ -210,18 +212,62 @@ print(res_const)
 result_file.write(res_const)
 
 result_file.close()
+temp_table = None
+
+
+def kennlinie_table(texdata, name: str, caption: str, temp_table=None, no_output=False) -> Textable | None:
+    texfile = Texfile(f"tabelle_{name}", "../latex/tabellen/")
+    textable = Textable(caption=caption, seperator=",",
+                        caption_above=True, 
+                        label=caption.lower().replace(" ", "_").replace(r"{","").replace(r"}","")
+                        .replace("\\si", ""))
+    textable.alignment = "cc||cc"
+    textable.add_line_before_header(
+        "\multicolumn{2}{c||}{erste Messung}",
+        "\multicolumn{2}{c}{zweite Messung}")
+    textable.add_hline()
+    textable.add_header(
+        r"$U / \unit{\milli\volt}$",
+        r"$I / \unit{\pico\ampere}$",
+        r"$U / \unit{\milli\volt}$",
+        r"$I / \unit{\pico\ampere}$")
+    textable.add_values(*texdata)
+
+    if no_output == True:
+        return textable
+
+    if temp_table is None:
+        texfile.add(textable.make_figure())
+    else:
+        texfile.add(textable.make_figure(temp_table))
+    texfile.make()
+
+
+temp_table = None
 
 # Erstelle Latex Tabellen
 for wavelength in tex_tables:
-    texfile = Texfile(f"{wavelength}", "../latex/tabellen/")
-    table0 = tex_tables[wavelength][0]
-    table1 = tex_tables[wavelength][1]
-    texfile.add(table0.make_figure(table1))
-    texfile.make()
+    texdata = tex_tables[wavelength][0]
+    for l in tex_tables[wavelength][1]:
+        texdata.append(l)
 
-# Tabellen für hohe Intensität
-texfile = Texfile(f"365_high", "../latex/tabellen/")
-table0 = tex_tables["365"][2]
-table1 = tex_tables["365"][3]
-texfile.add(table0.make_figure(table1))
-texfile.make()
+    caption = f"Kennlinie \SI{{{wavelength}}}{{nm}}"
+
+    if wavelength == "365":
+        kennlinie_table(
+            texdata, name=f"{wavelength}", caption=caption)
+
+        texdata = tex_tables[wavelength][2]
+        for l in tex_tables[wavelength][3]:
+            texdata.append(l)
+        kennlinie_table(
+            texdata,  name=f"{wavelength}_high", caption=f"{caption} hohe Intensität")
+        continue
+
+    if temp_table is None:
+        temp_table = kennlinie_table(
+            texdata, name=f"{wavelength}", caption=caption, no_output=True)
+    else:
+        kennlinie_table(
+            texdata, name=f"{wavelength}", caption=caption, temp_table=temp_table)
+        temp_table = None
