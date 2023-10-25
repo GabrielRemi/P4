@@ -1,14 +1,29 @@
 import pandas as pd
 from scipy import odr
-from monke import functions, constants
+from monke import functions, constants, plots
 from monke.latex import *
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import os
+import scienceplots
 
 os.chdir(os.path.dirname(__file__))
-plt.rcParams["figure.figsize"] = [6.5, 5.5]
-# plt.style.use("science")
+plt_params = {
+    "font.size": 8.5,
+    "lines.markersize": 3,
+    "pgf.texsystem": "pdflatex",
+    "text.usetex": True,
+    "figure.figsize": [7, 5.5],
+    "text.latex.preamble": "\n".join([
+        r"\usepackage[utf8]{inputenc}",
+        r"\usepackage[T1]{fontenc}",
+        r"\usepackage{amsmath}",
+        r"\usepackage{siunitx}"
+    ]),
+}
+mpl.rcParams.update(plt_params)  ## Latex Preambel funktioniert nicht? was ein Schmutz
+plt.style.use("science")
 
 
 def freq(wavelength: float):
@@ -155,21 +170,20 @@ chi square: {chi_square}\n""")
         # Erstelle kennlinien plots
         fig, ax = plt.subplots()
         ax.errorbar(data[2], data[0], yerr=data[1],
-                    marker="o", ms=5, linestyle="")
+                    marker="o", linestyle="", label="Messung")
         xlim = ax.get_xlim()
 
         x = np.linspace(xlim[0], xlim[1], 4)
 
         ax.plot(x, intercept + slope * x,
-                label=f"U0 = {functions.error_round(u0, u0_err, 'parenthesis')} [mV]")
+                label=f"$U_0$ = {functions.error_round(u0, u0_err, 'parenthesis')}\,mV")
 
         ax.set_xlim(xlim)
         ax.set_ylim((-0.5, ax.get_ylim()[1]))
-
         ax.set_xlabel(r"$U$ / mV")
-        ax.set_ylabel(r"$\sqrt{I-I_0}$ / pA$^{1/2}$")
-        ax.legend()
-        plt.savefig(f"../figs/photozelle_kennline_{sheet}.png")
+        ax.set_ylabel(r"$\sqrt{I-I_0}$ / $\text{pA}^{1/2}$")
+        plots.legend(ax, size=7)
+        plt.savefig(f"../figs/photozelle_kennline_{sheet}.png", dpi=200)
 
         # Latextabellen
 
@@ -214,14 +228,15 @@ result_file.write(goodness)
 planck_constant = (slope[0] * constants.q, slope[1] * constants.q)
 work_function = (-intercept[0], intercept[1])
 
-plt.subplots()
-plt.errorbar(U0[0], U0[1], yerr=U0[2], marker="o", ms=5, linestyle="")
-plt.plot(U0[0], U0[0]*slope[0] + intercept[0],
-         label=f"h = {functions.error_round(planck_constant[0], planck_constant[1], 'scientific')[0]} Js")
-plt.legend()
-plt.ylabel("$U_0$ / V")
-plt.xlabel(r"$\nu$ / Hz")
-plt.savefig("../figs/photozelle_wirkungsquantum.png", dpi=200)
+plot_label = f"Anpassungsgerade"
+fig, ax = plt.subplots()
+ax.errorbar(U0[0], U0[1], yerr=U0[2], marker="o", linestyle="", label="Messung")
+ax.plot(U0[0], U0[0]*slope[0] + intercept[0],
+         label=plot_label)
+ax.set_ylabel("$U_0$ / V")
+ax.set_xlabel(r"$\nu$ / Hz")
+plots.legend(ax, size=7)
+plt.savefig("../figs/photozelle_wirkungsquantum.png", dpi=250)
 
 res_const = f"""
 h = {functions.error_round(planck_constant[0], planck_constant[1], 'scientific')[0]} Js
