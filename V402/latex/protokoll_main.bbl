@@ -19,27 +19,39 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{demtröder}{book}{}
+    \entry{Demtröder:829122}{book}{}
       \name{author}{1}{}{%
-        {{hash=3ace3205c8619f91f5b8b17069270a17}{%
+        {{hash=59654c899d48eff28a4d8063e886fb5f}{%
            family={Demtröder},
            familyi={D\bibinitperiod},
-           given={Wolfang},
+           given={Wolfgang},
            giveni={W\bibinitperiod}}}%
       }
-      \strng{namehash}{3ace3205c8619f91f5b8b17069270a17}
-      \strng{fullhash}{3ace3205c8619f91f5b8b17069270a17}
-      \strng{bibnamehash}{3ace3205c8619f91f5b8b17069270a17}
-      \strng{authorbibnamehash}{3ace3205c8619f91f5b8b17069270a17}
-      \strng{authornamehash}{3ace3205c8619f91f5b8b17069270a17}
-      \strng{authorfullhash}{3ace3205c8619f91f5b8b17069270a17}
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{fullhash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{bibnamehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{authorbibnamehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{authornamehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{authorfullhash}{59654c899d48eff28a4d8063e886fb5f}
       \field{extraname}{1}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{{Experimentalphysik 3: Atome, Moleküle, Festkörper}}
-      \field{year}{2016}
+      \field{title}{{Experimentalphysik 2: Elektrizität und Optik; 3rd ed.}}
+      \field{year}{2004}
+      \verb{urlraw}
+      \verb https://cds.cern.ch/record/829122
+      \endverb
+      \verb{url}
+      \verb https://cds.cern.ch/record/829122
+      \endverb
     \endentry
     \entry{Demtröder:829119}{book}{}
       \name{author}{1}{}{%
@@ -147,7 +159,7 @@
       \field{title}{{Physikalisches Praktikum Teil IV: Atome, Moleküle, Festkörper. Versuchsbeschreibungen}}
       \field{year}{2023}
     \endentry
-    \entry{wiki:kontaktpotential}{misc}{}
+    \entry{wiki:austrittsarbeit}{misc}{}
       \name{author}{1}{}{%
         {{hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -165,12 +177,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{[Online; Datum: 25.11.2023]}
-      \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
+      \field{title}{Austrittsarbeit --- {W}ikipedia{,} -Die freie Enzyklopädie}
       \verb{urlraw}
-      \verb https://de.wikipedia.org/wiki/Kontaktelektrizit%C3%A4t
+      \verb https://de.wikipedia.org/wiki/Austrittsarbeit
       \endverb
       \verb{url}
-      \verb https://de.wikipedia.org/wiki/Kontaktelektrizit%C3%A4t
+      \verb https://de.wikipedia.org/wiki/Austrittsarbeit
       \endverb
     \endentry
     \entry{wiki:fehlerfortpflanzung}{misc}{}
@@ -191,7 +203,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{[Online; Datum: 25.11.2023]}
-      \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
+      \field{title}{Fehlerfortpflanzung --- {W}ikipedia{,} -Die freie Enzyklopädie}
       \verb{urlraw}
       \verb https://de.wikipedia.org/wiki/Fehlerfortpflanzung
       \endverb
@@ -199,7 +211,7 @@
       \verb https://de.wikipedia.org/wiki/Fehlerfortpflanzung
       \endverb
     \endentry
-    \entry{wiki:reduced_chi_square}{misc}{}
+    \entry{wiki:kontaktpotential}{misc}{}
       \name{author}{1}{}{%
         {{hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -219,13 +231,13 @@
       \field{note}{[Online; Datum: 25.11.2023]}
       \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Reduced_chi-squared_statistic
+      \verb https://de.wikipedia.org/wiki/Kontaktelektrizit%C3%A4t
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Reduced_chi-squared_statistic
+      \verb https://de.wikipedia.org/wiki/Kontaktelektrizit%C3%A4t
       \endverb
     \endentry
-    \entry{wiki:austrittsarbeit}{misc}{}
+    \entry{wiki:reduced_chi_square}{misc}{}
       \name{author}{1}{}{%
         {{hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -243,12 +255,12 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{[Online; Datum: 25.11.2023]}
-      \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
+      \field{title}{Reduced chi-squared statistic --- {W}ikipedia{,} -Die freie Enzyklopädie}
       \verb{urlraw}
-      \verb https://de.wikipedia.org/wiki/Austrittsarbeit
+      \verb https://en.wikipedia.org/wiki/Reduced_chi-squared_statistic
       \endverb
       \verb{url}
-      \verb https://de.wikipedia.org/wiki/Austrittsarbeit
+      \verb https://en.wikipedia.org/wiki/Reduced_chi-squared_statistic
       \endverb
     \endentry
   \enddatalist

@@ -1,7 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 from scipy.optimize import curve_fit
 from scipy.odr import ODR, Model, Data, RealData
+from monke.plots import legend
+
+plt_params = {
+    "font.size": 8.5,
+    "lines.markersize": 3,
+    "pgf.texsystem": "pdflatex",
+    "text.usetex": True,
+    "figure.figsize": [7, 5.5]
+   
+}
+mpl.rcParams.update(plt_params)  ## Latex Preambel funktioniert nicht? was ein Schmutz
+plt.style.use("science")
+
 
 def chisquare(f: callable, x: np.ndarray, y: np.ndarray, yerr: np.ndarray, dof) -> float:
 
@@ -64,15 +78,17 @@ y_data_fit_err = np.sqrt((np.cos(alpha_hg_rad[:10]) * alpha_hg_rad_err)**2 + (np
 print('y-Werte:', y_data_fit, y_data_fit_err)
 def gitterkonstante_fit(lam, a):
     return a * lam
-plt.errorbar(x_data_fit, y_data_fit, y_data_fit_err, fmt = 'o', markersize = 3, capsize = 3, label = 'Datenpunkte')
+fig, ax = plt.subplots()
+ax.errorbar(x_data_fit, y_data_fit, y_data_fit_err, fmt = 'o', label = 'Datenpunkte')
 popt1, pcov1 = curve_fit(gitterkonstante_fit, x_data_fit, y_data_fit)
-plt.plot(x_data_fit, gitterkonstante_fit(x_data_fit, *popt1), label = 'Anpassungsparameter: $a = (2455100 \pm 2800)$ 1/m')
-plt.xlabel('$\lambda$ / nm')
+ax.plot(x_data_fit, gitterkonstante_fit(x_data_fit, *popt1), label = 'Parameter: $a = 2,4551(28) \cdot 10^6$ 1/m')
+ax.set_xlabel('$\lambda$ / nm')
 labels = [400, 425, 450, 475, 500, 525, 550, 575]
 range = [400 * 10**(-9), 425 * 10**(-9), 450 * 10**(-9), 475 * 10**(-9), 500 * 10**(-9), 525 * 10**(-9), 550 * 10**(-9), 575 * 10**(-9)]
-plt.xticks(range, labels)
-plt.ylabel('$\sin(\\alpha) + \sin(\\beta)$ / dimensionslos')
-plt.legend()
+ax.set_xticks(range, labels)
+ax.set_ylabel('$\sin(\\alpha) + \sin(\\beta)$')
+legend(ax, size=6)
+
 plt.grid()
 plt.savefig(f"../figs/gitterkonstante_fit.png", dpi = 400)
 
@@ -228,7 +244,7 @@ plt.xlim([-0.02,0.042])
 plt.legend()
 plt.title('rot')
 plt.xlabel('Winkel $\\beta$ / °')
-plt.ylabel('Intensität $I$ / %')
+plt.ylabel('Intensität $I$ / \%')
 plt.grid()
 plt.savefig(f"../figs/rot_fit.png", dpi = 400)
 
@@ -240,7 +256,7 @@ plt.xlim([-0.02,0.03])
 plt.legend()
 plt.title('türkis')
 plt.xlabel('Winkel $\\beta$ / °')
-plt.ylabel('Intensität $I$ / %')
+plt.ylabel('Intensität $I$ / \%')
 plt.grid()
 plt.savefig(f"../figs/türkis_fit.png", dpi = 400)
 
@@ -252,7 +268,7 @@ plt.xlim([-0.05,0.05])
 plt.legend()
 plt.title('violett')
 plt.xlabel('Winkel $\\beta$ / °')
-plt.ylabel('Intensität $I$ / %')
+plt.ylabel('Intensität $I$ / \%')
 plt.grid()
 plt.savefig(f"../figs/lila_fit.png", dpi = 400)
 
@@ -266,8 +282,8 @@ def rydbergkonstante_fit(x, R):
 plt.subplots()
 plt.errorbar(x_werte, y_werte, y_werte_err, fmt = 'o', markersize = 3, capsize = 3, label = 'Datenpunkte')
 popt2, pcov2 = curve_fit(rydbergkonstante_fit, x_werte, y_werte)
-plt.plot(x_werte, rydbergkonstante_fit(x_werte, *popt2), label = 'Anpassungsparameter: $R_{\infty} = (11100000 \pm 20000)$ 1/m')
-plt.xlabel('$(1/4 - 1/n^2)$ / dimensionslos')
+plt.plot(x_werte, rydbergkonstante_fit(x_werte, *popt2), label = 'Parameter: $R_{\infty} = 1,110(2) \cdot 10^7$ 1/m')
+plt.xlabel('$(1/4 - 1/n^2)$')
 plt.ylabel('$\\frac{1}{\lambda}$ / 1/m')
 plt.legend()
 plt.grid()
@@ -282,3 +298,9 @@ print('chi2 Ryd:', chi_squared_ryd)
 rydberg_konstante = popt2
 rydberg_konstante_err = pcov2[0, 0]**0.5
 print('Rydberg-Konstante:', rydberg_konstante, rydberg_konstante_err)
+
+# Planck
+from monke.functions import error_round
+h = ((9.109 * 10**(-31) * (1.602 * 10**(-19))**4)/(8 * (8.854 * 10**(-12))**2 * 2.99792 * 10**(8) * 1.11 * 10**7))**(1/3)
+h_err = 1/3 * ((9.109 * 10**(-31) * (1.602 * 10**(-19))**4)/(8 * (8.854 * 10**(-12))**2 * 2.99792 * 10**(8) * (1.11 * 10**7)**4))**(1/3) * 0.002 * 10**7
+print('Planck:', error_round(h, h_err, "scientific"))

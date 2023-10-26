@@ -14,13 +14,8 @@ plt_params = {
     "lines.markersize": 3,
     "pgf.texsystem": "pdflatex",
     "text.usetex": True,
-    "figure.figsize": [7, 5.5],
-    "text.latex.preamble": "\n".join([
-        r"\usepackage[utf8]{inputenc}",
-        r"\usepackage[T1]{fontenc}",
-        r"\usepackage{amsmath}",
-        r"\usepackage{siunitx}"
-    ]),
+    "figure.figsize": [7, 5.5]
+   
 }
 mpl.rcParams.update(plt_params)  ## Latex Preambel funktioniert nicht? was ein Schmutz
 plt.style.use("science")
