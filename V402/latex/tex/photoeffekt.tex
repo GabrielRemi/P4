@@ -1,6 +1,6 @@
 \section{Bestimmung des Planckschen Wirkungsquantums}
 \subsection{Versuchsaufbau}
-Um mithilfe des Photoeffekts\cite[S.78-80]{Demtröder:829119} das Plancksche Wirkungsquantum h zu bestimmen wird der
+Um mithilfe des Photoeffekts\cite[S.78-80]{Demtröder:829119} das Plancksche Wirkungsquantum h zu bestimmen, wird der
 in \cref{fig:photozelle_optikbank} skizzierte Aufbau auf einer Optikbank befestigt.
 Als Lichtquelle dient eine Quecksilberdampflampe, deren Licht nach Durchgang durch eine
 Blende, mit der die Intensität des Lichts eingestellt werden kann,
@@ -85,7 +85,7 @@ ebenfalls auf drei Nachkommastellen genau.
 		\includegraphics[width=\linewidth]{../figs/fermi2.png}
 		\subcaption{leitend verbunden}
 	\end{subfigure}
-	\caption{Kontaktpotential zwischen zwei Elektroden}
+	\caption{Kontaktpotential zwischen zwei Elektroden\cite{skript}}
 \end{figure}
 
 Bei dem energiereichsten Licht der Wellenlänge \SI{365}{\nano\meter} wird eine Grenzspannung von unter
@@ -102,10 +102,6 @@ Für die Wellenlänge \SI{365}{\nano\meter} wird die Messung bei einer erhöhten
 erneut gemessen, um den Einfluss der Lichtintensität auf die Kennlinie zu untersuchen.
 
 \subsection{Auswertung}
-
-\input{tabellen/tabelle_365.tex}
-\doublefigure{365_1}{365_2}{365}{}
-
 Aus den Kennlinien der Photozelle lässt sich die Grenzspannung bestimmen. In \cref{kennlinie_365nm} sind die
 Messreihen bei einem Filter bei \SI{365}{\nano\meter} dargestellt (die restlichen Messdaten sind im Anhang
 \ref{sec:anhang_photozelle} zu finden). Die Spannungsmessung besitzt lediglich einen Ablesefehler der letzten
@@ -124,6 +120,9 @@ Nach Gaußscher Fehlerfortpflanzung\cite{wiki:fehlerfortpflanzung} gilt für den
 \begin{equation}
 	\Delta\sqrt{I - I_0} = \sqrt{\qty(\frac{\Delta I}{2\sqrt{I-I_0}})^2 + \qty(\frac{\Delta I_0}{2\sqrt{I-I_0}})^2} .\nonumber
 \end{equation}
+
+\input{tabellen/tabelle_365.tex}
+\doublefigure{365_1}{365_2}{365}{}
 
 Für die erste Wellenlänge sind die Kennlinien in \cref{fig:kennlinie_365} mit einer Ausgleichsgeraden
 dargestellt, wobei zur Bestimmung der Geraden nur Werte in dem linearen Bereich in Betracht gezogen wurden
@@ -215,7 +214,7 @@ haben sollte, stellt die Messung einen Widerspruch dazu auf. Eine mögliche
 Fehlerquelle sei hierbei die Raumtemperatur bei der Durchführung.
 Die zu messende Energie ist die Austritsarbeit bei der Annahme, dass sich 
 die Elektronen in der Elektrode im Grundzustand befinden. Dies ist 
-bei Temperaturen $T>0$ nicht der Fall, wodurch bei hohen Temperaturen
+bei Temperaturen $T>\SI{0}{\kelvin}$ nicht der Fall, wodurch bei hohen Temperaturen
 die Bindungsenergie verringert und das Messergebnis verfälscht wird. 
 Für eine genauere Messung der Austritssarbeit ist eine Abkühlung 
 der Photozelle unumgänglich, was im Rahmen dieses Versuchs nicht möglich war.\\\par
@@ -226,7 +225,7 @@ der Photozelle unumgänglich, was im Rahmen dieses Versuchs nicht möglich war.\
 Als Letztes wird der Intensitätseinfluss auf die Kennlinie bei \SI{365}{\nano\meter}
 untersucht. Die Linien bei erhöhter Lichtintensität sind in \cref{fig:kennlinie_365bei hoher Intensität}
 abgebildet. Da bei höherer Lichteinstrahlung mehr Photonen
-auf die Kathode treffen muss der Photostrom ansteigen, da
+auf die Kathode treffen, muss der Photostrom ansteigen, da
 aber die Energie der einzelnen Teilchen gleich bleibt, darf sich
 die Grenzspannung nicht verändern.\\
 Dieses Verhalten ist auch hier zu beobachten. Bei Vergleich von \cref{kennlinie_365nm} mit

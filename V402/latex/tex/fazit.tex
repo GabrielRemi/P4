@@ -1,1 +1,65 @@
 \section{Fazit}\label{sec:fazit}
+Im ersten Versuchsteil wurde mithilfe des Photoeffekts das Plancksche Wirkungsquantum
+bestimmt. Dabei wurde eine Photozelle mit Licht unterschiedlicher Wellenlängen 
+bestrahlt und mit der Gegenfeldmethode der dabei enstehende Photostrom gemessen.
+Für jede Wellenlänge wurde die Grenzspannung aus der dazugehörigen 
+Kennlinie bestimmt, wobei hier für hohe Wellenlängen die hierfür benötigte
+Spannung deutlich kleiner war als zur Verfügung stand, weswegen hier
+die Messung zu ungenau ausfiel und eine potentielle Fehlerquelle darstellt.
+Durch Variation der angeschlossenen Widerstände würde es sich anbieten, 
+hier die maximale Spannung zu minimieren um die Messung empflindlicher 
+zu machen.\par
+Die Messung wurde für Lichteinstrahlung mit \SI{365}{\nano\meter} bei erhöhter
+Intensität wiederholt, um die Intensitätsabhängigkeit der
+Kennlinie zu untersuchen. Dabei konnte die Quantenhypothese bestätigt werden, 
+da die Steigung der Kennlinie eine Proportionalität zur Intensität
+des Lichts aufweisen konnte, die Grenzspannung jedoch unverändert blieb. 
+Dies zeigt, dass Lichtenergie gequantelt an die Elektronen abgegeben wird 
+mit der Relation $E=\mathrm h\nu$.
+Des Weiteren konnte die Austritsarbeit der Platin-Rhodium-Anode auf 
+\[\mathrm W_{\mathrm A} = \SI{1.75\pm0.11}{\electronvolt}\]
+bestimmt werden, was mit keinem Literaturwert verglichen werden konnte. 
+Eine potentielle Fehlerquelle nach unten ist hierbei die Raumtemperatur, die 
+durch die Wechselwirkung mit den Elektroden ihre Austritsarbeit minimiert.\par
+Das in diesem Versuch bestimmte Wirkungsquantum ist 
+\[\mathrm h = \SI{6.4(3)e-34}{\joule\second} ,\]
+wodurch der Literaturwert $\mathrm h = \SI{6.626}{\joule\second}$ im $1\sigma$-Bereich der Messung liegt.
+\\ \par
+In dem Versuchsteil zur Balmer-Serie wurde zunächst die Gitterkonstante des verwendeten Reflexionsgitters
+mithilfe der bekannten Spektrallinien der Hg-Dampflampe bestimmt. Durch eine Geraden-Anpassung
+ergab sich
+\begin{equation*}
+    g = \SI{407(5)}{\nano \meter} .
+\end{equation*} Jedoch wurden für diese Geraden-Anpassung die Messergebnisse für die drei roten
+Spektrallinien der Hg-Spektrallampe nicht berücksichtigt, da diese aufgrund ihrer zu geringen Intensität nur sehr ungenau
+vermessen werden konnten, was in der Auswertung zu unbrauchbaren Ergebnissen führte. Dies hätte eventuell durch
+eine präzisere Justierung und Einstellung des Spaltes behoben werden können.\par
+Mithilfe dieser experimentell bestimmten Gitterkonstante lässt sich sofort mit den angegebenen Abmessungen des Reflexionsgitters
+dessen Auflösungsvermögen zu $A = \num{61400(800)}$ bestimmen, was einer gerade noch auflösbaren Wellenlängendifferenz von
+\begin{equation*}
+    \Delta \lambda = \SI{8,1(1)e-12}{\nano \meter}
+\end{equation*} entspricht. Mit diesem Auflösungsvermögen wäre es theoretisch möglich, die später zu bestimmende Isotopieaufspaltung
+der Balmer-Spektrallinien genau zu beobachten. Jedoch wurde bei der Versuchsdurchführung nicht das gesamte Gitter ausgeleuchtet,
+was zu einem geringeren Auflösungsvermögen geführt hat. Damit war es dann z.B. nicht mehr möglich, die Isotopieaufspaltung
+der $\mathrm{H_{\gamma}}$-Linie aufzulösen. Auch dieses Problem hätte durch eine präzisere Einstellung des Spaltes gelöst werden können.\par
+Außerdem wurde die nun bestimmte Gitterkonstante verwendet, um die unbekannten Wellenlängen der $\mathrm{H_{\alpha}}$-, $\mathrm{H_{\beta}}$- und
+$\mathrm{H_{\gamma}}$-Linien der Balmer-Serie zu bestimmen. Hierbei ergaben sich die Werte
+\begin{equation*}
+    \lambda_{\mathrm{H_{\alpha}}} = \SI{649(5)}{\nano \meter}, \quad \lambda_{\mathrm{H_{\beta}}} = \SI{482(6)}{\nano \meter}, \quad \lambda_{\mathrm{H_{\gamma}}} = \SI{428(6)}{\nano \meter},
+\end{equation*} welche im Rahmen der Unsicherheiten gut mit den Literaturwerten übereinstimmen (siehe \cref{tab:wellenlangen_balmer}).
+Ebenso wurden gute Ergebnisse bei der Bestimmung der Isotopieaufspaltung erzielt, was in \cref{tab:aufspaltung_balmer} einzusehen ist. Mit einer
+präziseren Einstellung des Spaltes hätte gegebenenfalls noch die Isotopieaufspaltung der $\mathrm{H_{\gamma}}$-Linie aufgelöst werden könnnen.\par
+Diese Balmer-Spektrallinien wurden auch mit einer CCD-Kamera und dem zugehörigen Computer-Programm aufgezeichnet. Damit konnte ebenfalls
+die Isotopieaufspaltung berechnet werden (siehe \cref{tab:aufspaltung_balmer_2}), indem an die Messwerte eine Überlagerung
+zweier Gauß-Kurven angepasst wurde, was aber zu wesentlich schlechteren Ergebnissen führte. Auch
+dies ist wieder auf eine zu ungenaue Justierung des Spaltes und des gesamten Versuchsaufbaus zurückzuführen. Anhand der Gauß-Kurven konnte
+eingesehen werden, dass die bei der Messung beobachtete Linienbreite der Spektrallinien hauptsächlich durch die Doppler-Verbreiterung
+bestimmt wird, da diese im Vergleich zu der natürlichen Linienbreite wesentlich größer ist (3 Größenordnungen). Details hierzu sind in
+\cref{tab:doppler} einzusehen. Aus den bestimmten Wellenlängen der Balmer-Serie wurde dann die Rydberg-Konstante und damit
+das Plancksche Wirkungsquantum zu
+\begin{equation*}
+    h = \SI{6,600(4)e-34}{\joule \second}
+\end{equation*} bestimmt. Dieser Wert weicht leicht von dem Literaturwert ($h = \SI{6,626e-34}{\joule \second}$) ab, da die
+Unsicherheit sehr klein ist. Eventuell wurden die Messunsicherheiten zu klein abgeschätzt.
+Zusammengefasst konnten bei diesem Versuchsteil gute Ergebnisse erzielt werden, jedoch hätte eine noch präzisere Justierung einen Zugang
+zu besseren Ergebnissen verschafft.
