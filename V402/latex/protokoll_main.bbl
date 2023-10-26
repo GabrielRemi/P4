@@ -33,12 +33,48 @@
       \strng{authorbibnamehash}{3ace3205c8619f91f5b8b17069270a17}
       \strng{authornamehash}{3ace3205c8619f91f5b8b17069270a17}
       \strng{authorfullhash}{3ace3205c8619f91f5b8b17069270a17}
+      \field{extraname}{1}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Experimentalphysik 3: Atome, Moleküle, Festkörper}}
       \field{year}{2016}
+    \endentry
+    \entry{Demtröder:829119}{book}{}
+      \name{author}{1}{}{%
+        {{hash=59654c899d48eff28a4d8063e886fb5f}{%
+           family={Demtröder},
+           familyi={D\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{fullhash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{bibnamehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{authorbibnamehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{authornamehash}{59654c899d48eff28a4d8063e886fb5f}
+      \strng{authorfullhash}{59654c899d48eff28a4d8063e886fb5f}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Springer-Lehrbuch}
+      \field{title}{{Experimentalphysik 3: Atome, Moleküle und Festkörper; 3rd ed.}}
+      \field{year}{2005}
+      \verb{urlraw}
+      \verb https://cds.cern.ch/record/829119
+      \endverb
+      \verb{url}
+      \verb https://cds.cern.ch/record/829119
+      \endverb
     \endentry
     \entry{balmer_handblatt}{misc}{}
       \name{author}{1}{}{%
@@ -63,6 +99,31 @@
       \field{note}{Zugriff: 24.10.2023}
       \field{title}{Beobachtung der Aufspaltung der Balmerlinien an deuteriertem Wasserstoff (Isotopieaufspaltung)}
     \endentry
+    \entry{scipy:odr}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=dd74fe0d068b2ef6484a352663b54999}{%
+           family={Scipy},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{dd74fe0d068b2ef6484a352663b54999}
+      \strng{fullhash}{dd74fe0d068b2ef6484a352663b54999}
+      \strng{bibnamehash}{dd74fe0d068b2ef6484a352663b54999}
+      \strng{authorbibnamehash}{dd74fe0d068b2ef6484a352663b54999}
+      \strng{authornamehash}{dd74fe0d068b2ef6484a352663b54999}
+      \strng{authorfullhash}{dd74fe0d068b2ef6484a352663b54999}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; Datum: 25.11.2023]}
+      \field{title}{Orthogonal distance regression}
+      \verb{urlraw}
+      \verb https://docs.scipy.org/doc/scipy/reference/odr.html
+      \endverb
+      \verb{url}
+      \verb https://docs.scipy.org/doc/scipy/reference/odr.html
+      \endverb
+    \endentry
     \entry{skript}{book}{}
       \name{author}{1}{}{%
         {{hash=5a3bb40822b0e2d597a2a2d58ff35269}{%
@@ -85,6 +146,110 @@
       \field{labeltitlesource}{title}
       \field{title}{{Physikalisches Praktikum Teil IV: Atome, Moleküle, Festkörper. Versuchsbeschreibungen}}
       \field{year}{2023}
+    \endentry
+    \entry{wiki:kontaktpotential}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; Datum: 25.11.2023]}
+      \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
+      \verb{urlraw}
+      \verb https://de.wikipedia.org/wiki/Kontaktelektrizit%C3%A4t
+      \endverb
+      \verb{url}
+      \verb https://de.wikipedia.org/wiki/Kontaktelektrizit%C3%A4t
+      \endverb
+    \endentry
+    \entry{wiki:fehlerfortpflanzung}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; Datum: 25.11.2023]}
+      \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
+      \verb{urlraw}
+      \verb https://de.wikipedia.org/wiki/Fehlerfortpflanzung
+      \endverb
+      \verb{url}
+      \verb https://de.wikipedia.org/wiki/Fehlerfortpflanzung
+      \endverb
+    \endentry
+    \entry{wiki:reduced_chi_square}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; Datum: 25.11.2023]}
+      \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Reduced_chi-squared_statistic
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Reduced_chi-squared_statistic
+      \endverb
+    \endentry
+    \entry{wiki:austrittsarbeit}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{4}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; Datum: 25.11.2023]}
+      \field{title}{Kontaktelektrizität --- {W}ikipedia{,} -Die freie Enzyklopädie}
+      \verb{urlraw}
+      \verb https://de.wikipedia.org/wiki/Austrittsarbeit
+      \endverb
+      \verb{url}
+      \verb https://de.wikipedia.org/wiki/Austrittsarbeit
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
