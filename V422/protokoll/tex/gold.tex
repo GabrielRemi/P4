@@ -99,7 +99,7 @@ Nun wird ein etwas kleinerer Bildausschnitt der Größe $\SI{84}{\nano \meter} \
 besser auflösen zu können. Zwei der resultierenden Bilder sind in \cref{fig:gold2} dargestellt. Hierbei wurde auch mit verschiedenen Rastergeschwindigkeiten
 und Werten für das \textit{I-Gain} experimentiert. Für die darauffolgenden Aufnahmen wurde jedoch der Wert für das \textit{I-Gain} wieder auf \num{2000} gestellt, da
 die damit resultierenden Bilder meist besser aussahen. In \cref{fig:gold2} sind tatsächlich die Goldkugeln wesentlich besser zu erkennen. Viele von diesen
-Goldkugeln sind etwa in der Größenordnung von \SI{10}{\nano \meter}, weshalb es sich hier auf keinen Fall um Goldatome sondern um Goldkugeln bestehend aus sehr
+Goldkugeln sind etwa in der Größenordnung von \SI{10}{\nano \meter} bis \SI{30}{\nano \meter}, weshalb es sich hier auf keinen Fall um Goldatome sondern um Goldkugeln bestehend aus sehr
 vielen Goldatomen handelt. Eine atomare Auflösung bei dieser Goldprobe ist aufgrund der hohen elektrischen Leitfähigkeit ohnehin nicht möglich. Um den Umgang
 mit dem RTM etwas zu üben, wurde die Probe nun mit \textit{Withdraw} und \textit{Retract} von der Spitze entfernt. Dann wurde die Probe gleicht gedreht, um
 einen anderen Ausschnitt der Oberfläche zu untersuchen. Mit \textit{Advance} und \textit{Approach} wurde die Probe dann wieder an die Spitze angenähert, was
@@ -127,7 +127,16 @@ dargestellt. Im Vergleich zu \cref{fig:gold1} sind hier keine neuen Auffälligke
 	\caption{RTM-Aufnahme der Goldprobe. \textit{Image size} \SI{200}{\nano \meter}, \textit{Rastergeschwindigkeit} \SI{1e-6}{\meter \per \second}, \textit{Setpoint} \SI{1}{\nano \ampere},
     \textit{Tip voltage} \SI{500}{\milli \volt}, \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000}, \textit{D-Gain} \num{0}, Spitze 1}
 	\label{fig:gold3}
-\end{figure} Nun werden einige Bilder der Größe $\SI{50}{\nano \meter} \times \SI{50}{\nano \meter}$ aufgenommen (siehe \cref{fig:gold4}).
+\end{figure} Nun werden einige Bilder der Größe $\SI{50}{\nano \meter} \times \SI{50}{\nano \meter}$ aufgenommen (siehe \cref{fig:gold4}). Hier sind nun die einzelnen Goldkugeln
+besser zu erkennen (zumindest in dem linken Bild). Das rechte Bild ist entweder sehr unscharf (was evtl. an einer zu hohen \textit{Tip voltage} liegt) oder in diesem Bildausschnitt
+ist die Elektronenverteilung zum Zeitpunkt der Aufnahme etwas gleichmäßiger verteilt.\par
+In \cref{fig:gold5} sind Bilder eines noch kleineren Bildausschnittes ($\SI{20}{\nano \meter} \times \SI{20}{\nano \meter}$) dargestellt. In dem linken Bild sind kaum noch Strukturen der
+Goldoberfläche zu erkennen, die visuell getrennt werden können. In dem rechten Bild ist jedoch eine Abgrenzung von wahrscheinlich zwei Goldkugeln zu erkennen.\par
+Abschließend sind in \cref{fig:gold6} Bilder eines sehr kleinen Ausschnittes ($\SI{5}{\nano \meter} \times \SI{5}{\nano \meter}$) gezeigt. Auf dieser Größenskala
+können kaum noch differenzierte Strukturen aufgelöst werden, was durch die delokalisierte Elektronenverteilung zu begründen ist. Lediglich in dem rechten Bild ist eine leichte
+Abgrenzung von zwei Strukturen zu erkennen, wobei hier aufgepasst werden muss, da die visuelle Darstellung trügen kann. Wie zu sehen ist, sind hier Höhenunterschiede
+von nur \SI{2}{\nano \meter} vorhanden, weshalb es sich unter Umständen sogar um die gleiche Struktur handeln kann. Nun sind die Experimentierenden im Umgang mit dem RTM vertraut und
+es kann die HOPG-Probe untersucht werden.
 \begin{figure}[H]
     \centering
     \begin{subfigure}{0.45\textwidth}
@@ -142,4 +151,34 @@ dargestellt. Im Vergleich zu \cref{fig:gold1} sind hier keine neuen Auffälligke
     \end{subfigure}
     \caption{RTM-Aufnahmen der Goldprobe. \textit{Image size} \SI{50}{\nano \meter}, \textit{Rastergeschwindigkeit} \SI{5e-7}{\meter \per \second}, \textit{Setpoint} \SI{1}{\nano \ampere},
     \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000}, \textit{D-Gain} \num{0}, Spitze 1}\label{fig:gold4}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10483}
+        \caption{\textit{Rastergeschwindigkeit} \SI{4e-7}{\meter \per \second},\\ \textit{Tip voltage} \SI{200}{\milli \volt}}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10490}
+        \caption{\textit{Rastergeschwindigkeit} \SI{2e-7}{\meter \per \second},\\ \textit{Tip voltage} \SI{1}{\volt}}
+    \end{subfigure}
+    \caption{RTM-Aufnahmen der Goldprobe. \textit{Image size} \SI{20}{\nano \meter}, \textit{Setpoint} \SI{1}{\nano \ampere},
+    \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000}, \textit{D-Gain} \num{0}, Spitze 1}\label{fig:gold5}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10494}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10495}
+        \caption{}
+    \end{subfigure}
+    \caption{RTM-Aufnahmen der Goldprobe. \textit{Image size} \SI{5}{\nano \meter}, \textit{Rastergeschwindigkeit} \SI{5e-8}{\meter \per \second}, \textit{Setpoint} \SI{1}{\nano \ampere},
+    \textit{Tip voltage} \SI{500}{\milli \volt}, \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000}, \textit{D-Gain} \num{0}, Spitze 1}\label{fig:gold6}
 \end{figure}
