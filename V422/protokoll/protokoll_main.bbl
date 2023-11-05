@@ -1,0 +1,139 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{rtm-leitpfaden}{misc}{}
+      \name{author}{5}{}{%
+        {{hash=da010210fea2632661eff408af64f836}{%
+           family={Dreyer},
+           familyi={D\bibinitperiod},
+           given={H.P.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=fc9d21f9cc740fafed613d86d7763846}{%
+           family={Brovelli},
+           familyi={B\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b0788572a222b6ab8b1c14b644a695ce}{%
+           family={Cornaz},
+           familyi={C\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=05b14d2d57f0c6765efb96a632abdf91}{%
+           family={Dünki},
+           familyi={D\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2eb5639b2a2c49bac40b44b93c7d21f9}{%
+           family={Lohe},
+           familyi={L\bibinitperiod},
+           given={H.J.},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{0dd50212652b91e38bddddaa95f99dca}
+      \strng{fullhash}{2700e14a4d3d22bc829e5cf42a5292b1}
+      \strng{bibnamehash}{0dd50212652b91e38bddddaa95f99dca}
+      \strng{authorbibnamehash}{0dd50212652b91e38bddddaa95f99dca}
+      \strng{authornamehash}{0dd50212652b91e38bddddaa95f99dca}
+      \strng{authorfullhash}{2700e14a4d3d22bc829e5cf42a5292b1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; Datum: 5.11.2023]}
+      \field{title}{Raster-Tunnel-Mikroskop (Leitprogramm)}
+      \verb{urlraw}
+      \verb https://educ.ethz.ch/unterrichtsmaterialien/physik/rastertunnel.html
+      \endverb
+      \verb{url}
+      \verb https://educ.ethz.ch/unterrichtsmaterialien/physik/rastertunnel.html
+      \endverb
+    \endentry
+    \entry{umrechnung}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=edf0e5bff745cfd016bca35cd3891e6b}{%
+           family={Express},
+           familyi={E\bibinitperiod},
+           given={Stecker},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{edf0e5bff745cfd016bca35cd3891e6b}
+      \strng{fullhash}{edf0e5bff745cfd016bca35cd3891e6b}
+      \strng{bibnamehash}{edf0e5bff745cfd016bca35cd3891e6b}
+      \strng{authorbibnamehash}{edf0e5bff745cfd016bca35cd3891e6b}
+      \strng{authornamehash}{edf0e5bff745cfd016bca35cd3891e6b}
+      \strng{authorfullhash}{edf0e5bff745cfd016bca35cd3891e6b}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.stex24.de/ratgeber/umrechnen-zoll-mm}}
+      \field{note}{Zugriff: 05.11.2023}
+      \field{title}{Umrechnung Zoll in \unit{\milli \meter}}
+    \endentry
+    \entry{mesh}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=4c33205607e702adbd2e92cdf148f4b1}{%
+           family={Presses},
+           familyi={P\bibinitperiod},
+           given={LFA\bibnamedelima Tablet},
+           giveni={L\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{4c33205607e702adbd2e92cdf148f4b1}
+      \strng{fullhash}{4c33205607e702adbd2e92cdf148f4b1}
+      \strng{bibnamehash}{4c33205607e702adbd2e92cdf148f4b1}
+      \strng{authorbibnamehash}{4c33205607e702adbd2e92cdf148f4b1}
+      \strng{authornamehash}{4c33205607e702adbd2e92cdf148f4b1}
+      \strng{authorfullhash}{4c33205607e702adbd2e92cdf148f4b1}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.lfatabletpresses.com/articles/wire-mesh-sizes-conversions}}
+      \field{note}{Zugriff: 05.11.2023}
+      \field{title}{Different Wire Mesh Sizes And Its Conversions}
+    \endentry
+    \entry{skript}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5a3bb40822b0e2d597a2a2d58ff35269}{%
+           family={Universität\bibnamedelima Bonn},
+           familyi={U\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Physikalisches\bibnamedelima Institut},
+           giveni={P\bibinitperiod\bibinitdelim I\bibinitperiod},
+           prefix={der},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{5a3bb40822b0e2d597a2a2d58ff35269}
+      \strng{fullhash}{5a3bb40822b0e2d597a2a2d58ff35269}
+      \strng{bibnamehash}{5a3bb40822b0e2d597a2a2d58ff35269}
+      \strng{authorbibnamehash}{5a3bb40822b0e2d597a2a2d58ff35269}
+      \strng{authornamehash}{5a3bb40822b0e2d597a2a2d58ff35269}
+      \strng{authorfullhash}{5a3bb40822b0e2d597a2a2d58ff35269}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Physikalisches Praktikum Teil IV: Atome, Moleküle, Festkörper. Versuchsbeschreibungen}}
+      \field{year}{2023}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
