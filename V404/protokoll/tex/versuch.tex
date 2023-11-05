@@ -46,10 +46,10 @@ Soll die Probe später von der Spitze entfernt werden, wird zunächst die Funkti
 \textit{Retract} (grobes Entfernen der Probe von der Spitze) benutzt.\par
 Die Spitze wird über insgesamt drei Piezoelemente bewegt. Eines dieser Piezoelemente dient zur feinen Änderung der Höhe der Spitze über der Probenoberfläche.
 Die anderen beiden Piezoelemente dienen zur Rasterbewegung der Spitze. Hier kann die Rastergeschwindigkeit manuell eingestellt werden.
-Ebenso lässt sich die Spannung zwischen Spitze und Probe manuell einstellen. Soll nun die zu untersuchende Oberfläche abgerastert werden, stehen im wesentlichen zwei
+Ebenso lässt sich die Spannung zwischen Spitze und Probe manuell einstellen. Soll nun die zu untersuchende Oberfläche abgerastert werden, stehen im Wesentlichen zwei
 Betriebsmodi (\textit{constant-current-mode} und \textit{constant-height-mode}) zur Verfügung.\par
 Bei dem \textit{constant-current-mode} arbeitet das RTM so, dass der zu messende Tunnelstrom konstant gehalten wird. Dafür muss laufend die Höhe der Spitze
-über der Probenoberfläche geändert werden. Um auf diese Änderungen zu reagieren, arbeitet das RTM mit einem Regelkreis. Im wesentlichen wird dem Regelkreis
+über der Probenoberfläche geändert werden. Um auf diese Änderungen zu reagieren, arbeitet das RTM mit einem Regelkreis. Im Wesentlichen wird dem Regelkreis
 ein Strom-Sollwert vorgegeben, wodurch mit dem Strom-Istwert eine Fehlerfunktion berechnet wird. Bei diesem Versuch wird ein PI-Regelkreis (\textit{Proportional-Integral}) verwendet,
 wobei das \textit{Proportional}-Glied eine zu der Fehlerfunktion proportionale Stellgröße berechnet und das \textit{Integral}-Glied die Fehlerfunktion über eine gewisse
 Integrationszeit integriert. Um das RTM im \textit{constant-current-mode} zu betreiben, werden die Parameter für P und I entsprechend groß gewählt (z.B. $\mathrm{P} = 1000$ und $\mathrm{I} = 2000$),

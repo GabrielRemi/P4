@@ -22,7 +22,7 @@ der Gold-Probe abgebildet. Der \SI{0,3}{\milli \meter}-dicke Platin-Iridium wird
         \includegraphics[width=\linewidth]{../figs/spitze1_nachher}
         \caption{nachher}
     \end{subfigure}
-    \caption{Messspitze zur Untersuchung der Gold-Probe unter dem USB-Mikroskop}\label{fig:spitze1}
+    \caption{Messspitze (Spitze 1) zur Untersuchung der Gold-Probe unter dem USB-Mikroskop}\label{fig:spitze1}
 \end{figure} Mit dem USB-Mikroskop kann allerdings keine Aussage über die Qualität der Spitze getroffen werden. Es lässt sich auch nicht erkennen, ob
 sich die Struktur der Spitze vorne während der Versuchsdurchführung maßgeblich verändert hat. Auch ist leider nicht zu erkennen, ob die Spitze
 während der Versuchsdurchführung Dreck aufgesammelt hat, was unter anderem für schlechtere Messergebnisse gesorgt haben könnte.\par
@@ -51,4 +51,95 @@ Gold-Probe sind in \url{https://uni-bonn.sciebo.de/s/wz3neQLAKV4slns} hinterlegt
 	\includegraphics[width=0.6\linewidth]{../figs/gold_saphir.png}
 	\caption{Mit dem USB-Mikroskop aufgenommene Oberfläche der verwendeten Gold-Probe (Goldschicht auf Saphir)}
 	\label{fig:gold_saphir}
+\end{figure}
+Zunächst wird ein Bildausschnitt der Größe $\SI{200}{\nano \meter} \times \SI{200}{\nano \meter}$ ausgewählt, woraufhin einige Bilder aufgenommen werden.
+Bei den aufgenommenen Bildern ist stets die sogenannte \textit{Time per line} hinterlegt, also in diesem Fall die Zeit, die die Spitze benötigt, um die Strecke
+einer Linie (\SI{200}{\nano \meter}) zurückzulegen. Diese Größe lässt sich einfach in die tatsächliche Rastergeschwindigkeit umrechnen, indem die Länge einer Linie
+durch die \textit{Time per line} geteilt wird. Die aufgenommenen Bilder werden mit der Software \texttt{Gwyddion} bearbeitet. Hier kann z.B. automatisch
+ein Maßstab hinzugefügt werden. Außerdem wird die Farbgebung etwas geändert, sodass die Höhenunterschiede besser zu erkennen sind. In \cref{fig:gold1}
+sind einige der RTM-Aufnahmen der Gold-Probe der Bildgröße \SI{200}{\nano \meter} dargestellt. Es ist sofort zu erkennen, dass die Gold-Oberfläche tatsächlich
+sehr rau ist, da hier Höhenunterschiede in der Größenordnung von bis zu \SI{30}{\nano \meter} zu erkennen sind. Hier können jedoch nicht zwangsläufig Rückschlüsse
+auf die Oberflächentopographie der Gold-Probe getroffen werden, da hier mit dem RTM im Wesentlichen die Elektronenverteilung (welche den Tunnelstrom verursacht) gemessen wird.
+Gold ist ein Leiter, weshalb die Elektronen frei beweglich und delokalisiert sind. Dennoch ist es aus diesem Grund besonders einfach, gelungene Bilder
+der Gold-Probe zu erzielen.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10445}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10446}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10448}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10449}
+        \caption{}
+    \end{subfigure}
+    \caption{RTM-Aufnahmen der Goldprobe. \textit{Image size} \SI{200}{\nano \meter}, \textit{Rastergeschwindigkeit} \SI{1e-6}{\meter \per \second}, \textit{Setpoint} \SI{1}{\nano \ampere},
+    \textit{Tip voltage} \SI{1}{\volt}, \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000}, \textit{D-Gain} \num{0}, Spitze 1}\label{fig:gold1}
+\end{figure}
+Die lokale Veränderung der Elektronenverteilung äußert sich in \cref{fig:gold1} darin, dass ständig der gleiche Ausschnitt der Gold-Probe betrachtet wird,
+die resultierenden Bilder jedoch unterscheidbar sind. Ein weiterer Grund für die unterschiedlichen Bilder des gleichen Probenausschnitts lassen sich auch
+durch einen Temperatur-Drift erklären. In dem Versuchsraum kommt es ständig zu Änderungen der Temperatur (z.B. durch die Anwesenheit/Abwesenheit von Menschen),
+wodurch sich die Probe ausdehnt/zusammenzieht, was den betrachteten Bildausschnitt leicht verändert. Temperaturänderungen tragen auch zu Änderungen
+der elektrischen Leitfähigkeit der Gold-Probe bei. Dennoch konnten hier gelungene Bilder der Gold-Probe aufgezeichnet werden. Es ist eine
+wolkenartige Struktur zu erkennen. Diese Wolken scheinen sich wiederum aus kleinen Goldkugeln zusammenzusetzen, welche hier aber noch nicht
+scharf genug aufgelöst sind. Außerdem sind mehrere sehr helle Punkte/Streifen zu erkennen, was darauf hindeutet, dass die Höhe der Spitze über der Probe aufgrund
+eines plötzlichen hohen Tunnelstroms verändert werden musste. Die Ursache hierfür könnten kleine Verunreinigungen auf der Spitze oder auf der Probe sein.\par
+Nun wird ein etwas kleinerer Bildausschnitt der Größe $\SI{84}{\nano \meter} \times \SI{84}{\nano \meter}$ ausgewählt, um die Struktur der kleinen Goldkugeln
+besser auflösen zu können. Zwei der resultierenden Bilder sind in \cref{fig:gold2} dargestellt. Hierbei wurde auch mit verschiedenen Rastergeschwindigkeiten
+und Werten für das \textit{I-Gain} experimentiert. Für die darauffolgenden Aufnahmen wurde jedoch der Wert für das \textit{I-Gain} wieder auf \num{2000} gestellt, da
+die damit resultierenden Bilder meist besser aussahen. In \cref{fig:gold2} sind tatsächlich die Goldkugeln wesentlich besser zu erkennen. Viele von diesen
+Goldkugeln sind etwa in der Größenordnung von \SI{10}{\nano \meter}, weshalb es sich hier auf keinen Fall um Goldatome sondern um Goldkugeln bestehend aus sehr
+vielen Goldatomen handelt. Eine atomare Auflösung bei dieser Goldprobe ist aufgrund der hohen elektrischen Leitfähigkeit ohnehin nicht möglich. Um den Umgang
+mit dem RTM etwas zu üben, wurde die Probe nun mit \textit{Withdraw} und \textit{Retract} von der Spitze entfernt. Dann wurde die Probe gleicht gedreht, um
+einen anderen Ausschnitt der Oberfläche zu untersuchen. Mit \textit{Advance} und \textit{Approach} wurde die Probe dann wieder an die Spitze angenähert, was
+erneut ohne Probleme funktionierte.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10453}
+        \caption{\textit{Rastergeschwindigkeit} \SI{4,2e-7}{\meter \per \second},\\ \textit{I-Gain} \num{2000}}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10460}
+        \caption{\textit{Rastergeschwindigkeit} \SI{8,4e-7}{\meter \per \second},\\ \textit{I-Gain} \num{2500}}
+    \end{subfigure}
+    \caption{RTM-Aufnahmen der Goldprobe. \textit{Image size} \SI{84}{\nano \meter}, \textit{Setpoint} \SI{1}{\nano \ampere},
+    \textit{Tip voltage} \SI{500}{\milli \volt}, \textit{P-Gain} \num{1000}, \textit{D-Gain} \num{0}, Spitze 1}\label{fig:gold2}
+\end{figure}
+Erneut wird ein Bildausschnitt der Größe $\SI{200}{\nano \meter} \times \SI{200}{\nano \meter}$ ausgewählt. Das resultierende Bild ist in \cref{fig:gold3}
+dargestellt. Im Vergleich zu \cref{fig:gold1} sind hier keine neuen Auffälligkeiten zu beobachten.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/Gold10468.png}
+	\caption{RTM-Aufnahme der Goldprobe. \textit{Image size} \SI{200}{\nano \meter}, \textit{Rastergeschwindigkeit} \SI{1e-6}{\meter \per \second}, \textit{Setpoint} \SI{1}{\nano \ampere},
+    \textit{Tip voltage} \SI{500}{\milli \volt}, \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000}, \textit{D-Gain} \num{0}, Spitze 1}
+	\label{fig:gold3}
+\end{figure} Nun werden einige Bilder der Größe $\SI{50}{\nano \meter} \times \SI{50}{\nano \meter}$ aufgenommen (siehe \cref{fig:gold4}).
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10476}
+        \caption{\textit{Tip voltage} \SI{200}{\milli \volt}}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Gold10479}
+        \caption{\textit{Tip voltage} \SI{1}{\volt}}
+    \end{subfigure}
+    \caption{RTM-Aufnahmen der Goldprobe. \textit{Image size} \SI{50}{\nano \meter}, \textit{Rastergeschwindigkeit} \SI{5e-7}{\meter \per \second}, \textit{Setpoint} \SI{1}{\nano \ampere},
+    \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000}, \textit{D-Gain} \num{0}, Spitze 1}\label{fig:gold4}
 \end{figure}
