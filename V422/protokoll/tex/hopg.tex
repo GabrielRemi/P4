@@ -10,22 +10,8 @@ Die Verteilung bei den B-Atomen befindet sich dazwischen, weshalb diese für das
 da ein RTM nicht unmittelbar die Oberflächentopographie messen kann, sondern die Aufenthaltswahrscheinlichkeit der
 Elektronen \cite[Kap.1 S.7]{rtm-leitpfaden}.
 
-\begin{figure}[htb]
-	\centering
-	\begin{subfigure}{0.45\linewidth}
-		\includegraphics[width=\linewidth]{figs/hopg1.png}
-		\caption{Seitenansicht.\cite[S.49]{skript}}
-		\label{fig:hopg1}
-	\end{subfigure}
-	\hspace{0.5cm}
-	\begin{subfigure}{0.45\linewidth}
-		\includegraphics[width=\linewidth]{figs/hopg2.png}
-		\caption{Obere Ansicht.\cite[Kap.1 S.17]{rtm-leitpfaden}}
-		\label{fig:hopg2}
-	\end{subfigure}
-	\caption{Hochorientierter pyrolyitscher Graphit.}
-	\label{fig:hopg-skizze}
-\end{figure}
+%bilder von HOPG Struktur
+\input{tabellen/hopg_struktur.tex}
 
 \subsection*{Vorbereitung}
 Im Gegensatz zu Gold wird hier versucht, die atomare Struktur des Graphits aufzulösen.
@@ -45,40 +31,51 @@ Vergrößerungen abgebildet. Zu erkennen ist eine Stufenstruktur auf der Obeflä
 deutlich größer ist als die Fläche, die gerastert werden soll. Daher kann mit dieser
 Probe gearbeitet werden.
 
-
-\begin{figure}[htb]
-	\centering
-	\begin{subfigure}{0.45\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figs/hopg_skala1.png}
-		\caption{Skala 1}
-		\label{fig:hopg_skala1}
-	\end{subfigure}
-	\hspace{0.5cm}
-	\begin{subfigure}{0.45\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figs/hopg_skala2.png}
-		\caption{Skala 2}
-		\label{fig:hopg_skala2}
-	\end{subfigure}
-	\caption{USB-Mikroskop Aufnahmen von HOPG nach Abziehen der obersten Schicht.}
-	\label{fig:usb_mikroskop_hopg}
-\end{figure}
+% USB-Mikroskop Bilder von HOPG
+\input{tabellen/hopg_usb.tex}
 
 \subsection*{Auswertung}
 
 Nach erfolgreicher Annäherung der Probe an die Spitze wird zunächst ein Bild
 mit einer großen Breite gemacht, um die Grobstruktur der Oberfläche
 zu bekommen um damit einen ausreichend flachen Flächenabschnitt
-finden zu können. Ein Bild bei einer Breite von $\SI{200}{\nm}$ ist in 
-\cref{fig:hopg_rtm_weitaufnahme} zu sehen, wobei das oben rechte Viertel 
-von einer flachen Ebene gefüllt wird, wo die Höhe nur um einen Atomdurchmesser schwankt.
+finden zu können. Die Abbildungen und die Längenabmessungen der Messdaten wurden 
+mit der Software \verb|Gwyddion| erstellt. Ein Bild bei einer Breite von $\SI{200}{\nm}$ ist in
+\cref{fig:hopg_rtm_weitaufnahme} zu sehen, wobei das oben rechte Viertel
+von einer flachen Ebene gefüllt wird, wo hier die Höhenschwankung maximal \SI{1}{\nm} beträgt.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.6\linewidth]{figs/HOPG10558.png}
-	\caption{$I_\mathrm{set}=\SI{5}{\nm}$, $V=\SI{500}{\milli\volt}$, $P=1000$, $I=2000$,
-		$v=\SI{1}{\nm\per\s}$}
+	\caption{RTM-Aufnahmen der HOPG-Probe. \textit{Image size} \SI{200}{\nano \meter},
+		\textit{Rastergeschwindigkeit} \SI{1}{\micro\m\per \second}, \textit{Setpoint} \SI{5}{\nano \ampere},
+		\textit{Tip voltage} \SI{0.5}{\volt}, \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000},
+		\textit{D-Gain} \num{0}}
 	\label{fig:hopg_rtm_weitaufnahme}
 \end{figure}
+
+Nach Auswahl eines kleineren Gebiets konnten RTM-Aufnahmen in einer Größenordnung gemacht werden, wo 
+Atomstrukturen sichtbar werden sollen. Diese Aufnahmen sind in \cref{fig:hopg_rtm_1,fig:hopg_rtm_2} zu sehen, wobei 
+die linke Aufnahme die Strommessung und die rechte Aufnahme die Abstandsmessung auf dem Hinweg darstellt.
+Die Abstände wurden dabei auf das Minimum der Messung normiert.\par
+Die Abstandsmessung zeigt, dass die 
+Spitze auf einer horizontalen Linie stets die selbe Höhe aufweist und lediglich auf der vertikalen leicht variiert ist.
+Diese Variation liegt in Aufnahme \ref{fig:hopg_rtm_1} unter \SI{57}{\pm} und in Aufnahme \ref{fig:hopg_rtm_1}
+unter \SI{40}{\pm}. Diese Schwankungen sind kleiner als ein Atomdurchmesser und könnten durch eine noch 
+vorhandene leichte Neigung der Spitzen-Ebene in Relation zur Proben-Oberfläche entstanden sein, möglich sind auch 
+thermische Ausdehnung oder Störungen durch Vibrationen. Da wie zu sehen diese Schwankungen klein sind, kann 
+trotzdessen eine konstante Höhenmessung angenommen werden, womit die Strommessung unmittelbar die 
+Ladungsverteilung der Oberläche darstellt.
+
+\input{tabellen/hopg_rtm_1.tex}
+\input{tabellen/hopg_rtm_2.tex}
+
+In \cref{fig:hopg_rtm_4nm_1_cur} ist in der unteren Hälfte deutlich nach \cref{fig:hopg2} die erwartete Struktur 
+von HOPG zu erkennen, jedoch mit einer geringen Auflösung. Diese konnte nach Variation der 
+RTM-Parameter nicht verbessert werden. Der Grund hierfür ist mit höchster Wahrscheinlichkeit die Topographie 
+der Spitze, da die Höhe dieser konstant gehalten wurde und diese auf ausreichend nah an die Probe 
+herangefahren wurde, dass Ströme von bis zu \SI{1}{\nm} gemessen wurden.
+
+\input{tabellen/HOPG10597.tex}
+
 
