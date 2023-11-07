@@ -8,7 +8,7 @@ untere Ebene die Ladungsverteilung auf der Oberfläche beeinflusst wird.\par Wie
 \cref{fig:hopg2} erkennbar ist bei den H-Atomen die Ladungsverteilung minimal und bei A-Atomen maximal.
 Die Verteilung bei den B-Atomen befindet sich dazwischen, weshalb diese für das Mikroskop unsichtbar werden,
 da ein RTM nicht unmittelbar die Oberflächentopographie messen kann, sondern die Aufenthaltswahrscheinlichkeit der
-Elektronen \cite[Kap.1 S.7]{rtm-leitpfaden}.
+Elektronen \cite{rtm-leitpfaden}.
 
 %bilder von HOPG Struktur
 \input{tabellen/hopg_struktur.tex}
@@ -73,9 +73,54 @@ Ladungsverteilung der Oberläche darstellt.
 In \cref{fig:hopg_rtm_4nm_1_cur} ist in der unteren Hälfte deutlich nach \cref{fig:hopg2} die erwartete Struktur 
 von HOPG zu erkennen, jedoch mit einer geringen Auflösung. Diese konnte nach Variation der 
 RTM-Parameter nicht verbessert werden. Der Grund hierfür ist mit höchster Wahrscheinlichkeit die Topographie 
-der Spitze, da die Höhe dieser konstant gehalten wurde und diese auf ausreichend nah an die Probe 
-herangefahren wurde, dass Ströme von bis zu \SI{1}{\nm} gemessen wurden.
+der Spitze, da die Höhe dieser konstant gehalten wurde und ebenso ausreichend nah an die Probe 
+herangefahren wurde, sodass Ströme von bis zu \SI{1}{\nano\ampere} gemessen wurden.\par
+Trotzdessen ist die Auflösung hoch genug um quantitativ die Atomabstände abschätzen zu können.
+In \cref{fig:hopg_rtm_4nm_1_cur} sind in Rot Linien eingezeichnet, die die Abstände der A-Atome (siehe 
+\cref{fig:hopg2}) zeigen. Dies wurde für sieben aneinander liegenden Atomen gemacht. Auffällig ist
+hierbei, dass die erwartet Symmetrie der Abstände zueinander nicht vorhanden ist, da in 
+x-Richtung die gemessenen Längen größer sind als in y-Richtung. Im Falle, dass das Mikroskop 
+die Linien vertikal abrastert kann diese Streckung der Abstände durch thermische Ausdehnung 
+erklärt werden. Die Messwerte sind in \cref{tab:atomabstand} mit $\varphi_1$ für den Winkel der 
+Linie relativ zur horizontalen Achse der Aufnahme und $r_1$ für die Länge denotiert. Die 
+Fehler wurden für den Winkel mit \SI{10}{\degree} und die Länge mit \SI{90}{\pm} aufgrund 
+der Auflösung gewählt.\par
+
+
+Die Linien formen ein Sechseck bestehend aus sechs einzelnen Dreiecken, die nach Grahpit-Struktur alle 
+gleichseitig zu erwarten sind. Dies ist jedoch hier nicht der Fall. Es ist zu erkenne, dass Längen 
+in y-Richtung sich in einem Bereich von \SI{290}{\nm} befinden, während Längen mit höheren Anteil 
+in x-Richtung größer als \SI{400}{\pm} sind. Die Streckung in x-Richtung wird durch zu kleine Winkel 
+der Linien 3, 6 und 7 deutlich.\par 
+Der Mittelwert der Abstände liegt hier bei 
+\begin{equation}
+	d_1 = \SI{380\pm 160}{\pm}, 
+	\label{abstand_rtm_1}
+\end{equation}
+wobei sich der Fehler aus der Standardabweichung der Messung sowie den einzelnen Fehlern zusammensetzt. 
+Mit einem hohen Fehler von \SI{42}{\percent} liegt der in \cite{skript} angegebene Literaturwert von 
+\SI{246}{\nm}
+im $1\sigma$-Bereich der Messung, wobei die Messung eine Abweichung nach oben hin darstellt.\\\par 
+
+In Aufnahme \ref{fig:hopg_rtm_4nm_2_cur} konnte aufgrund von schlechter Auflösung 
+nur für drei Linien am linken Rand der Abbildung der Atomabstand ausgewertet werden. Die Fehler für 
+die Winkel $\varphi_2$ sind wieder mit \SI{10}{\degree} bestimmt worden und der 
+Fehler der Abstände $r_2$ mit \SI{100}{\pm}. Hier kann ein mittlerer Abstand von 
+\begin{equation}
+	d_2 = \SI{390\pm140}{\pm}
+	\label{abstand_rtm_2}
+\end{equation}
+bestimmt werden, was sich mit dem Messwert \ref{abstand_rtm_1} überlagert.
 
 \input{tabellen/HOPG10597.tex}
 
+Die Rasterspitze nach der Messung ist in \cref{fig:spitze_hopg_nachher} gezeigt. Zu sehen ist 
+wie vorher eine sehr dünne Spitze, die nach visuelle Wertung eine höhere Auflösung hätte erreichen sollen.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figs/spitze_hopg_nachher_v2}
+	\caption{Platin-Iridium Spitze nach Rasterung des HOPG.}
+	\label{fig:spitze_hopg_nachher}
+\end{figure}
 
