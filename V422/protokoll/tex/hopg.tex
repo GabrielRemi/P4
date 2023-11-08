@@ -1,11 +1,11 @@
 \section{HOPG-Probe}\label{sec:hopg-probe}
 \subsection*{Struktur}
-Hochorientierter pyrolyitscher Graphit (HOPG) ist kristalliner Kohlenstoff, wo Atome einer Schicht
+Hochorientierter pyrolytischer Graphit (HOPG) ist kristalliner Kohlenstoff, wo Atome einer Schicht
 auf einem hexagonalen Gitter geordnet sind, wodurch jedes Atom auf dieser zweidimensionalen
 Ebene von drei weiteren Atomen im Winkel von \SI{120}{\degree} verbunden ist. Zwei Schichten
 dieses Gitters sind versetzt übereinander geordnet (siehe \cref{fig:hopg-skizze}), weshalb durch die
 untere Ebene die Ladungsverteilung auf der Oberfläche beeinflusst wird.\par Wie in
-\cref{fig:hopg2} erkennbar ist bei den H-Atomen die Ladungsverteilung minimal und bei A-Atomen maximal.
+\cref{fig:hopg2} erkennbar, ist bei den H-Atomen die Ladungsverteilung minimal und bei A-Atomen maximal.
 Die Verteilung bei den B-Atomen befindet sich dazwischen, weshalb diese für das Mikroskop unsichtbar werden,
 da ein RTM nicht unmittelbar die Oberflächentopographie messen kann, sondern die Aufenthaltswahrscheinlichkeit der
 Elektronen \cite{rtm-leitpfaden}.
@@ -15,19 +15,19 @@ Elektronen \cite{rtm-leitpfaden}.
 
 \subsection*{Vorbereitung}
 Im Gegensatz zu Gold wird hier versucht, die atomare Struktur des Graphits aufzulösen.
-Dies erfordert hohe Präzision in der Durchführung und der Präparierung der Spitze. Der Platin-Iridium Draht
+Dies erfordert hohe Präzision in der Durchführung und der Präparierung der Spitze. Der Platin-Iridium-Draht
 vor der Rasterung ist in \cref{fig:spitze_hopg_vorher_v2} abgebildet. Vorne ist eine dünne Spitze zur ekennen,
 die sich für die Durchführung eignen sollte.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.5\linewidth]{figs/spitze_hopg_vorher_v2.png}
-	\caption{Platin-Iridium Spitze vor Rasterung des HOPG.}
+	\caption{Platin-Iridium-Spitze (Spitze 2) vor Rasterung des HOPG.}
 	\label{fig:spitze_hopg_vorher_v2}
 \end{figure}
 
 Die Graphit-Probe ist in \cref{fig:usb_mikroskop_hopg} mit zwei unterschiedlichen
-Vergrößerungen abgebildet. Zu erkennen ist eine Stufenstruktur auf der Obefläche, die jedoch
+Vergrößerungen abgebildet. Zu erkennen ist eine Stufenstruktur auf der Oberfläche, die jedoch
 deutlich größer ist als die Fläche, die gerastert werden soll. Daher kann mit dieser
 Probe gearbeitet werden.
 
@@ -41,7 +41,7 @@ mit einer großen Breite gemacht, um die Grobstruktur der Oberfläche
 zu bekommen um damit einen ausreichend flachen Flächenabschnitt
 finden zu können. Die Abbildungen und die Längenabmessungen der Messdaten wurden 
 mit der Software \verb|Gwyddion| erstellt. Ein Bild bei einer Breite von $\SI{200}{\nm}$ ist in
-\cref{fig:hopg_rtm_weitaufnahme} zu sehen, wobei das oben rechte Viertel
+\cref{fig:hopg_rtm_weitaufnahme} zu sehen, wobei das obere rechte Viertel
 von einer flachen Ebene gefüllt wird, wo hier die Höhenschwankung maximal \SI{1}{\nm} beträgt.
 
 \begin{figure}[htb]
@@ -50,7 +50,7 @@ von einer flachen Ebene gefüllt wird, wo hier die Höhenschwankung maximal \SI{
 	\caption{RTM-Aufnahmen der HOPG-Probe. \textit{Image size} \SI{200}{\nano \meter},
 		\textit{Rastergeschwindigkeit} \SI{1}{\micro\m\per \second}, \textit{Setpoint} \SI{5}{\nano \ampere},
 		\textit{Tip voltage} \SI{0.5}{\volt}, \textit{P-Gain} \num{1000}, \textit{I-Gain} \num{2000},
-		\textit{D-Gain} \num{0}}
+		\textit{D-Gain} \num{0}, Spitze 2.}
 	\label{fig:hopg_rtm_weitaufnahme}
 \end{figure}
 
@@ -75,12 +75,12 @@ von HOPG zu erkennen, jedoch mit einer geringen Auflösung. Diese konnte nach Va
 RTM-Parameter nicht verbessert werden. Der Grund hierfür ist mit höchster Wahrscheinlichkeit die Topographie 
 der Spitze, da die Höhe dieser konstant gehalten wurde und ebenso ausreichend nah an die Probe 
 herangefahren wurde, sodass Ströme von bis zu \SI{1}{\nano\ampere} gemessen wurden.\par
-Trotzdessen ist die Auflösung hoch genug um quantitativ die Atomabstände abschätzen zu können.
-In \cref{fig:hopg_rtm_4nm_1_cur} sind in Rot Linien eingezeichnet, die die Abstände der A-Atome (siehe 
+Trotzdessen ist die Auflösung hoch genug, um quantitativ die Atomabstände abschätzen zu können.
+In \cref{fig:hopg_rtm_4nm_1_cur} sind in rot Linien eingezeichnet, die die Abstände der A-Atome (siehe 
 \cref{fig:hopg2}) zeigen. Dies wurde für sieben aneinander liegenden Atomen gemacht. Auffällig ist
-hierbei, dass die erwartet Symmetrie der Abstände zueinander nicht vorhanden ist, da in 
+hierbei, dass die erwartete Symmetrie der Abstände zueinander nicht vorhanden ist, da in 
 x-Richtung die gemessenen Längen größer sind als in y-Richtung. Im Falle, dass das Mikroskop 
-die Linien vertikal abrastert kann diese Streckung der Abstände durch thermische Ausdehnung 
+die Linien vertikal abrastert, kann diese Streckung der Abstände durch thermische Ausdehnung 
 erklärt werden. Die Messwerte sind in \cref{tab:atomabstand} mit $\varphi_1$ für den Winkel der 
 Linie relativ zur horizontalen Achse der Aufnahme und $r_1$ für die Länge denotiert. Die 
 Fehler wurden für den Winkel mit \SI{10}{\degree} und die Länge mit \SI{90}{\pm} aufgrund 
@@ -88,7 +88,7 @@ der Auflösung gewählt.\par
 
 
 Die Linien formen ein Sechseck bestehend aus sechs einzelnen Dreiecken, die nach Grahpit-Struktur alle 
-gleichseitig zu erwarten sind. Dies ist jedoch hier nicht der Fall. Es ist zu erkenne, dass Längen 
+gleichseitig zu erwarten sind. Dies ist jedoch hier nicht der Fall. Es ist zu erkennen, dass Längen 
 in y-Richtung sich in einem Bereich von \SI{290}{\nm} befinden, während Längen mit höheren Anteil 
 in x-Richtung größer als \SI{400}{\pm} sind. Die Streckung in x-Richtung wird durch zu kleine Winkel 
 der Linien 3, 6 und 7 deutlich.\par 
@@ -115,7 +115,7 @@ bestimmt werden, was sich mit dem Messwert \ref{abstand_rtm_1} überlagert.
 \input{tabellen/HOPG10597.tex}
 
 Die Rasterspitze nach der Messung ist in \cref{fig:spitze_hopg_nachher} gezeigt. Zu sehen ist 
-wie vorher eine sehr dünne Spitze, die nach visuelle Wertung eine höhere Auflösung hätte erreichen sollen.
+wie vorher eine sehr dünne Spitze, die nach visueller Bewertung eine höhere Auflösung hätte erreichen sollen.
 
 \begin{figure}[htb]
 	\centering
@@ -123,4 +123,11 @@ wie vorher eine sehr dünne Spitze, die nach visuelle Wertung eine höhere Aufl�
 	\caption{Platin-Iridium Spitze nach Rasterung des HOPG.}
 	\label{fig:spitze_hopg_nachher}
 \end{figure}
+
+todo: 
+\begin{enumerate}
+	\item letzte bild spitze, falsche skala
+	\item hopg alle bilder sciebo ordner
+	\item hopg eichung ansprechen
+\end{enumerate}
 
