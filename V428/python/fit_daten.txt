@@ -1,0 +1,8 @@
+
+dir "../data/V428/Charakteristisches Spektrum"
+begin feinstruktur.txt 
+    30 30.7 2 False Feinstruktur 7 30.2 0.5 4 30.5 0.5
+end 
+begin anode-unbekannt.txt
+    5 7 2 True Linie1 1500 5.2 0.4 2500 6 0.4 3000 -10
+end
