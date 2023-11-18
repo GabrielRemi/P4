@@ -7,3 +7,5 @@ V402/latex/test_main.*
 */*.gz
 */*.aux
 */*.dvi
+V428/python/test.py
+V428/python/__pycache__
