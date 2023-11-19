@@ -56,12 +56,12 @@ class Fit:
                         beta0=self.file_interval.start_parameters)
         output = myodr.run()
         for n in range(self.file_interval.n_fits):
-            self.result[f"gauss {n}"] = {"amplitude": output.beta[3*n],
-                                         "x0": output.beta[1 + 3*n],
-                                         "std": abs(output.beta[2 + 3*n])}
+            self.result[f"gauss {n}"] = {"amplitude": (output.beta[3*n], output.sd_beta[3*n]),
+                                         "x0": (output.beta[1 + 3*n], output.sd_beta[1 + 3*n]),
+                                         "std": (abs(output.beta[2 + 3*n]), output.sd_beta[2 + 3*n])}
         if self.file_interval.linear:
-            self.result["linear"] = {"intercept": output.beta[-2],
-                                     "slope": output.beta[-1]}
+            self.result["linear"] = {"intercept": (output.beta[-2], output.sd_beta[-2]),
+                                     "slope": (output.beta[-1], output.sd_beta[-2])}
         self.parameters = output.beta
         self.parameters_std = output.sd_beta
 
@@ -85,13 +85,15 @@ if __name__ == "__main__":
 
     x = np.linspace(0, 20, 90)
     y = 3*gauss(x, 6.5, 0.5) + 1*gauss(x, 5, 0.5) + 0.5 * \
-        gauss(x, 9, 0.5) + (np.random.rand(len(x)) - 0.5)*0.3 + 0.07*x
+        gauss(x, 15, 0.5) + (np.random.rand(len(x)) - 0.5)*0.3 + 0.07*x
     err = [0.1]*len(x)
     data = np.array([x, y, err, err])
     data[3] = data[3] * 3
 
+    for i in data.transpose():
+        print(*i)
     fileint = DataInterval((0, 20), 3, True, "name", [
-              2, 7, 0.5, 1, 5, 0.5, 0.5, 9, 0.5, 0, 0.1])
+              2, 7, 0.5, 1, 5, 0.5, 0.5, 15, 0.5, 0, 0.1])
     fit = Fit(fileint)
     fit.do_fit(data)
     print("beta: ", fit.parameters)

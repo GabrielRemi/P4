@@ -1,8 +1,4 @@
-
-dir "../data/V428/Charakteristisches Spektrum"
-begin feinstruktur.txt 
-    30 30.7 2 False Feinstruktur 7 30.2 0.5 4 30.5 0.5
-end 
-begin anode-unbekannt.txt
-    5 7 2 True Linie1 1500 5.2 0.4 2500 6 0.4 3000 -10
+begin daten.txt
+    0 20 2 True name 2 7 0.5 1 5 0.5 0 0.1
+    13 17 1 True name2 0.5 15 0.5 0 0.1
 end

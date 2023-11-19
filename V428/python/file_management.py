@@ -12,6 +12,7 @@ class FileData:
         self.data: np.ndarray = np.array([])
         self.__read_data(name)
         self.result: dict[str, Fit] = None
+        self.name = name
 
     def __read_data(self, file):
         """Liest Daten aus einer Datei ein"""
