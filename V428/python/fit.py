@@ -43,8 +43,8 @@ class Fit:
         def fit_function(b: list[float], x: float) -> float:
             return _fit_function(b, x, self.file_interval.n_fits, self.file_interval.linear)
         #print(f"types: {type(self.file_interval.interval[0])}, {type(data[0][0])}")
-        ind = [bool(self.file_interval.interval[0] <= i <=
-                    self.file_interval.interval[1]) for i in data[0]]
+        ind = [bool(self.file_interval.interval[0] <= item <=
+                    self.file_interval.interval[1]) and data[1][i] != 0 for i, item in enumerate(data[0])]
 
         model: odr.Model = odr.Model(fit_function)
         realdata: odr.RealData = odr.RealData(

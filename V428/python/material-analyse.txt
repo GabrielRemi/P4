@@ -1,16 +1,98 @@
 dir "../data/V428/Zerstörungsfreie Materialanalyse"
-begin FeZn.txt 20 160
-    60 105 1 False Name 30000 83 20 10000 85 10 0 0
-    105 123 1 True Name2 1800 112 15 10 0
+begin FeZn.txt 60 150
+    72 102 2 True Fit1 230000 82 10 100000 85 23 100 20
+    102 121 1 True Fit2 23000 112.4 2.2 2 0.1
+    121 140 1 True Fit3 2000 125 5 5 0.01
+    #104 140 2 True Name4 18000 112 8 20000 125 20 5 0.01
 end
-begin Ag1.txt
-    30 55 1 True Linie1 2000 44 1 20 0.01
-    280 340 2 True Linie2 2300 288 1 500 324 1 20 0.01
-    65 180 2 True Linie3 1000 107 1 500 121 1 20 0.01
-end
-begin Au.txt
 
+begin Ag1.txt 0 400
+    30 55 1 True Fit1 2000 44 1 20 0.01
+    65 180 2 True Fit2 1000 107 1 500 121 1 20 0.01
+    270 310 1 True Fit3 2700 288 3 20 0.3
+    307 335 1 False Fit4 250 324 3 
 end
-begin Fe.txt 20 160
-    65 110 1 False L1 12000 83 13 
+
+begin Au.txt
+    70 200 4 True Fit1 300 111 3 1500 129 3 800 153 3 100 177 3 1 0.1
+end
+
+begin Cu.txt 80 140
+    90 130 2 True Fit1 50000 106 3 10000 120 4 0 0.1 
+end
+
+begin In.txt 0 400
+    35 70 1 True Fit1 600 50 3 0 1 
+    95 124 2 True Fit2 800 106 4 100 118 2 10 1
+    295 325 1 True Fit3 700 313 3 -5 0.1
+    340 360 1 False Fit4 400 353 3 
+end
+
+begin Fe.txt 60 160
+    72 102 2 False Fit1 230000 82 10 110000 85 23 100 20
+    121 150 1 True Fit2 2000 125 5 5 0.01
+end
+
+begin Mo.txt 210 280
+    220 245 1 True Fit1 4500 235 15 5 0.0
+    250 270 1 False Fit2 1000 256 1 6 0.0
+end
+
+begin Ni.txt 50 150
+    #90 120 2 True Fit1 60000 98 3 10000 102 5 20 -1 
+    75 120 3 True Fit2 10000 85 5 90000 98 3 30000 102 5 0 1
+end
+
+begin Pb.txt 80 220
+    90 130 2 True Fit1 1000 107 3 500 119 3 0 1
+    130 153 1 True Fit2 10000 143 3 10 0 
+    153 180 1 True Fit3 5000 167 3 10 0
+    188 210 1 Falsex Fit4 300 196 3 10 0
+end
+
+begin Sn.txt 0 360
+    35 65 1 True Fit1 5000 53 5 0 1
+    88 130 2 True Fit2 2000 106 4 300 117 2 0 1
+    313 340 1 False Fit3 300 327 4 
+end
+
+begin Titan.txt 30 100
+    45 80 1 True Fit1 40000 62 1 0 1
+    #45 80 2 False Fit2 35000 62 1.6 10000 63.6 2 0 1
+end
+
+begin Unbekannt1.txt 30 120
+    64 104 3 True Fit1 15000 72 3 60000 84 5 40000 92 14 100 0
+end
+
+begin Unbekannt2.txt 80 150
+    97 126 2 True Fit1 52000 106 2 30000 113 4 10 0 
+end
+
+begin Unbekannt3.txt 80 140
+    95 125 2 True Fit1 37000 106 2.6 32000 112 4 10 0 
+end
+
+begin Unbekannt4.txt 40 130
+    60 83 2 True Fit1 10000 76 5 5000 68 4 10 0
+    87 112 2 True Fit2 60000 92 3 10000 102 6 10 0
+end
+
+begin W.txt 50 180
+    60 83 1 True Fit1 500 74 6 10 0
+    93 103 1 False Fit2 1000 97 10 0
+    105 119 1 False Fit3 40000 112 4 10 0
+    123 140 1 True Fit4 30000 130 4 10 0
+    145 160 1 False Fit5 5000 149 6 
+end
+
+begin Zn.txt 90 150
+    105 135 2 True Fit1 60000 115 5 10000 126.5 5 10 0
+end
+
+begin Zr.txt 90 255
+    
+    145 165 1 True Fit2 3000 154 5 20 0
+    195 222 1 True Fit3 15000 210 5 20 0
+    224 245 1 True Fit4 4000 234 5 20 0
 end

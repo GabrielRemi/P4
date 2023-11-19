@@ -55,7 +55,9 @@ def read_file(name: str) -> list[FileData]:
             args = shlex.split(line)
             if len(args) == 0:
                 continue
-
+            if args[0][0] == "#":
+                continue
+            
             if args[0] == "dir":
                 os.chdir(args[1])
             elif args[0] == "begin":
