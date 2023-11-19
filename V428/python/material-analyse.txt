@@ -1,6 +1,16 @@
 dir "../data/V428/Zerstörungsfreie Materialanalyse"
+begin FeZn.txt 20 160
+    60 105 1 False Name 30000 83 20 10000 85 10 0 0
+    105 123 1 True Name2 1800 112 15 10 0
+end
 begin Ag1.txt
     30 55 1 True Linie1 2000 44 1 20 0.01
     280 340 2 True Linie2 2300 288 1 500 324 1 20 0.01
     65 180 2 True Linie3 1000 107 1 500 121 1 20 0.01
+end
+begin Au.txt
+
+end
+begin Fe.txt 20 160
+    65 110 1 False L1 12000 83 13 
 end

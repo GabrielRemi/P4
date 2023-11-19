@@ -13,6 +13,7 @@ class FileData:
         self.__read_data(name)
         self.result: dict[str, Fit] = None
         self.name = name
+        self.plot_interval = None
 
     def __read_data(self, file):
         """Liest Daten aus einer Datei ein"""
@@ -41,7 +42,12 @@ class FileData:
 
 
 def read_file(name: str) -> list[FileData]:
-    """Liest die Datei, in der zu jedem Datensatz die Anleitung für die Gauß fits steht"""
+    """Liest die Datei, in der zu jedem Datensatz die Anleitung für die Gauß fits steht.
+    Das Einlesen einer Datei sieht wie folgt aus:\n
+    begin Datei.txt interval_min interval_max
+        i_min i_max n_fits linear? name A x0 std A x0 std ... n m
+        ...
+    end"""
     file_data: list[FileData] = []
 
     with open(name, encoding="UTF-8") as file:
@@ -54,6 +60,12 @@ def read_file(name: str) -> list[FileData]:
                 os.chdir(args[1])
             elif args[0] == "begin":
                 file_data.append(FileData(args[1]))
+                if len(args) >= 4:
+                    file_data[-1].plot_interval = (float(args[2]), float(args[3]))
+                else:
+                    dmin = file_data[-1].data[0][0]
+                    dmax = file_data[-1].data[0][-1]
+                    file_data[-1].plot_interval = (dmin, dmax)
             elif args[0] == "end":
                 continue
             else:
