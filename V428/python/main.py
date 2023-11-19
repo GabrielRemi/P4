@@ -6,4 +6,5 @@ plt.style.use("science")
 plt.rcParams["figure.figsize"] = [8, 6.5]
 plt.rcParams["lines.markersize"] = 3
 
-material_analyse.main()
+output = material_analyse.main()
+print(output["FeZn.txt"].x0[0])
