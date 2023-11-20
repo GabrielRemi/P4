@@ -5,7 +5,7 @@ from typing import Callable, Tuple
 import numpy as np
 from monke import plots, latex, functions
 import matplotlib.pyplot as plt
-from file_management import read_file
+from file_management import read_file, FitResult
 import scipy.odr as odr
 # from scienceplots import scienceplots
 
@@ -17,36 +17,17 @@ os.chdir(mainpath)
 Callibration = Callable[[float], Tuple[float, float]]
 
 
-@dataclass
-class MaAnResult:
-    """Speichert alle Ergebnisse eines Spektrums in dieser Klasse"""
-    x0: np.ndarray = None
-    std: np.ndarray = None
-    m: np.ndarray = None
-    n: np.ndarray = None
-    a: np.ndarray = None
-    height: np.ndarray = None
-    chi_squared: np.ndarray = None
-
 # Zerstörungsfreie Materialanalyse
 
-
-def do_fits() -> dict[str, MaAnResult]:
+def do_fits() -> dict[str, FitResult]:
     """Main Funktion. Liest die Fit Anweisung aus der Datei material-analyse.txt, speichert die 
     Werte in der Datei material-analyse-ergebnisse.txt und gibt in einem dict() alle Ergebnisse wieder"""
-    results: dict[str, MaAnResult] = {}
+    os.chdir(mainpath)
+    results: dict[str, FitResult] = {}
     zma_file = open("material-analyse-ergebnisse.txt", "w", encoding="UTF-8")
 
     filedata_zm = read_file("material-analyse.txt")
     for file in filedata_zm:
-        results[file.name] = MaAnResult()
-        x0 = [[], []]
-        std = [[], []]
-        m = [[], []]
-        n = [[], []]
-        a = [[], []]
-        chi_squared = []
-
         zma_file.write(f"{file.name}\n")
         error = np.sqrt(file.data[1])
         error_x = [1]*len(file.data[0])
@@ -54,7 +35,7 @@ def do_fits() -> dict[str, MaAnResult]:
         file.add_error(error_x)
         _, ax = plt.subplots()
         ax.set_xlim(file.plot_interval)
-        ax.errorbar(*file.data, marker="x", linestyle="")
+        ax.errorbar(*file.data, marker="x", linestyle="", zorder=10)
 
         # Intervalle
         file.run_fits()
@@ -67,21 +48,7 @@ def do_fits() -> dict[str, MaAnResult]:
             # in txt datei speichern
             zma_file.write(f"   {out.file_interval.name}\n")
             for fit_in_out in out.result:
-                dic = out.result[fit_in_out]
-
                 if "gauss" in fit_in_out:
-                    x0[0].append(dic["x0"][0])
-                    x0[1].append(dic["x0"][1])
-                    std[0].append(dic["std"][0])
-                    std[1].append(dic["std"][1])
-                    a[0].append(dic["amplitude"][0])
-                    a[1].append(dic["amplitude"][1])
-                    m[0].append(0)
-                    m[1].append(0)
-                    n[0].append(0)
-                    n[1].append(0)
-                    chi_squared.append(0)
-
                     text = f"       {fit_in_out}"
                     text += f" x0 = {out.result[fit_in_out]["x0"]}"
                     text += f" std = {out.result[fit_in_out]["std"]}"
@@ -89,38 +56,20 @@ def do_fits() -> dict[str, MaAnResult]:
                     text += "\n"
                     zma_file.write(text)
                 if "linear" in fit_in_out:
-                    m[0][-1] = dic["slope"][0]
-                    m[1][-1] = dic["slope"][1]
-                    n[0][-1] = dic["intercept"][0]
-                    n[1][-1] = dic["intercept"][1]
-
                     text = f"       {fit_in_out}"
                     text += f" n = {out.result[fit_in_out]["intercept"]}"
                     text += f" m = {out.result[fit_in_out]["slope"]}"
                     text += "\n"
                     zma_file.write(text)
                 if "chi" in fit_in_out:
-                    chi_squared[-1] = dic
-
                     text = f"   chi_squared = {out.result[fit_in_out]}\n"
                     zma_file.write(text)
             zma_file.write("\n")
-
-            results[file.name].x0 = np.array(x0)
-            results[file.name].std = np.array(std)
-            results[file.name].a = abs(np.array(a))
-            results[file.name].m = np.array(m)
-            results[file.name].chi_squared = np.array(chi_squared)
-            results[file.name].n = np.array(n)
-            results[file.name].height = np.array(np.array([
-                results[file.name].a[0] /
-                (np.sqrt(2*np.pi) * results[file.name].std[0]),
-                results[file.name].a[0] / (np.sqrt(2*np.pi) * results[file.name].std[0]) * np.sqrt(
-                    (results[file.name].a[1]/results[file.name].a[0])**2 + (results[file.name].std[1]/results[file.name].std[0])**2)
-            ]))
+            results[file.name] = file.fitresult
 
         for i, j in plot_data:
-            ax.plot(*i, label=j)
+            ax.plot(*i, label=j, zorder=10)
+            ax.scatter(file.fitresult.x0[0], file.fitresult.height[0], color="red", s=10, zorder=100)
         plots.legend(ax)
         plt.savefig(f"{figpath}{file.name[:-4]}.pdf", dpi=200)
     zma_file.close()
@@ -128,7 +77,7 @@ def do_fits() -> dict[str, MaAnResult]:
     return results
 
 
-def gauss_fit_table(values: MaAnResult, name: str) -> None:
+def gauss_fit_table(values: FitResult, name: str) -> None:
     """Erstellt für das Protokoll eine Tabelle der Gauss Fits eines Spektrums"""
     os.chdir(mainpath)
     with latex.Texfile(name, tabpath) as file:
@@ -149,7 +98,7 @@ def gauss_fit_table(values: MaAnResult, name: str) -> None:
         
         file.add(table.make_figure())
 
-def callibrate_energies(fezn: MaAnResult) -> Callable[[float], Tuple[float, float]]:
+def callibrate_energies(fezn: FitResult) -> Callable[[float], Tuple[float, float]]:
     """Berechnet aus FeZn Spektrum die Kallibrationskurve und gibt die Kallibrationskurve wieder"""
     energies = np.array([6403.84, 7057.98, 8638.86, 9572.0])
 
@@ -192,7 +141,7 @@ def callibrate_energies(fezn: MaAnResult) -> Callable[[float], Tuple[float, floa
 
     return callibration_curve
 
-def make_callibration_table(metals: dict[str, MaAnResult], callibration: Callibration) -> None:
+def make_callibration_table(metals: dict[str, FitResult], callibration: Callibration) -> None:
     """Erstelle eine Tabelle, Wo für jedes gemessene Element die Energie peaks
     mit ihrer Höhe eingetragen sind"""
     text: str = r"""
@@ -206,7 +155,7 @@ def make_callibration_table(metals: dict[str, MaAnResult], callibration: Callibr
     for metal in metals:
         if "Unbekannt" in metal:
             continue
-        vals: MaAnResult = metals[metal]
+        vals: FitResult = metals[metal]
         energies: np.ndarray = callibration(vals.x0[0])
         #print(functions.error_round(energies[0], energies[1]))
         detections: np.ndarray = vals.height
@@ -226,7 +175,7 @@ def make_callibration_table(metals: dict[str, MaAnResult], callibration: Callibr
     with open(f"{tabpath}charakteristische_linien.tex", "w", encoding="UTF-8") as file:
         file.write(text)
         
-def make_callibration_table_for_one(metal: MaAnResult, callibration: Callibration, name: str):
+def make_callibration_table_for_one(metal: FitResult, callibration: Callibration, name: str):
     """Erstelle eine Tabelle Wo für ein gemessenes Spektrum die Energie peaks
     mit ihrer Höhe eingetragen sind"""
     text: str = f"""
