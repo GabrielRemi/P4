@@ -41,9 +41,9 @@ c = ((c_1/(c_1_err**2)) + (c_2/(c_2_err**2)))/((1/(c_1_err**2)) + (1/c_2_err**2)
 c_err = 1/np.sqrt((1/(c_1_err**2)) + (1/(c_2_err**2)))
 
 # berechne z_q
-z_q = np.sqrt(x_p**2 + y_p**2 + (c*11)**2) - c*11
-z_q_err = np.sqrt(((x_p * x_p_err)/(np.sqrt(x_p**2 + y_p**2 + (c*11)**2)))**2 + ((y_p * y_p_err)/(np.sqrt(x_p**2 + y_p**2 + (c*11)**2)))**2  
-                  + (((c**2 * 11)/(np.sqrt(x_p**2 + y_p**2 + (c*11)**2)) - c) * 2)**2 + (((c * 11**2)/(np.sqrt(x_p**2 + y_p**2 + (c*11)**2)) - 11) * c_err)**2)
+z_q = np.sqrt(x_p**2 + y_p**2 + (c*15)**2) - c*15
+z_q_err = np.sqrt(((x_p * x_p_err)/(np.sqrt(x_p**2 + y_p**2 + (c*11)**2)))**2 + ((y_p * y_p_err)/(np.sqrt(x_p**2 + y_p**2 + (c*15)**2)))**2  
+                  + (((c**2 * 15)/(np.sqrt(x_p**2 + y_p**2 + (c*15)**2)) - c) * 2)**2 + (((c * 15**2)/(np.sqrt(x_p**2 + y_p**2 + (c*15)**2)) - 15) * c_err)**2)
 
 print(x_p, y_p, x_p_err, y_p_err)
 print(c_1, c_1_err, c_2, c_2_err)
