@@ -1,0 +1,13 @@
+dir "../data/V428/Charakteristisches Spektrum"
+begin feinstruktur.txt 29.6 31
+    29.9 30.7 2 True Fit1 34 30.24 0.10 15 30.42 0.06 0 0
+end
+
+begin anode-unbekannt.txt
+    11 11.8 1 True Fit1 15000 11.4 0.1 200 0
+    9.6 10.5 1 True Fit2 10000 10.1 0.1 200 0
+    4.5 6 2 True Fit3 20000 5. 0.1 30000 5.7 0.1 1200 0
+    15 15.5 1 True Fit4 10000 15.3 0.1 100 0
+    16.9 17.6 1 True Fit5 10000 17.3 0.1 100 0
+    23.05 23.8 1 True Fit6 1000 23.4 0.1 30 0
+end
