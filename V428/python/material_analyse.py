@@ -3,7 +3,7 @@ import os
 from dataclasses import dataclass
 from typing import Callable, Tuple
 import numpy as np
-from monke import plots, latex
+from monke import plots, latex, functions
 import matplotlib.pyplot as plt
 from file_management import read_file
 import scipy.odr as odr
@@ -13,6 +13,8 @@ mainpath = os.path.dirname(__file__)
 figpath = f"{mainpath}/../protokoll/figs/"
 tabpath = f"{mainpath}/../protokoll/tabellen_figuren/"
 os.chdir(mainpath)
+
+Callibration = Callable[[float], Tuple[float, float]]
 
 
 @dataclass
@@ -189,3 +191,64 @@ def callibrate_energies(fezn: MaAnResult) -> Callable[[float], Tuple[float, floa
     fig.savefig(f"{figpath}kallibrationskurve.pdf", dpi=200)
 
     return callibration_curve
+
+def make_callibration_table(metals: dict[str, MaAnResult], callibration: Callibration) -> None:
+    """Erstelle eine Tabelle, Wo für jedes gemessene Element die Energie peaks
+    mit ihrer Höhe eingetragen sind"""
+    text: str = r"""
+\begin{table}[H]
+    \centering
+    \caption{gemessene Energie und Höhe der charakteristischen Linien verschieder Metalle}
+    \label{tab:tab:energien-charakeristische-linien}
+    \begin{tabular}{c|c|c}
+        Metall & Energie $E/\unit{\kilo\electronvolt}$ & Höhe in Detektionen \\\hline"""
+    
+    for metal in metals:
+        if "Unbekannt" in metal:
+            continue
+        vals: MaAnResult = metals[metal]
+        energies: np.ndarray = callibration(vals.x0[0])
+        #print(functions.error_round(energies[0], energies[1]))
+        detections: np.ndarray = vals.height
+        n: int = len(energies[0])
+        text += f"\\multirow{{{n}}}{{*}}{{{metal.replace(".txt", "")}}}"
+        
+        for index in range(n):
+            energy: Tuple[str] = functions.error_round(energies[0][index]/1000, energies[1][index]/1000)
+            detection: Tuple[str] = functions.error_round(detections[0][index], detections[1][index])
+            text += f" & \\num{{{energy[0]}\\pm {energy[1]}}} & \\num{{{detection[0]}\\pm {detection[1]}}} \\\\"
+        text+= "\\hline\n"
+
+    text += r"""
+    \end{tabular}
+\end{table}"""
+
+    with open(f"{tabpath}charakteristische_linien.tex", "w", encoding="UTF-8") as file:
+        file.write(text)
+        
+def make_callibration_table_for_one(metal: MaAnResult, callibration: Callibration, name: str):
+    """Erstelle eine Tabelle Wo für ein gemessenes Spektrum die Energie peaks
+    mit ihrer Höhe eingetragen sind"""
+    text: str = f"""
+\\begin{{table}}[H]
+    \\centering
+    \\caption{{Energien der charakteristischen Linien von {name.replace(".txt", "")}}}
+    \\label{{tab:label}}
+    \\begin{{tabular}}{{c|c}}
+       Energie $E/\\unit{{\\kilo\\electronvolt}}$ & Höhe in Detektionen \\\\\n\\hline\n"""
+    
+    energies: np.ndarray = callibration(metal.x0[0])
+    detections: np.ndarray = metal.height
+    n: int = len(energies[0])
+        
+    for index in range(n):
+        energy: Tuple[str] = functions.error_round(energies[0][index]/1000, energies[1][index]/1000)
+        detection: Tuple[str] = functions.error_round(detections[0][index], detections[1][index])
+        text += f"\\num{{{energy[0]}\\pm {energy[1]}}} & \\num{{{detection[0]}\\pm {detection[1]}}} \\\\ \n"
+
+    text += r"""
+    \end{tabular}
+\end{table}"""
+
+    with open(f"{tabpath}{name}.tex", "w", encoding="UTF-8") as file:
+        file.write(text)
