@@ -2,7 +2,7 @@ dir "../data/V428/Zerstörungsfreie Materialanalyse"
 begin FeZn.txt 60 150
     72 102 2 True Fit1 230000 82 10 100000 85 23 100 20
     102 121 1 True Fit2 23000 112.4 2.2 2 0.1
-    121 140 1 True Fit3 2000 125 5 5 0.01
+    121 133 1 True Fit3 2000 125 5 5 0.01
     #104 140 2 True Name4 18000 112 8 20000 125 20 5 0.01
 end
 

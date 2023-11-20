@@ -1,15 +1,19 @@
 """Auswertung der Aufgabe 2 (Material Analyse)"""
 import os
+from dataclasses import dataclass
+from typing import Callable, Tuple
 import numpy as np
-from monke import plots
+from monke import plots, latex
 import matplotlib.pyplot as plt
 from file_management import read_file
-from dataclasses import dataclass
+import scipy.odr as odr
 # from scienceplots import scienceplots
 
 mainpath = os.path.dirname(__file__)
 figpath = f"{mainpath}/../protokoll/figs/"
+tabpath = f"{mainpath}/../protokoll/tabellen_figuren/"
 os.chdir(mainpath)
+
 
 @dataclass
 class MaAnResult:
@@ -19,13 +23,16 @@ class MaAnResult:
     m: np.ndarray = None
     n: np.ndarray = None
     a: np.ndarray = None
+    height: np.ndarray = None
     chi_squared: np.ndarray = None
 
 # Zerstörungsfreie Materialanalyse
 
-def main() -> dict[str, MaAnResult]:
+
+def do_fits() -> dict[str, MaAnResult]:
+    """Main Funktion. Liest die Fit Anweisung aus der Datei material-analyse.txt, speichert die 
+    Werte in der Datei material-analyse-ergebnisse.txt und gibt in einem dict() alle Ergebnisse wieder"""
     results: dict[str, MaAnResult] = {}
-    """Main Funktion"""
     zma_file = open("material-analyse-ergebnisse.txt", "w", encoding="UTF-8")
 
     filedata_zm = read_file("material-analyse.txt")
@@ -33,11 +40,11 @@ def main() -> dict[str, MaAnResult]:
         results[file.name] = MaAnResult()
         x0 = [[], []]
         std = [[], []]
-        m = [[] ,[]]
+        m = [[], []]
         n = [[], []]
         a = [[], []]
         chi_squared = []
-        
+
         zma_file.write(f"{file.name}\n")
         error = np.sqrt(file.data[1])
         error_x = [1]*len(file.data[0])
@@ -54,12 +61,12 @@ def main() -> dict[str, MaAnResult]:
             out = file.result[i]
             plot_data.append((out.get_fit_data(out.file_interval.interval, 200),
                               out.file_interval.name))
-            
-            ## in txt datei speichern
+
+            # in txt datei speichern
             zma_file.write(f"   {out.file_interval.name}\n")
             for fit_in_out in out.result:
                 dic = out.result[fit_in_out]
-                
+
                 if "gauss" in fit_in_out:
                     x0[0].append(dic["x0"][0])
                     x0[1].append(dic["x0"][1])
@@ -69,8 +76,10 @@ def main() -> dict[str, MaAnResult]:
                     a[1].append(dic["amplitude"][1])
                     m[0].append(0)
                     m[1].append(0)
+                    n[0].append(0)
+                    n[1].append(0)
                     chi_squared.append(0)
-                                    
+
                     text = f"       {fit_in_out}"
                     text += f" x0 = {out.result[fit_in_out]["x0"]}"
                     text += f" std = {out.result[fit_in_out]["std"]}"
@@ -80,7 +89,9 @@ def main() -> dict[str, MaAnResult]:
                 if "linear" in fit_in_out:
                     m[0][-1] = dic["slope"][0]
                     m[1][-1] = dic["slope"][1]
-                    
+                    n[0][-1] = dic["intercept"][0]
+                    n[1][-1] = dic["intercept"][1]
+
                     text = f"       {fit_in_out}"
                     text += f" n = {out.result[fit_in_out]["intercept"]}"
                     text += f" m = {out.result[fit_in_out]["slope"]}"
@@ -88,22 +99,93 @@ def main() -> dict[str, MaAnResult]:
                     zma_file.write(text)
                 if "chi" in fit_in_out:
                     chi_squared[-1] = dic
-                    
+
                     text = f"   chi_squared = {out.result[fit_in_out]}\n"
                     zma_file.write(text)
             zma_file.write("\n")
-            
+
             results[file.name].x0 = np.array(x0)
             results[file.name].std = np.array(std)
-            results[file.name].a = np.array(a)
+            results[file.name].a = abs(np.array(a))
             results[file.name].m = np.array(m)
             results[file.name].chi_squared = np.array(chi_squared)
             results[file.name].n = np.array(n)
-            
+            results[file.name].height = np.array(np.array([
+                results[file.name].a[0] /
+                (np.sqrt(2*np.pi) * results[file.name].std[0]),
+                results[file.name].a[0] / (np.sqrt(2*np.pi) * results[file.name].std[0]) * np.sqrt(
+                    (results[file.name].a[1]/results[file.name].a[0])**2 + (results[file.name].std[1]/results[file.name].std[0])**2)
+            ]))
+
         for i, j in plot_data:
             ax.plot(*i, label=j)
         plots.legend(ax)
         plt.savefig(f"{figpath}{file.name[:-4]}.pdf", dpi=200)
     zma_file.close()
-    
+
     return results
+
+
+def gauss_fit_table(values: MaAnResult, name: str) -> None:
+    """Erstellt für das Protokoll eine Tabelle der Gauss Fits eines Spektrums"""
+    os.chdir(mainpath)
+    with latex.Texfile(name, tabpath) as file:
+        table: latex.Textable = latex.Textable("Gauss-Anpassungen an das FeZn-Spektrum.", "tab:fezn-gauss-fits",
+                                               caption_above=True)
+        table.add_header(
+            r" Digitaler Kanal $K$",
+             r"Standardabweichung $\sigma$",
+             r"Höhe der Gauß-Kurve $H$",
+             r"$\chi^2$"
+        )
+        table.add_values(
+            (values.x0[0], values.x0[1]),
+            (values.std[0], values.std[1]),
+            (values.height[0], values.height[1]),
+            [round(i, 2) if i != 0 else "-" for i in values.chi_squared]
+        )
+        
+        file.add(table.make_figure())
+
+def callibrate_energies(fezn: MaAnResult) -> Callable[[float], Tuple[float, float]]:
+    """Berechnet aus FeZn Spektrum die Kallibrationskurve und gibt die Kallibrationskurve wieder"""
+    energies = np.array([6403.84, 7057.98, 8638.86, 9572.0])
+
+    # Tabelle mit Kanälen und dazugehörigen Energien
+    with latex.Texfile("kallibration_tabelle", tabpath) as file:
+        table = latex.Textable("Kanäle mit dazugehörigen Energien zur Kallibration der Kanäle",
+                               "tab:callibration", caption_above=True)
+        table.add_header(
+            r" Digitaler Kanal $K$",
+            r"Energie $E / \unit{\electronvolt}$"
+        )
+        table.add_values(
+            (fezn.x0[0], fezn.x0[1]),
+            ["{:.2f}".format(i) for i in energies]
+        )
+        
+        file.add(table.make_figure())
+
+    def linear_model(b, x):
+        return b[0] + x*b[1]
+    model = odr.Model(linear_model)
+    data = odr.RealData(fezn.x0[0], energies, sx=fezn.x0[1])
+    fit = odr.ODR(data, model, beta0=[0, 1])
+    output = fit.run()
+
+    intercept = (output.beta[0], output.sd_beta[0])
+    slope = (output.beta[1], output.sd_beta[1])
+
+    def callibration_curve(x):
+        value = linear_model([intercept[0], slope[0]], x)
+        error = np.sqrt((intercept[1])**2 + (slope[1]*x)**2)
+        return (value, error)
+
+    fig, ax = plt.subplots()
+
+    ax.errorbar(fezn.x0[0], energies, xerr=fezn.x0[1],
+                linestyle="", marker="x", markersize=6)
+    ax.plot(fezn.x0[0], callibration_curve(fezn.x0[0])[0])
+    fig.savefig(f"{figpath}kallibrationskurve.pdf", dpi=200)
+
+    return callibration_curve
