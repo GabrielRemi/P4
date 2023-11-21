@@ -52,10 +52,10 @@ Der Goniometer-Aufbau ist in \cref{fig:aufbau-bragg} gezeigt.
 	\label{fig:aufbau-bragg}
 \end{figure}
 
-\subsection{Untersuchung einer unbekannten Anode}
+\subsection{Untersuchung einer unbekannten Anode}\label{sec:unbekannte_anode}
 \subsubsection{Messung}
-An der Röntgenröhre wird eine unbekannte Anode eingesetzt und mit dem oben beschrieben Aufbau
-das dabei entstehene Röntgenspektrum gemessen. Hierfür wird eine Röhrenhochspannung von \SI{35.0}{\kilo\volt} und
+In das Messgerät wird eine Röntgenröhre mit unbekannter Anode eingesetzt und mit dem oben beschrieben Aufbau
+das dabei entstehende Röntgenspektrum gemessen. Hierfür wird eine Röhrenhochspannung von \SI{35.0}{\kilo\volt} und
 ein Emissionsstrom von \SI{1}{\milli\ampere} eingestellt. Die Messzeit eines Winkelschritts liegt bei
 $\Delta t = \SI{10}{\second}$
 bei einer Winkelschrittweite von $\SI{0.1}{\degree}$. Der Messbereich wird auf \qtyrange{2.}{25.}{\degree} gestellt.
@@ -120,9 +120,10 @@ damit die Messwerte sehr gut.\par
 Aus den Modellierungen lassen sich die Winkel $\vartheta$ der charakteristischen Linien ablesen und daraus mit 
 \cref{eq:bragg} die Größe $n\lambda$. Mit Gaußscher Fehlerfortpflanzung \cite{wiki:fehlerfortpflanzung}
 ist die dazugehörige Unsicherheit mit 
-\begin{equation*}
+\begin{equation}
 	\Delta(n\lambda) = 2d\cos\vartheta\Delta\vartheta
-\end{equation*}
+	\label{eq:bragg_uncertainty}
+\end{equation}
 gegeben. Da Energie und Wellenlänge eines Photons eindeutig miteinander verknüpft sind lässt sich daraus 
 die Energie pro Beugungsordnung bestimmen mit
 \begin{equation}
@@ -135,14 +136,69 @@ Bekannterweise sind hier $h=\SI{6.62606896}{\joule\second}$ und $c=\SI{299 792 4
 
 \input{tabellen_figuren/unbekannte_anode.tex}
 
-An den Wellenlängen in \cref{tab:anode-unbekannt} is zur erkennen, dass die dritte bis einschließlich 
+An den Wellenlängen in \cref{tab:anode-unbekannt} ist zur erkennen, dass die dritte bis einschließlich 
 sechste Wellenlänge jeweils im $2\sigma$-Bereich Vielfache von den ersten beiden Wellenlänge $\SI{49.26\pm 0.06}{\pm}$
-und $\SI{55.63\pm 0.05}{\pm}$ in der zweiten Ordnungen; die dritte Ordnung weißt eine leichte Diskrepanz von 
+und $\SI{55.63\pm 0.05}{\pm}$ in der zweiten Ordnungen; die dritte Ordnung weist eine leichte Diskrepanz von 
 unter \SI{1}{\percent} auf. In der vierten Ordnung ist nur noch die zweite Linie erkennbar. Da bis zur vierten 
-Ordnung Vielfache eines Wellenlängenpaares gefunden werden konnten kann mit großer Sicherheit 
+Ordnung Vielfache eines Wellenlängenpaares gefunden werden konnten, kann mit großer Sicherheit 
 behauptet werden, dass die ersten beiden Wellenlängen zwei Linien des charakteristischen Spektrums 
-der Anode darstellen und alle Weiteren die gleichen Linien höher Beugungsordnungen sind. 
+der Anode darstellen und alle Weiteren die gleichen Linien höher Beugungsordnungen sind.\par
 Es deutet darauf hin, dass die Anode hierbei aus Silber besteht, welches 
-vier Linien $K_\mathrm{\alpha_{4/5}} = \SI{49.3}{\pm}$,  $K_\mathrm{\beta_3}=\SI{55.9}{\pm}$
-und $K_\mathrm{\beta_2}=\SI{56.3}{\pm}$ besitzt, die zur Feinstrukturaufspaltung gehören und 
-deshalb nicht einzeln aufgelöst werden können.
+vier Linien K$_\mathrm{\beta_{4/5}} = \SI{49.3}{\pm}$,  K$_\mathrm{\alpha_3}=\SI{55.9}{\pm}$
+und K$_\mathrm{\alpha_2}=\SI{56.3}{\pm}$ besitzt \cite{nist_xray_database}, die zur Feinstrukturaufspaltung gehören und 
+deshalb nicht einzeln aufgelöst werden können (Die K$_\beta$-Linien gehören zur 
+Hyperfeinstruktur, da auf die erste Nachkommastelle gerundet noch keine 
+Aufspaltung erkennbar ist). Die K$_\beta$-Linie liegt im $1\sigma$-Bereich 
+der Messung und beide K$_\alpha$-Linien liegen nahezu gleich verteilt um den Messwert herum, weshalb 
+höchstwahrscheinlich die Messung den Mittelwert beider Linien gemessen hat.
+
+\subsection{Feinstrukturaufspaltung der K$_\alpha$-Linie von Molybdän}
+Aufgrund der Spin-Bahn-Kopplung zwischen Spin und Bahndrehimpuls eines an einen Atomkern 
+gebundenen Elektrons ist die Bindungsenergie von Bahndrehimpuls und Gesamtdrehimpuls abhängig, was 
+zu einer Aufspaltung der von den Hauptquantenzahl bestimmten Grobstruktur in die Feinstruktur führt
+\cite{Demtröder:829119}. Da die Energiedifferenz dieser Linien jedoch gering ist, sind hohe 
+Auflösungen bei der Messung nötig. Hierfür muss der Aufbau nicht verändert werden, sondern lediglich 
+der Messvorgang. Da nach \cref{eq:bragg_uncertainty} bei höherer Ordnung $n$ die Winkeldifferenz zwischen 
+zwei Linien höher sein muss, wird für die Untersuchung der Feinstruktur die vierte Beugungsordnung gemessen.
+
+\subsubsection{Messung}
+Es wird in das Messgerät eine Röntgenröhre mit einer Molybdän-Anode eingesetzt. Hier wird 
+erneut eine Röhrenhochspannung von \SI{35.0}{\kilo\volt} und
+ein Emissionsstrom von \SI{1}{\milli\ampere} eingestellt. Die Messzeit eines Winkelschritts liegt diesmal
+bei $\Delta t = \SI{120}{\second}$ um präzisere Messergebnisse zu bekommen.
+Bei einer Winkelschrittweite von $\SI{0.1}{\degree}$ wird der Messbereich auf \qtyrange{28.5}{32.}{\degree} gestellt.
+
+\subsubsection{Auswertung}
+
+Die Fehler wurden gleich wie in \cref{sec:unbekannte_anode} gesetzt. In \cref{fig:feinstruktur} ist die 
+Messung der Feinstruktur mit dazugehöriger Anpassung an die Gaußkurven zu sehen. Visuell stimmt die Regressionskurve 
+mit den Messungen überein, was von einem $\chi^2 = 1.96$ bestätigt wird. Auch hier konnten wieder mit 
+\cref{eq:bragg} und \cref{eq:energy_photon} die Wellenlängen und Energien der Linien berechnet werden. 
+Die berechneten Messwerte sind \cref{tab:feinstruktur} zu entnehmen. Wie zu sehen ist, sind die Messwerte 
+auf drei signifikante Stelle identisch, da jedoch die resultierenden Fehler gering sind, liegen die 
+theoretischen Referenzwerte nicht im $3\sigma$-Bereich der Messung. Möglicherweise sind die mit \SI{0.01}{\degree}
+abgeschätzten Fehler zu klein gewählt.\par 
+Das Dublett der Wellenlängen $\lambda_1$ und $\lambda_2$ besitzt einen Abstand von 
+\begin{equation*}
+	\Delta\lambda = \lambda_1 - \lambda_2,\qquad \Delta(\Delta\lambda) = 
+	\sqrt{(\Delta\lambda_1)^2+ (\Delta\lambda)^2},
+\end{equation*}
+was hier einen Abstand von 
+\begin{equation}
+	\Delta\lambda_\mathrm{Exp} = \SI{0.444\pm 0.008}{\pm},\qquad
+	\Delta\lambda_\mathrm{Ref} = \SI{0.428\pm0.004}{\pm}
+\end{equation}
+ergibt und somit der Literaturwert auch hier nicht im $3\sigma$-Bereich der Messung liegt. Damit kann eine 
+systematische Unsicherheit ausgeschlossen werden, weshalb die hier vorhandene Abweichung 
+aus einer nicht berücksichtigten statistischen Unsicherheit entspringen muss. Die Lage des Kristalls 
+kann hierbei die Messung verfälschen. Sind die bestrahlen Ebenen des NaCl-Kristalls nicht 
+genau parallel zum Tisch, so verfälscht dies die Winkelmessung.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\linewidth]{feinstruktur.pdf}
+	\caption{Messung der Feinstruktur der K$_\alpha$-Linie von Molybdän in 4. Beugungsordnung}
+	\label{fig:feinstruktur}
+\end{figure}
+
+\input{tabellen_figuren/feinstruktur_tabelle.tex}
