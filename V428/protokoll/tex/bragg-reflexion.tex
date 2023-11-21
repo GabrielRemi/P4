@@ -1,0 +1,148 @@
+\section{Bragg-Reflexion}\label{sec:bragg}
+Ziel ist es, mit einer Röntgenröhre Röntgenstrahlung zu erzeugen und das entstandene
+Spektrum mithilfe der Bragg-Reflexion messen zu können. Fällt auf einen Kristall ein
+paralleles Lichtbündel, so entsteht am Glanzwinkel $\vartheta$ konstruktive Interferenz.
+Aus \cref{fig:bragg} lässt sich die Bragg-Bedingung für konstruktive Interferenz
+herleiten. Diese lautet
+\begin{equation}
+	n\lambda = 2d\sin\vartheta
+	\label{eq:bragg}
+\end{equation}
+mit der Beugungsordnung $n$, der Wellenlänge $\lambda$ und dem Gitterabstand $d$ \cite{wiki:bragg}.
+
+\subsection{Aufbau}
+Zur Erzeugung des Röntgenlichts wird ein Vollschutzröhrengerät verwendet, welches
+freie Elektronen auf eine Anode beschleunigt und dadurch zu einem Teil ein kontinuierliches
+Spektrum durch Bremsstrahlung entsteht und zum Anderen materialspezifische Linien
+durch den Photoelektrischen Effekt \cite{wiki:roentgenroehre}. Diese Linien werden
+als Charakteristische Röntgenstrahlung bezeichnet.\par
+Mit einem Kollimator von \SI{1}{\mm} Spaltbreite wird ein paralleles Strahlenbündel erzeugt
+und auf einen NaCl-Kristall gerichtet. Dieser ist in einem \SI{5}{\cm} Abstand zum
+Kollimator auf der Halterung eines Goniometers befestigt, deren Neigunsgwinkel relativ zur Strahlung
+eingestellt werden kann (siehe \cref{fig:aufbau-bragg}). Der Neigungswinkel entspricht dem Glanzwinkel $\vartheta$ aus
+\cref{fig:bragg}.
+Für einen Natrium-Chlorid-Kristall ist der doppelte Gitterabstand gegeben mit $2d = \SI{564.02}{\pm}$ \cite{ld_bragg}.
+Um die Strahlung zu messen wird am Goniometer ein Geiger-Müller-Zählrohr mit Kollimator befestigt mit einem
+\SI{6}{\mm} Abstand zur Halterung und mit der Option
+\verb|Coupled| am Experimentiergerät automatisch auf den entsprechenden Messwinkel gedreht.
+Ein Geiger-Müller-Zählrohr ist ein gasgefüllter Kondensator, mit dem Teilchen durch Ionisation des Gases gemessen
+werden können. In dem hier genutzten Betrieb kann durch eine vom Teilchen unabhängige Verstärkung lediglich
+die Anzahl der Teilchen gemessen werden \cite{wermes}, was für diesen Versuch ideal ist, da die Energie
+der Photonen nach \cref{eq:bragg} auf den Glanzwinkel abgebildet wird.\par
+
+Der Goniometer-Aufbau ist in \cref{fig:aufbau-bragg} gezeigt.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\linewidth]{bragg.png}
+	\caption{Veranschaulichung der Bragg-Reflexion. Dargestellt sind zwei parallele Strahlen,
+		die aufgrund der Wegdifferenz nach der Reflexion miteinander interferieren}
+	\label{fig:bragg}
+\end{figure}
+
+\newcommand\ebf[1]{\textbf{(#1)}}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\linewidth]{aufbau-bragg.png}
+	\caption{Aufbau auf dem Goniometer zur Messung des Röntgenspektrums mit einem NaCl-Kristall. \ebf a ist 
+	Der Kollimator, \ebf b die Halterung des Zählrohrs, \ebf c das Kabel zur Verbindung des Zählrohrs mit 
+	dem Computer und \ebf e der Kollimator davor. \ebf d ist die Stange, auf der das Goniometer verschoben
+	werden kann, \ebf f die Halterung des Einkristalls und \ebf g die Schraube, mit der die Halterung 
+	festgeschraubt werden kann.}
+	\label{fig:aufbau-bragg}
+\end{figure}
+
+\subsection{Untersuchung einer unbekannten Anode}
+\subsubsection{Messung}
+An der Röntgenröhre wird eine unbekannte Anode eingesetzt und mit dem oben beschrieben Aufbau
+das dabei entstehene Röntgenspektrum gemessen. Hierfür wird eine Röhrenhochspannung von \SI{35.0}{\kilo\volt} und
+ein Emissionsstrom von \SI{1}{\milli\ampere} eingestellt. Die Messzeit eines Winkelschritts liegt bei
+$\Delta t = \SI{10}{\second}$
+bei einer Winkelschrittweite von $\SI{0.1}{\degree}$. Der Messbereich wird auf \qtyrange{2.}{25.}{\degree} gestellt.
+Somit wird in diesem Bereich vom Zählrohr die Anzahl der auftreffenden Photonen gemessen
+und über das Zeitintervall geteilt, wodurch von dem genutzten Computer-Programm
+\enquote{Röntgengerät} die mittlere Zählrate am dazugehörigen Winkel gespeichert wird. Alle
+aufgenommenen Messwerte stehen in dem Sciebo-Ordner HIER SCIEBO ORDNER
+zur Verfügung.
+
+\subsubsection{Auswertung}
+Das gemessene Spektrum ist in \cref{fig:anode-unbekannt-messung} zu beobachten. Erkennbar ist hierbei
+ein kontinuierliches Spektrum mit Maximum bei etwa \qtyrange{4}{5}{\degree} und einen Abfall gegen 0
+für hohe Winkel. Zusätzlich sei anzumerken, dass bei einer Spannung von \SI{35}{\kilo\volt}
+Licht mit einer minimalen Wellenlänge von \SI{35.4}{\pm} erzeugt werden kann, was einem Glanzwinkel
+von \SI{3.6}{\degree} entspricht. Dies kann mit der Messung bestätigt werden, jedoch ist ein geringer
+Anstieg schon bei etwa \SI{3}{\degree} zu erkennen, wenn ein Hintergrundrauschen von ca. \SI{5}{\per\second}
+angenommen wird. Dass die maximale Energie des Lichts höher ist als erwartet wird ausgeschlossen. 
+Die wahrscheinlichste Fehlerquelle hierfür sind Unsicherheiten durch den Aufbau. 
+Das Strahlenbündel ist mit einer gewissen Unsicherheit nicht vollständig kollimiert und ist 
+dadurch entweder leicht divergent oder konvergent, wodurch Licht einer Wellenlänge sich auf benachbarte
+Winkel verteilt. Der Aufbau bestimmt somit auch maßgeblich die Breite der charakteristischen Linien, 
+die in der Messung herausstechen.\par 
+Als Winkelunsicherheit wird $\Delta\beta = \SI{0.01}{\degree}$ gewählt, da das Goniometer zweimal hintereinander 
+kallibriert worden ist und dies die Unsicherheit dieser Kallibration darstellt. Da es sich hierbei um 
+einen diskreten Messvorgang von unabhängigen Zählvorgängen handelt, sind die gemessenen Photonenzahlen 
+poisson-verteilt und besitzen die Unsicherheit $\Delta N = \sqrt{N}$. Für die mittlere Rate $n = N/t$ ergibt sich damit 
+eine Unsicherheit von 
+\begin{equation}
+	\Delta n = \sqrt{\frac{n}{t}}.
+	\label{eq:poisson_error}
+\end{equation}\\\par
+Die gemessenen Linien können mit einer Gauß-Funktion beschrieben werden:
+\begin{equation}
+	f(x,x_0,\sigma) = \frac{1}{\sqrt{2\pi}\sigma}\exp\qty(-\frac{(x-x_0)^2}{2\sigma^2}).
+	\label{eq:gauss}
+\end{equation}
+Es muss jedoch beachtet werden, dass zum einen durch das kontinuierliche Spektrum und dem Rauschen 
+ein Zusätzlicher Offset mitberücksichtigt werden muss. Dieser Offset kann in einem Bereich um 
+die Gauß-Kurve linear angenähert werden mit $g(x) = mx + n$. Einige Linien hier und in weiteren Messungen sind so nah beieinander, 
+dass mehrere Gauß-Kurven als Summe betrachtet werden müssen. Im Allgemeinen lässt sich also in einem 
+gewählten Intervall eine Funktion der Form 
+\begin{equation*}
+	f(x) = \sum_{k=1}^N A_kf(x,x_{0,k}, \sigma_k) + g(x)
+\end{equation*}
+finden, die den Verlauf der mittleren Zählrate angemessen beschreiben kann. Die Regression wurde hier und im weiteren 
+Verlauf mit dem Python 
+Modul \verb|odr| des Pakets \verb|scipy| auf sinnvoll 
+gewählten Intervallen durchgeführt. Dabei wird die Güte der Anpassungen mit dem $\chi^2$ beurteilt, 
+wobei mit $\chi^2$ im Folgenden eigentlich das Chi-Quadrat geteilt durch die Freiheitsgrade gemeint ist 
+\cite{wiki:reduced_chi_square}. Wie in der Legende von \cref{fig:anode-unbekannt-messung} zu sehen befindet 
+sich das Chi-Quadrat für alle sechs Regressionen im Bereich von \num{0.83} bis \num{5.53} und modellieren 
+damit die Messwerte sehr gut.\par
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\linewidth]{anode-unbekannt.pdf}
+	\caption{Messung des Röntgenspektrums einer unbekannten Anode. Die hier eingezeichneten Fehler sind zu klein um
+	sichtbar zu sein.}
+	\label{fig:anode-unbekannt-messung}
+\end{figure}
+
+Aus den Modellierungen lassen sich die Winkel $\vartheta$ der charakteristischen Linien ablesen und daraus mit 
+\cref{eq:bragg} die Größe $n\lambda$. Mit Gaußscher Fehlerfortpflanzung \cite{wiki:fehlerfortpflanzung}
+ist die dazugehörige Unsicherheit mit 
+\begin{equation*}
+	\Delta(n\lambda) = 2d\cos\vartheta\Delta\vartheta
+\end{equation*}
+gegeben. Da Energie und Wellenlänge eines Photons eindeutig miteinander verknüpft sind lässt sich daraus 
+die Energie pro Beugungsordnung bestimmen mit
+\begin{equation}
+	\frac{E}{n} = \frac{hc}{\lambda}, \qquad \Delta\qty(\frac{E}{n}) = \frac{E}{n}\frac{\Delta\lambda}{\lambda}.
+	\label{eq:energy_photon}
+\end{equation}
+
+Bekannterweise sind hier $h=\SI{6.62606896}{\joule\second}$ und $c=\SI{299 792 458}{\meter\per\second}$ 
+\cite{Demtröder:829119}.
+
+\input{tabellen_figuren/unbekannte_anode.tex}
+
+An den Wellenlängen in \cref{tab:anode-unbekannt} is zur erkennen, dass die dritte bis einschließlich 
+sechste Wellenlänge jeweils im $2\sigma$-Bereich Vielfache von den ersten beiden Wellenlänge $\SI{49.26\pm 0.06}{\pm}$
+und $\SI{55.63\pm 0.05}{\pm}$ in der zweiten Ordnungen; die dritte Ordnung weißt eine leichte Diskrepanz von 
+unter \SI{1}{\percent} auf. In der vierten Ordnung ist nur noch die zweite Linie erkennbar. Da bis zur vierten 
+Ordnung Vielfache eines Wellenlängenpaares gefunden werden konnten kann mit großer Sicherheit 
+behauptet werden, dass die ersten beiden Wellenlängen zwei Linien des charakteristischen Spektrums 
+der Anode darstellen und alle Weiteren die gleichen Linien höher Beugungsordnungen sind. 
+Es deutet darauf hin, dass die Anode hierbei aus Silber besteht, welches 
+vier Linien $K_\mathrm{\alpha_{4/5}} = \SI{49.3}{\pm}$,  $K_\mathrm{\beta_3}=\SI{55.9}{\pm}$
+und $K_\mathrm{\beta_2}=\SI{56.3}{\pm}$ besitzt, die zur Feinstrukturaufspaltung gehören und 
+deshalb nicht einzeln aufgelöst werden können.
