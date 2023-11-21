@@ -15,12 +15,33 @@ erzeugt. Der Versuchsaufbau zur Laue-Aufnahme ist in \cref{fig:aufbau_laue} darg
 und Sensorarm entfernt, sodass eine Experimentierschiene mittig vor die Kollimatoraufnahme platziert werden kann. In die Kollimatoraufnahme wird der Kollimator
 mit \SI{1}{\milli \meter} Spaltbreite eingesetzt. Der verwendete NaCl-Kristall ist bereits auf einer Lochblende befestigt, welche deshalb sofort auf den Kollimator aufgesetzt
 werden kann. Für die Laue-Aufnahme wird ein \textit{AGFA Dentus M2 Comfort} Röntgenfilm verwendet, welcher möglichst mittig auf der markierten Fläche
-des Filmhalters festgeklemmt wird. Dabei muss darauf geachtet werden, dass der Film möglichst plan über seine gesamte Fläche aufliegt. Anschließend wird der Filmhalter
-auf der Experimentierschiene platziert und verschoben, sodass zwischen NaCl-Kristall und Film ein Abstand von \SI{15(1)}{\milli \meter} (hier gibt es eine relativ große Unsicherheit,
+des Filmhalters festgeklemmt wird. Dabei muss darauf geachtet werden, dass der Film möglichst plan über seine gesamte Fläche aufliegt. Außerdem muss die weiße Seite des
+Films zur Röntgenröhre zeigen. Anschließend wird der Filmhalter auf der Experimentierschiene platziert und verschoben, sodass zwischen NaCl-Kristall und Film ein Abstand von \SI{15(2)}{\milli \meter} (hier gibt es eine relativ große Unsicherheit,
 da die Einstellung nicht allzu exakt vorgenommen werden konnte) eingestellt wird.\par
 An dem Vollschutzröntgengerät wird eine Röhrenhochspannung von $U = \SI{35,0}{\kilo \volt}$ und ein Emissionsstrom von $I = \SI{1,0}{\milli \ampere}$ eingestellt.
 Die Winkeländerung des Goniometers wird auf $\Delta \beta = \SI{0,0}{\degree}$ eingestellt. Schließlich wird die Messzeit auf $\Delta t = \SI{1800}{\second}$ eingestellt.
 \subsection{Messung}\label{subsec:laue_messung}
+Mithilfe des Tasters \texttt{SCAN} auf dem Vollschutzröntgengerät kann die Belichtungsuhr gestartet werden. Nach Ablauf der Belichtungszeit wird der Röntgenfilm entnommen
+und kann dann mithilfe der beiliegenden Entwicklungsausrüstung entwickelt werden. Der lichtdicht in eine Kunststoffhülle eingeschweißte Röntgenfilm kann nun
+in einer Tageslicht-Entwicklerdose entwickelt werden. Das Öffnen der Kunststoffhülle und Einlegen des Röntgenfilms in die Tageslicht-Entwicklerdose erfolgt
+in einem lichtdichten Wechselsack. Die gesamte Entwicklung wird nun exakt wie in der beigelegten Gebrauchsanweisung durchgeführt, welche in \cite{film_anleitung} hinterlegt ist.\par
+Der fertig entwickelte Röntgenfilm kann dann eingescannt (schwarz-weiß) werden, was zur weiteren Auswertung dient. Die beiden eingescannten Seiten des Röntgenfilms sind
+in \cref{fig:eingescannter_film} dargestellt. Es ist zu erkennen, dass sich auf dem fertig entwickelten Röntgenfilm ein relativ großer Fleck befindet, dessen Auftreten später
+diskutiert wird. Allerdings wird für die Auswertung nur die Seite des Röntgenfilms verwendet, bei der die Reflexe (kleine schwarze Flecken) trotz des Flecks bestmöglich erkannt werden können (siehe \cref{fig:eingescannter_film}, links).
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/hochauflösend_1_edit}
+        \caption{}\label{fig:links}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/hochauflösend_2_edit}
+        \caption{}
+    \end{subfigure}
+    \caption{Entwickelter Röntgenfilm zur weiteren Auswertung.}\label{fig:eingescannter_film}
+\end{figure} Abschließend werden noch die Abmessungen des Röntgenfilms bestimmt, da dies für die Auswertung benötigt wird. Der Röntgenfilm ist \SI{57(1)}{\milli \meter} breit und \SI{76(1)}{\milli \meter} hoch.
 \subsection{Auswertung}\label{subsec:laue_auswertung}
 %\begin{table}[H]
 %    \centering
@@ -82,32 +103,126 @@ Die Winkeländerung des Goniometers wird auf $\Delta \beta = \SI{0,0}{\degree}$ 
 %        F08 &  834 & 2309 & -728 &  460 & 520 & 50 & $(\bar{3}22)$                
 %    \end{tabular}\label{tab:miller}
 %\end{table}\newpage
+Bevor der fertig entwickelte Röntgenfilm systematisch analysiert wird, werden einige Beobachtungen diskutiert, welche in \cref{fig:eingescannter_film} festgestellt werden können.
+Zunächst ist auf dem Röntgenfilm ein großer Fleck zu erkennen. Auf der einen Seite des Röntgenfilms ist dieser Fleck sogar so intensiv, dass einige der Reflexe nicht mehr erkannt werden können.
+Glücklicherweise ist dieser Fleck auf der anderen Seite des Röntgenfilms etwas weniger intensiv, sodass hier alle wichtigen Reflexe erkannt werden können. Das
+Zustandekommen des Flecks lässt sich nicht eindeutig begründen, allerdings besteht die Vermutung, dass der Röntgenfilm bei der Entwicklung nicht optimal in der
+Tageslicht-Entwicklerdose befestigt war, sodass die Entwickler- und Fixier-Lösung (siehe \cite{film_anleitung}) nicht den gesamten Röntgenfilm getroffen hat. Eventuell wurde
+bei der Entwicklung auch das Schwenken der Tageslicht-Entwicklerdose zu sanft gehandhabt, weshalb nicht der gesamte Film gleichmäßig von der Entwickler- und Fixier-Lösung
+getroffen wurde. Ein weiterer möglicher Grund für das Entstehen des Flecks ist, dass etwas Licht im Experimentierraum auf den Röntgenfilm getroffen ist, bevor dieser
+fertig entwickelt war. Dies ist jedoch unwahrscheinlich, da das Entfernen des Röntgenfilms aus der Kunststoffhülle und das Einbringen in die Tageslicht-Entwicklerdose
+mit größter Vorsicht und nach Anleitung vorgenommen wurde.\par
+Außerdem ist in \cref{fig:eingescannter_film} zu erkennen, dass viele der Reflexe leicht verschmiert sind. Die Reflexe sind die beobachteten dunklen Stellen, welche durch das
+Auftreffen von Röntgenstrahlung auf den Röntgenfilm verursacht werden. Auch für das Verschmieren der Reflexe können die Ursachen vielfältig sein, wie z.B.
+dass der Abstand zwischen Röntgenfilm und NaCl-Kristall nicht optimal eingestellt war. Hier war eine exakte Einstellung schwierig, da der verwendete Längen-Maßstab
+nicht passend zwischen Röntgenfilm und NaCl-Kristall gehalten werden konnte. Um diese Fehlerquelle bei der Auswertung zu berücksichtigen, wird die Unsicherheit
+für den gemessenen Abstand $L = \SI{15}{\milli \meter}$ grob auf $\Delta L = \SI{2}{\milli \meter}$ abgeschätzt. Außerdem ist es möglich, dass der untersuchte NaCl-Kristall mittlerweile einige Verunreinigungen
+aufweist, wobei dies nur eine Vermutung ist, die nicht anderweitig nachgewiesen werden kann.\par
+Zudem fällt auf, dass das entstandene Bild auf dem Röntgenfilm leicht gewölbt ist. Der größte Beitrag dafür kann darauf zurückgeführt werden, dass der Röntgenfilm
+nicht über seine gesamte Fläche plan auf der markierten Fläche des Filmhalters auflag. Schließlich ist auch zu erkennen, dass die Symmetrieachsen des entstandenen Reflex-Musters
+nicht mit den Spiegelachsen des Röntgenfilms zusammenfallen. Diese Drehung kommt wahrscheinlich dadurch zustande, dass die Lochblende mit dem aufgesetzten NaCl-Kristall nicht so gedreht wurde,
+dass die Außenkanten des Kristalls möglichst genau horizontal bzw. vertikal verlaufen. Beide diese Fehler hätten durch eine präzisere Justierung leicht vermieden werden können. Jedoch spielt dies für die
+weitere Auswertung nur eine untergeordnete Rolle, da sich die Reflexe dennoch gut auswerten lassen.\\ \par
+Das Ziel ist nun die Zuordnung der für die Streuung verursachenden Netzebenenschar zu einem auf dem Röntgenfilm beobachteten Reflex. Ein Großteil der Röntgenstrahlung
+durchläuft den NaCl-Kristall ohne Streuung, wodurch der mittige große schwarze Fleck auf dem Röntgenfilm verursacht wird. Zudem wird ein Teil der Röntgenstrahlung
+an den Gitterebenen des NaCl-Kristalls gestreut. In eine bestimmte Richtung kommt es nur dann zu konstruktiver Interferenz der an einer Netzebenenschar reflektierten
+Röntgenstrahlung, wenn die Laue-Bedingung erfüllt ist, also die Änderung des Wellenvektors einem reziproken Gittervektor entspricht. Dies führt dann zu einem
+Reflex auf dem Röntgenfilm. Weitere Informationen zu der Laue-Bedingung sind in \cite{kristalle} zu finden.\par
+Die Symmetrie des Musters in \cref{fig:eingescannter_film} lässt sich auf die kubische Symmetrie der Elementarzellen des NaCl-Kristalls zurückführen (siehe \cref{fig:elementarzelle_nacl}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/elementarzelle_nacl.png}
+	\caption{Elementarzelle des NaCl-Kristalls \cite{laue_handblatt}.}
+	\label{fig:elementarzelle_nacl}
+\end{figure}
+Um nun einem auf dem Röntgenfilm beobachteten Reflex die für die Streuung verantwortliche Netzebenenschar zuzuordnen, wird das Koordinatensystem wie in \cref{fig:skizze}
+gewählt. Eine Netzebenenschar setzt sich aus zueinander parallel liegenden Netzebenen im Kristall zusammen, die den Netzebenenabstand $d_{\mathrm{hkl}}$ voneinander haben.
+Die Orientierung einer solchen Netzebenenschar wird durch die Millerschen Indizes $(hkl)$ beschrieben, da der Vektor $(h,k,l)$, welcher durch die
+Millerschen Indizes gebildet wird, als Normalenvektor senkrecht auf der Netzebenenschar steht. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/skizze.png}
+	\caption{Geometrische Beschreibung eines im Punk $K$ des Kristalls gebeugten Röntgenstrahls, der die Filmebene im Punkt $P$ durchdringt \cite{laue_handblatt}.}
+	\label{fig:skizze}
+\end{figure} In \cref{fig:skizze} wird das Koordinatensystem so gewählt, dass sein Ursprung dem Aufpunkt des einfallenden Röntgenstrahls auf dem
+Röntgenfilm entspricht. Der Röntgenfilm steht senkrecht zum Strahl, d.h. er liegt in der $x$-$y$-Ebene. Der Röntgenstrahl durchdringt den flachen Kristall im Punkt $K$.
+Der ungebeugte Anteil der Röntgenstrahlung trifft im Ursprung auf den Röntgenfilm und der Anteil der Röntgenstrahlung, der in $K$ gestreut wird und die Laue-Bedingung
+erfüllt, verlässt den Kristall unter dem Winkel $2\theta$ zur Primärstrahlung und trifft im Punkt $P = (x_{\mathrm{P}}, y_{\mathrm{P}}, 0)$ auf den Röntgenfilm. Hier ist
+$\theta$ der Glanzwinkel. Der Abstand zwischen Kristall und Röntgenfilm sei $L$. Die Winkelhalbierende des Winkels $2\theta$ gibt die Richtung der Netzebenenschar $(hkl)$ an,
+die den Reflex verursacht. Es wird ein weiterer Punkt $Q = (x_{\mathrm{P}}, y_{\mathrm{P}}, z_{\mathrm{Q}})$ zur geometrischen Konstruktion eingeführt.
+In \cite{laue_handblatt} wird gezeigt, dass
+\begin{equation}\label{eq:koordinate}
+    z_{\mathrm{Q}} = \sqrt{x_{\mathrm{P}}^2 + y_{\mathrm{P}}^2 + L^2} - L
+\end{equation} gilt. Die Millerschen Indizes erfüllen dann die Bedingung
+\begin{equation}\label{eq:indizes}
+    h:k:l = x_{\mathrm{P}}:y_{\mathrm{P}}:z_{\mathrm{Q}} . 
+\end{equation} Somit kann \cref{eq:indizes} zur Bestimmung der Millerschen Indizes verwendet werden. Diese sind daher kleinste ganzzahlige Zahlentripel.
+Aus ihnen können alle Parameter der den Reflex verursachenden Beugung berechnet werden. In \cite{laue_handblatt} wird außerdem gezeigt, dass für Kristalle mit
+NaCl-Struktur die Amplituden der von den Elementarzellen ausgehenden Wellen nur dann von Null verschieden sind, wenn alle Indizes $h$, $k$ und $l$ gerade und oder alle ungerade sind.
+Dies wird später für die Bestimmung der Millerschen Indizes wichtig.\\ \par
+Um den eingescannten Röntgenfilm auszuwerten, wird das Bildbearbeitungs-Programm \texttt{paint.net} verwendet. Zunächst wird das linke Bild des Röntgenfilms aus
+\cref{fig:eingescannter_film} so gedreht, dass die Symmetrieachsen des Musters bestmöglich mit der Wahl der Koordinatensystems zusammenpassen. Dann wird an jeden ausreichend
+erkennbaren Reflex eine Ellipse angepasst, sodass später die Koordinaten $x_{\mathrm{P}}$ und $y_{\mathrm{P}}$ eines Reflexes als Mittelpunkt einer solchen Ellipse identifiziert
+werden können. Die Anpassung kann aufgrund der leichten Verschmierung der Reflexe nur mit einer gewissen Genauigkeit zugeordnet werden, was später in
+der Ableseunsicherheit für die Mittelpunkte berücksichtigt wird. Für die Ellipsen werden unterschiedliche Farben gewählt, sodass das Muster der Reflexe
+besser erkannt werden kann. Die Wahl der Farben hat hier keine physikalische Bedeutung und ist willkürlich. In dem Programm können dann die Pixelkoordinaten
+des Ursprungs und der Mittelpunkte der an die Reflexe angepassten Ellipsen abgelesen werden. Die Darstellung des Röntgenfilms wird so gewählt, dass die in der
+Informatik übliche Konvention für Pixelkoordinaten ($x$-Achse nach rechts, $y$-Achse nach unten) mit dem in \cref{fig:skizze} gewählten Koordinatensystem übereinstimmt.
+Die fertig erstellte Grafik ist in \cref{fig:reflexe} zu sehen. Für das Ablesen der Pixelkoordinaten wird eine Unsicherheit von \SI{10}{\px} gewählt, da die Ellipsen
+bei fast allen Reflexen mit der gleichen Genauigkeit angepasst werden konnten und somit für das Ablesen der Mittelpunkte die gleiche Unsicherheit besteht.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../figs/reflexe.png}
+	\caption{Graphische Bearbeitung des Röntgenfilms zur Auswertung der Reflexe und Bestimmung der Millerschen Indizes.}
+	\label{fig:reflexe}
+\end{figure} Die Pixelkoordinaten des Ursprungs werden zu $x_{\mathrm{O}}' = \SI{1562(10)}{\px}$ und $y_{\mathrm{O}}' = \SI{1849(10)}{\px}$ abgelesen. Analog werden
+die Pixelkoordinaten der Reflexe $x_{\mathrm{P}}'$ und $y_{\mathrm{P}}'$ abgelesen. Die Pixelkoordinaten für das gewählte Koordinatensystem ergeben sich dann durch
+\begin{equation*}
+    x_{\mathrm{P}} = x_{\mathrm{P}}' - x_{\mathrm{O}}' , \quad y_{\mathrm{P}} = y_{\mathrm{P}}' - y_{\mathrm{O}}'
+\end{equation*} mit den Unsicherheiten
+\begin{equation*}
+    \Delta x_{\mathrm{P}} = \sqrt{(\Delta x_{\mathrm{P}}')^2 + (\Delta x_{\mathrm{O}}')^2} , \quad \Delta y_{\mathrm{P}} = \sqrt{(\Delta y_{\mathrm{P}}')^2 + (\Delta y_{\mathrm{O}}')^2} .
+\end{equation*} Nun kann die Koordinate $z_{\mathrm{Q}}$ in px analog zu \cref{eq:koordinate} gemäß
+\begin{equation*}
+    z_{\mathrm{Q}} = \sqrt{x_{\mathrm{P}}^2 + y_{\mathrm{P}}^2 + (c L)^2} - c L
+\end{equation*} berechnet werden, wobei mit dem Faktor $c$ die Länge $L$ von \unit{\milli \meter} in px umgerechnet wird. Die (quadrierte) Unsicherheit ist durch
+\begin{align*}
+    (\Delta z_{\mathrm{Q}})^2 &= \left(\frac{x_{\mathrm{P}} \Delta x_{\mathrm{P}}}{\sqrt{x_{\mathrm{P}}^2 + y_{\mathrm{P}}^2 + (c L)^2}}\right)^2
+                                +\left(\frac{y_{\mathrm{P}} \Delta y_{\mathrm{P}}}{\sqrt{x_{\mathrm{P}}^2 + y_{\mathrm{P}}^2 + (c L)^2}}\right)^2 \\
+                              &\quad+ \left(\left[\frac{c^2 L}{\sqrt{x_{\mathrm{P}}^2 + y_{\mathrm{P}}^2 + (c L)^2}} - c\right] \Delta L\right)^2
+                                +\left(\left[\frac{c L^2}{\sqrt{x_{\mathrm{P}}^2 + y_{\mathrm{P}}^2 + (c L)^2}} - L\right] \Delta c\right)^2
+\end{align*} gegeben. Der Umrechnungsfaktor $c$ wird als fehlergewichteter Mittelwert aus $c_1$ und $c_2$ gemäß
+\begin{equation*}
+    c = \frac{\frac{c_1}{(\Delta c_1)^2} + \frac{c_2}{(\Delta c_2)^2}}{\frac{1}{(\Delta c_1)^2} + \frac{1}{(\Delta c_2)^2}} , \quad
+    \Delta c = \frac{1}{\sqrt{\frac{1}{(\Delta c_1)^2} + \frac{1}{(\Delta c_2)^2}}}
+\end{equation*} berechnet, wobei $c_1$ und $c_2$ die entsprechenden Umrechnungsfaktoren für Breite und Höhe des Röntgenfilms von \unit{\milli \meter} in px sind.
+Beide dieser Umrechnungsfaktoren berechnen sich gemäß
 \begin{table}[H]
     \centering
     \caption{Miller-Indizes}
     \begin{tabular}{c|c|c|c|c|c|c|c}
-        Punkt & $x_{\mathrm{P}}'$ / p & $y_{\mathrm{P}}'$ / p & $x_{\mathrm{P}}$ / p & $y_{\mathrm{P}}$ / p & $z_{\mathrm{Q}}$ / p & $\Delta z_{\mathrm{Q}}$ / p & $(hkl)$ \\
+        Punkt & $x_{\mathrm{P}}'$ / px & $y_{\mathrm{P}}'$ / px & $x_{\mathrm{P}}$ / px & $y_{\mathrm{P}}$ / px & $z_{\mathrm{Q}}$ / px & $\Delta z_{\mathrm{Q}}$ / px & $(hkl)$ \\
         \hline
-        A01 & $1289$ & $1665$ & $-273$ & $-184$ & $ 81$ & $13$ & $(\bar{3}\bar{2}1)$ \\
+        A01 & $1289$ & $1665$ & $-273$ & $-184$ & $ 81$ & $13$ & $(\bar{6}\bar{4}2)$ \\
         A02 & $1364$ & $1660$ & $-198$ & $-189$ & $ 57$ & $10$ & $(\bar{3}\bar{3}1)$ \\
-        A03 & $1360$ & $1589$ & $-202$ & $-260$ & $ 81$ & $13$ & $(\bar{2}\bar{3}1)$ \\
-        A04 & $1739$ & $1538$ & $ 177$ & $-311$ & $ 95$ & $14$ & $(2\bar{3}1)$ \\
+        A03 & $1360$ & $1589$ & $-202$ & $-260$ & $ 81$ & $13$ & $(\bar{4}\bar{6}2)$ \\
+        A04 & $1739$ & $1538$ & $ 177$ & $-311$ & $ 95$ & $14$ & $(4\bar{6}2)$ \\
         A05 & $1762$ & $1623$ & $ 200$ & $-226$ & $ 69$ & $11$ & $(3\bar{3}1)$ \\
-        A06 & $1862$ & $1623$ & $ 300$ & $-226$ & $104$ & $15$ & $(3\bar{2}1)$ \\
-        A07 & $1875$ & $2058$ & $ 313$ & $ 209$ & $104$ & $15$ & $(321)$ \\
+        A06 & $1862$ & $1623$ & $ 300$ & $-226$ & $104$ & $15$ & $(6\bar{4}2)$ \\
+        A07 & $1875$ & $2058$ & $ 313$ & $ 209$ & $104$ & $15$ & $(642)$ \\
         A08 & $1776$ & $2072$ & $ 214$ & $ 223$ & $ 72$ & $12$ & $(331)$ \\
-        A09 & $1762$ & $2158$ & $ 200$ & $ 309$ & $100$ & $14$ & $(231)$ \\
-        A10 & $1363$ & $2121$ & $-199$ & $ 272$ & $ 85$ & $13$ & $(\bar{2}31)$ \\
+        A09 & $1762$ & $2158$ & $ 200$ & $ 309$ & $100$ & $14$ & $(462)$ \\
+        A10 & $1363$ & $2121$ & $-199$ & $ 272$ & $ 85$ & $13$ & $(\bar{4}62)$ \\
         A11 & $1363$ & $2030$ & $-199$ & $ 181$ & $ 55$ & $10$ & $(\bar{3}31)$ \\
-        A12 & $1283$ & $2018$ & $-279$ & $ 169$ & $ 80$ & $13$ & $(\bar{3}21)$ \\
-        B01 & $1507$ & $1638$ & $ -55$ & $-211$ & $ 37$ & $ 7$ & $(\bar{1}\bar{6}1)$ \\
-        B02 & $1579$ & $1623$ & $  17$ & $-226$ & $ 40$ & $ 7$ & $(1\bar{6}1)$ \\
-        B03 & $1807$ & $1793$ & $ 245$ & $ -56$ & $ 48$ & $10$ & $(6\bar{1}1)$ \\
-        B04 & $1810$ & $1908$ & $ 248$ & $  59$ & $ 50$ & $10$ & $(611)$ \\
-        B05 & $1597$ & $2086$ & $  35$ & $ 237$ & $ 44$ & $ 8$ & $(161)$ \\
-        B06 & $1507$ & $2075$ & $ -55$ & $ 226$ & $ 42$ & $ 8$ & $(\bar{1}61)$ \\
-        B07 & $1360$ & $1884$ & $-202$ & $  35$ & $ 33$ & $ 8$ & $(\bar{6}11)$ \\
-        B08 & $1362$ & $1803$ & $-200$ & $ -46$ & $ 33$ & $ 8$ & $(\bar{6}\bar{1}1)$ \\
+        A12 & $1283$ & $2018$ & $-279$ & $ 169$ & $ 80$ & $13$ & $(\bar{6}42)$ \\
+        B01 & $1507$ & $1638$ & $ -55$ & $-211$ & $ 37$ & $ 7$ & $(\bar{2}(\bar{12})2)$ \\
+        B02 & $1579$ & $1623$ & $  17$ & $-226$ & $ 40$ & $ 7$ & $(2(\bar{12})2)$ \\
+        B03 & $1807$ & $1793$ & $ 245$ & $ -56$ & $ 48$ & $10$ & $((12)\bar{2}2)$ \\
+        B04 & $1810$ & $1908$ & $ 248$ & $  59$ & $ 50$ & $10$ & $((12)22)$ \\
+        B05 & $1597$ & $2086$ & $  35$ & $ 237$ & $ 44$ & $ 8$ & $(2(12)2)$ \\
+        B06 & $1507$ & $2075$ & $ -55$ & $ 226$ & $ 42$ & $ 8$ & $(\bar{2}(12)2)$ \\
+        B07 & $1360$ & $1884$ & $-202$ & $  35$ & $ 33$ & $ 8$ & $((\bar{12})22)$ \\
+        B08 & $1362$ & $1803$ & $-200$ & $ -46$ & $ 33$ & $ 8$ & $((\bar{12})\bar{2}2)$ \\
         C01 & $1414$ & $1482$ & $-148$ & $-367$ & $114$ & $16$ & $(\bar{1}\bar{3}1)$ \\
         C02 & $1535$ & $1416$ & $ -27$ & $-433$ & $135$ & $17$ & $(0\bar{3}1)$ \\
         C03 & $1672$ & $1450$ & $ 110$ & $-399$ & $124$ & $16$ & $(1\bar{3}1)$ \\
@@ -120,25 +235,25 @@ Die Winkeländerung des Goniometers wird auf $\Delta \beta = \SI{0,0}{\degree}$ 
         C10 & $1200$ & $1958$ & $-362$ & $ 109$ & $105$ & $15$ & $(\bar{3}11)$ \\
         C11 & $1161$ & $1843$ & $-401$ & $  -6$ & $117$ & $17$ & $(\bar{3}01)$ \\
         C12 & $1205$ & $1730$ & $-357$ & $-119$ & $104$ & $15$ & $(\bar{3}\bar{1}1)$ \\
-        D01 & $1236$ & $1543$ & $-326$ & $-306$ & $143$ & $19$ & $(\bar{2}\bar{2}1)$ \\
-        D02 & $1891$ & $1478$ & $ 329$ & $-371$ & $172$ & $21$ & $(2\bar{2}1)$ \\
-        D03 & $1913$ & $2205$ & $ 351$ & $ 356$ & $175$ & $21$ & $(221)$ \\
-        D04 & $1236$ & $2152$ & $-326$ & $ 303$ & $142$ & $18$ & $(\bar{2}21)$ \\
-        E01 & $1025$ & $1585$ & $-357$ & $-264$ & $141$ & $18$ & $(\bar{2}\bar{1}1)$ \\
-        E02 & $1262$ & $1302$ & $-300$ & $-547$ & $257$ & $27$ & $(\bar{1}\bar{2}1)$ \\
-        E03 & $1830$ & $1239$ & $ 268$ & $-610$ & $288$ & $29$ & $(1\bar{2}1)$ \\
-        E04 & $2175$ & $1516$ & $ 613$ & $-333$ & $310$ & $30$ & $(2\bar{1}1)$ \\
-        E05 & $2204$ & $2169$ & $ 642$ & $ 320$ & $330$ & $30$ & $(211)$ \\
-        E06 & $1859$ & $2462$ & $ 297$ & $ 613$ & $300$ & $30$ & $(121)$ \\
-        E07 & $1262$ & $2402$ & $-300$ & $ 553$ & $261$ & $27$ & $(\bar{1}21)$ \\
-        E08 & $1017$ & $2104$ & $-545$ & $ 255$ & $242$ & $26$ & $(\bar{2}11)$ \\
-        F01 & $ 850$ & $1390$ & $-712$ & $-459$ & $430$ & $40$ & $(\bar{3}\bar{2}2)$ \\
-        F02 & $1057$ & $1147$ & $-505$ & $-702$ & $440$ & $40$ & $(\bar{2}\bar{3}2)$ \\
-        F03 & $2069$ & $1016$ & $ 507$ & $-833$ & $530$ & $50$ & $(2\bar{3}2)$ \\
-        F04 & $2388$ & $1260$ & $ 826$ & $-589$ & $570$ & $50$ & $(3\bar{2}2)$ \\
-        F05 & $2430$ & $2431$ & $ 868$ & $ 582$ & $590$ & $50$ & $(322)$ \\
-        F06 & $2115$ & $2684$ & $ 553$ & $ 835$ & $550$ & $50$ & $(232)$ \\
-        F07 & $1048$ & $2583$ & $-514$ & $ 734$ & $470$ & $40$ & $(\bar{2}32)$ \\
-        F08 & $ 834$ & $2309$ & $-728$ & $ 460$ & $440$ & $40$ & $(\bar{3}22)$                
+        D01 & $1236$ & $1543$ & $-326$ & $-306$ & $143$ & $19$ & $(\bar{4}\bar{4}2)$ \\
+        D02 & $1891$ & $1478$ & $ 329$ & $-371$ & $172$ & $21$ & $(4\bar{4}2)$ \\
+        D03 & $1913$ & $2205$ & $ 351$ & $ 356$ & $175$ & $21$ & $(442)$ \\
+        D04 & $1236$ & $2152$ & $-326$ & $ 303$ & $142$ & $18$ & $(\bar{4}42)$ \\
+        E01 & $1025$ & $1585$ & $-357$ & $-264$ & $141$ & $18$ & $(\bar{4}\bar{2}2)$ \\
+        E02 & $1262$ & $1302$ & $-300$ & $-547$ & $257$ & $27$ & $(\bar{2}\bar{4}2)$ \\
+        E03 & $1830$ & $1239$ & $ 268$ & $-610$ & $288$ & $29$ & $(2\bar{4}2)$ \\
+        E04 & $2175$ & $1516$ & $ 613$ & $-333$ & $310$ & $30$ & $(4\bar{2}2)$ \\
+        E05 & $2204$ & $2169$ & $ 642$ & $ 320$ & $330$ & $30$ & $(422)$ \\
+        E06 & $1859$ & $2462$ & $ 297$ & $ 613$ & $300$ & $30$ & $(242)$ \\
+        E07 & $1262$ & $2402$ & $-300$ & $ 553$ & $261$ & $27$ & $(\bar{2}42)$ \\
+        E08 & $1017$ & $2104$ & $-545$ & $ 255$ & $242$ & $26$ & $(\bar{4}22)$ \\
+        F01 & $ 850$ & $1390$ & $-712$ & $-459$ & $430$ & $40$ & $(\bar{6}\bar{4}4)$ \\
+        F02 & $1057$ & $1147$ & $-505$ & $-702$ & $440$ & $40$ & $(\bar{4}\bar{6}4)$ \\
+        F03 & $2069$ & $1016$ & $ 507$ & $-833$ & $530$ & $50$ & $(4\bar{6}4)$ \\
+        F04 & $2388$ & $1260$ & $ 826$ & $-589$ & $570$ & $50$ & $(6\bar{4}4)$ \\
+        F05 & $2430$ & $2431$ & $ 868$ & $ 582$ & $590$ & $50$ & $(644)$ \\
+        F06 & $2115$ & $2684$ & $ 553$ & $ 835$ & $550$ & $50$ & $(464)$ \\
+        F07 & $1048$ & $2583$ & $-514$ & $ 734$ & $470$ & $40$ & $(\bar{4}64)$ \\
+        F08 & $ 834$ & $2309$ & $-728$ & $ 460$ & $440$ & $40$ & $(\bar{6}44)$                
     \end{tabular}\label{tab:miller2}
 \end{table}
