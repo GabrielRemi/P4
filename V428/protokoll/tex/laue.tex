@@ -294,64 +294,76 @@ Außerdem berechnet sich nach \cite{laue_handblatt} der Glanzwinkel nach (hier g
 der Bragg-Bedingung (auch hier gibt es keine Unsicherheit)
 \begin{equation*}
     n \lambda = 2d \sin(\theta)
-\end{equation*} bestimmt werden. Weiteres zur Bragg-Bedinung ist in \cite{Demtröder:829119} zu finden.
+\end{equation*} bestimmt werden. Weiteres zur Bragg-Bedinung ist in \cite{demtröder} zu finden. Alle berechneten Werte sind in \cref{tab:keineahnung} zu finden.\par
+Abschließend werden noch einige Fehler bei der Zuordnung der Millerschen Indizes diskutiert. Die Fehler bei der Zuordnung der Millerschen Indizes werden im Wesentlichen durch
+Unsicherheiten der Koordinaten $x_{\mathrm{P}}$, $y_{\mathrm{P}}$ und $z_{\mathrm{Q}}$ generiert. Die Unsicherheiten der Koordinaten $x_{\mathrm{P}}$ und $y_{\mathrm{P}}$
+haben hier mehrere Ursachen. Die Reflexe auf dem Röntgenfilm sind allesamt leicht verschmiert, sodass eine genaue Bestimmung der Koordinaten der Mittelpunkte
+der angepassten Ellipsen erschwert wird. Die sollte jedoch nur einen geringen Einfluss haben, da sich die Ellipsen in nahezu allen Fällen sehr eindeutig anpassen ließen.
+Eine wesentlich gravierendere Ursache ist die Wölbung des Bildes auf dem Röntgenfilm. Dies ist ein systematischer Fehler, welcher prinzipiell mithilfe von modernen
+und professionellen Bildbearbeitungswerkzeugen korrigiert werden kann. Allerdings standen diese für die Auswertung nicht zur Verfügung.
+Außerdem konnte in der Versuchsdurchführung der Abstand zwischen Kristall und Röntgenfilm $L$ nicht allzu genau eingestellt werden, wodurch
+die Koordinate $z_{\mathrm{Q}}$ eventuell stark von ihrem \enquote{richtigen} Wert abweicht. Um dies zu kompensieren, wurde $L$ mit
+einer vergleichsweise großen Unsicherheit versehen. Werden diese Unsicherheiten bei
+der Zuordnung der Millerschen Indizes berücksichtigt, treten trotzdem noch einige Schwierigkeiten auf, da das Bestimmen der Indizes nach \cref{eq:indizes} nicht immer ganz eindeutig
+ist. Die Berücksichtigung der Symmetrieeigenschaften des verwendeten NaCl-Kristalls kann hier das Bestimmen der Indizes erleichtern, da Ausreißer in den Messpunkten
+einfacher identifiziert werden können.
 \begin{table}[H]
     \centering
     \caption{Bestimmung von Netzebenenabstand, Glanzwinkel und Wellenlänge zu den verschiedenen Millerschen Indizes}
     \begin{tabular}{c|c|c|c}
         $(hkl)$ & $d_{\mathrm{hkl}}$ / \unit{\pico \meter} & $\theta$ / \unit{\degree} & $n \lambda$ / \unit{\pico \meter} \\
         \hline
-        $(\bar{6}\bar{4}2)$ & & & \\
-        $(\bar{3}\bar{3}1)$ & & & \\
-        $(\bar{4}\bar{6}2)$ & & & \\
-        $(4\bar{6}2)$ & & & \\
-        $(3\bar{3}1)$ & & & \\
-        $(6\bar{4}2)$ & & & \\
-        $(642)$ & & & \\
-        $(331)$ & & & \\
-        $(462)$ & & & \\
-        $(\bar{4}62)$ & & & \\
-        $(\bar{3}31)$ & & & \\
-        $(\bar{6}42)$ & & & \\
-        $(\bar{2}(\bar{12})2)$ & & & \\
-        $(2(\bar{12})2)$ & & & \\
-        $((12)\bar{2}2)$ & & & \\
-        $((12)22)$ & & & \\
-        $(2(12)2)$ & & & \\
-        $(\bar{2}(12)2)$ & & & \\
-        $((\bar{12})22)$ & & & \\
-        $((\bar{12})\bar{2}2)$ & & & \\
-        $(\bar{1}\bar{3}1)$ & & & \\
-        $(0\bar{3}1)$ & & & \\
-        $(1\bar{3}1)$ & & & \\
-        $(3\bar{1}1)$ & & & \\
-        $(301)$ & & & \\
-        $(311)$ & & & \\
-        $(131)$ & & & \\
-        $(031)$ & & & \\
-        $(\bar{1}31)$ & & & \\
-        $(\bar{3}11)$ & & & \\
-        $(\bar{3}01)$ & & & \\
-        $(\bar{3}\bar{1}1)$ & & & \\
-        $(\bar{4}\bar{4}2)$ & & & \\
-        $(4\bar{4}2)$ & & & \\
-        $(442)$ & & & \\
-        $(\bar{4}42)$ & & & \\
-        $(\bar{4}\bar{2}2)$ & & & \\
-        $(\bar{2}\bar{4}2)$ & & & \\
-        $(2\bar{4}2)$ & & & \\
-        $(4\bar{2}2)$ & & & \\
-        $(422)$ & & & \\
-        $(242)$ & & & \\
-        $(\bar{2}42)$ & & & \\
-        $(\bar{4}22)$ & & & \\
-        $(\bar{6}\bar{4}4)$ & & & \\
-        $(\bar{4}\bar{6}4)$ & & & \\
-        $(4\bar{6}4)$ & & & \\
-        $(6\bar{4}4)$ & & & \\
-        $(644)$ & & & \\
-        $(464)$ & & & \\
-        $(\bar{4}64)$ & & & \\
-        $(\bar{6}44)$ & & &                
+        $(\bar{6}\bar{4}2)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(\bar{3}\bar{3}1)$ & \num{129} & \num{13,3} & \num{59,4} \\
+        $(\bar{4}\bar{6}2)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(4\bar{6}2)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(3\bar{3}1)$ & \num{129} & \num{13,3} & \num{59,4} \\
+        $(6\bar{4}2)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(642)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(331)$ & \num{129} & \num{13,3} & \num{59,4} \\
+        $(462)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(\bar{4}62)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(\bar{3}31)$ & \num{129} & \num{13,3} & \num{59,4} \\
+        $(\bar{6}42)$ & \num{75,4} & \num{15,5} & \num{40,3} \\
+        $(\bar{2}(\bar{12})2)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $(2(\bar{12})2)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $((12)\bar{2}2)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $((12)22)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $(2(12)2)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $(\bar{2}(12)2)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $((\bar{12})22)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $((\bar{12})\bar{2}2)$ & \num{45,7} & \num{9,3} & \num{14,8} \\
+        $(\bar{1}\bar{3}1)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(0\bar{3}1)$ & \num{178} & \num{18,4} & \num{112} \\
+        $(1\bar{3}1)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(3\bar{1}1)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(301)$ & \num{178} & \num{18,4} & \num{112} \\
+        $(311)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(131)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(031)$ & \num{178} & \num{18,4} & \num{112} \\
+        $(\bar{1}31)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(\bar{3}11)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(\bar{3}01)$ & \num{178} & \num{18,4} & \num{112} \\
+        $(\bar{3}\bar{1}1)$ & \num{170} & \num{17,5} & \num{102} \\
+        $(\bar{4}\bar{4}2)$ & \num{94,0} & \num{19,5} & \num{62,8} \\
+        $(4\bar{4}2)$ & \num{94,0} & \num{19,5} & \num{62,8} \\
+        $(442)$ & \num{94,0} & \num{19,5} & \num{62,8} \\
+        $(\bar{4}42)$ & \num{94,0} & \num{19,5} & \num{62,8} \\
+        $(\bar{4}\bar{2}2)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(\bar{2}\bar{4}2)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(2\bar{4}2)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(4\bar{2}2)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(422)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(242)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(\bar{2}42)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(\bar{4}22)$ & \num{115} & \num{24,1} & \num{93,9} \\
+        $(\bar{6}\bar{4}4)$ & \num{68,4} & \num{29,0} & \num{66,3} \\
+        $(\bar{4}\bar{6}4)$ & \num{68,4} & \num{29,0} & \num{66,3} \\
+        $(4\bar{6}4)$ & \num{68,4} & \num{29,0} & \num{66,3} \\
+        $(6\bar{4}4)$ & \num{68,4} & \num{29,0} & \num{66,3} \\
+        $(644)$ & \num{68,4} & \num{29,0} & \num{66,3} \\
+        $(464)$ & \num{68,4} & \num{29,0} & \num{66,3} \\
+        $(\bar{4}64)$ & \num{68,4} & \num{29,0} & \num{66,3} \\
+        $(\bar{6}44)$ & \num{68,4} & \num{29,0} & \num{66,3}                
     \end{tabular}\label{tab:keineahnung}
 \end{table}
