@@ -3,15 +3,16 @@ import matplotlib.pyplot as plt
 from scienceplots import scienceplots
 import material_analyse
 from material_analyse import Callibration
-import feinstruktur
+import bragg_reflexion
 
 plt.style.use("science")
 plt.rcParams["figure.figsize"] = [8, 6.5]
 plt.rcParams["lines.markersize"] = 3
 
-def aufgabe1():
-    """Auswertung zur Aufgabe 1"""
-    output = feinstruktur.do_fits()
+with open("results", "w", encoding="UTF-8") as file:
+    pass
+
+bragg_reflexion.main()
 
 def aufgabe2():
     """Auswertung zur Aufgabe 2"""
@@ -24,5 +25,4 @@ def aufgabe2():
     for n in range(1, 5):
         material_analyse.make_callibration_table_for_one(output[f"Unbekannt{n}.txt"], callibration, f"Unbekannt{n}")
 
-aufgabe1()
-aufgabe2()
+#aufgabe2()
