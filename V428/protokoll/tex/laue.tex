@@ -197,6 +197,28 @@ die Pixelkoordinaten der Reflexe $x_{\mathrm{P}}'$ und $y_{\mathrm{P}}'$ abgeles
     \Delta c = \frac{1}{\sqrt{\frac{1}{(\Delta c_1)^2} + \frac{1}{(\Delta c_2)^2}}}
 \end{equation*} berechnet, wobei $c_1$ und $c_2$ die entsprechenden Umrechnungsfaktoren für Breite und Höhe des Röntgenfilms von \unit{\milli \meter} in px sind.
 Beide dieser Umrechnungsfaktoren berechnen sich gemäß
+\begin{equation*}
+    c_i = \frac{l_{\mathrm{px}}}{l_{\unit{\milli \meter}}}, \quad \Delta c_i = \sqrt{\left(\frac{\Delta l_{\mathrm{px}}}{l_{\unit{\milli \meter}}}\right)^2 + \left(\frac{l_{\mathrm{px}}}{l_{\unit{\milli \meter}}^2}\Delta l_{\unit{\milli \meter}}\right)^2} \quad (i = 1,2),
+\end{equation*} wobei die Länge $l$ entweder die Breite oder Höhe des Röntgenfilms (in px oder \unit{\milli \meter}) beschreibt. Für die Breite
+des Röntgenfilms wurde \SI{57(1)}{\milli \meter} (bzw. \SI{2382}{\px}) und für die Höhe \SI{76(1)}{\milli \meter} (bzw. \SI{3182}{\px}) gemessen (bzw. abgelesen).
+Es ergibt sich
+\begin{equation*}
+    c_1 = \SI{41,8(8)}{\frac{\px}{\milli \meter}} , \quad c_2 = \SI{41,9(6)}{\frac{\px}{\milli \meter}}
+\end{equation*} und damit
+\begin{equation*}
+    c = \SI{42,8(5)}{\frac{\px}{\milli \meter}} .
+\end{equation*} Nun kann $z_{\mathrm{Q}}$ in px berechnet werden. Die Koordinaten $x_{\mathrm{P}}$, $y_{\mathrm{P}}$ und $z_{\mathrm{Q}}$ (inklusive $\Delta z_{\mathrm{Q}}$) sind in \cref{tab:miller2} eingetragen.
+Wie schon zuvor erwähnt, wird für $x_{\mathrm{P}}$ und $y_{\mathrm{P}}$ eine Unsicherheit von \SI{10}{\px} gewählt. Somit können nun die Millerschen Indizes der
+für die Reflexe verantwortlichen Netzebenenscharen nach \cref{eq:indizes} bestimmt werden.\par
+Hierzu wird wie folgt vorgegangen: Zuerst wird willkürlich $l = 1$ gesetzt. Dann
+sind die Indizes $h$ und $k$ durch die Verhältnisse $h = \frac{x_{\mathrm{P}}}{z_{\mathrm{Q}}}$ und $k = \frac{y_{\mathrm{P}}}{z_{\mathrm{Q}}}$ eindeutig bestimmt. Anschließend
+werden die Indizes $(hkl)$ mit einem ganzzahligen Faktor multipliziert, sodass die Indizes $h$ und $k$ möglichst eine ganze Zahl annehmen und die Indizes $(hkl)$ entweder
+alle gerade oder alle ungerade sind (wie bereits zuvor erläutert). Hierbei tritt natürlch häufig die Schwierigkeit auf, dass durch das Multiplizieren mit einem ganzzahligen Faktor
+die Indizes $h$ und $k$ nicht exakt eine ganze Zahl annehmen, sondern meistens nur in der Umgebung einer naheliegenden ganzen Zahl liegen. Dies ist jedoch meist kein Problem bei
+der Zuordnung der Millerschen Indizes, da $x_{\mathrm{P}}$, $y_{\mathrm{P}}$ und $z_{\mathrm{Q}}$ allesamt eine Unsicherheit besitzen. In den meisten Fällen ist jedoch klar
+ersichtlich, welche ganze Zahl am nächsten liegt. Es werden stets die Millerschen Indizes gemeinsam bestimmt, die aus Symmetriegründen sich nur durch Vorzeichen und Permutation voneinander
+unterscheiden. Hier können dann leicht Ausreißer erkannt und entsprechend korrigiert werden, sodass die verschiedenen Paare an Millerschen Indizes mit den Symmetrieeigenschaften
+des NaCl-Kristalls übereinstimmen. Alle bestimmten Millerschen Indizes sind ebenfalls in \cref{tab:miller2} eingetragen.\newpage
 \begin{table}[H]
     \centering
     \caption{Miller-Indizes}
@@ -256,4 +278,80 @@ Beide dieser Umrechnungsfaktoren berechnen sich gemäß
         F07 & $1048$ & $2583$ & $-514$ & $ 734$ & $470$ & $40$ & $(\bar{4}64)$ \\
         F08 & $ 834$ & $2309$ & $-728$ & $ 460$ & $440$ & $40$ & $(\bar{6}44)$                
     \end{tabular}\label{tab:miller2}
+\end{table}\newpage
+Mithilfe der Millerschen Indizes $(hkl)$ können nun Netzebenenabstand $d_{\mathrm{hkl}}$ einer für einen Reflex verantwortlichen Netzebenenschar, der Glanzwinkel $\theta$
+und die Wellenlänge $\lambda$ der für die einzelnen Reflexe verantwortlichen Röntgenstrahlung bestimmt werden.\par
+Der Netzebenenabstand berechnet sich nach \cite{laue_handblatt} gemäß
+\begin{equation*}
+    d_{\mathrm{hkl}} = \frac{a_0}{\sqrt{h^2 + k^2 + l^2}} ,
+\end{equation*} wobei $a_0$ die Kantenlänge einer NaCl-Elementarzelle ist und $a_0 = \SI{564}{\pico \meter}$ betägt (siehe \cite{nacl}). Eine Unsicherheit kann
+für den Netzebenenabstand nicht angegeben werden, da $a_0$ in der Literatur ohne Unsicherheit angegeben ist und die Millerschen Indizes $(hkl)$ ganze Zahlen
+mit einer nicht klar zuordenbaren Unsicherheit sind.\par
+Außerdem berechnet sich nach \cite{laue_handblatt} der Glanzwinkel nach (hier gibt es aufgrund der Millerschen Indizes ebenfalls keine Unsicherheit)
+\begin{equation*}
+    \theta = \arctan(\frac{l}{\sqrt{h^2 + k^2}}) .
+\end{equation*} Schließlich können mit dem gewonnenen Netzebenenabstand und dem Glanzwinkel die Wellenlängen verschiedener Beugungsordnungen mithilfe
+der Bragg-Bedingung (auch hier gibt es keine Unsicherheit)
+\begin{equation*}
+    n \lambda = 2d \sin(\theta)
+\end{equation*} bestimmt werden. Weiteres zur Bragg-Bedinung ist in \cite{Demtröder:829119} zu finden.
+\begin{table}[H]
+    \centering
+    \caption{Bestimmung von Netzebenenabstand, Glanzwinkel und Wellenlänge zu den verschiedenen Millerschen Indizes}
+    \begin{tabular}{c|c|c|c}
+        $(hkl)$ & $d_{\mathrm{hkl}}$ / \unit{\pico \meter} & $\theta$ / \unit{\degree} & $n \lambda$ / \unit{\pico \meter} \\
+        \hline
+        $(\bar{6}\bar{4}2)$ & & & \\
+        $(\bar{3}\bar{3}1)$ & & & \\
+        $(\bar{4}\bar{6}2)$ & & & \\
+        $(4\bar{6}2)$ & & & \\
+        $(3\bar{3}1)$ & & & \\
+        $(6\bar{4}2)$ & & & \\
+        $(642)$ & & & \\
+        $(331)$ & & & \\
+        $(462)$ & & & \\
+        $(\bar{4}62)$ & & & \\
+        $(\bar{3}31)$ & & & \\
+        $(\bar{6}42)$ & & & \\
+        $(\bar{2}(\bar{12})2)$ & & & \\
+        $(2(\bar{12})2)$ & & & \\
+        $((12)\bar{2}2)$ & & & \\
+        $((12)22)$ & & & \\
+        $(2(12)2)$ & & & \\
+        $(\bar{2}(12)2)$ & & & \\
+        $((\bar{12})22)$ & & & \\
+        $((\bar{12})\bar{2}2)$ & & & \\
+        $(\bar{1}\bar{3}1)$ & & & \\
+        $(0\bar{3}1)$ & & & \\
+        $(1\bar{3}1)$ & & & \\
+        $(3\bar{1}1)$ & & & \\
+        $(301)$ & & & \\
+        $(311)$ & & & \\
+        $(131)$ & & & \\
+        $(031)$ & & & \\
+        $(\bar{1}31)$ & & & \\
+        $(\bar{3}11)$ & & & \\
+        $(\bar{3}01)$ & & & \\
+        $(\bar{3}\bar{1}1)$ & & & \\
+        $(\bar{4}\bar{4}2)$ & & & \\
+        $(4\bar{4}2)$ & & & \\
+        $(442)$ & & & \\
+        $(\bar{4}42)$ & & & \\
+        $(\bar{4}\bar{2}2)$ & & & \\
+        $(\bar{2}\bar{4}2)$ & & & \\
+        $(2\bar{4}2)$ & & & \\
+        $(4\bar{2}2)$ & & & \\
+        $(422)$ & & & \\
+        $(242)$ & & & \\
+        $(\bar{2}42)$ & & & \\
+        $(\bar{4}22)$ & & & \\
+        $(\bar{6}\bar{4}4)$ & & & \\
+        $(\bar{4}\bar{6}4)$ & & & \\
+        $(4\bar{6}4)$ & & & \\
+        $(6\bar{4}4)$ & & & \\
+        $(644)$ & & & \\
+        $(464)$ & & & \\
+        $(\bar{4}64)$ & & & \\
+        $(\bar{6}44)$ & & &                
+    \end{tabular}\label{tab:keineahnung}
 \end{table}
