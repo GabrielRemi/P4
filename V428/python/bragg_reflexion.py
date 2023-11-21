@@ -61,13 +61,16 @@ def calc_energies(wavelength: float, wavelength_error: float) -> list[float]:
 def do_feinstruktur_analysis(output: fm.FitResult) -> None:
     """Berechnet Feinstruktur aus Messung und erstellt Tabellen"""
     os.chdir(mainpath)
-        
     
     degrees, degrees_error = output.x0
     wavelengths = np.array(calc_nlambda(degrees, degrees_error)) / 4 # vierte beugungsordnung
     energies = np.array(calc_energies(*wavelengths))
     wavelength_difference = wavelengths[0][1] - wavelengths[0][0]
     wavelength_difference_error = np.sqrt(wavelengths[1][1]**2 + wavelengths[1][0]**2) 
+    wl_reference = np.array([[70.9328, 71.3612], [0.0022, 0.0025]])
+    e_reference = np.array([[17.47910, 17.37418], [0.00055, 0.00062]])
+    wavelength_difference_reference = wl_reference[0][1] - wl_reference[0][0]
+    wavelength_difference_reference_error = np.sqrt(wl_reference[1][1]**2 + wl_reference[1][0]**2) 
     
     ### Speicher Daten in Textdatei
     with open("results", "a", encoding="UTF-8") as file:
@@ -78,23 +81,28 @@ def do_feinstruktur_analysis(output: fm.FitResult) -> None:
             text += f"E = {vals[4]}+-{vals[5]} keV\n"
             file.write(text)
         text = f"delta l = {wavelength_difference} +- {wavelength_difference_error} pm\n"
+        text += f"delta l ref = {wavelength_difference_reference} +- {wavelength_difference_reference_error} pm\n"
         file.write(text)
         
     ### Tabelle 
     with latex.Texfile("feinstruktur_tabelle", tabpath) as file:
         table = latex.Textable(
-            "Bestimmung der Wellenlängen und Energien aus der Messung der Feinstrukturaufspaltung",
+            "Bestimmung der Wellenlängen und Energien aus der Messung der Feinstrukturaufspaltung mit Referenzwerten aus \\cite{nist_xray_database}",
             "tab:feinstruktur",
             caption_above=True)
         table.add_header(
-            r" Winkel $\theta/ \unit{\degree}$",
+            r" Winkel $\vartheta/ \unit{\degree}$",
             r"Wellenlänge $\lambda / \unit{\pm}$",
-            r"Energie $E / \unit{\kilo\electronvolt}$ "
+            r"Literaturwert $\lambda / \unit{\pm}$",
+            r"Energie $E / \unit{\kilo\electronvolt}$ ",
+            r"Literaturwert $E / \unit{\kilo\electronvolt}$ "
         )
         table.add_values(
             (degrees, degrees_error),
             (wavelengths[0], wavelengths[1]),
-            (energies[0], energies[1])
+            (wl_reference[0], wl_reference[1]),
+            (energies[0], energies[1]),
+            (e_reference[0], e_reference[1])
         )
         file.add(table.make_figure())
     
@@ -127,8 +135,6 @@ def do_anode_analysis(output: fm.FitResult) -> None:
             n.append(x)
             n_err.append(xerr)
             
-    print(n)
-    print(n_err)
     
     with latex.Texfile("unbekannte_anode", tabpath) as file:
         table = latex.Textable(
