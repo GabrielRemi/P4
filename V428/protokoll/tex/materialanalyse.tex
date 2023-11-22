@@ -41,7 +41,7 @@ Gold (Au), Indium (In), Kupfer (Cu), Nickel (Ni), Silber (Ag), Titan (Ti), Wolfr
 \subsubsection*{Energiekalibrierung}\label{subsubsec:energie_kali}
 Zunächst werden analog zu der in \cref{sec:bragg} verwendeten Methode an alle aufgenommenen Fluoreszenzspektren (Kalibrations-Spektrum der FeZn-Legierung, 13 Referenzspektren, Spektren vier unbekannter Legierungen)
 Gauß-Kurven angepasst. Alle Referenzspektren inklusive Gauß-Kurven-Anpassung sind im \hyperref[sec:anhang]{Anhang} aufgeführt. Eine detaillierte Diskussion
-jeder einzelnen Gauß-Kurven-Anpassung führt hier zu weit, allerdings ist in den Abbildungen \textbf{BLABLA} visuell zu erkennen, dass die Gauß-Kurven-Anpassungen
+jeder einzelnen Gauß-Kurven-Anpassung führt hier zu weit, allerdings ist in den Grafiken zu den Röntgenfluoreszenzspektren aller Legierungen visuell zu erkennen, dass die Gauß-Kurven-Anpassungen
 die Messwerte sehr gut beschreiben.\par
 Nun wird das Spektrum des FeZn-Plättchens zur Energieeichung verwendet, da in diesem Spektrum die $\mathrm{K}_{\alpha}$- sowie $\mathrm{K}_{\beta}$-Linien
 von Eisen und Zink deutlich zu sehen sind. Das Fluoreszenzspektrum der FeZn-Legierung inklusive Gauß-Kurven-Anpassung ist in \cref{fig:fezn} dargestellt.
@@ -54,7 +54,7 @@ Die zugehörigen Anpassungsparameter sind in \cref{tab:fezn-gauss-fits} zu finde
 \end{figure}
 \begin{table}[H]
     \centering
- \caption{Gauss-Anpassungen an das FeZn-Spektrum.}
+ \caption{Gauß-Anpassungen an das FeZn-Spektrum.}
  \begin{tabular}{c c c c c}
  \hline Linie & Digitaler Kanal $K$ (Mittelwert) & Standardabweichung $\sigma$ & Höhe der Gauß-Kurve $H$ & $\chi^2$ \\ 
  \hline
@@ -85,7 +85,10 @@ $\num{125.7\pm 1.3}$ & $\num{9572.00}$ \\
 \label{tab:callibration}
 \end{table}
 An diese Datenpunkte wird nun eine Gerade der Form $E(K) = m \cdot K + b$ angepasst. Die resultierende Anpassungsgerade ist in \cref{fig:kalibrationskurve}
-dargestellt. Mithilfe der ermittelten Anpassungsparameter \textbf{WELCHE} $m$ und $b$ können nun für alle anderen aufgenommenen Spektren digitale Kanäle $K$ in Energien
+dargestellt. Die Anpassungsgüte (\textit{Residual Variance}) ist mit einem Wert von 187 relativ hoch, was an dem zweiten Messpunkt in liegt.
+Dennoch wird die Energiekalibrierung gut genug für die weitere Auswertung sein, da die anderen drei Messpunkte sehr gut durch die Gerade
+angepasst werden. Außerdem können gleich einige der berechneten Energien der Referenzspektren mit Literaturwerten aus \cite{xraydata} verglichen werden.
+Mithilfe der ermittelten Anpassungsparameter $m = \SI{0,076(6)}{\kilo \electronvolt}$ und $b = \SI{0,045(5)}{\kilo \electronvolt}$ können nun für alle anderen aufgenommenen Spektren digitale Kanäle $K$ in Energien
 / \unit{\electronvolt} umgerechnet werden. Mit
 \begin{equation*}
     E = m \cdot K + b , \quad \Delta E = \sqrt{(K \Delta m)^2 + (m \Delta K)^2 + (\Delta b)^2}
@@ -95,4 +98,141 @@ dargestellt. Mithilfe der ermittelten Anpassungsparameter \textbf{WELCHE} $m$ un
 	\includegraphics[width=0.6\linewidth]{../figs/kallibrationskurve.pdf}
 	\caption{Geradenanpassung zur Energiekalibration.}
 	\label{fig:kalibrationskurve}
+\end{figure} Die ermittelten Energien der Linien der Referenzspektren sind in \cref{tab:energien-charakeristische-linien} eingetragen. Ein Vergleich
+dieser experimentell bestimmten Werte für die Energien der charakteristischen Linien mit den entsprechenden Literaturwerten aus \cite{xraydata} zeigt,
+dass die Energiekalibrierung hinreichend genau ist. Eine explizite Aufführung des Vergleiches wird hier aus ökonomischen Gründen nicht durchgeführt.
+\begin{table}[H]
+    \centering
+    \caption{Gemessene Energien und Höhen der charakteristischen Linien verschiedener Metalle}
+    \label{tab:energien-charakeristische-linien}
+    \begin{tabular}{c|c|c}
+        Metall & Energie $E$ / \unit{\kilo\electronvolt} & Höhe in Detektionen \\\hline\multirow{4}{*}{FeZn} & \num{6.4\pm 0.7} & \num{10700\pm 600} \\ & \num{6.8\pm 0.8} & \num{4300\pm 300} \\ & \num{8.7\pm 0.9} & \num{1430\pm 80} \\ & \num{9.7\pm 0.9} & \num{200\pm 300} \\\hline
+\multirow{5}{*}{Ag} & \num{3.5\pm 0.6} & \num{223\pm 9} \\ & \num{8.2\pm 0.8} & \num{72\pm 17} \\ & \num{9.2\pm 0.9} & \num{33\pm 7} \\ & \num{22.2\pm 1.7} & \num{240\pm 14} \\ & \num{24.9\pm 1.9} & \num{26\pm 3} \\\hline
+\multirow{4}{*}{Au} & \num{8.5\pm 0.8} & \num{248\pm 14} \\ & \num{10.0\pm 0.9} & \num{1170\pm 90} \\ & \num{12\pm 1} & \num{640\pm 40} \\ & \num{13.7\pm 1.2} & \num{53\pm 7} \\\hline
+\multirow{2}{*}{Cu} & \num{8.2\pm 0.8} & \num{7900\pm 500} \\ & \num{9.0\pm 0.9} & \num{1090\pm 120} \\\hline
+\multirow{4}{*}{In} & \num{3.8\pm 0.6} & \num{351\pm 13} \\ & \num{8.3\pm 0.8} & \num{206\pm 19} \\ & \num{9.1\pm 0.9} & \num{43\pm 14} \\ & \num{27\pm 3} & \num{11.8\pm 1.7} \\\hline
+\multirow{3}{*}{Fe} & \num{6.4\pm 0.7} & \num{13600\pm 1200} \\ & \num{6.8\pm 0.8} & \num{5200\pm 600} \\ & \num{9.9\pm 0.9} & \num{370\pm 170} \\\hline
+\multirow{2}{*}{Mo} & \num{17.7\pm 1.4} & \num{1050\pm 60} \\ & \num{19.8\pm 1.6} & \num{149\pm 9} \\\hline
+\multirow{3}{*}{Ni} & \num{6.5\pm 0.7} & \num{310\pm 30} \\ & \num{7.5\pm 0.8} & \num{6500\pm 600} \\ & \num{7.9\pm 0.8} & \num{4720\pm 160} \\\hline
+\multirow{5}{*}{Pb} & \num{8.2\pm 0.8} & \num{320\pm 30} \\ & \num{9.2\pm 0.9} & \num{134\pm 16} \\ & \num{11\pm 1} & \num{1210\pm 80} \\ & \num{12.9\pm 1.1} & \num{700\pm 30} \\ & \num{15.1\pm 1.3} & \num{57\pm 5} \\\hline
+\multirow{4}{*}{Sn} & \num{4.0\pm 0.6} & \num{640\pm 30} \\ & \num{8.3\pm 0.8} & \num{160\pm 30} \\ & \num{9.0\pm 0.9} & \num{29\pm 8} \\ & \num{25.1\pm 1.9} & \num{58\pm 4} \\\hline
+\multirow{2}{*}{Ti} & \num{4.7\pm 0.7} & \num{4900\pm 800} \\ & \num{4.9\pm 0.7} & \num{4700\pm 400} \\\hline
+\multirow{5}{*}{W} & \num{5.7\pm 0.7} & \num{50\pm 10} \\ & \num{7.6\pm 0.8} & \num{80\pm 30} \\ & \num{8.6\pm 0.9} & \num{1530\pm 50} \\ & \num{10.0\pm 0.9} & \num{1050\pm 50} \\ & \num{12\pm 1} & \num{101\pm 7} \\\hline
+\multirow{2}{*}{Zn} & \num{8.8\pm 0.9} & \num{7200\pm 500} \\ & \num{9.7\pm 0.9} & \num{990\pm 90} \\\hline
+\multirow{3}{*}{Zr} & \num{12\pm 1} & \num{56\pm 11} \\ & \num{16.0\pm 1.3} & \num{1690\pm 70} \\ & \num{17.9\pm 1.4} & \num{230\pm 30} \\\hline
+
+    \end{tabular}
+\end{table}\newpage
+\subsubsection*{Bestimmung der Bestandteile der unbekannten Legierungen}\label{subsubsec:bestandteile}
+\textbf{Legierung 1}\newline
+Das Röntgenfluoreszenzspektrum der ersten unbekannten Legierung inklusive Gauß-Kurven-Anpassung ist in \cref{fig:unbekannt1} dargestellt. Aus der Anpassung ergeben sich die
+in \cref{tab:unbekannt1} zu findenen Anpassungsparameter.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/Unbekannt1.pdf}
+	\caption{Röntgenfluoreszenzspektrum der unbekannten Legierung 1.}
+	\label{fig:unbekannt1}
 \end{figure}
+\begin{table}[H]
+    \centering
+    \caption{Energien der charakteristischen Linien der unbekannten Legierung 1}
+    \label{tab:unbekannt1}
+    \begin{tabular}{c|c}
+       Energie $E$ / \unit{\kilo\electronvolt} & Höhe in Detektionen \\
+\hline
+\num{5.5\pm 0.7} & \num{2800\pm 400} \\ 
+\num{6.5\pm 0.7} & \num{8000\pm 1000} \\ 
+\num{6.7\pm 0.8} & \num{3800\pm 300} \\ 
+
+    \end{tabular}
+\end{table} Wird der Wert der ersten Linie aus \cref{tab:unbekannt1} mit den Werten der Referenzspektren aus \cref{tab:energien-charakeristische-linien} verglichen,
+so findet sich kein übereinstimmender Wert. Dies legt nahe, dass diese charakeristische Linie der unbekannten Legierung auf ein Element zurückzuführen ist,
+welches nicht als Referenzelement im Versuch untersucht wurde. Ein Blick in \cite{xraydata} macht deutlich, dass diese Linie auf Chrom (Cr) zurückzuführen ist,
+da die $\mathrm{K}_{\alpha_1}$- bzw. $\mathrm{K}_{\alpha_2}$-Linien mit Energien von ungefähr \SI{5,415}{\kilo \electronvolt} bzw. \SI{5,406}{\kilo \electronvolt}
+im Rahmen der Unsicherheiten mit der ersten Linie der ersten unbekannten Legierung übereinstimmen. Linie 2 und 3 können leicht mit Linie 1 und 2 von Eisen (Fe)
+in \cref{tab:energien-charakeristische-linien} identifiziert werden. Im Rahmen der Unsicherheiten lässt sich diese Zuordnung im Prinzip eindeutig feststellen.
+Damit handelt es sich bei Legierung 1 um eine Zusammensetzung aus Chrom und Eisen.\\
+
+\noindent\textbf{Legierung 2}\newline
+Das Röntgenfluoreszenzspektrum der zweiten unbekannten Legierung inklusive Gauß-Kurven-Anpassung ist in \cref{fig:unbekannt2} dargestellt. Aus der Anpassung ergeben sich die
+in \cref{tab:unbekannt2} zu findenen Anpassungsparameter.\par
+Die erste Linie dieser unbekannten Legierung stimmt im Rahmen der Unsicherheiten sehr gut mit der ersten Linie von Kupfer in \cref{tab:energien-charakeristische-linien} überein.
+Die Identifikation der zweiten Linie ist nicht ganz eindeutig, da hier sowohl die zweite Linie von Kupfer als auch die erste Linie von Zink (siehe \cref{tab:energien-charakeristische-linien})
+in Frage kommt. Jedoch lässt sich die dritte Linie der unbekannten Legierung eindeutig zu der zweiten Linie von Zink zuordnen, weshalb es sich bei der zweiten unbekannten
+Legierung um eine Zusammensetzung aus Kupfer und Zink handeln muss.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/Unbekannt2.pdf}
+	\caption{Röntgenfluoreszenzspektrum der unbekannten Legierung 2.}
+	\label{fig:unbekannt2}
+\end{figure}
+\begin{table}[H]
+    \centering
+    \caption{Energien der charakteristischen Linien der unbekannten Legierung 2}
+    \label{tab:unbekannt2}
+    \begin{tabular}{c|c}
+       Energie $E$ / \unit{\kilo\electronvolt} & Höhe in Detektionen \\
+\hline
+\num{8.1\pm 0.8} & \num{4240\pm 150} \\ 
+\num{8.7\pm 0.9} & \num{3610\pm 90} \\ 
+\num{9.7\pm 0.9} & \num{140\pm 15} \\ 
+
+    \end{tabular}
+\end{table}
+
+\noindent\textbf{Legierung 3}\newline
+Das Röntgenfluoreszenzspektrum der dritten unbekannten Legierung inklusive Gauß-Kurven-Anpassung ist in \cref{fig:unbekannt3} dargestellt. Aus der Anpassung ergeben sich die
+in \cref{tab:unbekannt3} zu findenen Anpassungsparameter.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/Unbekannt3.pdf}
+	\caption{Röntgenfluoreszenzspektrum der unbekannten Legierung 3.}
+	\label{fig:unbekannt3}
+\end{figure}
+\begin{table}[H]
+    \centering
+    \caption{Energien der charakteristischen Linien der unbekannten Legierung 3}
+    \label{tab:unbekannt3}
+    \begin{tabular}{c|c}
+       Energie $E$ / \unit{\kilo\electronvolt} & Höhe in Detektionen \\
+\hline
+\num{8.1\pm 0.8} & \num{3600\pm 400} \\ 
+\num{8.6\pm 0.9} & \num{2900\pm 100} \\ 
+\num{9.8\pm 0.9} & \num{70\pm 30} \\ 
+
+    \end{tabular}
+\end{table} Bei der dritten unbekannten Legierung scheint es sich um eine nahezu identische Zusammensetzung wie die zweite unbekannte Legierung zu handeln,
+da die Energien der charakteristischen Linien im Rahmen der Unsicherheiten identisch sind. Daher wird auch bei dieser dritten unbekannten Legierung
+auf eine Zusammensetzung von Kupfer und Zink geschlossen. Höchstwahrscheinlich handelt es sich jedoch nicht um die identische Legierung, da die Intensitäten
+der charakteristischen Linien sich leicht unterscheiden. Daher sind bei Legierung 3 wahrscheinlich die Massenanteile leicht anders als bei Legierung 2.\\
+
+\noindent\textbf{Legierung 4}\newline
+Das Röntgenfluoreszenzspektrum der vierten unbekannten Legierung inklusive Gauß-Kurven-Anpassung ist in \cref{fig:unbekannt4} dargestellt. Aus der Anpassung ergeben sich die
+in \cref{tab:unbekannt4} zu findenen Anpassungsparameter.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/Unbekannt4.pdf}
+	\caption{Röntgenfluoreszenzspektrum der unbekannten Legierung 4.}
+	\label{fig:unbekannt4}
+\end{figure}
+\begin{table}[H]
+    \centering
+    \caption{Energien der charakteristischen Linien der unbekannten Legierung 4}
+    \label{tab:unbekannt4}
+    \begin{tabular}{c|c}
+       Energie $E$ / \unit{\kilo\electronvolt} & Höhe in Detektionen \\
+\hline
+\num{5.7\pm 0.7} & \num{520\pm 80} \\ 
+\num{5.2\pm 0.7} & \num{200\pm 70} \\ 
+\num{7.1\pm 0.8} & \num{4600\pm 400} \\ 
+\num{7.8\pm 0.8} & \num{710\pm 170} \\ 
+
+    \end{tabular}
+\end{table} Bei dieser unbekannten Legierung ist eine Identifikation der charakteristischen Linien mit denen der Referenzspektren aus \cref{tab:energien-charakeristische-linien}
+nicht möglich, da es hier scheinbar keine eindeutige Zuordnung gibt. Zur Identifikation der Linien wird nun die \textit{X-ray Transition Energies Database} \cite{nist_xray_database}
+als Hilfswerkzeug benutzt. Hier kann nach den Linien für ein bestimmtes Energie-Intervall gesucht werden. Bei den Linien 1 und 2 der vierten unbekannten Legierung
+handelt es sich vermutlich um Neodym, da sich diese mit den Neodym-Linien mit den Energien \SI{5,721}{\kilo \electronvolt} und \SI{5,208}{\kilo \electronvolt}
+identifizieren lassen. Die Linien 3 und 4 lassen sich zu den Kobalt-Linien mit den Energien \SI{6,930}{\kilo \electronvolt} und \SI{7,706}{\kilo \electronvolt}
+zuordnen. Daher handelt es sich bei dieser unbekannten Legierung vermutlich um eine Zusammensetzung aus Neodym und Kobalt, wobei diese Zuordnung hier
+aufgrund fehlender Referenzspektren schwer fällt.
+\subsubsection*{Massenanteilsbestimmung der unbekannten Legierung 1}\label{subsubsec:massenanteile}
