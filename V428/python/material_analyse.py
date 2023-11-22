@@ -188,11 +188,13 @@ def make_callibration_table_for_one(metal: FitResult, callibration: Callibration
     
     energies: np.ndarray = callibration(metal.x0[0])
     detections: np.ndarray = metal.height
+    stds: np.ndarray = metal.std
     n: int = len(energies[0])
         
     for index in range(n):
         energy: Tuple[str] = functions.error_round(energies[0][index]/1000, energies[1][index]/1000)
         detection: Tuple[str] = functions.error_round(detections[0][index], detections[1][index])
+        std: Tuple[str] = functions.error_round(stds[0][index], stds[1][index])
         text += f"\\num{{{energy[0]}\\pm {energy[1]}}} & \\num{{{detection[0]}\\pm {detection[1]}}} \\\\ \n"
 
     text += r"""
@@ -201,3 +203,36 @@ def make_callibration_table_for_one(metal: FitResult, callibration: Callibration
 
     with open(f"{tabpath}{name}.tex", "w", encoding="UTF-8") as file:
         file.write(text)
+
+def mass_fractions(metals: dict[str, FitResult]):
+    """Berechnet von Legierung 2 die Massenanteile"""
+    density_cu = 8.96
+    density_zn = 7.19
+    cu = metals["Cu.txt"]
+    zn = metals["Zn.txt"]
+    un = metals["Unbekannt2.txt"]
+    
+    h0_cu = cu.height[:, 0]
+    hi_cu = un.height[:, 0]
+    h0_zn = zn.height[:, 0]
+    hi_zn = un.height[0, 1] - cu.height[0, 1]/cu.height[0, 0]*hi_cu[0]
+    hi_zn_err = hi_zn*np.sqrt(
+        (un.height[1, 1]/hi_zn)**2 +
+        (cu.height[1, 1]/cu.height[0, 1])**2 +
+        (cu.height[1, 0]/cu.height[0, 0])**2 +
+        (hi_cu[1] / hi_cu[0])**2
+    )
+    hi_zn = np.array([hi_zn, hi_zn_err])
+    h0 = np.array([h0_cu, h0_zn]).transpose()
+    hi = np.array([hi_cu, hi_zn]).transpose()
+    r = np.array([density_cu, density_zn]).transpose()
+    rh = np.array([
+        h0[0] / hi[0] * r,
+        h0[0] / hi[0] * r * np.sqrt((h0[1]/h0[0]**2 + (hi[1]/h0[0])**2))
+    ])
+    
+    c = rh[0] / rh[0].sum()
+    c_err = c*rh[1]*np.sqrt(1/rh[0]**2 + 1/(rh[0].sum()**2))
+    c = np.array([c, c_err])
+    
+    print(c)

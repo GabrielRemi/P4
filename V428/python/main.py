@@ -12,7 +12,7 @@ plt.rcParams["lines.markersize"] = 3
 with open("results", "w", encoding="UTF-8") as file:
     pass
 
-bragg_reflexion.main()
+#bragg_reflexion.main()
 
 def aufgabe2():
     """Auswertung zur Aufgabe 2"""
@@ -24,5 +24,7 @@ def aufgabe2():
 
     for n in range(1, 5):
         material_analyse.make_callibration_table_for_one(output[f"Unbekannt{n}.txt"], callibration, f"Unbekannt{n}")
+    
+    material_analyse.mass_fractions(output)
 
-#aufgabe2()
+aufgabe2()

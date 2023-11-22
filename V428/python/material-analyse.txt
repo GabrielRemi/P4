@@ -66,11 +66,13 @@ begin Unbekannt1.txt 30 120
 end
 
 begin Unbekannt2.txt 80 150
-    97 126 2 True Fit1 52000 106 2 30000 113 4 10 0 
+    #97 126 2 True Fit1 52000 106 2 30000 113 4 10 0 
+    97 133 3 True Fit2 52000 106 2 30000 113 4 5000 126 4 10 0 
 end
 
-begin Unbekannt3.txt 80 140
-    95 125 2 True Fit1 37000 106 2.6 32000 112 4 10 0 
+begin Unbekannt3.txt 80 150
+    #95 125 2 True Fit1 37000 106 2.6 32000 112 4 10 0 
+    95 132 3 True Fit2 37000 106 2.6 32000 112 4 5000 126 4 10 0 
 end
 
 begin Unbekannt4.txt 40 130
