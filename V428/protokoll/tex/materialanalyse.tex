@@ -1,11 +1,11 @@
 \section{Zerstörungsfreie Analyse chemischer Zusammensetzungen}\label{sec:materialanalyse}
-In diesem Versuchsteil werden mit einem Röntgenenergiedetektor die Fluoreszenz-Spektren von vier verschiedenen unbekannten Legierungen
+In diesem Versuchsteil werden mit einem Röntgenenergiedetektor die Fluoreszenzspektren von vier verschiedenen unbekannten Legierungen
 und einiger Referenzspektren aufgenommen. Damit lassen sich die einzelnen Komponenten der vier unbekannten Legierungen bestimmen.
 Außerdem werden die Massenanteile der einzelnen Komponenten einer dieser unbekannten Legierungen bestimmt.\par
-Das aufgenommene Fluoreszenz-Spektrum einer Legierung entsteht dadurch, dass die mit der Röntgenröhre erzeugte Röntgenstrahlung
+Das aufgenommene Fluoreszenzspektrum einer Legierung entsteht dadurch, dass die mit der Röntgenröhre erzeugte Röntgenstrahlung
 Elektronen mit hohen Bindungsenergien aus den Atomen der Legierung herausschlagen kann, sodass diese frei gewordenen Energieniveaus mit
 Elektronen aus höheren Schalen wieder aufgefüllt werden können. Durch diesen atomaren Übergang wird dann wieder Röntgenstrahlung
-emittiert, was in dem Fluoreszenz-Spektrum resultiert. Da dieses Fluoreszenz-Spektrum Informationen über die atomaren Übergänge
+emittiert, was in dem Fluoreszenzspektrum resultiert. Da dieses Fluoreszenzspektrum Informationen über die atomaren Übergänge
 der Legierungs-Atome beinhält, können so Rückschlüsse auf Materialeigenschaften geschlossen werden.
 \subsection{Aufbau}\label{subsec:material_aufbau}
 Für die Materialanalyse wird die Cu-Röntgenröhre verwendet. Außerdem wird für die Messung der Röntgenenergiedetektor benutzt, welcher anstelle
@@ -38,3 +38,61 @@ eingestellt. Dann wird mit dem Schalter HV ON/OFF die Hochspannung eingeschaltet
 Mit den selben Messparametern werden die Spektren der vier unbekannten Legierungen und die Referenzspektren der Elemente Blei (Pb), Eisen (Fe),
 Gold (Au), Indium (In), Kupfer (Cu), Nickel (Ni), Silber (Ag), Titan (Ti), Wolfram (W), Zinn (Su), Zink (Zn) und Zirkonium (Zr) aufgenommen.
 \subsection{Auswertung}\label{subsec:material_auswertung}
+\subsubsection*{Energiekalibrierung}\label{subsubsec:energie_kali}
+Zunächst werden analog zu der in \cref{sec:bragg} verwendeten Methode an alle aufgenommenen Fluoreszenzspektren (Kalibrations-Spektrum der FeZn-Legierung, 13 Referenzspektren, Spektren vier unbekannter Legierungen)
+Gauß-Kurven angepasst. Alle Referenzspektren inklusive Gauß-Kurven-Anpassung sind im \hyperref[sec:anhang]{Anhang} aufgeführt. Eine detaillierte Diskussion
+jeder einzelnen Gauß-Kurven-Anpassung führt hier zu weit, allerdings ist in den Abbildungen \textbf{BLABLA} visuell zu erkennen, dass die Gauß-Kurven-Anpassungen
+die Messwerte sehr gut beschreiben.\par
+Nun wird das Spektrum des FeZn-Plättchens zur Energieeichung verwendet, da in diesem Spektrum die $\mathrm{K}_{\alpha}$- sowie $\mathrm{K}_{\beta}$-Linien
+von Eisen und Zink deutlich zu sehen sind. Das Fluoreszenzspektrum der FeZn-Legierung inklusive Gauß-Kurven-Anpassung ist in \cref{fig:fezn} dargestellt.
+Die zugehörigen Anpassungsparameter sind in \cref{tab:fezn-gauss-fits} zu finden.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/FeZn.pdf}
+	\caption{Röntgenfluoreszenzspektrum der FeZn-Legierung.}
+	\label{fig:fezn}
+\end{figure}
+\begin{table}[H]
+    \centering
+ \caption{Gauss-Anpassungen an das FeZn-Spektrum.}
+ \begin{tabular}{c c c c c}
+ \hline Linie & Digitaler Kanal $K$ (Mittelwert) & Standardabweichung $\sigma$ & Höhe der Gauß-Kurve $H$ & $\chi^2$ \\ 
+ \hline
+ 1 & $\num{83.57\pm 0.09}$ & $\num{2.52\pm 0.08}$ & $\num{10700\pm 600}$ & $\num{7.45}$ \\
+ 2 & $\num{88.1\pm 0.2}$ & $\num{5.0\pm 0.1}$ & $\num{4300\pm 300}$ & $\num{7.45}$ \\
+ 3 & $\num{112.62\pm 0.13}$ & $\num{2.7\pm 0.1}$ & $\num{1430\pm 80}$ & $\num{3.78}$ \\
+ 4 & $\num{125.7\pm 1.3}$ & $\num{3.9\pm 1.8}$ & $\num{200\pm 300}$ & $\num{1.11}$ \\
+ \hline\end{tabular}
+ \label{tab:fezn-gauss-fits}
+\end{table} In Abbildung \cref{fig:fezn} ist zu erkennen, dass Linie 1 und Linie 2 ineinander liegen, weshalb an diese beiden Linien eine Überlagerung
+zweier Gauß-Kurven angepasst wird. Für diese Anpassung ist die Anpassungsgüte von $\chi^2 = \num{7.45}$ im Vergleich zu den Anpassungsgüten der anderen
+beiden Anpassungen am schlechtesten, jedoch zeugt diese Anpassungsgüte trotzdem von einer gelungenen Anpassung.\par
+Anhand dieser vier Linien wird nun eine Energiekalibrierung über eine Geradenanpassung durchgeführt, indem den $x$-Koordinaten der Maxima eine
+Energie zugeordnet wird. Um die Intensitätsmaxima mit einer Energie zu identifizieren, wird das \textit{X-Ray Data Booklet} \cite{xraydata} verwendet.
+Die hier aufgeführten Energien für die entsprechenden Linien sind ohne Unsicherheit angegeben.
+Die resultierenden Datenpunkte sind in \cref{tab:callibration} dargestellt.
+\begin{table}[H]
+   \centering
+\caption{Kanäle mit dazugehörigen Energien zur Kallibration der Kanäle}
+\begin{tabular}{c c}
+\hline Digitaler Kanal $K$ & Energie $E$ / \unit{\electronvolt} \\ 
+\hline
+$\num{83.57\pm 0.09}$ & $\num{6403.84}$ \\
+$\num{88.1\pm 0.2}$ & $\num{7057.98}$ \\
+$\num{112.62\pm 0.13}$ & $\num{8638.86}$ \\
+$\num{125.7\pm 1.3}$ & $\num{9572.00}$ \\
+\hline\end{tabular}
+\label{tab:callibration}
+\end{table}
+An diese Datenpunkte wird nun eine Gerade der Form $E(K) = m \cdot K + b$ angepasst. Die resultierende Anpassungsgerade ist in \cref{fig:kalibrationskurve}
+dargestellt. Mithilfe der ermittelten Anpassungsparameter \textbf{WELCHE} $m$ und $b$ können nun für alle anderen aufgenommenen Spektren digitale Kanäle $K$ in Energien
+/ \unit{\electronvolt} umgerechnet werden. Mit
+\begin{equation*}
+    E = m \cdot K + b , \quad \Delta E = \sqrt{(K \Delta m)^2 + (m \Delta K)^2 + (\Delta b)^2}
+\end{equation*} können nun die Positionen der Maxima der Referenzspektren sowie der unbekannten Legierungen in Energien umgerechnet werden.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../figs/kallibrationskurve.pdf}
+	\caption{Geradenanpassung zur Energiekalibration.}
+	\label{fig:kalibrationskurve}
+\end{figure}
