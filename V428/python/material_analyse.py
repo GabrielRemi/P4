@@ -34,6 +34,8 @@ def do_fits() -> dict[str, FitResult]:
         file.add_error(error)
         file.add_error(error_x)
         _, ax = plt.subplots()
+        ax.set_xlabel("Kanal")
+        ax.set_ylabel("Detektionen")
         ax.set_xlim(file.plot_interval)
         ax.errorbar(*file.data, marker="x", linestyle="", zorder=10)
 
@@ -43,7 +45,7 @@ def do_fits() -> dict[str, FitResult]:
         for i in file.result:
             out = file.result[i]
             plot_data.append((out.get_fit_data(out.file_interval.interval, 200),
-                              out.file_interval.name))
+                              out.file_interval.name, out.chi_squared))
 
             # in txt datei speichern
             zma_file.write(f"   {out.file_interval.name}\n")
@@ -67,11 +69,12 @@ def do_fits() -> dict[str, FitResult]:
             zma_file.write("\n")
             results[file.name] = file.fitresult
 
-        for i, j in plot_data:
-            ax.plot(*i, label=j, zorder=10)
+        for i, j, chi in plot_data:
+            ax.plot(*i, label=f"{j} mit $\\chi^2={round(chi, 2)}$", zorder=10)
             ax.scatter(file.fitresult.x0[0], file.fitresult.height[0], color="red", s=10, zorder=100)
         plots.legend(ax)
         plt.savefig(f"{figpath}{file.name[:-4]}.pdf", dpi=200)
+        plt.close()
     zma_file.close()
 
     return results
@@ -134,9 +137,11 @@ def callibrate_energies(fezn: FitResult) -> Callable[[float], Tuple[float, float
 
     fig, ax = plt.subplots()
 
-    ax.errorbar(fezn.x0[0], energies, xerr=fezn.x0[1],
-                linestyle="", marker="x", markersize=6)
-    ax.plot(fezn.x0[0], callibration_curve(fezn.x0[0])[0])
+    ax.set_ylabel("Energie $E / \\mathrm{keV}$")
+    ax.set_xlabel("Kanal $K$")
+    ax.errorbar(fezn.x0[0], energies / 1000, xerr=fezn.x0[1],
+                linestyle="", marker="o", markersize=4)
+    ax.plot(fezn.x0[0], callibration_curve(fezn.x0[0])[0] / 1000)
     fig.savefig(f"{figpath}kallibrationskurve.pdf", dpi=200)
 
     return callibration_curve
@@ -235,4 +240,19 @@ def mass_fractions(metals: dict[str, FitResult]):
     c_err = c*rh[1]*np.sqrt(1/rh[0]**2 + 1/(rh[0].sum()**2))
     c = np.array([c, c_err])
     
-    print(c)
+    print(f"Massenanteile Cu und Zn: {c}")
+    
+    ## Vergleiche Höhe von drittem peak mit theoretischem Peak
+    g = [cu.height[0, 0] / cu.height[0, 1], 
+         cu.height[0, 0] / cu.height[0, 1]*np.sqrt(
+             (cu.height[1, 0] / cu.height[0, 0])**2 +
+             (cu.height[1, 1] / cu.height[0, 1])**2
+         )]
+    
+    h_theo = [hi_zn[0] / g[0],
+              hi_zn[0] / g[0]*np.sqrt(
+                  (hi_zn[1] / hi_zn[0])**2 +
+                  (g[1] / g[0])**2
+              )]
+    print(f"Höhe des kleinen peaks: {un.height[:, 2]}")
+    print(f"Höhe des erwartenen peaks: {h_theo}")

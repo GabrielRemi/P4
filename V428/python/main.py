@@ -6,13 +6,13 @@ from material_analyse import Callibration
 import bragg_reflexion
 
 plt.style.use("science")
-plt.rcParams["figure.figsize"] = [8, 6.5]
+plt.rcParams["figure.figsize"] = [6, 4.5]
 plt.rcParams["lines.markersize"] = 3
 
 with open("results", "w", encoding="UTF-8") as file:
     pass
 
-#bragg_reflexion.main()
+bragg_reflexion.main()
 
 def aufgabe2():
     """Auswertung zur Aufgabe 2"""
