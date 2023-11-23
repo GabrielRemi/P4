@@ -4,17 +4,18 @@ und einiger Referenzspektren aufgenommen. Damit lassen sich die einzelnen Kompon
 Außerdem werden die Massenanteile der einzelnen Komponenten einer dieser unbekannten Legierungen bestimmt.\par
 Das aufgenommene Fluoreszenzspektrum einer Legierung entsteht dadurch, dass die mit der Röntgenröhre erzeugte Röntgenstrahlung
 Elektronen mit hohen Bindungsenergien aus den Atomen der Legierung herausschlagen kann, sodass diese frei gewordenen Energieniveaus mit
-Elektronen aus höheren Schalen wieder aufgefüllt werden können. Durch diesen atomaren Übergang wird dann wieder Röntgenstrahlung
+Elektronen aus höheren Schalen wieder aufgefüllt werden können. Durch diese atomaren Übergange wird dann wieder Röntgenstrahlung
 emittiert, was in dem Fluoreszenzspektrum resultiert. Da dieses Fluoreszenzspektrum Informationen über die atomaren Übergänge
 der Legierungs-Atome beinhält, können so Rückschlüsse auf Materialeigenschaften geschlossen werden.
 \subsection{Aufbau}\label{subsec:material_aufbau}
 Für die Materialanalyse wird die Cu-Röntgenröhre verwendet. Außerdem wird für die Messung der Röntgenenergiedetektor benutzt, welcher anstelle
-des Sensorarms mit dem Zählrohr eingebaut wird. Bei einem Röntgenenergiedetektor handelt es sich im Wesentlichen um eine PIN-Photodiode.
+des Sensorarms mit dem Zählrohr eingebaut wird.\par
+Bei einem Röntgenenergiedetektor handelt es sich im Wesentlichen um eine PIN-Photodiode.
 Eine PIN-Photodiode ist eine PN-Diode (Zusammensetzung einer p-dotierten und einer n-dotieren Halbleiterschicht), wobei zwischen
 p- und n-dotierter Schicht eine intrinsische Halbleiterschicht (kaum bis nur gering dotiert) eingesetzt wird. Die Röntgenphotonen
 erzeugen in der intrinsischen Halbleiterschicht Elektron-Loch-Paare, wobei die Elektronen zu der n-dotierten Schicht und die Löcher
 zu der p-dotierten Schicht abgezogen werden. Je energiereicher die Röntgenphotonen sind, desto mehr weitere Elektron-Loch-Paare können durch
-Stoßprozesse ausgelöst durch das ursprünglich entstandene Elektron-Loch-Paar erzeugt werden. Somit ist der gemessene Strom
+Stoßprozesse, ausgelöst durch das ursprünglich entstandene Elektron-Loch-Paar, erzeugt werden. Somit ist der gemessene Strom
 proportional zur Energie der einfallenden Röntgenstrahlung. Ein weiterer Bestandteil des Röntgenenergiedetektors ist ein
 Vielkanalanalysator, welcher die unterschiedlichen gemessenen Energien einem Kanal zuordnet, sodass schließlich ein Energiespektrum zu
 betrachten ist.\par
@@ -41,7 +42,7 @@ Gold (Au), Indium (In), Kupfer (Cu), Nickel (Ni), Silber (Ag), Titan (Ti), Wolfr
 \subsubsection*{Energiekalibrierung}\label{subsubsec:energie_kali}
 Zunächst werden analog zu der in \cref{sec:bragg} verwendeten Methode an alle aufgenommenen Fluoreszenzspektren (Kalibrations-Spektrum der FeZn-Legierung, 13 Referenzspektren, Spektren vier unbekannter Legierungen)
 Gauß-Kurven angepasst. Alle Referenzspektren inklusive Gauß-Kurven-Anpassung sind im \hyperref[sec:anhang]{Anhang} aufgeführt. Eine detaillierte Diskussion
-jeder einzelnen Gauß-Kurven-Anpassung führt hier zu weit, allerdings ist in den Grafiken zu den Röntgenfluoreszenzspektren aller Legierungen visuell zu erkennen, dass die Gauß-Kurven-Anpassungen
+jeder einzelnen Gauß-Kurven-Anpassung führt hier zu weit, allerdings ist in den Grafiken zu den Röntgenfluoreszenzspektren aller Legierungen visuell zu erkennen (bzw. siehe auch $\chi^2$), dass die Gauß-Kurven-Anpassungen
 die Messwerte sehr gut beschreiben.\par
 Nun wird das Spektrum des FeZn-Plättchens zur Energieeichung verwendet, da in diesem Spektrum die $\mathrm{K}_{\alpha}$- sowie $\mathrm{K}_{\beta}$-Linien
 von Eisen und Zink deutlich zu sehen sind. Das Fluoreszenzspektrum der FeZn-Legierung inklusive Gauß-Kurven-Anpassung ist in \cref{fig:fezn} dargestellt.
@@ -211,7 +212,7 @@ in \cref{tab:unbekannt4} zu findenen Anpassungsparameter.
 
     \end{tabular}
 \end{table} Bei dieser unbekannten Legierung ist eine Identifikation der charakteristischen Linien mit denen der Referenzspektren aus \cref{tab:energien-charakeristische-linien}
-nicht möglich, da es hier scheinbar keine eindeutige Zuordnung gibt. Zur Identifikation der Linien wird nun die \textit{X-ray Transition Energies Database} \cite{nist_xray_database}
+nicht möglich, da es hier scheinbar keine eindeutige Zuordnung gibt. Zur Identifikation der Linien wird nun die \textit{X-ray Transition Energies Database} \cite{nist_search}
 als Hilfswerkzeug benutzt. Hier kann nach den Linien für ein bestimmtes Energie-Intervall gesucht werden. Bei den Linien 1 und 2 der vierten unbekannten Legierung
 handelt es sich vermutlich um Neodym, da sich diese mit den Neodym-Linien mit den Energien \SI{5,721}{\kilo \electronvolt} und \SI{5,208}{\kilo \electronvolt}
 identifizieren lassen. Die Linien 3 und 4 lassen sich zu den Kobalt-Linien mit den Energien \SI{6,930}{\kilo \electronvolt} und \SI{7,706}{\kilo \electronvolt}
@@ -220,9 +221,9 @@ aufgrund fehlender Referenzspektren schwer fällt.
 \subsubsection*{Massenanteilsbestimmung der unbekannten Legierung 2}\label{subsubsec:massenanteile}
 Gemäß der in \cite{skript} hergeleiteten Formel lassen sich die Massenanteile einer Legierung bestimmen mit 
 \begin{equation}
-    C_i = \frac{\rho_ih_i}{\sum_j\rho_j h_j}, \qquad \Delta C_i = C_i(1-C_i)\frac{\Delta h_i}{h_i}
+    C_i = \frac{\rho_ih_i}{\sum_j\rho_j h_j}, \qquad \Delta C_i = C_i(1-C_i)\frac{\Delta h_i}{h_i},
 \end{equation}
-wobei $\rho_i$ die Dichten der einzelnen Elemente und $h_i$ die relative Höhe einer Linie 
+wobei $\rho_i$ die Dichten der einzelnen Elemente sind und $h_i$ die relative Höhe einer Linie 
 im Vergleich zum gemessenen Referenzspektrum 
 \begin{equation}
     h_i = \frac{H_i}{H_{0, i}},\qquad \Delta h_i = h_i\sqrt{\qty(\frac{\Delta H_i}{H_i})^2 + \qty(\frac{\Delta H_{0, i}}{H_{0, i}})^2},
