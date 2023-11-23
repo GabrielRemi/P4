@@ -219,27 +219,38 @@ aufgrund fehlender Referenzspektren schwer fällt.
 \subsubsection*{Massenanteilsbestimmung der unbekannten Legierung 2}\label{subsubsec:massenanteile}
 Gemäß der in \cite{skript} hergeleiteten Formel lassen sich die Massenanteile einer Legierung bestimmen mit 
 \begin{equation}
-    C_i = \frac{\rho_ih_i}{\sum_j\rho_j h_j},
+    C_i = \frac{\rho_ih_i}{\sum_j\rho_j h_j}, \qquad \Delta C_i = C_i(1-C_i)\frac{\Delta h_i}{h_i}
 \end{equation}
 wobei $\rho_i$ die Dichten der einzelnen Elemente und $h_i$ die relative Höhe einer Linie 
-im Vergleich zum gemessenen Referenzspektrum. 
+im Vergleich zum gemessenen Referenzspektrum 
 \begin{equation}
-    h_i = \frac{H_i}{H_{0, i}},\qquad \Delta h_i = h_i\sqrt{\qty(\frac{\Delta H_i}{H_i})^2 + \qty(\frac{\Delta H_{0, i}}{H_{0, i}})^2}.
+    h_i = \frac{H_i}{H_{0, i}},\qquad \Delta h_i = h_i\sqrt{\qty(\frac{\Delta H_i}{H_i})^2 + \qty(\frac{\Delta H_{0, i}}{H_{0, i}})^2},
     \label{eq:rel_height}
 \end{equation}
+wobei die Höhe dabei die Höhe der angepassten Gauß-Kurve darstellt 
+und nicht die gesamte Anzahl der Teilchendetektionen der Linie. Aufgrund der Überlagerung verschiedener Linien 
+sind diese Zahlen unterschiedlich. 
 Die Höhen der Linien sind Tabellen \ref{tab:energien-charakeristische-linien} sowie \ref{tab:unbekannt2} zu entnehmen.
 Hierbei muss jedoch zusätzlich beachtet werden, dass zwei Linien von Kupfer und Zink sich überlagern,
 weshalb aus \cref{tab:unbekannt2} die Höhe der ersten Zink-Linie nicht unmittelbar ablesbar ist.\par 
 Im Folgenden bezeichnen wir die höhere Kupfer-Linie als $H^1_{0, \mathrm{Cu}}$ und die kleinere als $H^2_{0, \mathrm{Cu}}$.
-Das Verhältnis beider Linien $g = H^1_{0, \mathrm{Cu}} / H^2_{0, \mathrm{Cu}}$ mit gaußschem Fehler wie \ref{eq:rel_height} muss ebenfalls 
+Das Verhältnis beider Linien $g = H^1_{0, \mathrm{Cu}} / H^2_{0, \mathrm{Cu}}$ mit gaußschem Fehler wie in \ref{eq:rel_height} muss ebenfalls 
 in der Legierung unverändert bleiben, weshalb die Höhe der ersten Zink-Linie berechnet werden kann mit 
 \begin{equation*}
     H^1_\mathrm{Zn} = H - g\cdot H^1_\mathrm{Cu}, \qquad 
     \Delta H^1_\mathrm{Zn} = \sqrt{(\Delta H)^2 + ( H^1_\mathrm{Cu}\Delta g)^2 + (\Delta  H^1_\mathrm{Cu} g)^2}
 \end{equation*}
-mit der gesamten Höhe $H$ der Messung.\par 
-Mit $\rho_\mathrm{Cu} =\SI{8.96}{\gram\per\cubic\cm}$ und $\rho_\mathrm{Zn} =\SI{7.19}{\gram\per\cubic\cm}$ QUELLE 
+mit der gesamten Höhe $H$ der Messung. Gemessen wurde das Verhältnis $g=13.8(2)\%$, womit 
+der Literaturwert \cite{xraydata} von $17\%$ zwar in der gleichen Größenordnung liegt, jedoch nicht im 
+$3\sigma$-Bereich der Messung. Dies könnte darauf hindeuten, dass die hier gemessen Höhen 
+nicht mit hoher Genauigkeit repräsentativ sind aufgrund von unerwarteten Abweichungen, die auch dazu führen können,
+dass die hier bestimmten Massenanteile von den tatsächlichen Anteilen abweichen.\par
+Mit $\rho_\mathrm{Cu} =\SI{8.96}{\gram\per\cubic\cm}$ und $\rho_\mathrm{Zn} =\SI{7.13}{\gram\per\cubic\cm}$ 
+\cite{Workman:2022ynf} 
 ergeben sich Massenanteile von 
 \begin{equation}
-    C_\mathrm{Cu} = 49(1)\%,\quad C_\mathrm{Zn} = 51(3)\%.
+    C_\mathrm{Cu} = 49.6(5)\%,\quad C_\mathrm{Zn} = 50(2)\%.
 \end{equation}
+
+Damit sind in dieser Kupfer-Zink-Legierung Zink und Kupfer innerhalb der Unsicherheit gleich verteilt. 
+Wie schon erwähnt könnten 

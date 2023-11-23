@@ -153,7 +153,7 @@ def make_callibration_table(metals: dict[str, FitResult], callibration: Callibra
 \begin{table}[H]
     \centering
     \caption{gemessene Energie und Höhe der charakteristischen Linien verschieder Metalle}
-    \label{tab:tab:energien-charakeristische-linien}
+    \label{tab:energien-charakeristische-linien}
     \begin{tabular}{c|c|c}
         Metall & Energie $E/\unit{\kilo\electronvolt}$ & Höhe in Detektionen \\\hline"""
     
@@ -212,7 +212,7 @@ def make_callibration_table_for_one(metal: FitResult, callibration: Callibration
 def mass_fractions(metals: dict[str, FitResult]):
     """Berechnet von Legierung 2 die Massenanteile"""
     density_cu = 8.96
-    density_zn = 7.19
+    density_zn = 7.13
     cu = metals["Cu.txt"]
     zn = metals["Zn.txt"]
     un = metals["Unbekannt2.txt"]
@@ -237,9 +237,12 @@ def mass_fractions(metals: dict[str, FitResult]):
     ])
     
     c = rh[0] / rh[0].sum()
-    c_err = c*rh[1]*np.sqrt(1/rh[0]**2 + 1/(rh[0].sum()**2))
+    #c_err = c*rh[1]*np.sqrt(1/rh[0]**2 + 1/(rh[0].sum()**2))
+    c_err = c*(1-c)*rh[1]/rh[0]
     c = np.array([c, c_err])
     
+    print(f"relative höhe: {cu.height[0, 1]/cu.height[0, 0]}",
+        f"{np.sqrt((cu.height[1, 1]/cu.height[0, 0])**2 + (cu.height[0, 1]*cu.height[1, 0]/cu.height[0, 0]**2)**2)}")
     print(f"Massenanteile Cu und Zn: {c}")
     
     ## Vergleiche Höhe von drittem peak mit theoretischem Peak
