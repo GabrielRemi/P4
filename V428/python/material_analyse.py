@@ -71,8 +71,8 @@ def do_fits() -> dict[str, FitResult]:
 
         for i, j, chi in plot_data:
             ax.plot(*i, label=f"{j} mit $\\chi^2={round(chi, 2)}$", zorder=10)
-            ax.scatter(file.fitresult.x0[0], file.fitresult.height[0], color="red", s=10, zorder=100)
-        plots.legend(ax)
+            #ax.scatter(file.fitresult.x0[0], file.fitresult.height[0], color="red", s=10, zorder=100)
+        plots.legend(ax, size=9)
         plt.savefig(f"{figpath}{file.name[:-4]}.pdf", dpi=200)
         plt.close()
     zma_file.close()

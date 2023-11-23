@@ -11,6 +11,7 @@ mainpath = os.path.dirname(__file__)
 figpath = f"{mainpath}/../protokoll/figs/"
 tabpath = f"{mainpath}/../protokoll/tabellen_figuren/"
 os.chdir(mainpath)
+colors = ["tab:blue", "tab:red", "tab:cyan", "tab:green", "tab:orange", "lime", "royalblue", "magenta"]
 
 t = [120, 10] # Messdauer in sekunden pro Messwinkel
 def do_fits() -> dict[str, fm.FitResult]:
@@ -32,11 +33,11 @@ def do_fits() -> dict[str, fm.FitResult]:
         ax.set_ylabel(r"Mittlere Zählrate / $\mathrm{s}^{-1}$")
         ax.set_xlim(spectrum.plot_interval)
         ax.errorbar(*spectrum.data, marker="o", ms=3, linestyle="", label="Messdaten", color="black")
-        ax.scatter(spectrum.fitresult.x0[0], spectrum.fitresult.height[0], color="red")
-        for fit in spectrum.result:
+        #ax.scatter(spectrum.fitresult.x0[0], spectrum.fitresult.height[0], color="red")
+        for k, fit in enumerate(spectrum.result):
             output = spectrum.result[fit]
             data = output.get_fit_data(output.file_interval.interval, 100)
-            ax.plot(*data, label=f"{output.file_interval.name} mit $\\chi^2 = {round(output.chi_squared, 2)}$", zorder=100)
+            ax.plot(*data, label=f"{output.file_interval.name} mit $\\chi^2 = {round(output.chi_squared, 2)}$",color=colors[k] , zorder=100,)
             
         plots.legend(ax)
         
