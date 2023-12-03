@@ -5,6 +5,7 @@
 \usepackage{tex/pakete}
 \usepackage{tex/macros}
 \DeclareSIUnit\px{px}
+\DeclareSIUnit\we{w.E.}
 
 % Einstellen der Pakete
 \graphicspath{{figs/}}
@@ -26,12 +27,12 @@
 
 \pagestyle{fancy}
 %\fancyhf{}
-\lhead{P444 Röntgenstrahlung und Materialanalyse}
+\lhead{P444 Oberflächenplasmonen-Resonanz-Spektroskopie}
 \rhead{Gabriel Remiszewski und Christian Fischer}
 
 % Titelblatt
-\title{\textbf{Versuchsbericht} \\ \Large{\textbf{P444 Oberflächenplasmonen-Resonan-Spektroskopie (ORS)}}}
-\date{durchgeführt am 29/30.11.2023}
+\title{\textbf{Versuchsbericht} \\ \Large{\textbf{P444 Oberflächenplasmonen-Resonanz-Spektroskopie (ORS)}}}
+\date{durchgeführt am 29/30.11.2023 \\ betreut von Paul Steinmann}
 \author{Gabriel Remiszewski und Christian Fischer}
 
 %========================================================================
@@ -47,9 +48,12 @@
 \newpage
 
 % "Einleitung"
-\include{tex/einleitung}
+\include{tex/einleitung.tex}
 
 % "Versuchsabschnitte"
+\include{tex/erläuterung.tex}
+\include{tex/versuchsteil1.tex}
+\include{tex/versuchsteil2.tex}
 
 % "Fazit"
 \include{tex/fazit.tex}
