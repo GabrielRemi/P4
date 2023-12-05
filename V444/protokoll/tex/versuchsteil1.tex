@@ -163,4 +163,109 @@ Reflexionsgrad $R \approx 1$ ist.
     \caption{Anpassung der theoretischen Formeln für die Reflexionsgrade $R_{\mathrm{TM}}$ und $R_{\mathrm{TE}}$ an die Messwerte der Referenzmessung
     zur Bestimmung des Brechungsindex $n_{\mathrm{Prisma}}$.}\label{fig:glas_fit}
 \end{figure} Anhand der angegebenen Werte für die Güte ist zu erkennen, dass eine Überanpassung erreicht wurde, was eventuell durch die gewählten Unsicherheiten
-zu begründen ist.
+zu begründen ist. Es ist visuell zu erkennen, dass beide Anpassungen die Messwerte sehr gut beschreiben. Aus den Anpassungen ergeben sich als Anpassungsparameter
+die Brechungsindizes $n_{\mathrm{Prisma,TM}} = \num{1,50028(12)}$ und $n_{\mathrm{Prisma,TE}} = \num{1,50047(13)}$. Diese Werte stimmen sehr genau mit einem
+typischen Glas-Brechungsindex von \num{1,5} überein. Da die beiden experimentellen Werte sehr konsistent untereinander sind und die Unsicherheiten klein gegenüber
+den Werten selber sind, genügt es, für die weitere Auswertung $n_{\mathrm{Prisma}} = \num{1,5}$ zu verwenden. Die exakten experimentellen Abweichungen von diesem
+Wert sind so gering, dass eine Berücksichtigung dessen zu keinen merklichen Unterschieden bei der weiteren Auswertung führt.\par
+Abschließend werden noch grob die Verläufe der gemessenen Reflexionsgrade (siehe \cref{fig:glas_fit}) bzw. der gemessenen Intensitäten (siehe \cref{fig:referenz})
+diskutiert. Beide Intensitätskurven erreichen ab einem Grenzwinkel von ungefähr \SI{41,8}{\degree} ihren Maximalwert, der ab diesem Winkel näherungsweise konstant bleibt.
+Dies ist gerade für die im Versuch verwendete Konfiguration der Grenzwinkel der Totalreflexion. Bei Totalreflexion gilt $R \approx 1$, was ebenfalls in \cref{fig:glas_fit}
+zu erkennen ist, da die Reflexionsgrade gegen den Wert $\approx 1$ streben und dann konstant bleiben. Für TM-Polarisation und TE-Polarisation ist jedoch ein Unterschied
+beim Verlauf der Intensitäts- bzw. Reflexionsgradkurven unterhalb des Grenzwinkels der Totalreflexion zu erkennen. Dies ist natürlich darauf zurückzuführen, dass
+die Reflexionsgrade für TM-Polarisation \ref{eq:reflexionsgrad_tm} und TE-Polarisation \ref{eq:reflexionsgrad_te} unterschiedlich sind. Falls hier Unterschiede durch die
+Versuchsdurchführung zustande gekommen sind, können diese nicht ausfindig gemacht werden, da diese Messwerte vom Assistenten bereitgestellt wurden.\newpage
+\subsubsection*{Bestimmung der Dicken der Goldfilme}
+Anhand der zur Verfügung stehenden Messdaten zu den Goldfilmen kann der Reflexionsgrad $R(\theta) = \frac{I_{\mathrm{Au}}(\theta)}{I_{\mathrm{ref}}(\theta)}$ (entnommen aus \cite{skript})
+der verschiedenen Goldfilme für TM- und TE-Polarisation bestimmt werden. Diese Rechnung ergibt nur für den Winkelbereich oberhalb des Grenzwinkels der Totalreflexion
+der Referenzmessungen Sinn, da der Intensitätsverlauf der Referenzmessungen nur innerhalb dieses Winkelbereichs konstant ist. Die zugehörige Unsicherheit berechnet sich gemäß
+\begin{equation*}
+    \Delta R(\theta) = \sqrt{\left(\frac{\Delta I_{\mathrm{Au}}(\theta)}{I_{\mathrm{ref}}(\theta)}\right)^2 + \left(\frac{I_{\mathrm{Au}}(\theta)}{I_{\mathrm{ref}}^2(\theta)}\Delta I_{\mathrm{ref}}\right)^2} .
+\end{equation*} Nun kann die Dicke der Gold-Filme durch Anpassung der theoretisch erwarteten Reflexionskurven an den gemessenen Reflexionsgrad $R(\theta)$ der
+jeweiligen Probe ermittelt werden. Die theoretisch erwarteten Reflexionskurven können mithilfe des in \cite{nano} eingeführten Transfer-Matrizen-Verfahrens
+berechnet werden, da nun eine Mehrfachschicht bestehend aus Prisma (Glas), Chrom, Gold und Luft analysiert werden muss. Das Auftreten von Chrom in dieser Mehrfachschicht
+kommt dadurch zustande, da bei dem Aufdampfen der Goldfilme auf ein dünnes Glasplättchen eine Chrom-Schicht zur besseren Haftung zwischen Gold und Glas verwendet wird.
+Zunächst wird diese Chrom-Schicht jedoch vernachlässigt. Für die Reflexions- und Transmissionskoeffizienten zwischen zwei Schichten für TM- und TE-Polarisation gilt nach \cite{nano}
+für $\mu_1 = \mu_2 = 1$ (die hier verwendeten Materialien weisen keine magnetische Antwort auf):
+\begin{align}
+    r_{\mathrm{TE}} &= \frac{k_{\mathrm{1z}} - k_{\mathrm{2z}}}{k_{\mathrm{1z}} + k_{\mathrm{2z}}} , \quad t_{\mathrm{TE}} = \frac{2k_{\mathrm{1z}}}{k_{\mathrm{1z}} + k_{\mathrm{2z}}} , \\
+    r_{\mathrm{TM}} &= \frac{\epsilon_2 k_{\mathrm{1z}} - \epsilon_1 k_{\mathrm{2z}}}{\epsilon_2 k_{\mathrm{1z}} + \epsilon_1 k_{\mathrm{2z}}} , \quad t_{\mathrm{TM}} = \sqrt{\frac{\epsilon_1}{\epsilon_2}} \frac{2\epsilon_2 k_{\mathrm{1z}}}{\epsilon_2 k_{\mathrm{1z}} + \epsilon_1 k_{\mathrm{2z}}}\label{eq:reflexion_tm} .
+\end{align} 
+In \cite{nano} wird für den Reflexionskoeffizienten der Mehrfachschicht Prisma-Goldfilm-Luft mithilfe
+des Transfer-Matrizen-Verfahrens hergeleitet:
+\begin{equation}\label{eq:wichtiger_reflexionskoeffizient}
+    r = r_{12} + \frac{t_{12}r_{23}t_{21}\mathrm{e}^{2 \mathrm{i} k_{\mathrm{Gold,z}} d_{\mathrm{Gold}}}}{1 - r_{21}r_{23}\mathrm{e}^{2 \mathrm{i} k_{\mathrm{Gold,z}} d_{\mathrm{Gold}}}} .
+\end{equation} Für die Anpassung macht es nur Sinn TM-Polarisation zu betrachten, da nur in diesem Fall OPPs angeregt werden. Mithilfe von \cref{eq:reflexion_tm} ergeben sich
+$r_{12}$, $r_{21}$, $r_{23}$, $t_{12}$ und $t_{21}$ zu
+\begin{align*}
+    r_{12} &= \frac{\epsilon_{\mathrm{Gold}} k_{\mathrm{Prisma,z}} - \epsilon_{\mathrm{Prisma}} k_{\mathrm{Gold,z}}}{\epsilon_{\mathrm{Gold}} k_{\mathrm{Prisma,z}} + \epsilon_{\mathrm{Prisma}} k_{\mathrm{Gold,z}}} , \quad r_{21} = -r_{12} , \\
+    r_{23} &= \frac{\epsilon_{\mathrm{Luft}} k_{\mathrm{Gold,z}} - \epsilon_{\mathrm{Gold}} k_{\mathrm{Luft,z}}}{\epsilon_{\mathrm{Luft}} k_{\mathrm{Gold,z}} + \epsilon_{\mathrm{Gold}} k_{\mathrm{Luft,z}}} , \\
+    t_{12} &= \sqrt{\frac{\epsilon_{\mathrm{Prisma}}}{\epsilon_{\mathrm{Gold}}}} \frac{2 \epsilon_{\mathrm{Gold}} k_{\mathrm{Prisma,z}}}{\epsilon_{\mathrm{Gold}} k_{\mathrm{Prisma,z}} + \epsilon_{\mathrm{Prisma}} k_{\mathrm{Gold,z}}} , \\
+    t_{21} &= \sqrt{\frac{\epsilon_{\mathrm{Gold}}}{\epsilon_{\mathrm{Prisma}}}} \frac{2 \epsilon_{\mathrm{Prisma}} k_{\mathrm{Gold,z}}}{\epsilon_{\mathrm{Prisma}} k_{\mathrm{Gold,z}} + \epsilon_{\mathrm{Gold}} k_{\mathrm{Prisma,z}}} .
+\end{align*} Hierbei ist $k_{\mathrm{z}}$ jeweils die Komponente des Wellenvektors, die in dem jeweiligen Medium senkrecht zur Grenzfläche steht. Es gilt aufgrund der Geometrie der vorliegenden Konfiguration
+\begin{align*}
+    k_0 &= \frac{2\pi}{\lambda} , \quad k_{\mathrm{x}} = k_0 n_{\mathrm{Prisma}} \sin(\theta + \Delta \theta) , \\
+    k_{\mathrm{Prisma,z}} &= \sqrt{k_0^2 \epsilon_{\mathrm{Prisma}} - k_{\mathrm{x}}^2} , \\
+    k_{\mathrm{Gold,z}} &= \sqrt{k_0^2 \epsilon_{\mathrm{Gold}} - k_{\mathrm{x}}^2} , \\
+    k_{\mathrm{Luft,z}} &= \sqrt{k_0^2 \epsilon_{\mathrm{Luft}} - k_{\mathrm{x}}^2} ,
+\end{align*} wobei $\lambda = \SI{785}{\nm}$ die Laserwellenlänge, $\Delta \theta$ ein Anpassungsparameter, $\epsilon_{\mathrm{Prisma}} = n_{\mathrm{Prisma}}^2 = \num{2,25}$ der Wert der
+dielektrischen Funktion des Prismas bei der Laserwellenlänge, $\epsilon_{\mathrm{Gold}} = -\num{22,854} + \num{1,441} \mathrm{i}$ der Wert der dielektrischen Funktion von Gold \cite{dielec_gold} bei der Laserwellenlänge und
+$\epsilon_{\mathrm{Luft}} = \num{1,00059}$ der Wert der dielektrischen Funktion von Luft \cite{wiki:permittivität} bei der Laserwellenlänge ist.\par
+Als Anpassungsfunktion wird nun der theoretisch erwartete Reflexionsgrad $\abs{r}^2$ (Betragsquadrat von \cref{eq:wichtiger_reflexionskoeffizient}) zur Anpassung an den
+gemessenen Reflexionsgrad $R(\theta) = \frac{I_{\mathrm{Au}}(\theta)}{I_{\mathrm{ref}}(\theta)}$ verwendet. Der aus den Messwerten berechnete
+Reflexionsgrad für TM- und TE-Polarisation sowie die Anpassung an den aus den Messwerten berechneten Reflexionsgrad für TM-Polarisation ist für alle vier Goldfilme
+in \cref{fig:gold_fit} dargestellt. Die zugehörigen Anpassungsparameter und damit auch die Dicken der Goldfilme sind in \cref{tab:gold_anpassungsparameter} zu finden.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/gold1_ppol_fit}
+        \caption{Goldfilm 1}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/gold2_ppol_fit}
+        \caption{Goldfilm 2}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/gold3_ppol_fit}
+        \caption{Goldfilm 3}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/gold4_ppol_fit}
+        \caption{Goldfilm 4}
+    \end{subfigure}
+    \caption{Experimentell bestimmte Reflexionsgrade $R(\theta)$ für TM- und TE-Polarisation und Anpassung für TM-Polarisation
+    zur Bestimmung der Dicke der Goldfilme $d_{\mathrm{Gold}}$.}\label{fig:gold_fit}
+\end{figure}
+\begin{table}[H]
+    \centering
+    \caption{Anpassungsparameter der Anpassung von $\abs{r}^2$ an die gemessenen Reflexionsgrade $R(\theta)$ der vier Goldfilme für TM-Polarisation zur Bestimmung
+    derer Dicken.}
+    \begin{tabular}{c|c|c}
+        Goldfilm & $d_{\mathrm{Gold}}$ / \unit{\nm} & $\Delta \theta$ / \unit{\degree} \\
+        \hline
+        1 & $\num{29,80(14)}$ & $\num{21(7)e-3}$ \\
+        2 & $\num{50,48(19)}$ & $\num{13(3)e-3}$ \\
+        3 & $\num{75,2(4)}$ & $\num{11(4)e-3}$ \\
+        4 & $\num{42,50(16)}$ & $\num{15(3)e-3}$                
+    \end{tabular}\label{tab:gold_anpassungsparameter}
+\end{table} Zunächst ist in \cref{fig:gold_fit} zu erkennen, dass die Anpassungsfunktion $\abs{r}^2$ den gemessenen Reflexionsgrad $R(\theta)$ für TM-Polarisation
+sehr gut beschreibt, weshalb hier auch eine Berücksichtigung der Chrom-Schicht überflüssig scheint und keine noch besseren Ergebnisse liefern würde.
+Die Werte für $\chi_{\mathrm{res}}^2$ legen nahe, dass wieder eine Überanpassung erreicht wurde, was eventuell durch die gewählten Unsicherheiten
+zu begründen ist. Die bestimmte Werte für die Dicken der Goldfilme (siehe \cref{tab:gold_anpassungsparameter}) sind sehr plausibel, da nach \cite{nano} die Metallschichten
+nur einige zehn Nanometer dick sein dürfen, sodass noch OPPs an der Metall-Luft-Grenzfläche angeregt werden können.\par
+Abschließend werden noch die Verläufe der Reflexionsgrad-Kurven $R(\theta)$ in \cref{fig:gold_fit} (bzw. \cref{fig:gold}) diskutiert. Für alle vier Goldfilme ist der Reflexionsgrad
+für TE-Polarisation $R_{\mathrm{TE}}(\theta) \approx 1$, was nach \cref{sec:erläuterung} (bzw. \cite{nano}) dadurch zu begründen ist, dass für TE-Polarisation keine OPPs angeregt werden können,
+und somit die gesamte einfallende Intensität an der Prisma-Gold-Grenzfläche totalreflektiert wird. Dieses Verhalten ist unabhängig von der Dicke der Goldfilme und wird
+nur durch die TE-Polarisation bestimmt. Für TM-Polarisation können nach \cref{sec:erläuterung} (bzw. \cite{nano}) OPPs angeregt werden, was in den Messwerten daran
+zu erkennen ist, dass $R_{\mathrm{TM}}(\theta)$ bei einem bestimmten Winkel ein Minimum erreicht. Hierbei wird nicht mehr die gesamte einfallende Intensität totalreflektiert
+sondern teilweise (oder vollständig) zur Anregung der OPPs absorbiert. Der theoretische Verlauf der Kurve wird durch den zuvor berechneten Reflexionsgrad $\abs{r}^2$ beschrieben. Im Falle der TM-Polarisation ist offensichtlich ein Einfluss der Dicke der Gold-Filme auf $R_{\mathrm{TM}}(\theta)$
+zu erkennen. Je dicker der Goldfilm, desto mehr Intensität wird trotz Anregung von OPPs reflektiert, da die Amplitude des elektromagnetischen Feldes des Lasers exponentiell mit der Strecke in
+dem Goldfilm abfällt. Bei den OPPs kommt dann weniger Intenstität an, mit der sie angeregt werden können. Eine Ausnahme stellt hier der erste Goldfilm da. Dieser
+hat mit einer Dicke von \SI{29,80(14)}{\nm} die geringste Dicke der vier Goldfilme und dennoch befindet sich hier das Minimum des Reflexionsgrades weit von null entfernt
+(im Gegensatz zu den etwas dickeren Goldfilmen 2 und 4). Dies könnte dadurch zu begründen sein, dass der erste Goldfilm bei der Aufnahme der Messwerte verschmutzt/veraltet war.
+Dies kann (wie auch bei den selbst aufgenommenen Messwerten in \cref{fig:gold_own} zu erkennen) zu einem weniger stark ausgeprägten Minimum des Reflexionsgrades führen. Allerdings
+kann hier nur spekuliert werden, da diese Messwerte vom Assistenten zur Verfügung gestellt wurden und es keine Informationen zu der Qualität der verwendeten Goldproben gibt.
