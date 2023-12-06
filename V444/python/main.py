@@ -373,3 +373,198 @@ plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.13))
 plt.xlabel('Einfallswinkel $\\theta$ / °')
 plt.ylabel('Reflexionsgrad $R(\\theta)$')
 plt.savefig(f"../protokoll/figs/gold4_ppol_fit.pdf", dpi = 400)
+
+# Versuchsteil 2
+
+# Darstellung der Rohdaten - eigene Messung
+
+# TE-Polarisation
+silber_spol1_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_41_90.txt', skiprows = 4)
+silber_spol1_angle = silber_spol1_data[:,0] # Einfallswinkel in Grad
+silber_spol1_intensity = silber_spol1_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol2_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_41_96.txt', skiprows = 4)
+silber_spol2_angle = silber_spol2_data[:,0] # Einfallswinkel in Grad
+silber_spol2_intensity = silber_spol2_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol3_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_3.txt', skiprows = 4)
+silber_spol3_angle = silber_spol3_data[:,0] # Einfallswinkel in Grad
+silber_spol3_intensity = silber_spol3_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol4_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_9.txt', skiprows = 4)
+silber_spol4_angle = silber_spol4_data[:,0] # Einfallswinkel in Grad
+silber_spol4_intensity = silber_spol4_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol5_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_14.txt', skiprows = 4)
+silber_spol5_angle = silber_spol5_data[:,0] # Einfallswinkel in Grad
+silber_spol5_intensity = silber_spol5_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol6_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_21.txt', skiprows = 4)
+silber_spol6_angle = silber_spol6_data[:,0] # Einfallswinkel in Grad
+silber_spol6_intensity = silber_spol6_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol7_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_27.txt', skiprows = 4)
+silber_spol7_angle = silber_spol7_data[:,0] # Einfallswinkel in Grad
+silber_spol7_intensity = silber_spol7_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol8_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_32.txt', skiprows = 4)
+silber_spol8_angle = silber_spol8_data[:,0] # Einfallswinkel in Grad
+silber_spol8_intensity = silber_spol8_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol9_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_39.txt', skiprows = 4)
+silber_spol9_angle = silber_spol9_data[:,0] # Einfallswinkel in Grad
+silber_spol9_intensity = silber_spol9_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol10_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_45.txt', skiprows = 4)
+silber_spol10_angle = silber_spol10_data[:,0] # Einfallswinkel in Grad
+silber_spol10_intensity = silber_spol10_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol11_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_50.txt', skiprows = 4)
+silber_spol11_angle = silber_spol11_data[:,0] # Einfallswinkel in Grad
+silber_spol11_intensity = silber_spol11_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol12_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_57.txt', skiprows = 4)
+silber_spol12_angle = silber_spol12_data[:,0] # Einfallswinkel in Grad
+silber_spol12_intensity = silber_spol12_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol13_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_63.txt', skiprows = 4)
+silber_spol13_angle = silber_spol13_data[:,0] # Einfallswinkel in Grad
+silber_spol13_intensity = silber_spol13_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol14_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_68.txt', skiprows = 4)
+silber_spol14_angle = silber_spol14_data[:,0] # Einfallswinkel in Grad
+silber_spol14_intensity = silber_spol14_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_spol15_data = np.loadtxt('../part2/Ag_0grad_spol/spectrum_42_75.txt', skiprows = 4)
+silber_spol15_angle = silber_spol15_data[:,0] # Einfallswinkel in Grad
+silber_spol15_intensity = silber_spol15_data[:,1] # Intensität in willkürlichen Einheiten
+
+# TM-Polarisation
+silber_ppol1_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_41_90.txt', skiprows = 4)
+silber_ppol1_angle = silber_ppol1_data[:,0] # Einfallswinkel in Grad
+silber_ppol1_intensity = silber_ppol1_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol2_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_41_96.txt', skiprows = 4)
+silber_ppol2_angle = silber_ppol2_data[:,0] # Einfallswinkel in Grad
+silber_ppol2_intensity = silber_ppol2_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol3_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_3.txt', skiprows = 4)
+silber_ppol3_angle = silber_ppol3_data[:,0] # Einfallswinkel in Grad
+silber_ppol3_intensity = silber_ppol3_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol4_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_9.txt', skiprows = 4)
+silber_ppol4_angle = silber_ppol4_data[:,0] # Einfallswinkel in Grad
+silber_ppol4_intensity = silber_ppol4_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol5_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_14.txt', skiprows = 4)
+silber_ppol5_angle = silber_ppol5_data[:,0] # Einfallswinkel in Grad
+silber_ppol5_intensity = silber_ppol5_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol6_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_21.txt', skiprows = 4)
+silber_ppol6_angle = silber_ppol6_data[:,0] # Einfallswinkel in Grad
+silber_ppol6_intensity = silber_ppol6_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol7_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_27.txt', skiprows = 4)
+silber_ppol7_angle = silber_ppol7_data[:,0] # Einfallswinkel in Grad
+silber_ppol7_intensity = silber_ppol7_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol8_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_32.txt', skiprows = 4)
+silber_ppol8_angle = silber_ppol8_data[:,0] # Einfallswinkel in Grad
+silber_ppol8_intensity = silber_ppol8_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol9_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_39.txt', skiprows = 4)
+silber_ppol9_angle = silber_ppol9_data[:,0] # Einfallswinkel in Grad
+silber_ppol9_intensity = silber_ppol9_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol10_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_45.txt', skiprows = 4)
+silber_ppol10_angle = silber_ppol10_data[:,0] # Einfallswinkel in Grad
+silber_ppol10_intensity = silber_ppol10_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol11_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_50.txt', skiprows = 4)
+silber_ppol11_angle = silber_ppol11_data[:,0] # Einfallswinkel in Grad
+silber_ppol11_intensity = silber_ppol11_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol12_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_57.txt', skiprows = 4)
+silber_ppol12_angle = silber_ppol12_data[:,0] # Einfallswinkel in Grad
+silber_ppol12_intensity = silber_ppol12_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol13_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_63.txt', skiprows = 4)
+silber_ppol13_angle = silber_ppol13_data[:,0] # Einfallswinkel in Grad
+silber_ppol13_intensity = silber_ppol13_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol14_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_68.txt', skiprows = 4)
+silber_ppol14_angle = silber_ppol14_data[:,0] # Einfallswinkel in Grad
+silber_ppol14_intensity = silber_ppol14_data[:,1] # Intensität in willkürlichen Einheiten
+
+silber_ppol15_data = np.loadtxt('../part2/Ag_45grad_ppol/spectrum_42_75.txt', skiprows = 4)
+silber_ppol15_angle = silber_ppol15_data[:,0] # Einfallswinkel in Grad
+silber_ppol15_intensity = silber_ppol15_data[:,1] # Intensität in willkürlichen Einheiten
+
+# Plot Rohdaten TE-Polarisation
+plt.subplots()
+plt.errorbar(silber_spol1_angle, silber_spol1_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '41,90°')
+plt.errorbar(silber_spol2_angle, silber_spol2_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '41,96°')
+plt.errorbar(silber_spol3_angle, silber_spol3_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,03°')
+plt.errorbar(silber_spol4_angle, silber_spol4_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,09°')
+plt.errorbar(silber_spol5_angle, silber_spol5_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,14°')
+plt.errorbar(silber_spol6_angle, silber_spol6_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,21°')
+plt.errorbar(silber_spol7_angle, silber_spol7_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,27°')
+plt.errorbar(silber_spol8_angle, silber_spol8_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,32°')
+plt.errorbar(silber_spol9_angle, silber_spol9_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,39°')
+plt.errorbar(silber_spol10_angle, silber_spol10_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,45°')
+plt.errorbar(silber_spol11_angle, silber_spol11_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,50°')
+plt.errorbar(silber_spol12_angle, silber_spol12_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,57°')
+plt.errorbar(silber_spol13_angle, silber_spol13_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,63°')
+plt.errorbar(silber_spol14_angle, silber_spol14_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,68°')
+plt.errorbar(silber_spol15_angle, silber_spol15_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,75°')
+plt.legend(bbox_to_anchor=(1.0, 1.0))
+plt.xlabel('Wellenlänge $\\lambda$ / nm')
+plt.ylabel('Intensität $I_{\mathrm{Ag}}$ / w.E.')
+plt.savefig(f"../protokoll/figs/silber_te.pdf", dpi = 400)
+
+# Plot Rohdaten TM-Polarisation
+plt.subplots()
+plt.errorbar(silber_ppol1_angle, silber_ppol1_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '41,90°')
+plt.errorbar(silber_ppol2_angle, silber_ppol2_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '41,96°')
+plt.errorbar(silber_ppol3_angle, silber_ppol3_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,03°')
+plt.errorbar(silber_ppol4_angle, silber_ppol4_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,09°')
+plt.errorbar(silber_ppol5_angle, silber_ppol5_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,14°')
+plt.errorbar(silber_ppol6_angle, silber_ppol6_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,21°')
+plt.errorbar(silber_ppol7_angle, silber_ppol7_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,27°')
+plt.errorbar(silber_ppol8_angle, silber_ppol8_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,32°')
+plt.errorbar(silber_ppol9_angle, silber_ppol9_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,39°')
+plt.errorbar(silber_ppol10_angle, silber_ppol10_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,45°')
+plt.errorbar(silber_ppol11_angle, silber_ppol11_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,50°')
+plt.errorbar(silber_ppol12_angle, silber_ppol12_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,57°')
+plt.errorbar(silber_ppol13_angle, silber_ppol13_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,63°')
+plt.errorbar(silber_ppol14_angle, silber_ppol14_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,68°')
+plt.errorbar(silber_ppol15_angle, silber_ppol15_intensity, xerr = 0.2, linestyle = 'None', marker = '.', linewidth = 0.5, markersize = 0.5, label = '42,75°')
+plt.legend(bbox_to_anchor=(1.0, 1.0))
+plt.xlabel('Wellenlänge $\\lambda$ / nm')
+plt.ylabel('Intensität $I_{\mathrm{Ag}}$ / w.E.')
+plt.savefig(f"../protokoll/figs/silber_tm.pdf", dpi = 400)
+
+# Dispersionsrelation
+
+n_prisma = 1.5
+theta = np.array([42.75, 42.68, 42.63, 42.57, 42.50, 42.45, 42.39, 42.32, 42.27, 42.21, 42.14, 42.09, 42.03, 41.96, 41.90])
+lambda_opp = np.array([562, 568, 577, 584, 590, 596, 604, 613, 623, 634, 644, 654, 669, 685, 703])
+lambda_opp_err = np.array([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 4, 4])
+c_0 = 299792458 * 10**(9) # in nm/s
+
+omega_opp = (2*np.pi*c_0)/lambda_opp
+k_senk = (2*np.pi*n_prisma)/(lambda_opp) * np.sin(np.deg2rad(theta))
+
+omega_opp_err = (2*np.pi*c_0)/(lambda_opp**2) * lambda_opp_err
+k_senk_err = np.sqrt(((2*np.pi*n_prisma)/(lambda_opp**2) * np.sin(np.deg2rad(theta)) * lambda_opp_err)**2 + ((2*np.pi*n_prisma)/(lambda_opp) * np.cos(np.deg2rad(theta)) * np.deg2rad(0.06))**2)
+
+plt.subplots()
+plt.errorbar(k_senk, omega_opp, xerr = k_senk_err, yerr = omega_opp_err, marker = '.', linewidth = 0.5, markersize = 0.5, label = 'OPP-Dispersionsrelation')
+plt.plot(k_senk, c_0 * k_senk, label = 'Lichtlinie')
+plt.legend()
+plt.xlabel('$k_{||}$ / $\mathrm{nm}^{-1}$')
+plt.ylabel('$\\omega_{\\mathrm{OPP}}(k_{||})$ / $\mathrm{s}^{-1}$')
+plt.savefig(f"../protokoll/figs/dispersionsrelation_opp.pdf", dpi = 400)
+
+print(omega_opp, k_senk)
+print(omega_opp_err, k_senk_err)
