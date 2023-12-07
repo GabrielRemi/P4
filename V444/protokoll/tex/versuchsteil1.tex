@@ -17,7 +17,7 @@ des Strahls aufgebaut. Hierbei muss darauf geachtet werden, dass der Strahl weit
 Anschließend werden hinter der Linse ein Linearpolarisator und eine $\lambda/2$-Wellenplatte montiert. Der verwendete Laserstrahl ist zwar vertikal polarisiert,
 dennoch wird ein Linearpolarisator zur Gewährleistung einer möglichst perfekten Polarisation verwendet. Die Polarisationsachse muss vertikal orientiert sein.
 Auch die optische Achse der Wellenplatte wird zunächst vertikal orientiert, wobei diese Orientierung während der Versuchsdurchführung variiert wird. Der
-verwendete Laserstrahl muss linear polarisiert sein, da bei diesem Versuch die Anregung von SPPs bei s- bzw. p-polarisiertem Licht untersucht wird. Der Wechsel
+verwendete Laserstrahl muss linear polarisiert sein, da bei diesem Versuch die Anregung von OPPs bei s- bzw. p-polarisiertem Licht untersucht wird. Der Wechsel
 zwischen s- und p-polarisiertem Licht gelingt mit der $\lambda/2$-Wellenplatte, da sich mit dieser die Polarisationsrichtung drehen lässt. Hier muss darauf geachtet werden,
 dass der Strahl nicht durch die Optiken beschnitten wird.\par
 Nun wird die motorisierte Rotationsbühne, auf der sich die beiden identischen rechtwinkligen BK7-Prismen befinden, auf den optischen Tisch gesetzt, sodass der
@@ -110,8 +110,8 @@ indem das Brechungsgesetz verwendet wird. Dieses lautet für die Lichtbrechung a
 ist (siehe \cite{linden_optik}). Bei der Referenzmessung ist der Laser zunächst auf das Prisma, dann auf den Ölfilm, anschließend auf das Deckglas und schließlich auf die Luft
 gefallen. Damit folgt durch Anwenden des Brechungsgesetzes:
 \begin{align*}
-    n_{\mathrm{Prisma}} \sin(\theta) &= n_{\mathrm{Öl}} \sin(\theta_1) \\
-    n_{\mathrm{Öl}} \sin(\theta_1) &= n_{\mathrm{Glas}} \sin(\theta_2) \\
+    n_{\mathrm{Prisma}} \sin(\theta) &= n_{\mathrm{\ddot Ol}} \sin(\theta_1) \\
+    n_{\mathrm{\ddot Ol}} \sin(\theta_1) &= n_{\mathrm{Glas}} \sin(\theta_2) \\
     n_{\mathrm{Glas}} \sin(\theta_2) &= n_{\mathrm{Luft}} \sin(\theta_3) .
 \end{align*} Durch Ausnutzen der Gleichungskette folgt insgesamt
 \begin{equation*}
@@ -170,7 +170,7 @@ den Werten selber sind, genügt es, für die weitere Auswertung $n_{\mathrm{Pris
 Wert sind so gering, dass eine Berücksichtigung dessen zu keinen merklichen Unterschieden bei der weiteren Auswertung führt.\par
 Abschließend werden noch grob die Verläufe der gemessenen Reflexionsgrade (siehe \cref{fig:glas_fit}) bzw. der gemessenen Intensitäten (siehe \cref{fig:referenz})
 diskutiert. Beide Intensitätskurven erreichen ab einem Grenzwinkel von ungefähr \SI{41,8}{\degree} ihren Maximalwert, der ab diesem Winkel näherungsweise konstant bleibt.
-Dies ist gerade für die im Versuch verwendete Konfiguration der Grenzwinkel der Totalreflexion. Bei Totalreflexion gilt $R \approx 1$, was ebenfalls in \cref{fig:glas_fit}
+Dies ist gerade für die im Versuch verwendete Konfiguration der Grenzwinkel der Totalreflexion. Bei Totalreflexion gilt mit Verlusten $R \approx 1$, was ebenfalls in \cref{fig:glas_fit}
 zu erkennen ist, da die Reflexionsgrade gegen den Wert $\approx 1$ streben und dann konstant bleiben. Für TM-Polarisation und TE-Polarisation ist jedoch ein Unterschied
 beim Verlauf der Intensitäts- bzw. Reflexionsgradkurven unterhalb des Grenzwinkels der Totalreflexion zu erkennen. Dies ist natürlich darauf zurückzuführen, dass
 die Reflexionsgrade für TM-Polarisation \ref{eq:reflexionsgrad_tm} und TE-Polarisation \ref{eq:reflexionsgrad_te} unterschiedlich sind. Falls hier Unterschiede durch die
@@ -264,8 +264,9 @@ nur durch die TE-Polarisation bestimmt. Für TM-Polarisation können nach \cref{
 zu erkennen ist, dass $R_{\mathrm{TM}}(\theta)$ bei einem bestimmten Winkel ein Minimum erreicht. Hierbei wird nicht mehr die gesamte einfallende Intensität totalreflektiert
 sondern teilweise (oder vollständig) zur Anregung der OPPs absorbiert. Der theoretische Verlauf der Kurve wird durch den zuvor berechneten Reflexionsgrad $\abs{r}^2$ beschrieben. Im Falle der TM-Polarisation ist offensichtlich ein Einfluss der Dicke der Gold-Filme auf $R_{\mathrm{TM}}(\theta)$
 zu erkennen. Je dicker der Goldfilm, desto mehr Intensität wird trotz Anregung von OPPs reflektiert, da die Amplitude des elektromagnetischen Feldes des Lasers exponentiell mit der Strecke in
-dem Goldfilm abfällt. Bei den OPPs kommt dann weniger Intenstität an, mit der sie angeregt werden können. Eine Ausnahme stellt hier der erste Goldfilm da. Dieser
+dem Goldfilm abfällt. Bei den OPPs kommt dann weniger Intensität an, mit der sie angeregt werden können. \par 
+Eine Ausnahme stellt hier der erste Goldfilm da. Dieser
 hat mit einer Dicke von \SI{29,80(14)}{\nm} die geringste Dicke der vier Goldfilme und dennoch befindet sich hier das Minimum des Reflexionsgrades weit von null entfernt
-(im Gegensatz zu den etwas dickeren Goldfilmen 2 und 4). Dies könnte dadurch zu begründen sein, dass der erste Goldfilm bei der Aufnahme der Messwerte verschmutzt/veraltet war.
-Dies kann (wie auch bei den selbst aufgenommenen Messwerten in \cref{fig:gold_own} zu erkennen) zu einem weniger stark ausgeprägten Minimum des Reflexionsgrades führen. Allerdings
-kann hier nur spekuliert werden, da diese Messwerte vom Assistenten zur Verfügung gestellt wurden und es keine Informationen zu der Qualität der verwendeten Goldproben gibt.
+(im Gegensatz zu den etwas dickeren Goldfilmen 2 und 4). Intuitiv liegt die Vermutung nahe, dass durch den exponentiellen Abfall evaneszenter 
+Felder der Effekt der Plasmonenanregung mit höher Filmdicke abgeschwächt wird, jedoch existiert eine optimale Dicke, bei der die Anregung maximiert wird. 
+Für kleinere sowie größere Dicken ist aufgrund schwächerer Anregung der Reflexionsgrad höher.
