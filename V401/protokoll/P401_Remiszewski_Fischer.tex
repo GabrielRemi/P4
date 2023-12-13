@@ -1,0 +1,66 @@
+% Dokumentenklasse
+\documentclass{article}
+
+% Pakete
+\usepackage{tex/pakete}
+\usepackage{tex/macros}
+\DeclareSIUnit\px{px}
+
+% Einstellen der Pakete
+\graphicspath{{figs/}}
+\addbibresource{refs.bib}
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries}{\thesection.}{.3em}{}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titleformat{\subsection}
+  {\normalfont\Large\bfseries}{\thesubsection.}{.3em}{}
+\titlespacing*{\subsection}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries}{\thesubsubsection.}{.3em}{}
+\titlespacing*{\subsubsection}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\sisetup{output-decimal-marker = {,}}
+
+%\numberwithin{equation}{section}
+%\counterwithin{figure}{section}
+
+\pagestyle{fancy}
+%\fancyhf{}
+\lhead{P401 Elektronische Übergänge in Atomen}
+\rhead{Gabriel Remiszewski und Christian Fischer}
+
+% Titelblatt
+\title{\textbf{Versuchsbericht} \\ \Large{\textbf{P401 Elektronische Übergänge}}}
+\date{durchgeführt am 13/14.12.2023 \\ betreut von Valentin Jonas}
+\author{Gabriel Remiszewski und Christian Fischer}
+
+%========================================================================
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+% "Einleitung"
+\include{tex/einleitung.tex}
+
+% "Versuchsabschnitte"
+
+% "Fazit"
+\include{tex/fazit.tex}
+
+% "Anhang"
+\appendix
+\include{tex/anhang.tex}
+
+
+% Literaturverzeichnis ausgeben
+\printbibliography[heading=bibintoc, title = {Literaturverzeichnis}]
+
+\end{document}
+%========================================================================
