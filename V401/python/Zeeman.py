@@ -54,6 +54,7 @@ def do_gauss_fits() -> Zeeman:
 
         ax.plot()
         plt.show()
+        print(delta_lambda_left, delta_lambda_right)
 
     return Zeeman(np.ndarray(delta_lambda_left), np.ndarray(delta_lambda_right), np.ndarray(current))
 
