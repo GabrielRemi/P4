@@ -28,7 +28,7 @@ def do_gauss_fits() -> Zeeman:
     delta_lambda_right: list[float] = []
     current: list[float] = []
 
-    fits: list[FileData] = read_file("zeeman.txt")
+    fits: list[FileData] = read_file("zeeman3.txt")
     for fit in fits:
         fit.add_error([1] * len(fit.data[0, :]))
         fit.run_fits()
@@ -41,21 +41,21 @@ def do_gauss_fits() -> Zeeman:
             data = out.get_fit_data(out.file_interval.interval, 200)
             ax.plot(*data, label=out.file_interval.name)
 
-        x0 = fit.fitresult.x0
-        delta_lambda_left.append(
-            2*etalon_width*(np.cos(x0[0, 1]) - np.cos([x0[0, 0]])))
-        delta_lambda_right.append(
-            2 * etalon_width * (np.cos(x0[0, 2]) - np.cos([x0[0, 1]])))
-
-        current.append(float(fit.name[2:-4]))
-
-        print(f"{fit.name}: {x0} {fit.fitresult.a}")
+    #     x0 = fit.fitresult.x0
+    #     delta_lambda_left.append(
+    #         2*etalon_width*(np.cos(x0[0, 1]) - np.cos([x0[0, 0]])))
+    #     delta_lambda_right.append(
+    #         2 * etalon_width * (np.cos(x0[0, 2]) - np.cos([x0[0, 1]])))
+    #
+    #     current.append(float(fit.name[2:-4]))
+    #
+    #     print(f"{fit.name}: {x0} {fit.fitresult.a}")
         plots.legend(ax)
 
         ax.plot()
         plt.show()
-        print(delta_lambda_left, delta_lambda_right)
-
-    return Zeeman(np.ndarray(delta_lambda_left), np.ndarray(delta_lambda_right), np.ndarray(current))
+    #     print(delta_lambda_left, delta_lambda_right)
+    #
+    # return Zeeman(np.array(delta_lambda_left), np.array(delta_lambda_right), np.array(current))
 
 do_gauss_fits()
