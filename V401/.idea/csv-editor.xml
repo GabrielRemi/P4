@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/python/delta_energy_franck_hertz.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/python/gauss_fits_zeeman.csv">
           <value>
             <Attribute>

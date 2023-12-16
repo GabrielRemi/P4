@@ -11,7 +11,8 @@ python_path = os.path.dirname(__file__)
 plt.style.use("science")
 plt.rcParams["figure.figsize"] = [7, 5.5]
 
-def do_gauss_fits() -> dict[str, pd.DataFrame]:
+
+def do_gauss_fits() -> dict[str, pd.DataFrame | np.ndarray]:
     os.chdir(python_path)
 
     x0: list[list[float]] = []
@@ -26,12 +27,22 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
     x0_err_df: pd.DataFrame = pd.DataFrame()
     sigma_err_df: pd.DataFrame = pd.DataFrame()
 
-    result: dict[str, pd.DataFrame] = {}
+    result: dict[str, pd.DataFrame | np.ndarray] = {}
     #fit_data: pd.DataFrame = pd.DataFrame()
 
     fits: list[FileData] = read_file("franck-hertz.txt")
     for fit in fits:
-        error = len(fit.data[0]) * [1]
+        n = 4
+        error = []
+        for i, elem in enumerate(fit.data[1]):
+            x = fit.data[1][i-n:i+1].std()
+            if i < n or x <= 0.01*elem:
+                error.append(0.01*elem)
+            else:
+                error.append(x)
+
+        error = np.array(error)
+
         fit.add_error(error)
         fit.run_fits()
 
@@ -50,6 +61,7 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
         result[f"{fit.name} fit_data"] = pd.DataFrame(
             fit.result["Name"].get_fit_data(fit.result["Name"].file_interval.interval, 400).transpose(),
             columns=["x", "y"])
+        result[f"{fit.name} error"] = fit.data[2]
 
     result["x0"] = x0_df
     result["x0_err"] = x0_err_df
