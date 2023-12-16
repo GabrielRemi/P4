@@ -30,7 +30,7 @@ def do_gauss_fits() -> pd.DataFrame:
     theta_right: list[float] = []
     sd_theta_right: list[float] = []
 
-    fits: list[FileData] = read_file("zeeman3.txt")
+    fits: list[FileData] = read_file("zeeman.txt")
     for fit in fits:
         current.append(float(fit.name[1:4]))
 

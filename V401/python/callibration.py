@@ -39,10 +39,10 @@ def main() -> Tuple[func, func]:
     """Main Funktion der Magnetfeldkalibration. gibt die Kalibrationsfunktionen
     vor und nach der Hauptmessung wieder."""
     # Lese die Daten ein
-    data_before: pd.DataFrame = pd.DataFrame(np.loadtxt("../Data/Zeeman2/kalibrierung_nachher.txt", skiprows=1),
-                                             columns=["I / A", "B / mT"])
-    data_after: pd.DataFrame = pd.DataFrame(np.loadtxt("../Data/Zeeman3/kalibrierung_nachher.txt", skiprows=1),
-                                            columns=["I / A", "B / mT"])
+    data_before: pd.DataFrame = pd.DataFrame(np.loadtxt("../Data/Zeeman/kalibrierung_3.txt", skiprows=1),
+                                             columns=["I / A", "B / mT"]).query("`I / A` < 9.5")
+    data_after: pd.DataFrame = pd.DataFrame(np.loadtxt("../Data/Zeeman/kalibrierung_ende.txt", skiprows=1),
+                                            columns=["I / A", "B / mT"]).query("`I / A` < 9.5")
     # data_after.plot(kind="scatter", x="I / A", y="B / mT")
 
     data_std: float = round(np.std(data_before[200:]["B / mT"]), 1)
