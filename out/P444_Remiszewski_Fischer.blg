@@ -1,0 +1,17 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'P444_Remiszewski_Fischer.blg'
+[50] biber:340> INFO - === Sat Dec 16, 2023, 16:21:50
+[59] Biber.pm:419> INFO - Reading 'P444_Remiszewski_Fischer.bcf'
+[100] Biber.pm:979> INFO - Found 11 citekeys in bib section 0
+[107] Biber.pm:4419> INFO - Processing section 0
+[116] Biber.pm:4610> INFO - Looking for bibtex file 'refs.bib' for section 0
+[117] bibtex.pm:1713> INFO - LaTeX decoding ...
+[130] bibtex.pm:1519> INFO - Found BibTeX data source '/home/gabriel/Documents/GitHub/P4/V444/protokoll/refs.bib'
+[179] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[179] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[179] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'de-DE'
+[179] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
+[186] bbl.pm:660> INFO - Writing 'P444_Remiszewski_Fischer.bbl' with encoding 'UTF-8'
+[188] bbl.pm:763> INFO - Output to P444_Remiszewski_Fischer.bbl
+[188] Biber.pm:131> WARN - BibTeX subsystem: /tmp/biber_tmp_IklW/8fe4c9854184545302f21ebf0d47516c_150113.utf8, line 145, warning: 154 characters of junk seen at toplevel
+[188] Biber.pm:133> INFO - WARNINGS: 1
