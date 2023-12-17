@@ -189,3 +189,43 @@ bei der Bestimmung des Bohr Magnetons weiter eingegangen.
     Richtung. \cite{zeeman_handblatt}}
     \label{fig:zeeman_polarisation}
 \end{figure}
+
+\subsection{Bestimmung des Bohrschen Magnetons}
+Zur Bestimmung des Bohrschen Magnetons wird die Aufspaltung der Linien 
+in Transversalkonfiguration mit einer CCD-Kamera gemessen. Diese Messung wird 
+bei unterschiedlichen Spulenströmen 40-mal durchgeführt und der Mittelwert 
+gespeichert für genauere Ergebnisse. Mit einer Hall-Sonde wird 
+zur Kalibration das Magnetfeld in Abhängigkeit des Stroms vor und nach der Durchführung
+einer Messung vorgenommen. Durch das Erhitzen der Spulen wird erwartet, dass sich 
+die Kalibrationskurve mit der Zeit ändert. Durch zwei Messungen kann damit der Fehler des 
+Magnetfeldes bestimmt werden.
+
+Untersucht wird hierbei ein einzelnes Interferenzmaximum nahe des Ringzentrums. Dieses wird 
+beim Anlegen eines Magnetfeldes in drei Maxima aufgespalten. An die gemessenen Kurven 
+werden drei Gauss-Kurven mit einem linearen Offset angepasst. Die Anpassfunktion kann somit beschrieben werden 
+mit 
+\begin{equation*}
+    f(x, \vec x, \vec \sigma, \vec A, m, n) = \sum_{i=1}^3 \frac{A_i}{\sqrt{2\pi}\sigma_i}
+        \exp\qty(-\frac{(x-x_i)^2}{2\sigma_i^2}) +mx + n.
+\end{equation*}
+
+Das Programm zur Messung der Einstrahlintensitäten gibt keine dazugehörigen Unsicherheiten an.
+Aus diesem Grund müssen diese rekonstruiert werden. Die CCD-Kamera misst Photonen, wodurch 
+die Messung pro Pixel als Poisson-verteilt angesehen werden kann mit dazugehörigem Poisson-Fehler \\
+$\Delta N = \sqrt{N}$. Die Umrechnung der Zählereignisse in eine Intensität (in Prozent) ist unbekannt, 
+weshalb der Fehler mit einem unbekannten Faktor skaliert wird. Für die Anpassungskurve 
+ist dieser jedoch irrelevant, da nur der relative Fehler der einzelnen Messpunkte von Bedeutung ist. 
+Der Skalierungsfaktor ist daher nicht nötig. Da jedoch nur die relativen Fehler bekannt sind, verliert 
+die Berechnung einer Anpassungsgüte, wie dem reduzierten Chi-Quadrat \cite{wiki:reduced_chi_square},
+seine Bedeutung, weshalb eine quantitative Bewertung der Anpassungen nicht durchgeführt werden kann.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.6\linewidth]{../figs/gauss_i7.9.pdf}
+    \caption{Aufspaltung der Maxima bei einem Strom von \SI{7.9}{\ampere}.}
+    \label{fig:gauss_i79}
+\end{figure}
+
+Eine Anpassungskurve ist beispielhaft in \cref{fig:gauss_i79} gezeigt. Visuell
+kann die Anpassung als äußerst erfolgreich angesehen werden. Weitere Diagramme 
+sind im \cref{sec:anhang} zu finden.
