@@ -1,0 +1,4 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}%
+\contentsline {section}{\numberline {2}Fazit}{2}{section.2}%
+\contentsline {section}{\numberline {A}Anhang}{3}{appendix.A}%

@@ -1,0 +1,155 @@
+\section{Zeeman-Effekt}\label{sec:zeeman}
+Der Zeeman-Effekt beschreibt die Aufspaltung der Energieniveaus einzelner Zustände 
+in einem Magnetfeld. Spin und Bahndrehimpuls bewirken ein magnetisches Moment, auf welches 
+an ein äußere Magnetfeld wirken kann. Quantenmechanisch kann dies durch den Hamiltonoperator 
+beschrieben werden, der die Interaktion mit einem äußeren Feld beschreibt \cite{Sakurai}:
+\begin{equation}
+    \hat H_\mathrm{int} = -\frac{q}{2m_\mathrm e}\qty(\hat{\vec L} + 2\hat{\vec S})\cdot \vec B.
+    \label{eq:zeeman_hamilton}
+\end{equation}
+
+In diesem Versuch wird die Aufspaltung an Cadmium beobachtet. Das äußere Elektron sieht 
+aufgrund der Wahrscheinlichkeitsverteilung in erster Näherung den Kern mit den inneren 
+Schalen effektiv als nur ein Teilchen, womit die Berechnung der Energieniveaus 
+äquivalent zum Wasserstoffatom betrachtet werden kann. Da dieses durch eine gerade 
+Elektronenzahl keinen Gesamtspin 
+besitzt und das Magnetfeld homogen ist, vereinfacht sich \cref{eq:zeeman_hamilton} zu 
+\begin{equation*}
+    \hat H_\mathrm{int} = \frac{eB}{2m_\mathrm e}\hat{L_z},
+\end{equation*}
+wobei die Elektronenladung eingesetzt wurde und das Magnetfeld per Konvention in die z-Achse zeigt.
+Da bei kugelsymmetrischem Potenzial die z-Komponente des Drehimpulsoperators mit dem restlichen Hamiltonoperator
+des Atoms kommutiert, ergibt sich eine Verschiebung des Energieniveaus von
+\begin{equation*}
+    \Delta E = \frac{e\hbar}{2m_\mathrm e}m_jB \equiv \mu_\mathrm B m_j B
+    \label{eq:energy_zeeman}
+\end{equation*}
+
+mit dem Bohrschen Magneton \cite{Demtröder:829119}
+\begin{equation}
+    \mu_B = \SI{9.274015}{\joule\per\tesla}.
+    \label{eq:magneton}
+\end{equation}
+Weil hier elektrische Dipolübergänge betrachtet werden, gilt die Auswahlregel 
+$\Delta m = \{\pm 1, 0\}$ \cite{Demtröder:829119}, wobei einer Differenz 
+von null linear polarisiertes Licht (im folgenden als $\pi$ bezeichnet) und einer Differenz von $\pm 1$
+zirkular polarisiertes Licht ($\sigma^+$ für rechts zirkular und $\sigma^-$ für links zirkular) 
+zugeordnet werden kann.
+Für $\pi$-Polarisation kann daher keine Energieverschiebung beobachtet werden, für 
+$\sigma^\pm$-Polarisation eine Verschiebung von 
+\begin{equation}
+    \delta E = \pm \mu_\mathrm B B
+    \label{eq:normal_zeeman}.
+\end{equation}
+Unabhängig von der Drehimpulsquantenzahl kann somit beim hier beschriebenen 
+normalen Zeeman-Effekt immer nur eine Aufspaltung in drei Linien beobachtet werden,
+weshalb die Entartung nur teilweise aufgehoben werden kann.
+
+In \cref{fig:zeeman_übergänge} ist das Übergangsschema für die Übergänge ${}^1D_2\rightarrow {}^1P_1$
+des Cadmiumatoms dargestellt. Die Wellenlänge des Übergangs ist $\lambda_0 = \SI{644}{\nano\meter}$
+und entspricht rotem Licht. Dieser Übergang wird in diesem Versuch untersucht.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{../figs/zeeman_übergänge}
+    \caption{Übergangsschema von Cadmium für die Singulett-Zustände ${}^1D_2\rightarrow {}^1P_1$. 
+        Zusehen sind jeweils drei Übergangsgruppen mit je drei Übergängen, die untereinander
+        entartet sind, die Entartung zwischen einander jedoch durch den Zeeman-Effekt aufgehoben wird. Darunter 
+        ist die durch die Auswahlregeln bestimmte Polarisation des abgestrahlten Lichts aufgetragen. 
+        \cite{zeeman_handblatt}}
+    \label{fig:zeeman_übergänge}
+\end{figure}
+
+\subsection{Versuchsaufbau}
+Der Aufbau zur Untersuchung des Zeeman-Effekts ist in \cref{fig:zeeman_aufbau} skizziert. Eine 
+Cadmiumlampe wird zwischen ein Magnetfeld festgehalten, welches durch zwei in Reihe 
+geschalteten stromdurchflossenen Spulen erzeugt wird. Die Spulen können 
+um die vertikale Achse gedreht werden, um die Richtung 
+des Magnetfeldes im Bezug zur Beobachtungsrichtung verändern zu können. 
+Das Licht der Lampe wird mit einer Kondensorlinse 
+$f=\SI{150}{\mm}$ kollimiert mit leichter konvergenz, um nachher am Etalon verschieden Einfallswinkel zu 
+erzeugen. 
+
+Das eingebaute Fabry-P\'erot-Etalon ist eine planparallele Glasschicht, welche 
+beidseitig mit teildurchlässigen Spiegeln beschichtet ist. Durch ständige Reflektion innerhalb der Glasschicht
+wird ein Strahlenbündel erzeugt, welches durch Gangunterschiede untereinander interferiert. 
+Das hier benutzte Etalon hat einen Brechungsindex von $n=1.457$ und einem Reflexionsgrad $R=0.85$.
+Mit einer weiteren Sammellinse $f=\SI{150}{\mm}$ wird das Licht am Okular scharf abgebildet, an 
+dem durch die entstandene Interferenz konzentrische Ringe beobachter sein können. Davor wird mit einem 
+Interferenzfilter das rote Licht bei $\SI{644}{\nm}$ gefiltert.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{../figs/etalon}
+    \caption{Funktionsweise eines Fabry-P\'erot-Etalon. $\alpha$ bezeichnet den Einfallswinkel 
+        eines Lichtstrahls in den Etalon mit Dicke $d$ bei Brechungsindex $n$.
+        $\Delta_1$ und $\Delta_2$ bezeichnen die Gangunterschiede, die zur Interferenz zweier 
+        transmittierter Strahlen führen.
+        \cite{zeeman_handblatt}}
+    \label{fig:etalon}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{../figs/zeeman_aufbau}
+    \caption{Aufbau zur Messung des Zeeman-Effekts. \abf a zeigt die Cadmiumlampe mit Klammern
+        \abf b und Polschuhe \abf c. \abf d zeigt die Kondensorlinse, \abf e das Etalon, \abf f 
+        die Abbildungslinse, \abf g das Interferenzfilter und \abf h das Okular mit Strichskala. 
+        \cite{zeeman_handblatt}}
+    \label{fig:zeeman_aufbau}
+\end{figure}
+
+\subsection{Untersuchung der Transversal- und Longitudinalkonfiguration}
+Durch das Drehen der Spulen lässt sich die Polarisation der emittierten Strahlung 
+untersuchen. Hierbei werden zwei Konfigurationsmöglichkeiten gesondert betrachtet.
+Klassisch lässt sich die Polarisations- und Strahlrichtung der Übergangsstrahlung 
+mit dem Lorentz-Modell beschreiben, wo eine Schwingungsgleichung mit der Lorentzkraft als 
+treibende Kraft angesehen wird. Dabei sind $\pi$- und $\sigma^\pm$-Strahlung die Eigenmodi 
+der Lösung. Diese sind in \cref{fig:zeeman_polarisation} skizziert. Zu sehen ist hierbei, 
+dass sich jede Lösung als schwingender Dipol interpretieren lässt, wobei für $\sigma^\pm$ 
+zwei senkrecht zueinander stehenden Dipole mit einer $\SI{90}{\degree}$-Phasenbeziehung 
+betrachtet werden.
+
+Da Dipole nicht in Bewegungsrichtung abstrahlen, kann in longitudinaler 
+Beobachtsrichtung (parallel zum Magnetfeld) nur die zirkular polarisierte $\sigma^\pm$-Strahlung
+beobachtet werden. Bei transversaler Konfiguration sind alle drei Modi sichtbar mit dem 
+Unterschied, dass $\sigma^\pm$ hier linear polarisiert ist und räumlich um $\SI{90}{\degree}$
+zur $\pi$-Polarisation gedreht.
+
+\subsubsection{Transversalkonfiguration}
+In Transversalrichtung können $\sigma^\pm$- sowie $\pi$-Strahlung beobachtet werden, wobei 
+diese Modi linear polarisiert sind und senkrecht zueinander stehen. Mit einem Polarisationsfilter 
+lässt sich somit $\pi$ und $\sigma$ voneinander trennen, $\sigma^+$ und $\sigma^-$ sind jedoch nicht 
+unterscheidbar voneinander. Vor das Etalon wird der Polarisationsfilter befestigt und 
+beim Einschalten des Magnetfeldes das Bild beobachtet.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/transversal_konfig}
+        \caption{Transversal Konfiguration: links oben ohne B-Feld, rechts oben mit B-Feld,
+            rechts unten mit Filter auf $\SI{0}{\degree}$, links unten mit Filter auf $\SI{90}{\degree}$.}
+        \label{fig:transversal_konfiguration}
+    \end{subfigure}
+    \hspace{.5cm}
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/longitudinal_konfig}
+        \caption{Longitudinal Konfiguration: links oben ohne B-Feld, rechts oben mit B-Feld, 
+        rechts unten mit Filter auf $\SI{+45}{\degree}$, links unten mit Filter auf $\SI{-45}{\degree}$. }
+        \label{fig:longitudinal_konfiguration}
+    \end{subfigure}
+\end{figure}
+
+
+\subsubsection{Longitudinalkonfiguration}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{../figs/zeeman_polarisation}
+    \caption{Polarisation der verschiedenen Übergänge. $\pi$-Strahlung ist nur in transversaler 
+    Richtung beobachtbar, $\sigma^\pm$-Strahlung in transversaler und in longitudinaler 
+    Richtung. \cite{zeeman_handblatt}}
+    \label{fig:zeeman_polarisation}
+\end{figure}
