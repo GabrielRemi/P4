@@ -1,7 +1,7 @@
 \section{Zeeman-Effekt}\label{sec:zeeman}
 Der Zeeman-Effekt beschreibt die Aufspaltung der Energieniveaus einzelner Zustände 
 in einem Magnetfeld. Spin und Bahndrehimpuls bewirken ein magnetisches Moment, auf welches 
-an ein äußere Magnetfeld wirken kann. Quantenmechanisch kann dies durch den Hamiltonoperator 
+ein äußere Magnetfeld wirken kann. Quantenmechanisch kann dies durch den Hamiltonoperator 
 beschrieben werden, der die Interaktion mit einem äußeren Feld beschreibt \cite{Sakurai}:
 \begin{equation}
     \hat H_\mathrm{int} = -\frac{q}{2m_\mathrm e}\qty(\hat{\vec L} + 2\hat{\vec S})\cdot \vec B.
@@ -33,7 +33,7 @@ mit dem Bohrschen Magneton \cite{Demtröder:829119}
 Weil hier elektrische Dipolübergänge betrachtet werden, gilt die Auswahlregel 
 $\Delta m = \{\pm 1, 0\}$ \cite{Demtröder:829119}, wobei einer Differenz 
 von null linear polarisiertes Licht (im folgenden als $\pi$ bezeichnet) und einer Differenz von $\pm 1$
-zirkular polarisiertes Licht ($\sigma^+$ für rechts zirkular und $\sigma^-$ für links zirkular) 
+zirkular polarisiertes Licht ($\sigma^+$ für links zirkular und $\sigma^-$ für rechts zirkular) 
 zugeordnet werden kann.
 Für $\pi$-Polarisation kann daher keine Energieverschiebung beobachtet werden, für 
 $\sigma^\pm$-Polarisation eine Verschiebung von 
@@ -65,17 +65,17 @@ Der Aufbau zur Untersuchung des Zeeman-Effekts ist in \cref{fig:zeeman_aufbau} s
 Cadmiumlampe wird zwischen ein Magnetfeld festgehalten, welches durch zwei in Reihe 
 geschalteten stromdurchflossenen Spulen erzeugt wird. Die Spulen können 
 um die vertikale Achse gedreht werden, um die Richtung 
-des Magnetfeldes im Bezug zur Beobachtungsrichtung verändern zu können. 
+des Magnetfeldes in Bezug zur Beobachtungsrichtung verändern zu können. 
 Das Licht der Lampe wird mit einer Kondensorlinse 
-$f=\SI{150}{\mm}$ kollimiert mit leichter konvergenz, um nachher am Etalon verschieden Einfallswinkel zu 
+$f=\SI{150}{\mm}$ kollimiert mit leichter Konvergenz, um nachher am Etalon verschieden Einfallswinkel zu 
 erzeugen. 
 
 Das eingebaute Fabry-P\'erot-Etalon ist eine planparallele Glasschicht, welche 
-beidseitig mit teildurchlässigen Spiegeln beschichtet ist. Durch ständige Reflektion innerhalb der Glasschicht
+beidseitig mit teildurchlässigen Spiegeln beschichtet ist. Durch ständige Reflexion innerhalb der Glasschicht
 wird ein Strahlenbündel erzeugt, welches durch Gangunterschiede untereinander interferiert. 
 Das hier benutzte Etalon hat einen Brechungsindex von $n=1.457$ und einem Reflexionsgrad $R=0.85$.
 Mit einer weiteren Sammellinse $f=\SI{150}{\mm}$ wird das Licht am Okular scharf abgebildet, an 
-dem durch die entstandene Interferenz konzentrische Ringe beobachter sein können. Davor wird mit einem 
+dem durch die entstandene Interferenz konzentrische Ringe Beobachter sein können. Davor wird mit einem 
 Interferenzfilter das rote Licht bei $\SI{644}{\nm}$ gefiltert.
 
 \begin{figure}[h]
@@ -111,7 +111,7 @@ zwei senkrecht zueinander stehenden Dipole mit einer $\SI{90}{\degree}$-Phasenbe
 betrachtet werden.
 
 Da Dipole nicht in Bewegungsrichtung abstrahlen, kann in longitudinaler 
-Beobachtsrichtung (parallel zum Magnetfeld) nur die zirkular polarisierte $\sigma^\pm$-Strahlung
+Beobachtungsrichtung (parallel zum Magnetfeld) nur die zirkular polarisierte $\sigma^\pm$-Strahlung
 beobachtet werden. Bei transversaler Konfiguration sind alle drei Modi sichtbar mit dem 
 Unterschied, dass $\sigma^\pm$ hier linear polarisiert ist und räumlich um $\SI{90}{\degree}$
 zur $\pi$-Polarisation gedreht.
@@ -121,9 +121,23 @@ In Transversalrichtung können $\sigma^\pm$- sowie $\pi$-Strahlung beobachtet we
 diese Modi linear polarisiert sind und senkrecht zueinander stehen. Mit einem Polarisationsfilter 
 lässt sich somit $\pi$ und $\sigma$ voneinander trennen, $\sigma^+$ und $\sigma^-$ sind jedoch nicht 
 unterscheidbar voneinander. Vor das Etalon wird der Polarisationsfilter befestigt und 
-beim Einschalten des Magnetfeldes das Bild beobachtet.
+beim Einschalten des Magnetfeldes das Bild beobachtet. Die optische Achse 
+des Filters steht auf $\SI{0}{\degree}$, wenn Diese senkrecht zur optischen Bank
+steht. Erwartet wird das Verschwinden der inneren Ringe bei einer Filterausrichtung von 
+\SI{0}{\degree}, da in diesem Falle die optische Achse des Filters senkrecht zum B-Feld und damit 
+zur Polarisationsachse des $\pi$-Lichts steht. Damit ist das Verschwinden der äußeren Ringe 
+bei \SI{90}{\degree} zu erwarten.
 
-\begin{figure}
+In \cref{fig:transversal_konfiguration} sind die Interferenzringe abgebildet. Durch das Anlegen
+eines Magnetfeldes wurde die Aufspaltung der Ringe in einen hellen mittleren 
+Ring und zwei leicht dunklere daneben deutlich. Aufgrund des Auflösungsvermögens und möglicherweise 
+einer Überbelichtung konnten die Details des Bildes auf der Aufnahme nicht kenntlich
+gemacht werden. Bei einer Polarisationsfiltereinstellung von \SI{0}{\degree} verschwinden
+die inneren Ringen, bei \SI{90}{\degree} die Äußeren. Dies entspricht dem erwarteten Verhalten, 
+weshalb daraus geschlossen werden kann, dass das Licht der äußeren Ringe senkrecht zum 
+B-Feld polarisiert ist und das Licht der inneren Ringe parallel dazu.
+
+\begin{figure}[h]
     \centering
     \begin{subfigure}{0.45\linewidth}
         \centering
@@ -140,10 +154,32 @@ beim Einschalten des Magnetfeldes das Bild beobachtet.
         rechts unten mit Filter auf $\SI{+45}{\degree}$, links unten mit Filter auf $\SI{-45}{\degree}$. }
         \label{fig:longitudinal_konfiguration}
     \end{subfigure}
+    \caption{Aufnahmen der Etalon Interferenzringe bei unterschiedlichen Aufbauten.}
 \end{figure}
 
 
 \subsubsection{Longitudinalkonfiguration}
+In longitudinaler Ausrichtung kann nur das $\sigma^\pm$-Licht beobachtet werden. Um zu zeigen, 
+dass beide Wellen zirkular und entgegengesetzt polarisiert sind, wird vor dem Polarisationsfilter 
+eine $\lambda/4$-Wellenplatte befestigt, welche die Phase des elektrischen Feldes parallel 
+zur optischen Achse um eine viertel Wellenlänge verschiebt und somit zirkulares Licht 
+linear polarisieren kann. Per Definition entsprechen $\sigma^\pm$ die komplexen Vektoren des 
+elektrischen Feldes 
+$\vb E_\mathrm{\sigma^\mp} \propto \vb e_x \mp i\vb e_y$. Ohne Beschränkung der Allgemeinheit wird die optische Achse 
+der Wellenplatte auf die y-Achse gesetzt. Bei einer Verzögerung wird die y-Komponente 
+um den Faktor $\e^{\pm i\pi /2} = \pm i$ verschoben, womit sich eine Polarisation von 
+$\vb E_\mathrm{\sigma^\mp}\propto \vb e_x \pm \vb e_y$ ergibt. Somit ist $\sigma^-$ 
+bei einer Ausrichtung des Filters bei \SI{45}{\degree} sichtbar, während $\sigma^+$ Licht 
+bei \SI{-45}{\degree} sichtbar wird. 
+
+In \cref{fig:longitudinal_konfiguration} ist die Longitudinalkonfiguration gezeigt. Es ist zu erkennen,
+das sich diesmal beim Anlegen eines Magnetfeldes die Linie in nur zwei symmetrisch verteilte Linien 
+aufspaltet. Nach Durchgang einer Verzögerungsplatte und einer Filtereinstellung von $\pm\SI{45}{\degree}$
+verschwindet wie erwartet jeweils einer der zwei Ringe. Aufgrund der oberen Überlegung 
+lässt sich damit der innere Ring $\sigma^-$-Licht zuweisen und $\sigma^+$-Licht dem äußeren Ring.
+Auf die Relation, dass $\sigma^-$ kleinere Winkel und $\sigma^+$ größere Winkel zuzuordnen sind, wird 
+bei der Bestimmung des Bohr Magnetons weiter eingegangen.
+
 
 \begin{figure}[htb]
     \centering
