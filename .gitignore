@@ -9,3 +9,7 @@ V402/latex/test_main.*
 */*.dvi
 V428/python/test.py
 V428/python/__pycache__
+V401/.idea
+python/__pycache__
+python/.idea
+python/.ipynb_checkpoints

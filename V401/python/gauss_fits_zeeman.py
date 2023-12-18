@@ -107,6 +107,7 @@ def main():
     with latex.Texfile("gauss_fits_zeeman_tabelle", "../protokoll/tabellen/") as file:
         table = latex.Textable("Maxima und Standardabweichungen der Gauss-Anpassungen",
                                "tab:gauss_zeeman_maxima_and_std", caption_above=True)
+        table.fig_mode = "htb"
         table.add_header(
             r"$I / \unit{\ampere}$",
             r"$x_\mathrm{links} / \unit{\degree}$",

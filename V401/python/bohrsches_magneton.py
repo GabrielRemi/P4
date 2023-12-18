@@ -105,23 +105,28 @@ def plot(data: pd.DataFrame, fitresult: pd.DataFrame):
     plt.ylabel(r"$\Delta E\,/\mathrm{J}$")
 
     plt.errorbar(data.bfield, data.energy_left, xerr=data.bfield_err, yerr=data.energy_left_err,
-                ms=3, marker="o", linestyle="", label="Messwerte")
+                ms=3, marker="o", linestyle="", label=r"Messwerte $\sigma^+$")
 
     # Im plot sind mT statt T angegeben, deshalb m / 1000
-    fit_left: Callable[[float], float] = lambda x: linear([fitresult["Achsenabschnitt"]["linker Peak"],
-                    fitresult["Magneton"]["linker Peak"]/1000], x)
+    params_left = [fitresult["Achsenabschnitt"]["linker Peak"], fitresult["Magneton"]["linker Peak"]/1000]
+    fit_left: Callable[[float], float] = lambda x: linear(params_left, x)
 
-    plt.plot(data.bfield, fit_left(data.bfield), label="Fit")
+    chi_left = (functions.chisquare(linear, data.bfield, data.energy_left, data.energy_left_err, params_left)
+                .__round__(2))
 
-    fit_right: Callable[[float], float] = lambda x: linear([fitresult["Achsenabschnitt"]["rechter Peak"],
-                                                           fitresult["Magneton"]["rechter Peak"] / 1000], x)
+    plt.plot(data.bfield, fit_left(data.bfield), label=f"Anpassung, $\\chi^2 = {chi_left}$")
+
+    params_right = [fitresult["Achsenabschnitt"]["rechter Peak"], fitresult["Magneton"]["rechter Peak"] / 1000]
+    fit_right: Callable[[float], float] = lambda x: linear(params_right, x)
+    chi_right = (functions.chisquare(linear, data.bfield, data.energy_right, data.energy_right_err, params_right)
+                .__round__(2))
     plt.legend()
 
     plt.subplot(122)
     plt.xlabel(r"$B\,/\,\mathrm{mT}$")
     plt.errorbar(data.bfield, data.energy_right, xerr=data.bfield_err, yerr=data.energy_right_err,
-                 ms=3, marker="o", linestyle="", label="Messwerte")
-    plt.plot(data.bfield, fit_right(data.bfield), label="Fit")
+                 ms=3, marker="o", linestyle="", label=r"Messwerte $\sigma^-$")
+    plt.plot(data.bfield, fit_right(data.bfield), label=f"Anpassung, $\\chi^2 = {chi_right}$")
 
     plt.legend()
     plt.savefig("../figs/magneton.pdf", dpi=200)

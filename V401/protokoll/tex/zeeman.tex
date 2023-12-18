@@ -230,6 +230,7 @@ Eine Anpassungskurve ist beispielhaft in \cref{fig:gauss_i79} gezeigt. Visuell
 kann die Anpassung als äußerst erfolgreich angesehen werden. Weitere Diagramme 
 sind im \cref{sec:anhang} zu finden.
 
+
 Die Mittelwerte und Standardabweichungen der Gauß-Kurven sind tabellarisch in \cref{tab:gauss_zeeman_maxima_and_std}
 dargestellt. Es fällt auch, dass das mittlere Maximum nicht immer am gleichen Winkel vorzufinden ist. Daraus lässt sich 
 schließen, dass während der Messung der Mittelpunkt der Ringe stets in einem kleinen Bereich geschwankt 
@@ -238,7 +239,7 @@ jedoch nur linear mit der Verschiebung ansteigen und im Vergleich zu anderen Feh
 Mit \cref{fig:etalon} lässt sich für die Maxima die Bedingung 
 \begin{equation}
     \lambda = \frac{2d}{m}\sqrt{n^2-\sin^2\alpha}, \qquad 
-    \Delta\lambda \approx = \frac{2d}{m}\frac{\alpha \Delta\alpha}{\sqrt{n^2 - \alpha^2}}
+    \Delta\lambda \approx \frac{2d}{m}\frac{\alpha \Delta\alpha}{\sqrt{n^2 - \alpha^2}}
     \label{eq:etalon_gleichung}
 \end{equation}
 mit der Beugungsordnung $m$ herleiten. Für die Unsicherheit wurde die Kleinwinkelnäherung benutzt, was 
@@ -248,14 +249,17 @@ Mit \cref{eq:etalon_gleichung} und dem mittleren Maximum bei bekannter Wellenlä
 lässt sich die Beugungsordnung bestimmen. Diese lag beim untersuchten Maximum bei 
 $m = \num{18104}$.
 
+\input{tabellen/gauss_fits_zeeman_tabelle.tex}
+
 Im Folgenden wird die Wellenlängendifferenz eines äußeren und dem mittleren Maximum als 
 \\$\delta\lambda = \lambda_{\sigma^\pm} - \lambda_\pi$ definiert. Damit ist die 
 Energieverschiebung gegeben mit 
 \begin{equation*}
-    \delta E = hc\qty(\frac{1}{\lambda_{\sigma^\pm}} - \frac{1}{\lambda_\pi})
-        \equiv -E_0\frac{\delta\lambda}{\lambda_\pi+\delta\lambda}
+    \delta E = hc\qty(\frac{1}{\lambda_{\sigma^\pm}} - \frac{1}{\lambda_0})
+        \equiv -E_0\frac{\delta\lambda}{\lambda_0+\delta\lambda}, \qquad
+        \Delta(\delta E) = \delta E \frac{\Delta(\delta\lambda)}{\delta\lambda},
 \end{equation*}
-
+wobei für den Fehler $\lambda_0\gg\delta\lambda$ angenommen wurde.
 Aufgrund von \cref{eq:etalon_gleichung} lässt sich sagen, das im betrachteten Bereich 
 die Wellenlänge steigen muss bei kleineren Winkeln. Da eine höhere Wellenlänge zu kleineren 
 Energien führt, führen kleinere Winkel zu kleineren Energien. Damit also 
@@ -272,15 +276,61 @@ den Überlegungen in \cref{sec:zeeman_quantitativ} überein.
     \label{fig:bfield_kalibration}
 \end{figure}
 
-Um das Magneton zu bestimmen muss noch die Magnetfeldkalibration durchgeführt werden. 
-Hierfür wird an die Messdaten der Hall Sonde vor und nach der Messung der Interferenzringe 
+Um das Magneton zu bestimmen, muss zusätzlich die Magnetfeldkalibration durchgeführt werden, da 
+bei der Messung nur die Spulenströme gemessen wurden. Auch hier sind die Fehler nicht bekannt. 
+Da aber die Messung automatisch von dem Programm vorgenommen wurde und manuell der Spulenstrom 
+langsam hochgedreht wurde, befinden sich in den Messdaten Bereiche, wo das Magnetfeld
+mehrmals beim gleichen Strom gemessen wurde. Die Standardabweichung dieses Bereiches 
+wird als Unsicherheit für die Messung genutzt.
+
+
+Für die Anpassung wird an die Messdaten der Hall Sonde vor und nach der Messung der Interferenzringe 
 die Funktion 
 \begin{equation*}
     B(I) = \alpha + \frac{\beta}{(\gamma + \e^{-\delta I})^\varepsilon}
 \end{equation*}
-
-angepasst.
+angepasst. In \cref{fig:kalibration_tabelle} sind die angepassten Parameter tabelliert 
+und in \cref{fig:bfield_kalibration} die Anpassungsfunktionen mit den Messwerten 
+grafisch dargestellt. Da für beide Kalibrationskurven das resultierende $\chi^2$
+klein ist und diese visuell betrachtet nicht von den Messdaten unterscheidbar sind,
+kann die Kalibration für die weitere Auswertung genutzt werden. Es kann angenommen werden,
+das während der Messung sich das tatsächliche Magnetfeld zwischen den beiden Kalibrationskurven
+befand. Aus diesem Grund wird für kommende Rechnungen der Mittelwert beider 
+Kurven verwendet mit 
+\[B(I) = \frac{B_\mathrm{vor}(I) + B_\mathrm{nach}(I)}{2}, 
+\qquad \Delta B(I) = \abs{\frac{B_\mathrm{vor}(I) - B_\mathrm{nach}(I)}{2}}.\]
 
 \input{tabellen/kallibration_tabelle.tex}
 
-\input{tabellen/gauss_fits_zeeman_tabelle.tex}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{../figs/magneton}
+    \caption{Bestimmung des Bohrschen Magnetons}
+    \label{fig:bohr_magneton}
+\end{figure}
+
+In \cref{fig:bohr_magneton} sind die Geradenanpassungen an die Magnetfeld-abhängige 
+Energieverschiebung dargestellt. Da beide Geraden ein $\chi^2$ nahe 1 
+besitzen, können diese als sehr gut betrachtet werden. Damit ergeben sich die Steigungen 
+\begin{equation}
+    \mu_\mathrm B^+ = \SI{9.7(5)e-24}{\joule\per\tesla}, 
+    \qquad \mu_\mathrm B^- = \SI{8.8(6)e-24}{\joule\per\tesla}
+    \label{eq:magneton_exp}.
+\end{equation}
+Verglichen mit dem Literaturwert $\mu_\mathrm B^\mathrm{Lit} = \SI{9.274}{\joule\per\tesla}$
+liegt dieser in beiden Fällen im $1\sigma$-Bereich der Messung, wobei der relative 
+Fehler bei etwa \qtyrange{5}{8}{\percent} liegt. Im Rahmen dieses Versuchs 
+ist dies ein akzeptabler Wert. 
+
+Weiterhin fällt auf, dass für $\sigma^\pm$-Strahlung der Wert jeweils über- oder unterschätzt 
+wird. Wird aus beiden Messergebnissen der Mittelwert gebildet, so ergibt sich der 
+Wert 
+\begin{equation*}
+    \mu_\mathrm B = \SI{9.3(8)e-24}{\joule\per\tesla},
+\end{equation*}
+was zwar eine höhere Unsicherheit besitzt, der Wert jedoch auf zwei signifikante Stellen 
+genau dem Literaturwert entspricht. Es lässt sich somit vermuten, dass aufgrund 
+von möglicher falscher Justierung das aufgenomme Bild verzerrt wurde und deshalb 
+eine Abweichung nach oben und unten ensteht.
+
+\subsection{weitere Überlegungen}

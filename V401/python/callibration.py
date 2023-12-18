@@ -25,14 +25,16 @@ def fit_function(x: float, a: float, b: float, c: float, d: float, e: float) -> 
     return a + b / denom
 
 
-def do_calibration(data: pd.DataFrame, sy) -> Tuple[any, any, func]:
+def do_calibration(data: pd.DataFrame, sy) -> Tuple[list[float], list[float], func, float]:
     """Führe mit scipy.optimize eine Funktionsanpassung an den Datensatz durch"""
     x = data["I / A"]
     y = data["B / mT"]
 
     popt, pcov = optimize.curve_fit(fit_function, x, y)
 
-    return popt, pcov, lambda x: fit_function(x, *popt)
+    chi_squared = functions.chisquare(lambda b, x: fit_function(x, *b), x, y, sy, popt)
+
+    return popt, pcov, lambda x: fit_function(x, *popt), round(chi_squared, 2)
 
 
 def main() -> Tuple[func, func]:
@@ -48,8 +50,10 @@ def main() -> Tuple[func, func]:
     data_std: float = round(np.std(data_before[341:363]["B / mT"]), 1)
 
     # Führe Kalibration durch
-    beta_before, sd_beta_before, bfield_before = do_calibration(data_before, data_std)
-    beta_after, sd_beta_after, bfield_after = do_calibration(data_after, data_std)
+    beta_before, sd_beta_before, bfield_before, chi_before = do_calibration(data_before, data_std)
+    beta_after, sd_beta_after, bfield_after, chi_after = do_calibration(data_after, data_std)
+    sd_beta_before: list[float] = np.sqrt(np.diag(sd_beta_before))
+    sd_beta_after: list[float] = np.sqrt(np.diag(sd_beta_after))
 
     # Plotte die Fits
     fig, ax = plt.subplots()
@@ -66,20 +70,29 @@ def main() -> Tuple[func, func]:
 
     plots.legend(ax)
     fig.savefig("../figs/BFeld-Kalibrationskurve.pdf", dpi=200)
-    #plt.show()
+    # plt.show()
     plt.close()
 
-    ## Tabelle
+    # Tabelle
     with latex.Texfile("kallibration_tabelle", "../protokoll/tabellen/") as file:
         table: latex.Textable = latex.Textable(
-            "table",
-            "label", caption_above=True)
-        values = [*np.array([beta_before, beta_after]).transpose()]
-        values_std = [*np.array([sd_beta_before, sd_beta_after]).transpose()]
-        print(list(zip(values, values_std)))
+            "Anpassparameter der Magnetfeldkalibration",
+            "fig:kalibration_tabelle", caption_above=True)
+        values = list(zip([list(a) for a in zip(beta_before, beta_after)],
+                          [list(a) for a in zip(sd_beta_before, sd_beta_after)]))
+        table.fig_mode = "h"
+        table.add_header(
+            " Magnetfeldmessung",
+            r"$\alpha / \unit{\milli\tesla}$",
+            r"$\beta / \unit{\milli\tesla}$",
+            r"$\gamma$",
+            r"$\delta$",
+            r"$\epsilon$",
+            r"$\chi^2$"
+        )
         table.add_values(
-            ["vorher", "nachher"]
-               )
+            ["vorher", "nachher"],
+            *values, [chi_before, chi_after])
         file.add(table.make_figure())
 
     return bfield_before, bfield_after
