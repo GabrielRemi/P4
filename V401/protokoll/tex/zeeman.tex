@@ -254,11 +254,12 @@ $m = \num{18104}$.
 Im Folgenden wird die Wellenlängendifferenz eines äußeren und dem mittleren Maximum als 
 \\$\delta\lambda = \lambda_{\sigma^\pm} - \lambda_\pi$ definiert. Damit ist die 
 Energieverschiebung gegeben mit 
-\begin{equation*}
+\begin{equation}
     \delta E = hc\qty(\frac{1}{\lambda_{\sigma^\pm}} - \frac{1}{\lambda_0})
         \equiv -E_0\frac{\delta\lambda}{\lambda_0+\delta\lambda}, \qquad
         \Delta(\delta E) = \delta E \frac{\Delta(\delta\lambda)}{\delta\lambda},
-\end{equation*}
+        \label{eq:energieverschiebung}
+\end{equation}
 wobei für den Fehler $\lambda_0\gg\delta\lambda$ angenommen wurde.
 Aufgrund von \cref{eq:etalon_gleichung} lässt sich sagen, das im betrachteten Bereich 
 die Wellenlänge steigen muss bei kleineren Winkeln. Da eine höhere Wellenlänge zu kleineren 
@@ -334,3 +335,66 @@ von möglicher falscher Justierung das aufgenomme Bild verzerrt wurde und deshal
 eine Abweichung nach oben und unten ensteht.
 
 \subsection{weitere Überlegungen}
+\subsubsection{Finesse und Auflösungsvermögen}
+Die Finesse ist ein Maß für die Güte eines Resonators. Sie ist definiert als Quotient 
+des freien Spektralbereichs und der Halbwertsbreite eines Maximums. 
+\begin{equation}
+    \mathcal F = \frac{\Delta\lambda}{\delta \lambda} = \frac{\pi\sqrt R}{1-R}.
+    \label{fig:finesse}
+\end{equation}
+Mit dem bekannten Reflexionskoeffizienten $r=0.85$ des Etalons ergibt sich eine theoretische Finesse 
+von 
+\[\mathcal F_\mathrm{theo} = \num{9.62}.\]
+Der freie Spektralbereich ist definiert als Frequenzunterschied zweier Beugungsordnungen. 
+Mit \cref{eq:etalon_gleichung} ergibt sich somit 
+\begin{equation*}
+    \Delta\nu = \frac{c}{2d\sqrt{n^2-\sin^2\alpha}} \approx \frac{c}{2nd}
+\end{equation*}
+für kleine Winkel. In Ortsdarstellung lässt sich damit die Gleichung 
+\begin{equation}
+    \Delta\lambda = c\qty(\frac{1}{\nu_1} - \frac{1}{\nu_2})\approx \lambda^2\frac{\Delta\nu}{c}
+        =  \frac{\lambda^2}{2nd}
+    \label{fig:free_spectralrange}
+\end{equation}
+nähern. Das Auflösungvermögen lässt sich mit \cref{fig:finesse,fig:free_spectralrange} 
+für das Etalon daher mit
+\begin{equation}
+    A = \frac{\lambda}{\delta\lambda} = \frac{2nd}{\lambda}\mathcal F
+    \label{eq:finesse}
+\end{equation}
+bestimmen. Für den genutzten Aufbau entspricht dies dem Auflösungsvermögen.
+\[A_\mathrm{theo} = \num{1.74e5}\]
+Das Auflösungsvermögen kann bestimmt werden, der Spulenstrom so lange 
+verringert wird, bis die einzelnen Ringe durch den Zeeman-Effekt nicht mehr aufgelöst werden 
+können. Mit \cref{eq:energieverschiebung} kann das Auflösungsvermögen als 
+\[A = \frac{hc}{\lambda\mu B(I)}\]
+geschrieben werden. Es wurden in transversaler und longitudinaler Richtung 
+die Ströme 
+\[I_\mathrm{transv} = \SI{3.6(1)}{\ampere},
+\qquad I_\mathrm{longi} = \SI{1.3(2)}{\ampere}\]
+gemessen. Da nach \cref{fig:bfield_kalibration} die Ströme sich im linearen Bereich 
+der Kalibrationskurve befinden, kann die Unsicherheit mit 
+$\Delta A = A\cdot\Delta I/I$
+approximiert werden. Da in longitudinaler Richtung die mittlere Linie nicht sichtbar ist, muss 
+in diesem Fall das Auflösungsvermögen zusätzlich um den Faktor 2 verringert werden.
+Es ergeben sich die Werte 
+\[A_\mathrm{transv} = \num{1.37(4)e5}, \qquad A_\mathrm{longi} = \num{1.9(3)e5},\]
+womit der Referenzwert im $1\sigma$-Bereich der longitudinalen Messung liegt, jedoch 
+in transversaler Richtung deutlich zu klein ist. Möglich ist ein einfacher 
+Ablesefehler als Grund für die Abweichung, falls die Maxima als nicht unterscheidbar 
+angesehen wurden, obwohl sie es eigentlich noch waren. Da nur 
+ein Auflösungsvermögen nicht dem Referenzwert entspricht, kommt eine falsche Justierung 
+als tragende Unsicherheit nicht in Frage. 
+Die Finessen sind nach \cref{eq:finesse}
+\[\mathcal F_\mathrm{trans} = \num{7.5\pm.3},\qquad \mathcal F_\mathrm{longi} = \num{10.4\pm1.7}.\]
+
+
+\subsubsection{Dopplerverbreiterung}
+Aufgrund der thermischen Bewegung der Atome in der Cadmiumlampe, verschiebt sich 
+nach dem Dopplereffekt die am Detektor gemessene Lichtwellenlänge. Bei Raumtemperatur
+überwiegt dieser Effekt der natürlichen Linienbreite. die Dopplerverbreiterung
+ist mit der Gleichung 
+\begin{equation*}
+    \Delta\lambda = \frac{\lambda}{c}\sqrt{\frac{8k_\mathrm BT\ln 2}{m}}
+\end{equation*}
+berechenbar. 
