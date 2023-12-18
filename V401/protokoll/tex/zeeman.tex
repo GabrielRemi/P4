@@ -99,7 +99,7 @@ Interferenzfilter das rote Licht bei $\SI{644}{\nm}$ gefiltert.
     \label{fig:zeeman_aufbau}
 \end{figure}
 
-\subsection{Untersuchung der Transversal- und Longitudinalkonfiguration}
+\subsection{Untersuchung der Transversal- und Longitudinalkonfiguration}\label{sec:zeeman_quantitativ}
 Durch das Drehen der Spulen lässt sich die Polarisation der emittierten Strahlung 
 untersuchen. Hierbei werden zwei Konfigurationsmöglichkeiten gesondert betrachtet.
 Klassisch lässt sich die Polarisations- und Strahlrichtung der Übergangsstrahlung 
@@ -190,7 +190,7 @@ bei der Bestimmung des Bohr Magnetons weiter eingegangen.
     \label{fig:zeeman_polarisation}
 \end{figure}
 
-\subsection{Bestimmung des Bohrschen Magnetons}
+\subsection{Bestimmung des Bohrschen Magnetons}\label{sec:magneton}
 Zur Bestimmung des Bohrschen Magnetons wird die Aufspaltung der Linien 
 in Transversalkonfiguration mit einer CCD-Kamera gemessen. Diese Messung wird 
 bei unterschiedlichen Spulenströmen 40-mal durchgeführt und der Mittelwert 
@@ -229,3 +229,58 @@ seine Bedeutung, weshalb eine quantitative Bewertung der Anpassungen nicht durch
 Eine Anpassungskurve ist beispielhaft in \cref{fig:gauss_i79} gezeigt. Visuell
 kann die Anpassung als äußerst erfolgreich angesehen werden. Weitere Diagramme 
 sind im \cref{sec:anhang} zu finden.
+
+Die Mittelwerte und Standardabweichungen der Gauß-Kurven sind tabellarisch in \cref{tab:gauss_zeeman_maxima_and_std}
+dargestellt. Es fällt auch, dass das mittlere Maximum nicht immer am gleichen Winkel vorzufinden ist. Daraus lässt sich 
+schließen, dass während der Messung der Mittelpunkt der Ringe stets in einem kleinen Bereich geschwankt 
+ist. Der daraus resultieren Fehler wird für kleine Winkel 
+jedoch nur linear mit der Verschiebung ansteigen und im Vergleich zu anderen Fehlern gering sein.
+Mit \cref{fig:etalon} lässt sich für die Maxima die Bedingung 
+\begin{equation}
+    \lambda = \frac{2d}{m}\sqrt{n^2-\sin^2\alpha}, \qquad 
+    \Delta\lambda \approx = \frac{2d}{m}\frac{\alpha \Delta\alpha}{\sqrt{n^2 - \alpha^2}}
+    \label{eq:etalon_gleichung}
+\end{equation}
+mit der Beugungsordnung $m$ herleiten. Für die Unsicherheit wurde die Kleinwinkelnäherung benutzt, was 
+hier keinen Unterschied machen sollte, da diese sowieso auf die erste oder zweite signifikante Stelle
+aufgerundet werden.
+Mit \cref{eq:etalon_gleichung} und dem mittleren Maximum bei bekannter Wellenlänge von \SI{644}{\nm}
+lässt sich die Beugungsordnung bestimmen. Diese lag beim untersuchten Maximum bei 
+$m = \num{18104}$.
+
+Im Folgenden wird die Wellenlängendifferenz eines äußeren und dem mittleren Maximum als 
+\\$\delta\lambda = \lambda_{\sigma^\pm} - \lambda_\pi$ definiert. Damit ist die 
+Energieverschiebung gegeben mit 
+\begin{equation*}
+    \delta E = hc\qty(\frac{1}{\lambda_{\sigma^\pm}} - \frac{1}{\lambda_\pi})
+        \equiv -E_0\frac{\delta\lambda}{\lambda_\pi+\delta\lambda}
+\end{equation*}
+
+Aufgrund von \cref{eq:etalon_gleichung} lässt sich sagen, das im betrachteten Bereich 
+die Wellenlänge steigen muss bei kleineren Winkeln. Da eine höhere Wellenlänge zu kleineren 
+Energien führt, führen kleinere Winkel zu kleineren Energien. Damit also 
+$\delta E_{\sigma^\pm} = \pm \mu_\mathrm B B$ ist, muss $|\alpha_{\sigma^+}| > |\alpha_0|$
+und $\abs{\alpha_{\sigma^-}} < \abs{\alpha_0}$ sein. Aus diesem Grund 
+lässt sich das rechte Maximum (innerer Ring) $\sigma^-$ und das linke Minimum 
+(äußerer Ring) $\sigma^+$ zuweisen, da negative Winkel betrachtet wurden. Dies stimmt mit 
+den Überlegungen in \cref{sec:zeeman_quantitativ} überein.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.6\linewidth]{../figs/BFeld-Kalibrationskurve}
+    \caption{Magnetfeldkalibration}
+    \label{fig:bfield_kalibration}
+\end{figure}
+
+Um das Magneton zu bestimmen muss noch die Magnetfeldkalibration durchgeführt werden. 
+Hierfür wird an die Messdaten der Hall Sonde vor und nach der Messung der Interferenzringe 
+die Funktion 
+\begin{equation*}
+    B(I) = \alpha + \frac{\beta}{(\gamma + \e^{-\delta I})^\varepsilon}
+\end{equation*}
+
+angepasst.
+
+\input{tabellen/kallibration_tabelle.tex}
+
+\input{tabellen/gauss_fits_zeeman_tabelle.tex}

@@ -4,7 +4,7 @@ from scipy import odr, optimize
 from typing import Callable, Tuple
 import numpy as np
 import pandas as pd
-from monke import functions, plots, constants
+from monke import functions, plots, constants, latex
 import scienceplots.styles
 
 filepath = os.path.dirname(__file__)
@@ -45,7 +45,7 @@ def main() -> Tuple[func, func]:
                                             columns=["I / A", "B / mT"]).query("`I / A` < 9.5")
     # data_after.plot(kind="scatter", x="I / A", y="B / mT")
 
-    data_std: float = round(np.std(data_before[200:]["B / mT"]), 1)
+    data_std: float = round(np.std(data_before[341:363]["B / mT"]), 1)
 
     # Führe Kalibration durch
     beta_before, sd_beta_before, bfield_before = do_calibration(data_before, data_std)
@@ -68,5 +68,18 @@ def main() -> Tuple[func, func]:
     fig.savefig("../figs/BFeld-Kalibrationskurve.pdf", dpi=200)
     #plt.show()
     plt.close()
+
+    ## Tabelle
+    with latex.Texfile("kallibration_tabelle", "../protokoll/tabellen/") as file:
+        table: latex.Textable = latex.Textable(
+            "table",
+            "label", caption_above=True)
+        values = [*np.array([beta_before, beta_after]).transpose()]
+        values_std = [*np.array([sd_beta_before, sd_beta_after]).transpose()]
+        print(list(zip(values, values_std)))
+        table.add_values(
+            ["vorher", "nachher"]
+               )
+        file.add(table.make_figure())
 
     return bfield_before, bfield_after

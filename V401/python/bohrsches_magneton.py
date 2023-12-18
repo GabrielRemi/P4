@@ -32,6 +32,7 @@ def calc_data_for_plotting() -> pd.DataFrame:
     # m = 2*d*n/wavelength * np.cos(data["deg_m"])
     m = 2*d/wavelength * np.sqrt(n**2 - np.sin(data.deg_m)**2)
     m, m_err = round(m.mean(), 0), m.std()
+    print(f"Beugungsordnung: {m}")
 
     def calc_wavelength(x: float) -> float:
         """Berechnet die Wellenlänge bei Beugungsordnung m und Winkel x"""

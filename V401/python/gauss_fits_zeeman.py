@@ -6,7 +6,7 @@ import os
 from file_management import read_file, FileData, FitResult
 from fit import Fit
 import matplotlib.pyplot as plt
-from monke import plots, functions
+from monke import plots, functions, latex
 from typing import Tuple
 from dataclasses import dataclass
 import scienceplots.styles
@@ -29,6 +29,13 @@ def do_gauss_fits() -> pd.DataFrame:
     sd_theta_middle: list[float] = []
     theta_right: list[float] = []
     sd_theta_right: list[float] = []
+
+    s_l: list[float] = []
+    sd_s_l: list[float] = []
+    s_m: list[float] = []
+    sd_s_m: list[float] = []
+    s_r: list[float] = []
+    sd_s_r: list[float] = []
 
     fits: list[FileData] = read_file("zeeman.txt")
     for fit in fits:
@@ -67,6 +74,12 @@ def do_gauss_fits() -> pd.DataFrame:
         theta_right.append(fitres.x0[0, 2] * np.pi / 180)
         sd_theta_right.append(fitres.x0[1, 2] * np.pi / 180)
 
+        s_l.append(fitres.std[0, 0] * np.pi / 180)
+        sd_s_l.append(fitres.std[1, 0] * np.pi / 180)
+        s_m.append(fitres.std[0, 1] * np.pi / 180)
+        sd_s_m.append(fitres.std[1, 1] * np.pi / 180)
+        s_r.append(fitres.std[0, 2] * np.pi / 180)
+        sd_s_r.append(fitres.std[1, 2] * np.pi / 180)
 
     result["I"] = current
     result["deg_l"] = theta_left
@@ -75,6 +88,12 @@ def do_gauss_fits() -> pd.DataFrame:
     result["deg_m_err"] = sd_theta_middle
     result["deg_r"] = theta_right
     result["deg_r_err"] = sd_theta_right
+    result["sig_l"] = s_l
+    result["sig_l_err"] = sd_s_l
+    result["sig_m"] = s_m
+    result["sig_m_err"] = sd_s_m
+    result["sig_r"] = s_r
+    result["sig_r_err"] = sd_s_r
     return result
 
 
@@ -82,6 +101,31 @@ def main():
     data = do_gauss_fits()
 
     data.to_csv("gauss_fits_zeeman.csv")
+
+    ## erstelle tabelle
+    data.iloc[:, 1:] *= 180/np.pi
+    with latex.Texfile("gauss_fits_zeeman_tabelle", "../protokoll/tabellen/") as file:
+        table = latex.Textable("Maxima und Standardabweichungen der Gauss-Anpassungen",
+                               "tab:gauss_zeeman_maxima_and_std", caption_above=True)
+        table.add_header(
+            r"$I / \unit{\ampere}$",
+            r"$x_\mathrm{links} / \unit{\degree}$",
+            r"$x_\mathrm{mitte} / \unit{\degree}$",
+            r"$x_\mathrm{rechts} / \unit{\degree}$",
+            r"$\sigma_\mathrm{links} / \unit{\degree}$",
+            r"$\sigma_\mathrm{mitte} / \unit{\degree}$",
+            r"$\sigma_\mathrm{rechts} / \unit{\degree}$"
+        )
+        table.add_values(
+            list(data.I),
+            (list(data.deg_l), list(data.deg_l_err)),
+            (list(data.deg_m), list(data.deg_m_err)),
+            (list(data.deg_r), list(data.deg_r_err)),
+            (list(data.sig_l), list(data.sig_l_err)),
+            (list(data.sig_m), list(data.sig_m_err)),
+            (list(data.sig_r), list(data.sig_r_err))
+        )
+        file.add(table.make_figure())
 
 
 if __name__ == "__main__":
