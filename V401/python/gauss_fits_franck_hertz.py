@@ -32,18 +32,23 @@ def do_gauss_fits() -> dict[str, pd.DataFrame | np.ndarray]:
 
     fits: list[FileData] = read_file("franck-hertz.txt")
     for fit in fits:
-        n = 4
-        error = []
-        for i, elem in enumerate(fit.data[1]):
-            x = fit.data[1][i-n:i+1].std()
-            if i < n or x <= 0.01*elem:
-                error.append(0.01*elem)
-            else:
-                error.append(x)
+        # Y Fehler
+        for dat in reversed(fit.data):
+            error = []
+            for elem in dat:
+                e = 0.01*elem
+                if elem < 3:
+                    e += 0.015
+                elif elem < 10:
+                    e += .05
+                elif elem < 30:
+                    e += .15
+                else:
+                    e += .5
+                error.append(e)
+            error = np.array(error)
+            fit.add_error(error)
 
-        error = np.array(error)
-
-        fit.add_error(error)
         fit.run_fits()
 
         out = fit.fitresult
@@ -62,6 +67,7 @@ def do_gauss_fits() -> dict[str, pd.DataFrame | np.ndarray]:
             fit.result["Name"].get_fit_data(fit.result["Name"].file_interval.interval, 400).transpose(),
             columns=["x", "y"])
         result[f"{fit.name} error"] = fit.data[2]
+        result[f"{fit.name} error x"] = fit.data[3]
 
     result["x0"] = x0_df
     result["x0_err"] = x0_err_df

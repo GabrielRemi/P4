@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import scienceplots.styles
 import gauss_fits_franck_hertz as gffh
+from monke import latex
 
 
 plt.style.use("science")
@@ -19,7 +20,7 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
         data[file] = pd.DataFrame(np.loadtxt(f"{data_path_rel}{file}", skiprows=1), columns=["U1", "U2"])
 
 
-    output = gffh.do_gauss_fits()
+    output: dict[str, pd.DataFrame] = gffh.do_gauss_fits()
 
     output["x0"].to_csv("Frank-Hertz.csv")
     colors: dict[str, str] = {
@@ -40,6 +41,7 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
             plt.figure(1)
             plt.title(r"$T = 165^\circ$")
             plt.errorbar(data[i].U1, data[i].U2, yerr=output[f"{i} error"], ms=3,
+                         xerr=output[f"{i} error x"],
                          label=f"{i[-7: -4]} eV $\\chi^2$ = {round(output["chi_squared"][i], 2)}",
                          color=colors[i], marker="o", linestyle="")
             data_key = f"{i} fit_data"
@@ -52,7 +54,8 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
             plt.figure(2)
 
             plt.title(r"$U_2 = 2.5\,\mathrm{eV}$")
-            plt.errorbar(data[i].U1, data[i].U2, yerr=output[f"{i} error"], ms=3,
+            plt.errorbar(data[i].U1, data[i].U2, yerr=output[f"{i} error"], ms=2,
+                         xerr=output[f"{i} error x"],
                          label=f"${i[-7: -4]}\\,^\\circ$C $\\chi^2$ = {round(output["chi_squared"][i], 2)}",
                          color=colors[i], marker="o", linestyle="")
             data_key = f"{i} fit_data"
@@ -66,7 +69,62 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
     plt.savefig("../figs/franck-hertz_gegenspannung.pdf", dpi=200)
     plt.figure(2)
     plt.savefig("../figs/franck-hertz_temperatur.pdf", dpi=200)
-    plt.show()
+    #plt.show()
+
+    ## Erstelle Tabellen
+    keys = ["x0", "x0_err", "sigma", "sigma_err"]
+    columns = output["x0"].columns.tolist()
+    table_data: dict[str, pd.DataFrame] = {}
+    for curve in columns:
+        data: list[list[float]] = []
+        for key in keys:
+            data.append(output[key][curve].tolist())
+        #print(data)
+        table_data[curve] = pd.DataFrame(np.array(data).transpose(), columns=keys)
+
+    # for i in table_data.keys():
+    #     print(i, table_data[i], sep="\n", end="\n\n")
+
+    with latex.Texfile("franck_hertz_tabellen", "../protokoll/tabellen/") as file:
+        ## Erste Tabelle für Gegenspannung
+        keys = list(filter(lambda x: "t_165_u2" in x, table_data.keys()))
+        keys.sort()
+        preheader: list[str] = list(map(lambda x: f"\\multicolumn{{2}}{{|c}}{{\\SI{{{x[-7:-4]}}}{{\\volt}}}}", keys))
+        assert(len(keys) == 4)
+
+        table: latex.Textable = latex.Textable(
+            r"Anpassparameter der Spannungskurve für verschiedene Gegenspannungen",
+            label="tab:gegenspannung", caption_above=True)
+        table.alignment = "c|cc|cc|cc|cc"
+        table.add_line_before_header("", *preheader)
+        table.add_hline()
+        table.add_header("Maximum", *([r"$x_0$ / \unit{\volt}", r"$\sigma$ / \unit{\volt}"]*4))
+        values = []
+        for key in keys:
+            values.extend([(table_data[key].x0, table_data[key].x0_err),
+                          (table_data[key].sigma, table_data[key].sigma_err)])
+        table.add_values(list(range(1,7)), *values)
+        file.add(table.make_figure())
+
+        ## Zweite Tabelle für Temperatur
+        keys = list(filter(lambda x: "u2_2.5_t" in x, table_data.keys()))
+        keys.sort()
+        preheader: list[str] = list(map(lambda x: f"\\multicolumn{{2}}{{|c}}{{\\SI{{{x[-7:-4]}}}{{\\volt}}}}", keys))
+        assert (len(keys) == 4)
+
+        table: latex.Textable = latex.Textable(
+            r"Anpassparameter der Spannungskurve für verschiedene Temperaturen",
+            label="tab:temperatur", caption_above=True)
+        table.alignment = "c|cc|cc|cc|cc"
+        table.add_line_before_header("", *preheader)
+        table.add_hline()
+        table.add_header("Maximum", *([r"$x_0$ / \unit{\volt}", r"$\sigma$ / \unit{\volt}"] * 4))
+        values = []
+        for key in keys:
+            values.extend([(table_data[key].x0, table_data[key].x0_err),
+                           (table_data[key].sigma, table_data[key].sigma_err)])
+        table.add_values(list(range(1, 7)), *values)
+        file.add(table.make_figure())
 
     return output
 

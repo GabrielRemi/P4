@@ -1,0 +1,63 @@
+\section{Franck-Hertz-Versuch}\label{sec:franck-hertz}
+Der Franck-Hertz-Versuch hat historisch maßgeblich zur Entwicklung 
+der Quantenmechanik beigetragen und das damals von Niels Bohr vorgestellte 
+Atommodell gestützt. Hierbei werden in einer Röhre Elektronen zu einer Anode hin 
+beschleunigt und erzeugen einen messbaren 
+Strom. Besitzen diese genügend kinetische Energie, so können 
+diese inelastisch mit den Quecksilberatomen in dem Röhrengas stoßen, 
+wobei der Energieübertrag zur Anregung atomarer Übergänge genutzt wird. 
+Aufgrund der verringerten kinetischen Energie der beschleunigten Elektronen 
+kommt es zu einem Stromeinbruch. Die dabei entsehende Spannungskurve wird 
+wie in \cref{fig:franck-hertz-spannungskurve} erwartet. 
+Aus der Differenz den Abständen der Maxima kann somit die 
+Energie des Übergangs bestimmt werden. Primär kann 
+aufgrund des deutlich höheren Wirkungsquerschnittes der Übergang 
+${}6^1\mathrm S_0\rightarrow 6^1\mathrm P_1$ betrachtet werden.
+
+\subsection{Aufbau und Durchführung}
+Um zunächst in einem Quecksilbergas freie Ladungsträger zu erzeugen, wird mit einer 
+Heizspannung $U_\mathrm h$ ein Glühdraht erwärmt. In \cref{fig:schaltbild_franck_hertz} 
+entspricht dies der Kathode K. Die Elektronen werden mit einer angelegten Beschleunigungsspannung
+$U_\mathrm B$ zu einem Gitter G beschleunigt. 
+Zwischen Gitter G und Anode A wird eine zusätzliche Gegenspannung $U_G$ angelegt, die Elektronen 
+abbremst. Diese beschränkt die kinetische Energie der durch das Gitter kommenden
+Elektronen nach unten und verringert so die an der Anode auftreffende Elektronenzahl.
+Die Spannungskurve wird viermal bei unterschiedlichen Gegenspannungen und konstanter Temperatur 
+gemessen und anschließend viermal bei gleichbleibender Gegenspannung und variabler 
+Temperatur.
+
+\subsection{Auswertung}
+Die Unsicherheiten werden nach Herstellerangaben auf $\pm 1\%$ inklusive $\pm 0.5\%$ 
+des Messbereiches gelegt, die hier bei \SI{30}{\volt} lag \cite{sensor-cassy}.
+\input{tabellen/franck_hertz_tabellen.tex}
+
+\begin{figure}[htb]
+    \centering
+    \begin{minipage}{.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Franck-Hertz_spannungskurve}
+        \caption{Franck-Hertz: Spannungskurve}
+        \label{fig:franck-hertz-spannungskurve}
+    \end{minipage}
+    \hspace{.5cm}
+    \begin{minipage}{.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{../figs/Schaltbild_Franck_Hertz_Versuch}
+        \caption{Schaltbild Franck Hertz Versuche}
+        \label{fig:schaltbild_franck_hertz}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{../figs/franck-hertz_gegenspannung}
+    \caption{Spannungskurve in Abhängigkeit der Gegenspannung}
+    \label{fig:gegenspannung}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{../figs/franck-hertz_temperatur}
+    \caption{Spannungskurve in Abhängigkeit der Temperatur}
+    \label{fig:temperatur}
+\end{figure}
