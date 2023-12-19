@@ -331,20 +331,20 @@ Wert
 \end{equation*}
 was zwar eine höhere Unsicherheit besitzt, der Wert jedoch auf zwei signifikante Stellen 
 genau dem Literaturwert entspricht. Es lässt sich somit vermuten, dass aufgrund 
-von möglicher falscher Justierung das aufgenomme Bild verzerrt wurde und deshalb 
-eine Abweichung nach oben und unten ensteht.
+von möglicher falscher Justierung das aufgenommene Bild verzerrt wurde und deshalb 
+eine Abweichung nach oben und unten entsteht.
 
 \subsection{weitere Überlegungen}
 \subsubsection{Finesse und Auflösungsvermögen}
 Die Finesse ist ein Maß für die Güte eines Resonators. Sie ist definiert als Quotient 
-des freien Spektralbereichs und der Halbwertsbreite eines Maximums. 
+des freien Spektralbereiches und der Halbwertsbreite eines Maximums. 
 \begin{equation}
     \mathcal F = \frac{\Delta\lambda}{\delta \lambda} = \frac{\pi\sqrt R}{1-R}.
     \label{fig:finesse}
 \end{equation}
 Mit dem bekannten Reflexionskoeffizienten $r=0.85$ des Etalons ergibt sich eine theoretische Finesse 
 von 
-\[\mathcal F_\mathrm{theo} = \num{9.62}.\]
+\[\mathcal F_\mathrm{theo} = \num{19.3}.\]
 Der freie Spektralbereich ist definiert als Frequenzunterschied zweier Beugungsordnungen. 
 Mit \cref{eq:etalon_gleichung} ergibt sich somit 
 \begin{equation*}
@@ -356,15 +356,15 @@ für kleine Winkel. In Ortsdarstellung lässt sich damit die Gleichung
         =  \frac{\lambda^2}{2nd}
     \label{fig:free_spectralrange}
 \end{equation}
-nähern. Das Auflösungvermögen lässt sich mit \cref{fig:finesse,fig:free_spectralrange} 
+nähern. Das Auflösungsvermögen lässt sich mit \cref{fig:finesse,fig:free_spectralrange} 
 für das Etalon daher mit
 \begin{equation}
     A = \frac{\lambda}{\delta\lambda} = \frac{2nd}{\lambda}\mathcal F
     \label{eq:finesse}
 \end{equation}
 bestimmen. Für den genutzten Aufbau entspricht dies dem Auflösungsvermögen.
-\[A_\mathrm{theo} = \num{1.74e5}\]
-Das Auflösungsvermögen kann bestimmt werden, der Spulenstrom so lange 
+\[A_\mathrm{theo} = \num{3.5e5}\]
+Das Auflösungsvermögen kann bestimmt werden, indem der Spulenstrom so lange 
 verringert wird, bis die einzelnen Ringe durch den Zeeman-Effekt nicht mehr aufgelöst werden 
 können. Mit \cref{eq:energieverschiebung} kann das Auflösungsvermögen als 
 \[A = \frac{hc}{\lambda\mu B(I)}\]
@@ -379,24 +379,64 @@ approximiert werden. Da in longitudinaler Richtung die mittlere Linie nicht sich
 in diesem Fall das Auflösungsvermögen zusätzlich um den Faktor 2 verringert werden.
 Es ergeben sich die Werte 
 \[A_\mathrm{transv} = \num{1.37(4)e5}, \qquad A_\mathrm{longi} = \num{1.9(3)e5},\]
-womit der Referenzwert im $1\sigma$-Bereich der longitudinalen Messung liegt, jedoch 
-in transversaler Richtung deutlich zu klein ist. Möglich ist ein einfacher 
+womit der Referenzwert deutlich größer als die Messwerte sind. Dies könnte am wahrscheinlichsten 
+an einer mangelnden Justierung liegen, in der die Sammellinse nicht vollständig fokussiert 
+wurde. Dies würde auch die schlechte Auflösung der Zeeman-Aufspaltung in \cref{sec:magneton} 
+erklären. Außerdem ist anzumerken, dass das Auflösungsvermögen in transversaler und longitudinaler Ausrichtung 
+voneinander abweichen. Möglich ist ein einfacher 
 Ablesefehler als Grund für die Abweichung, falls die Maxima als nicht unterscheidbar 
-angesehen wurden, obwohl sie es eigentlich noch waren. Da nur 
-ein Auflösungsvermögen nicht dem Referenzwert entspricht, kommt eine falsche Justierung 
-als tragende Unsicherheit nicht in Frage. 
+angesehen wurden, obwohl sie es eigentlich noch waren.
 Die Finessen sind nach \cref{eq:finesse}
 \[\mathcal F_\mathrm{trans} = \num{7.5\pm.3},\qquad \mathcal F_\mathrm{longi} = \num{10.4\pm1.7}.\]
+Da diese linear mit dem Auflösungsvermögen zusammenhängen, sind diese auch nach unten 
+verschoben.
 
 
 \subsubsection{Dopplerverbreiterung}
-Aufgrund der thermischen Bewegung der Atome in der Cadmiumlampe, verschiebt sich 
+Aufgrund der thermischen Bewegung der Atome in der Cadmiumlampe verschiebt sich 
 nach dem Dopplereffekt die am Detektor gemessene Lichtwellenlänge. Bei Raumtemperatur
-überwiegt dieser Effekt der natürlichen Linienbreite. die Dopplerverbreiterung
+überwiegt dieser Effekt der natürlichen Linienbreite. Die Dopplerverbreiterung
 ist mit der Gleichung 
 \begin{equation*}
     \Delta\lambda = \frac{\lambda}{c}\sqrt{\frac{8k_\mathrm BT\ln 2}{m}}
 \end{equation*}
-berechenbar. 
+berechenbar. Bei einer Temperatur von \SI{1000}{\kelvin} ergibt sich eine Verbreiterung von 
+\SI{1.38}{\pm}.  Diese Breite wird mit der Linienbreite eines Maximums ohne Magnetfeld verglichen. 
+Eine Gauß-Anpassung an das gleiche Maximum wie in \cref{sec:magneton} wurde in \cref{fig:doppler}
+min einem linearen Offset vorgenommen. Es konnte aufgrund 
+der Asymmetrie des Peaks keine Gauß-Funktion angepasst werden, die den gesamten Bereich des Maximums
+gut beschreibt. Die Breite und der Mittelwert müssten trotzdem innerhalb der Unsicherheit 
+gut abgeschätzt werden können. Diese sind $\alpha_0 = -\SI{.748(1)}{\degree}$ mit einer 
+Standardabweichung $\sigma = \SI{0.041(1)}{\degree}$. Um daraus die Breite der Kurve 
+in Ortsdarstellung zu bestimmten, wird zunächst \cref{eq:etalon_gleichung} für kleine Winkel genähert mit 
+\begin{equation*}
+    \lambda \approx \frac{2d}{m}\qty(n-\frac{\alpha^2}{2n}).
+\end{equation*}
+Mit der Definition $\Delta\alpha=\alpha_1 - \alpha_0$ lässt sich mit der Linienbreite folgendermaßen 
+bestimmen:
+\begin{align*}
+    \Delta\lambda &= \lambda_1 - \lambda_0 = \frac{d}{mn}\qty(\alpha_0^2 - \alpha_1^2) 
+    = \frac{d}{mn}(\alpha_0-\alpha_1)(\alpha_0 + \alpha_1)
+    = -\frac{d}{mn}\Delta\alpha(\alpha_1 - \alpha_0 + 2\alpha_0)\\
+    &= -\frac{d}{mn}\Delta\alpha(\Delta\alpha + 2\alpha_0).
+\end{align*}
+Die Dopplerverbreiterung bezieht sich jedoch auf die Halbwertsbreite, weshalb die Standardabweichung noch 
+umgerechnet werden muss mit $\Delta\alpha = \sigma\sqrt{2\ln 2}$. Mit den Messwerten ergibt sich eine 
+Verbreiterung von 
+\begin{equation}
+    \Delta\lambda_\mathrm{exp} = \SI{3.3(1)}{\pm}.
+\end{equation}
 
-\textbf{to be continued}
+Verglichen mit der Dopplerverbreiterung von etwa \SI{1.4}{\pm} liegt dieser Wert in derselben Größenordnung,
+jedoch um über den Faktor 2 größer. Wird mit \cref{eq:finesse} das Auflösungsvermögen berechnet, 
+so ergibt sich mit dem experimentellen Wert $A = \num{1.97(5)e5}$, was vergleichbar mit der Messung 
+der longitudinalen Konfiguration ist. Es ist naheliegend, dass der Aufbau nicht richtig justiert wurde
+und deshalb ein leicht unscharfes Bild bei der Messung entstanden ist, welche die Linienbreite erhöht.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{../figs/doppler}
+    \caption{Anpassung an ein Maximum bei Messung mit CCD-Kamera ohne angelegten Magnetfeld.}
+    \label{fig:doppler}
+\end{figure}
+

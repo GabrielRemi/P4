@@ -53,7 +53,7 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
         if "u2_2.5_t_" in i:
             plt.figure(2)
 
-            plt.title(r"$U_2 = 2.5\,\mathrm{eV}$")
+            plt.title(r"$U_\mathrm G = 2.5\,\mathrm{eV}$")
             plt.errorbar(data[i].U1, data[i].U2, yerr=output[f"{i} error"], ms=2,
                          xerr=output[f"{i} error x"],
                          label=f"$T = {i[-7: -4]}\\,^\\circ$C $\\chi^2$ = {round(output["chi_squared"][i], 2)}",
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     # Tabellen:
     with latex.Texfile("delta_energy_franck_hertz_tabellen", "../protokoll/tabellen/") as file:
         n = [*list(range(1,6)), r"$\langle E\rangle$"]
-        table_gegen = latex.Textable("Übergangsenergien bei verschiedenen Gegenspannungen",
+        table_gegen = latex.Textable("Übergangsenergien bei verschiedenen Gegenspannungen in eV",
                                      "fig:energy_gegen", caption_above=True)
         table_gegen.fig_mode = "htb"
         keys = list(filter(lambda key: "t_165_u2" in key, delta_energy.columns))
@@ -166,7 +166,7 @@ if __name__ == "__main__":
         table_gegen.add_values(*values)
 
 
-        table_temp = latex.Textable("Übergangsenergien bei verschiedenen Temperaturen",
+        table_temp = latex.Textable("Übergangsenergien bei verschiedenen Temperaturen in eV",
                                     "fig:energy_temp", caption_above=True)
         keys = list(filter(lambda key: "u2_2.5_t" in key, delta_energy.columns))
         keys.sort()
