@@ -35,14 +35,14 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
     }
 
     for i in data:
-        # plt.ylim((-.2, 1))
-        plt.xlim((9, 40.65))
+        #plt.ylim((-.2, 1))
+        plt.xlim((9, 42))
         if "t_165_u2" in i:
             plt.figure(1)
             plt.title(r"$T = 165^\circ$")
             plt.errorbar(data[i].U1, data[i].U2, yerr=output[f"{i} error"], ms=3,
                          xerr=output[f"{i} error x"],
-                         label=f"{i[-7: -4]} eV $\\chi^2$ = {round(output["chi_squared"][i], 2)}",
+                         label=f"$U_\\mathrm{{G}} =$ {i[-7: -4]} V, $\\chi^2$ = {round(output["chi_squared"][i], 2)}",
                          color=colors[i], marker="o", linestyle="")
             data_key = f"{i} fit_data"
             if data_key in output.keys():
@@ -56,7 +56,7 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
             plt.title(r"$U_2 = 2.5\,\mathrm{eV}$")
             plt.errorbar(data[i].U1, data[i].U2, yerr=output[f"{i} error"], ms=2,
                          xerr=output[f"{i} error x"],
-                         label=f"${i[-7: -4]}\\,^\\circ$C $\\chi^2$ = {round(output["chi_squared"][i], 2)}",
+                         label=f"$T = {i[-7: -4]}\\,^\\circ$C $\\chi^2$ = {round(output["chi_squared"][i], 2)}",
                          color=colors[i], marker="o", linestyle="")
             data_key = f"{i} fit_data"
             if data_key in output.keys():
@@ -95,6 +95,7 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
         table: latex.Textable = latex.Textable(
             r"Anpassparameter der Spannungskurve für verschiedene Gegenspannungen",
             label="tab:gegenspannung", caption_above=True)
+        table.fig_mode = "htb"
         table.alignment = "c|cc|cc|cc|cc"
         table.add_line_before_header("", *preheader)
         table.add_hline()
@@ -109,12 +110,13 @@ def do_gauss_fits() -> dict[str, pd.DataFrame]:
         ## Zweite Tabelle für Temperatur
         keys = list(filter(lambda x: "u2_2.5_t" in x, table_data.keys()))
         keys.sort()
-        preheader: list[str] = list(map(lambda x: f"\\multicolumn{{2}}{{|c}}{{\\SI{{{x[-7:-4]}}}{{\\volt}}}}", keys))
+        preheader: list[str] = list(map(lambda x: f"\\multicolumn{{2}}{{|c}}{{\\SI{{{x[-7:-4]}}}{{\\celsius}}}}", keys))
         assert (len(keys) == 4)
 
         table: latex.Textable = latex.Textable(
             r"Anpassparameter der Spannungskurve für verschiedene Temperaturen",
             label="tab:temperatur", caption_above=True)
+        table.fig_mode = "htb"
         table.alignment = "c|cc|cc|cc|cc"
         table.add_line_before_header("", *preheader)
         table.add_hline()
@@ -145,3 +147,42 @@ if __name__ == "__main__":
     delta_energy = pd.concat([delta_energy, delta_energy_description.loc["mean": "std"]])
     delta_energy.to_csv("delta_energy_franck_hertz.csv")
     plt.close()
+
+    # Tabellen:
+    with latex.Texfile("delta_energy_franck_hertz_tabellen", "../protokoll/tabellen/") as file:
+        n = [*list(range(1,6)), r"$\langle E\rangle$"]
+        table_gegen = latex.Textable("Übergangsenergien bei verschiedenen Gegenspannungen",
+                                     "fig:energy_gegen", caption_above=True)
+        table_gegen.fig_mode = "htb"
+        keys = list(filter(lambda key: "t_165_u2" in key, delta_energy.columns))
+        keys.sort()
+        header = list(map(lambda key: f"\\SI{{{key[-7:-4]}}}{{\\volt}}", keys))
+
+        values = [n]
+        table_gegen.add_header(" Maximum", *header)
+        for key in keys:
+            values.append(([*delta_energy[:5][key], delta_energy.loc["mean"][key]],
+                           [*delta_energy_error[key], delta_energy.loc["std"][key]]))
+        table_gegen.add_values(*values)
+
+
+        table_temp = latex.Textable("Übergangsenergien bei verschiedenen Temperaturen",
+                                    "fig:energy_temp", caption_above=True)
+        keys = list(filter(lambda key: "u2_2.5_t" in key, delta_energy.columns))
+        keys.sort()
+
+        values = [n]
+        header = list(map(lambda key: f"\\SI{{{key[-7:-4]}}}{{\\celsius}}", keys))
+        table_temp.fig_mode = "htb"
+        table_temp.add_header(" Maximum", *header)
+        for key in keys:
+            values.append(([*delta_energy[:5][key], delta_energy.loc["mean"][key]],
+                           [*delta_energy_error[key], delta_energy.loc["std"][key]]))
+        table_temp.add_values(*values)
+
+        file.add(table_gegen.make_figure())
+        file.add(table_temp.make_figure())
+
+
+
+    #print(delta_energy[:5], delta_energy_error, sep="\n")

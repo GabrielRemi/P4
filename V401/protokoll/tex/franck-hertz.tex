@@ -7,12 +7,29 @@ Strom. Besitzen diese genügend kinetische Energie, so können
 diese inelastisch mit den Quecksilberatomen in dem Röhrengas stoßen, 
 wobei der Energieübertrag zur Anregung atomarer Übergänge genutzt wird. 
 Aufgrund der verringerten kinetischen Energie der beschleunigten Elektronen 
-kommt es zu einem Stromeinbruch. Die dabei entsehende Spannungskurve wird 
-wie in \cref{fig:franck-hertz-spannungskurve} erwartet. 
+kommt es zu einem Stromeinbruch. Die dabei entstehende Spannungskurve wird 
+wie in \cref{fig:franck-hertz-spannungskurve} erwartet. Die Stöße der Elektronen 
+mit den Atomen ist ein statistischer Prozess. Ebenso unterliegt die Elektronengeschwindigkeit
+einer Maxwell-Boltzmann-Verteilung, weshalb keine scharfen Maxima 
+bei den entsprechenden Beschleunigungsspannungen erwartet werden, sondern 
+normalverteilte Kurven.
+
 Aus der Differenz den Abständen der Maxima kann somit die 
 Energie des Übergangs bestimmt werden. Primär kann 
-aufgrund des deutlich höheren Wirkungsquerschnittes der Übergang 
-${}6^1\mathrm S_0\rightarrow 6^1\mathrm P_1$ betrachtet werden.
+aufgrund des deutlich höheren Wirkungsquerschnittes der Übergang
+${}6^1\mathrm S_0\rightarrow 6^1\mathrm P_1$ betrachtet werden. Der Wirkungsquerschnitt ist 
+hierbei antiproportional zur freien Weglänge des Gases korreliert. 
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{../figs/querschnitt}
+    \caption{Totale Wirkungsquerschnitte von \bf 1: $6^1\mathrm S_0\rightarrow 6^3\mathrm P_0$,
+    \bf 2: $6^1\mathrm S_0\rightarrow 6^3\mathrm P_1$, 
+    \bf 3: $6^1\mathrm S_0\rightarrow 6^3\mathrm P_2$,\\
+    \bf 4: $6^1\mathrm S_0\rightarrow 6^1\mathrm P_1$ \cite{skript}}
+    \label{fig:wirkungsquerschnitte}
+\end{figure}
 
 \subsection{Aufbau und Durchführung}
 Um zunächst in einem Quecksilbergas freie Ladungsträger zu erzeugen, wird mit einer 
@@ -26,38 +43,94 @@ Die Spannungskurve wird viermal bei unterschiedlichen Gegenspannungen und konsta
 gemessen und anschließend viermal bei gleichbleibender Gegenspannung und variabler 
 Temperatur.
 
-\subsection{Auswertung}
-Die Unsicherheiten werden nach Herstellerangaben auf $\pm 1\%$ inklusive $\pm 0.5\%$ 
-des Messbereiches gelegt, die hier bei \SI{30}{\volt} lag \cite{sensor-cassy}.
-\input{tabellen/franck_hertz_tabellen.tex}
-
 \begin{figure}[htb]
     \centering
     \begin{minipage}{.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{../figs/Franck-Hertz_spannungskurve}
-        \caption{Franck-Hertz: Spannungskurve}
+        \caption{Franck-Hertz: Spannungskurve \cite{wiki:franck-hertz}}
         \label{fig:franck-hertz-spannungskurve}
     \end{minipage}
     \hspace{.5cm}
     \begin{minipage}{.45\linewidth}
         \centering
         \includegraphics[width=\linewidth]{../figs/Schaltbild_Franck_Hertz_Versuch}
-        \caption{Schaltbild Franck Hertz Versuche}
+        \caption{Schaltbild Franck Hertz Versuche \cite{wiki:franck-hertz}}
         \label{fig:schaltbild_franck_hertz}
     \end{minipage}
 \end{figure}
 
+\subsection{Auswertung}
+Die Unsicherheiten werden nach Herstellerangaben auf $\pm 1\%$ inklusive $\pm 0.5\%$ 
+des Messbereiches gelegt. Der Messbereich beim genutzten Sensor ist variabel 
+und wurde automatisch gesteuert, weshalb nur vermutet werden kann, dass dieser 
+bei steigender Spannung immer auf den nächsten höheren Bereich umgestiegen ist. Die Fehler
+wurden auf diese Weise für die Messung des Anodenstroms und Beschleunigungsspannung berechnet, wobei
+zu beachten ist, dass kein eigentlicher Strom, sondern die dazu proportionale Spannung gemessen wurde.
+Die Skalierung ist für die Auswertung jedoch nicht weiter wichtig. 
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\linewidth]{../figs/franck-hertz_gegenspannung}
-    \caption{Spannungskurve in Abhängigkeit der Gegenspannung}
+    \caption{Spannungskurve in Abhängigkeit der Gegenspannung bei \SI{165}{\celsius}}
     \label{fig:gegenspannung}
 \end{figure}
+
+\subsubsection{Abhängigkeit der Gegenspannung}\label{sec:franck-hertz-gegen}
+Die Messdaten der Spannungskurven bei variabler Gegenspannung sind in 
+\cref{fig:gegenspannung} grafisch dargestellt. An die Daten können Gauß-Kurven
+angepasst werden. Die Parameter der Anpassung sind in \cref{tab:gegenspannung}
+aufgezeigt. Das $\chi^2$ für die Anpassungen ist liegt dabei eine Größenordnung zu
+hoch, da aber diese Maß der Güte nur die Fehler der y-Achse betrachtet und 
+hier die Fehler in x-Richtung deutlich überwiegen, kann die Güte 
+nicht die Anpassung richtig einschätzen. Visuell kann behauptet werden,
+dass die Messdaten hier sehr gut beschrieben werden.
+
+Zusehen ist, dass für größere Gegenspannungen 
+die Maxima kleiner werden und leicht zu höheren Spannungen verschoben werden. 
+Dies entspricht der Erwartung, dass bei höheren Gegenspannungen weniger 
+Elektronen in den Bereich hinter das Gitter driften können.
+
+Die Breite der Kurven nimmt dabei leicht ab, was jedoch im Fehlerbereich liegt. 
+Einzige Ausnahme ist hierbei das erste Maximum, welches bei erhöhter 
+Gegenspannung immer breiter wird. Deren Amplitude ist jedoch so klein, dass ...
+
+
+\subsection{Abhängigkeit der Temperatur}
+Die Messdaten der Spannungskurven bei Variation der Temperatur 
+sind in \cref{fig:temperatur} grafisch dargestellt und die Anpassparameter 
+tabellarisch in \cref{tab:temperatur}. Die Güte der Anpassungskurven ist 
+vergleichbar wie in \cref{sec:franck-hertz-gegen}. Auch hier ist erkennbar, dass 
+bei steigender Temperatur die Maxima leicht zu höheren Spannungen hin verschoben 
+werden mit gedämpften Amplituden und leicht erhöhten Breiten. Nach \cite{skript}
+ist die Temperatur durch die Relation 
+\begin{equation*}
+    \log p = \num{10.55}-\frac{3333}{T}-\num{0.85}\log T
+\end{equation*}
+mit dem Druck korreliert. Diese Korrelation ist in \cref{fig:druck_temp} dargestellt. Wie zu 
+erkennen ist, variiert in dem Bereich über der Raumtemperatur der Druck stark. Mit 
+höherem Druck nimm ebenso die Anzahl der Stöße zu, weshalb weniger Elektronen die Gegenspannung
+überwinden können und dadurch die Amplitude der Kurven sinkt. Die Driftgeschwindigket 
+der Elektronen ist antiproportional zur freien Weglänge, weshalb bei erhöhter Temperatur 
+eine höhere Beschleunigungsspannung zur Stoßanregung benötigt wird. Dies erklärt auch 
+die leichte Verschiebung der Maxima....
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.5\linewidth]{../figs/druck_temp}
+    \caption{Temperaturabhängigkeit des Drucks}
+    \label{fig:druck_temp}
+\end{figure}
+
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\linewidth]{../figs/franck-hertz_temperatur}
-    \caption{Spannungskurve in Abhängigkeit der Temperatur}
+    \caption{Spannungskurve in Abhängigkeit der Temperatur bei einer Gegenspannung von \SI{2.5}{\volt}}
     \label{fig:temperatur}
 \end{figure}
+
+\input{tabellen/franck_hertz_tabellen.tex}
+
+\input{tabellen/delta_energy_franck_hertz_tabellen.tex}
+
