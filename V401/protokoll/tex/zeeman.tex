@@ -1,7 +1,7 @@
 \section{Zeeman-Effekt}\label{sec:zeeman}
 Der Zeeman-Effekt beschreibt die Aufspaltung der Energieniveaus einzelner Zustände 
 in einem Magnetfeld. Spin und Bahndrehimpuls bewirken ein magnetisches Moment, auf welches 
-ein äußere Magnetfeld wirken kann. Quantenmechanisch kann dies durch den Hamiltonoperator 
+ein äußeres Magnetfeld wirken kann. Quantenmechanisch kann dies durch den Hamiltonoperator 
 beschrieben werden, der die Interaktion mit einem äußeren Feld beschreibt \cite{Sakurai}:
 \begin{equation}
     \hat H_\mathrm{int} = -\frac{q}{2m_\mathrm e}\qty(\hat{\vec L} + 2\hat{\vec S})\cdot \vec B.
@@ -21,10 +21,9 @@ wobei die Elektronenladung eingesetzt wurde und das Magnetfeld per Konvention in
 Da bei kugelsymmetrischem Potenzial die z-Komponente des Drehimpulsoperators mit dem restlichen Hamiltonoperator
 des Atoms kommutiert, ergibt sich eine Verschiebung des Energieniveaus von
 \begin{equation*}
-    \Delta E = \frac{e\hbar}{2m_\mathrm e}m_jB \equiv \mu_\mathrm B m_j B
+    \Delta E = \frac{e\hbar}{2m_\mathrm e}m_jB \equiv \mu_\mathrm B m_j B ,
     \label{eq:energy_zeeman}
 \end{equation*}
-
 mit dem Bohrschen Magneton \cite{Demtröder:829119}
 \begin{equation}
     \mu_B = \SI{9.274015}{\joule\per\tesla}.
@@ -63,17 +62,17 @@ und entspricht rotem Licht. Dieser Übergang wird in diesem Versuch untersucht.
 \subsection{Versuchsaufbau}
 Der Aufbau zur Untersuchung des Zeeman-Effekts ist in \cref{fig:zeeman_aufbau} skizziert. Eine 
 Cadmiumlampe wird zwischen ein Magnetfeld festgehalten, welches durch zwei in Reihe 
-geschalteten stromdurchflossenen Spulen erzeugt wird. Die Spulen können 
+geschaltete stromdurchflossene Spulen erzeugt wird. Die Spulen können 
 um die vertikale Achse gedreht werden, um die Richtung 
 des Magnetfeldes in Bezug zur Beobachtungsrichtung verändern zu können. 
 Das Licht der Lampe wird mit einer Kondensorlinse 
-$f=\SI{150}{\mm}$ kollimiert mit leichter Konvergenz, um nachher am Etalon verschieden Einfallswinkel zu 
+$f=\SI{150}{\mm}$ kollimiert mit leichter Konvergenz, um nachher am Etalon verschiedene Einfallswinkel zu 
 erzeugen. 
 
 Das eingebaute Fabry-P\'erot-Etalon ist eine planparallele Glasschicht, welche 
 beidseitig mit teildurchlässigen Spiegeln beschichtet ist. Durch ständige Reflexion innerhalb der Glasschicht
 wird ein Strahlenbündel erzeugt, welches durch Gangunterschiede untereinander interferiert. 
-Das hier benutzte Etalon hat einen Brechungsindex von $n=1.457$ und einem Reflexionsgrad $R=0.85$.
+Das hier benutzte Etalon hat einen Brechungsindex von $n=1.457$ und einen Reflexionsgrad von $R=0.85$.
 Mit einer weiteren Sammellinse $f=\SI{150}{\mm}$ wird das Licht am Okular scharf abgebildet, an 
 dem durch die entstandene Interferenz konzentrische Ringe Beobachter sein können. Davor wird mit einem 
 Interferenzfilter das rote Licht bei $\SI{644}{\nm}$ gefiltert.
@@ -334,10 +333,10 @@ genau dem Literaturwert entspricht. Es lässt sich somit vermuten, dass aufgrund
 von möglicher falscher Justierung das aufgenommene Bild verzerrt wurde und deshalb 
 eine Abweichung nach oben und unten entsteht.
 
-\subsection{weitere Überlegungen}
+\subsection{Weitere Überlegungen}
 \subsubsection{Finesse und Auflösungsvermögen}
 Die Finesse ist ein Maß für die Güte eines Resonators. Sie ist definiert als Quotient 
-des freien Spektralbereiches und der Halbwertsbreite eines Maximums. 
+des freien Spektralbereiches und der Halbwertsbreite eines Maximums:
 \begin{equation}
     \mathcal F = \frac{\Delta\lambda}{\delta \lambda} = \frac{\pi\sqrt R}{1-R}.
     \label{fig:finesse}
